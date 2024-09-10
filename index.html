@@ -1,0 +1,278 @@
+
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="robots" content="noindex">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<style>body {
+    font-family: Inter, sans-serif;
+    margin: 0;
+    padding: 20px; /* Adjust the padding to add more space */
+    background-color: #1A1A1A;
+    font-family: 'Inter', sans-serif;
+}
+
+
+.content {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px;
+    justify-content: space-around;
+}
+
+
+.option-text {
+        font-weight: bold; /* Change font weight */
+        color: #9E9E9E; 
+    }
+
+.card {
+    position: relative;
+    flex-basis: calc(30% - 10px); /* Adjust the flex-basis and margin */
+    background-color: #f0f0f0;
+    margin-bottom: 20px; /* Add margin between all cards */
+    padding: 10px 5px 30px 7px; /* Adjust padding */
+    text-align: center;
+    font-family: 'Inter', sans-serif;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    border-radius: 15px;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+    display: flex; /* Flexbox layout */
+    flex-direction: column; /* Stack children vertically */
+    justify-content: space-between; /* Space between items */
+    height: 225px; /* Fixed height for demonstration */
+    align-items: center; /* Center items horizontally */
+    max-width: 225px; /* Ensure the image fits within the card */
+    cursor: pointer;
+}
+
+.card-front, .card-back, .card-back2 {
+    position: absolute;
+    top: 4px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    backface-visibility: hidden;
+    transition: transform 0.5s;
+}
+
+.card-front {
+    z-index: 2;
+}
+
+.card-back {
+    transform: rotateY(180deg);
+}
+
+.card-back2 {
+    transform: rotateY(180deg);
+}
+
+
+.card-flipped .card-front {
+    transform: rotateY(180deg);
+}
+
+.card-flipped .card-back {
+    transform: rotateY(0deg);
+}
+
+.card-flipped .card-back2 {
+    transform: rotateY(0deg);
+}
+
+
+.card p {
+    margin-top: 4px; /* Adjust margin-top to maintain position */
+    font-size: 12px;
+    font-family: Inter, sans-serif;
+    color: 00000;
+    display: flex;
+    flex-direction: column; /* Display items in a column */
+    justify-content: center;
+    align-items: center;
+    font-weight: thin;
+}
+
+
+
+.card img {
+    max-width: 50%; /* Ensure the image fits within the card */
+    border-top-left-radius: 15px; /* Maintain border-radius for image corners */
+    border-top-right-radius: 15px;
+    max-height: 50%;
+}
+
+
+
+
+
+.card-back button {
+    margin: 15.2px; 
+    background-color: black; 
+    color: #fff; 
+    border: none; 
+    border-radius: 12px; 
+    padding: 20px 20px; 
+    cursor: pointer; 
+    transition: background-color 0.3s ease; 
+    width: 70%;
+
+}
+
+
+.card-back2 button {
+    margin-top: 48.5px; 
+    background-color: black; 
+    color: #fff; 
+    border: none; 
+    border-radius: 12px; 
+    padding: 20px 20px; 
+    cursor: pointer; 
+    transition: background-color 0.3s ease; 
+    width: 70%;
+
+}
+
+
+.card-back button:hover {
+    background-color: white; 
+    color: black; 
+
+}
+
+
+.card-back2 button:hover {
+    background-color: white; 
+    color: black; 
+
+}
+
+    
+.card h2 {
+    margin-top: 30px; /* Add margin below headline */
+    padding: 0px;
+    font-size: 18px;
+}
+
+
+.card a {
+    width: 100%; 
+    height: 100%;
+    text-decoration: none; /* Remove underline */
+    color: inherit; /* Inherit color from parent */
+}
+
+.card a img {
+    max-width: 50%; /* Ensure the image fits within the card */
+    border-top-left-radius: 15px; /* Maintain border-radius for image corners */
+    border-top-right-radius: 15px;
+    max-height: 50%;
+}
+
+
+@media (max-width: 768px) {
+    .card {
+        flex-basis: calc(100% - 0px); /* Adjust the flex-basis for smaller screens */
+    }
+}
+
+@media (max-width: 576px) {
+    .card {
+        flex-basis: calc(100% - 0px); /* Adjust the flex-basis for even smaller screens */
+    }
+}
+
+/* Add hover effect */
+.card:hover {
+    transform: scale(1.05); /* Scale the card slightly on hover */
+    box-shadow: 0 0 20px rgba(0,0,0,0.1); /* Increase shadow on hover */
+    background-color: #3D3D3D; /* Change background color on hover */
+}
+
+/* Add active effect */
+.card:active {
+    background-color: #c0c0c0; /* Change background color when card is clicked */
+}
+
+/* Change text color on hover */
+.card:hover p {
+    color: #333; /* Change text color on hover */
+}
+
+/* Change text color when card is clicked */
+.card:active p {
+    color: #fff; /* Change text color when card is clicked */
+}
+
+
+.links {
+    margin-bottom: 30px; 
+    margin-top: 50px;
+    align-items: center;
+ 
+}
+</style>
+<body>
+    <div class="container">
+       
+
+        <div class="content">
+            
+
+    <div class="card">
+        <div class="card-front">
+            <p></p>
+                <h2>RANK</h2>
+                <p></p>
+                <img src="https://datamb.football/PRO/rank.png" alt="Card Image">
+                <p></p>
+            </a>
+        </div>
+        <div class="card-back">
+             <div class="buttons">
+
+   <a href="https://datamb.football/index">
+    <button class="btn btn-primary"><span class="option-text">Rank </span> Top 5 Leagues</button></a>
+      <a href="https://datamb.football/index2">  
+        <button class="btn btn-secondary"><span class="option-text">Rank </span> Top 7 Leagues</button></a>
+<a href="https://datamb.football/index2">
+    <button class="btn btn-secondary"><span class="option-text">Rank </span> Other Leagues</button></a>
+
+</div></div></div>
+
+
+<div class="card"><a href="https://datamb.football/index3">
+    <h2>INDEX</h2>
+<p></p>
+    <img src="https://datamb.football/PRO/index.png" alt="Card Image">
+    <p></p></a>
+</div>
+
+
+            <div class="card">       <a href="https://datamb.football/proguide">       
+
+    <h2>GUIDE</h2>
+<p></p>
+    <img src="https://datamb.football/PRO/guide.png" alt="Card Image">
+    <p></p></a>
+</div>
+        </div>
+
+    </div>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const cards = document.querySelectorAll('.card');
+    cards.forEach(card => {
+        card.addEventListener('click', () => {
+            card.classList.toggle('card-flipped');
+        });
+    });
+});
+</script>
+
+</body>
+</html>
