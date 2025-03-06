@@ -28,6 +28,9 @@
     "passes": "Passes",
     "carrying": "Carrying"
   },
+  "buttons": {
+    "team": "Team"
+  },
   "similar": {
     "to": "Similar data to"
   },
