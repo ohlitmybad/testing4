@@ -1,7 +1,9 @@
+
 <!DOCTYPE html>
 <html>
 <head>
 	<meta name="robots" content="noindex">
+
 
 	<script src="https://d3js.org/d3.v5.min.js"></script>
 <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
@@ -83,11 +85,6 @@ body.dark-mode button:hover {
   color: initial;
 }
 
-body.dark-mode .button-1 {
-  /* Override button background color */
-  background-color: #646464;
-}
-	 
 
 body.dark-mode .button-8 {
   /* Override button background color */
@@ -142,8 +139,6 @@ body.dark-mode input:checked + .toggle-slider:before {
 
 
 
-
-
 .dark-mode-toggle {
     position: absolute;
     top: 15.3px;
@@ -164,13 +159,13 @@ body.dark-mode input:checked + .toggle-slider:before {
 
 
 
-
-
 .icon::before {
   content: "\f2b5";
   font-family: "Ionicons"; /* Replace with the appropriate font */
 font-size: 22px;
 }
+
+
 
 
 
@@ -304,14 +299,12 @@ opacity: .055;
 
 	     
 
-
-
 .button-1 {
   align-items: center;
 height: 20px;
-  background-color: #e7e4e4;
+background-color: #F9F9F9;
   border-radius: 6px;
-  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.24);
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
   box-sizing: border-box;
   color: #121212;
   cursor: pointer;
@@ -340,15 +333,19 @@ width: 72px;
 }
 
 .button-1:hover {
-   box-shadow: rgba(0, 0, 0, 0.24) 3px 3px 3px;
+    box-shadow: rgba(0, 0, 0, 0.4) 3px 3px 3px;
 }
 
+body.dark-mode .button-2 {
+  /* Override button background color */
+  background-color: #646464;
+}
 
 .button-2 {
   align-items: center;
-  background-color: #F9F9F9;
+  background-color: #e7e4e4;
   border-radius: 6px;
-  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.24);
   box-sizing: border-box;
   color: #121212;
   cursor: pointer;
@@ -378,7 +375,7 @@ width: 72px;
 }
 
 .button-2:hover {
-   box-shadow: rgba(0, 0, 0, 0.4) 3px 3px 3px;
+  box-shadow: rgba(0, 0, 0, 0.24) 3px 3px 3px;
 }
 
 .button-3 {
@@ -605,7 +602,6 @@ width: 72px;
   box-shadow: rgba(0, 0, 0, 0.4) 3px 3px 3px;
 }
 
-	 
 
 #SFctr {
 	font-size: 15px !important;
@@ -634,14 +630,15 @@ body.dark-mode #SFctr td {
 </style>
 
 
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.9/xlsx.full.min.js"></script>
 
 	
 	
 </head>
+
 <body>
 		  <script type="text/javascript">document.body.style.visibility="hidden";</script><div id="SFctr" data-org="31002" data-mfl="64c215764c0b6076026762a3"><div style="clear:both"></div></div><script type="text/javascript" src="https://cdn.membershipworks.com/mfl.js"></script>
-
 
 	<br>
 	<br><br>
@@ -650,7 +647,6 @@ body.dark-mode #SFctr td {
 	
 
 
-	
 	
 <svg id="scatter-plot"></svg>
 <div class="container">
@@ -727,21 +723,21 @@ body.dark-mode #SFctr td {
   <button class="select-all-button" onclick="selectAllCircles()" data-i18n="click_all">Click All</button>
   <button onclick="takeScreenshot()" class="button-screenshot" data-i18n="screenshot">Screenshot</button>
   <br>
- <select id="select-x"></select>
- <select id="select-y"></select>
- <select id="select-size"></select>
+  <select id="select-x"></select>
+  <select id="select-y"></select>
+  <select id="select-size"></select>
 <button id="toggle-median-lines" class="toggle-button"><div class="icon"></div></button></div>
 <script>
-
 
 const allData = [];
 let isFirstFileProcessed = false;
 
 const urls = [
-'https://datamb.football/database/CURRENT/TOP72425/GK/GK.xlsx',
-   'https://datamb.football/database/CURRENT/PRO2425/GK/GK.xlsx',
-'https://datamb.football/database/CURRENT/PRO2024/GK/GK.xlsx',
+ 'https://datamb.football/database/CURRENT/TOP72425/CB/CB.xlsx',
+   'https://datamb.football/database/CURRENT/PRO2425/CB/CB.xlsx',
+'https://datamb.football/database/CURRENT/PRO2024/CB/CB.xlsx',
 ];
+
 
 const fetchPromises = urls.map(url => fetch(url).then(response => response.arrayBuffer()));
 
@@ -761,14 +757,14 @@ Promise.all(fetchPromises)
             jsonData.forEach(row => row.splice(2, 1));
 
             // 2. Delete specified columns
-            const columnsToDelete = [10, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 33, 34, 35, 36, 37, 38, 40, 41, 46, 47, 48, 49, 55, 56, 57, 58, 59, 60, 61, 62, 70, 83, 85, 86, 87, 88, 89, 90, 91, 92, 97, 98, 99, 100,101,102,103,104,105,106,107,108,109,110,111,124,125,126,128,129,130,131,132,133,135,136,137,138,139,140,141];
+            const columnsToDelete = [27, 28, 29, 30, 40, 47, 48, 49, 55, 59, 61, 70, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 92, 105, 107, 123, 128];
             columnsToDelete.sort((a, b) => b - a); // Sort in descending order
             columnsToDelete.forEach(col => {
                 jsonData.forEach(row => row.splice(col, 1));
             });
 
             // 3. Insert new columns and fill with appropriate values
-            if (url === 'https://datamb.football/database/CURRENT/TOP72425/GK/GK.xlsx' && !isFirstFileProcessed) {
+            if (url === 'https://datamb.football/database/CURRENT/TOP72425/CB/CB.xlsx' && !isFirstFileProcessed) {
                 // Include header only for the first file ('gk4.xlsx')
                 jsonData.forEach(row => row.unshift(null)); // Insert empty column at the beginning
                 jsonData[0][0] = "ID"; // Set header for the new column
@@ -793,7 +789,7 @@ Promise.all(fetchPromises)
             });
 
             // 5. Collect the transformed data (excluding header for non-first 'gk4.xlsx')
-            allData.push(...(url === 'https://datamb.football/database/CURRENT/TOP72425/GK/GK.xlsx' ? jsonData : jsonData.slice(1)));
+            allData.push(...(url === 'https://datamb.football/database/CURRENT/TOP72425/CB/CB.xlsx' ? jsonData : jsonData.slice(1)));
         });
 
 const leagues = {
@@ -1083,104 +1079,139 @@ var names = data.map(function(row) {
   return row[1];
 });
 
-
-
 const customMetricOrder = [
-    { text: "Minutes played", dataI18n: "minutes_played" },
-    
-    // Goalkeeping
-    { text: "CATEGORY: Goalkeeping", dataI18n: "goalkeeping" },
-    { text: "Clean sheets", dataI18n: "clean_sheets" },
-    { text: "Save percentage %", dataI18n: "save_percentage" },
-    { text: "Prevented goals", dataI18n: "prevented_goals" },
-    { text: "Prevented goals per 90", dataI18n: "prevented_goals_per_90" },
-    { text: "xG conceded", dataI18n: "xg_conceded" },
-    { text: "xG conceded per 90", dataI18n: "xg_conceded_per_90" },
-    { text: "Goals conceded", dataI18n: "goals_conceded" },
-    { text: "Goals conceded per 90", dataI18n: "goals_conceded_per_90" },
-    { text: "Shots conceded", dataI18n: "shots_conceded" },
-    { text: "Shots conceded per 90", dataI18n: "shots_conceded_per_90" },
-    { text: "Exits per 90", dataI18n: "exits_per_90" },
-    { text: "Saves per 90", dataI18n: "saves_per_90" },
-
-    // Defending
-    { text: "CATEGORY: Defending", dataI18n: "defending" },
-    { text: "Possessions won per 90", dataI18n: "possessions_won_per_90" },
-    { text: "Defensive duels per 90", dataI18n: "defensive_duels_per_90" },
-    { text: "Defensive duels won %", dataI18n: "defensive_duels_won_percentage" },
-    { text: "Defensive duels won per 90", dataI18n: "defensive_duels_won_per_90" },
-    { text: "Aerial duels per 90", dataI18n: "aerial_duels_per_90" },
-    { text: "Aerial duels won %", dataI18n: "aerial_duels_won_percentage" },
-    { text: "Aerial duels won per 90", dataI18n: "aerial_duels_won_per_90" },
-    { text: "Sliding tackles per 90", dataI18n: "sliding_tackles_per_90" },
-    { text: "Sliding tackles (PAdj)", dataI18n: "sliding_tackles_padj" },
-    { text: "Interceptions per 90", dataI18n: "interceptions_per_90" },
-    { text: "Interceptions (PAdj)", dataI18n: "interceptions_padj" },
-
-    // Passing
-    { text: "CATEGORY: Passing", dataI18n: "passing" },
-    { text: "Passes per 90", dataI18n: "passes_per_90" },
-    { text: "Pass completion %", dataI18n: "pass_completion_percentage" },
-    { text: "Passes completed per 90", dataI18n: "passes_completed_per_90" },
-    { text: "Forward passes per 90", dataI18n: "forward_passes_per_90" },
-    { text: "Forward pass completion %", dataI18n: "forward_pass_completion_percentage" },
-    { text: "Forward passes completed per 90", dataI18n: "forward_passes_completed_per_90" },
-    { text: "Short passes per 90", dataI18n: "short_passes_per_90" },
-    { text: "Short pass completion %", dataI18n: "short_pass_completion_percentage" },
-    { text: "Short passes completed per 90", dataI18n: "short_passes_completed_per_90" },
-    { text: "Long passes per 90", dataI18n: "long_passes_per_90" },
-    { text: "Long pass accuracy %", dataI18n: "long_pass_accuracy_percentage" },
-    { text: "Long passes completed per 90", dataI18n: "long_passes_completed_per_90" },
-    { text: "Passes to final third per 90", dataI18n: "passes_to_final_third_per_90" },
-    { text: "Pass completion (to final third) %", dataI18n: "pass_completion_final_third_percentage" },
-    { text: "Accurate passes to final third per 90", dataI18n: "accurate_passes_final_third_per_90" },
-    { text: "Passes to penalty box per 90", dataI18n: "passes_to_penalty_box_per_90" },
-    { text: "Pass completion (to penalty box) %", dataI18n: "pass_completion_penalty_box_percentage" },
-    { text: "Accurate passes to penalty box per 90", dataI18n: "accurate_passes_penalty_box_per_90" },
-    { text: "Through passes per 90", dataI18n: "through_passes_per_90" },
-    { text: "Through pass completion %", dataI18n: "through_pass_completion_percentage" },
-    { text: "Through passes completed per 90", dataI18n: "through_passes_completed_per_90" },
-    { text: "Progressive passes per 90", dataI18n: "progressive_passes_per_90" },
-    { text: "Progressive pass accuracy %", dataI18n: "progressive_pass_accuracy_percentage" },
-    { text: "Progressive passes completed per 90", dataI18n: "progressive_passes_completed_per_90" },
-    { text: "Forward pass ratio", dataI18n: "forward_pass_ratio" },
-    { text: "Misplaced passes per 90", dataI18n: "misplaced_passes_per_90" },
-    { text: "Average pass length (m)", dataI18n: "average_pass_length" },
-
-    // Possession
-    { text: "CATEGORY: Possession", dataI18n: "possession" },
-    { text: "Passes received per 90", dataI18n: "passes_received_per_90" },
-    { text: "Dribbles attempted per 90", dataI18n: "dribbles_attempted_per_90" },
-    { text: "Duels per 90", dataI18n: "duels_per_90" },
-    { text: "Duels won %", dataI18n: "duels_won_percentage" },
-    { text: "Duels won per 90", dataI18n: "duels_won_per_90" },
-    { text: "Touches per 90", dataI18n: "touches_per_90" },
-    { text: "Possession +/-", dataI18n: "possession_plus_minus" },
-
-    // Discipline
-    { text: "CATEGORY: Discipline", dataI18n: "discipline" },
-    { text: "Fouls per 90", dataI18n: "fouls_per_90" },
-    { text: "Yellow cards per 90", dataI18n: "yellow_cards_per_90" },
-    { text: "Red cards per 90", dataI18n: "red_cards_per_90" }
+    {text: "Minutes played", dataI18n: "minutes_played"},
+    {text: "CATEGORY: Goal Scoring", dataI18n: "category_goal_scoring"},
+    {text: "Goals per 90", dataI18n: "goals_per_90"},
+    {text: "Non-penalty goals per 90", dataI18n: "non_penalty_goals_per_90"},
+    {text: "xG per 90", dataI18n: "xg_per_90"},
+    {text: "xG/Shot", dataI18n: "xg_per_shot"},
+    {text: "npxG per 90", dataI18n: "npxg_per_90"},
+    {text: "npxG/Shot", dataI18n: "npxg_per_shot"},
+    {text: "Goals per 100 touches", dataI18n: "goals_per_100_touches"},
+    {text: "xG per 100 touches", dataI18n: "xg_per_100_touches"},
+    {text: "Shot frequency", dataI18n: "shot_frequency"},
+    {text: "Shots per 90", dataI18n: "shots_per_90"},
+    {text: "Shots on target %", dataI18n: "shots_on_target_percentage"},
+    {text: "Shots on target per 90", dataI18n: "shots_on_target_per_90"},
+    {text: "Goal conversion %", dataI18n: "goal_conversion_percentage"},
+    {text: "Goals - xG per 90", dataI18n: "goals_minus_xg_per_90"},
+    {text: "Headed goals per 90", dataI18n: "headed_goals_per_90"},
+    {text: "Touches in box per 90", dataI18n: "touches_in_box_per_90"},
+    {text: "CATEGORY: Goal Creation", dataI18n: "category_goal_creation"},
+    {text: "Assists per 90", dataI18n: "assists_per_90"},
+    {text: "xA per 90", dataI18n: "xa_per_90"},
+    {text: "xA per 100 passes", dataI18n: "xa_per_100_passes"},
+    {text: "Goals + Assists per 90", dataI18n: "goals_plus_assists_per_90"},
+    {text: "NPG+A per 90", dataI18n: "npg_plus_a_per_90"},
+    {text: "xG+xA per 90", dataI18n: "xg_plus_xa_per_90"},
+    {text: "npxG+xA per 90", dataI18n: "npxg_plus_xa_per_90"},
+    {text: "Key passes per 90", dataI18n: "key_passes_per_90"},
+    {text: "Chance creation ratio", dataI18n: "chance_creation_ratio"},
+    {text: "Assists - xA per 90", dataI18n: "assists_minus_xa_per_90"},
+    {text: "Shot assists per 90", dataI18n: "shot_assists_per_90"},
+    {text: "Pre-assists per 90", dataI18n: "pre_assists_per_90"},
+    {text: "Crosses per 90", dataI18n: "crosses_per_90"},
+    {text: "Cross accuracy %", dataI18n: "cross_accuracy_percentage"},
+    {text: "Accurate crosses per 90", dataI18n: "accurate_crosses_per_90"},
+    {text: "Crosses to box per 90", dataI18n: "crosses_to_box_per_90"},
+    {text: "Deep completions per 90", dataI18n: "deep_completions_per_90"},
+    {text: "CATEGORY: Dribbling and Ball-Carrying", dataI18n: "category_dribbling_and_ball_carrying"},
+    {text: "Dribbles attempted per 90", dataI18n: "dribbles_attempted_per_90"},
+    {text: "Dribble success rate %", dataI18n: "dribble_success_rate_percentage"},
+    {text: "Successful dribbles per 90", dataI18n: "successful_dribbles_per_90"},
+    {text: "Dribbles per 100 touches", dataI18n: "dribbles_per_100_touches"},
+    {text: "Successful attacking actions per 90", dataI18n: "successful_attacking_actions_per_90"},
+    {text: "Offensive duels per 90", dataI18n: "offensive_duels_per_90"},
+    {text: "Offensive duels won %", dataI18n: "offensive_duels_won_percentage"},
+    {text: "Offensive duels won per 90", dataI18n: "offensive_duels_won_per_90"},
+    {text: "Progressive carries per 90", dataI18n: "progressive_carries_per_90"},
+    {text: "Ball-carrying frequency", dataI18n: "ball_carrying_frequency"},
+    {text: "Accelerations per 90", dataI18n: "accelerations_per_90"},
+    {text: "Fouls suffered per 90", dataI18n: "fouls_suffered_per_90"},
+    {text: "CATEGORY: Passing", dataI18n: "category_passing"},
+    {text: "Passes per 90", dataI18n: "passes_per_90"},
+    {text: "Pass completion %", dataI18n: "pass_completion_percentage"},
+    {text: "Passes completed per 90", dataI18n: "passes_completed_per_90"},
+    {text: "Forward passes per 90", dataI18n: "forward_passes_per_90"},
+    {text: "Forward pass completion %", dataI18n: "forward_pass_completion_percentage"},
+    {text: "Forward passes completed per 90", dataI18n: "forward_passes_completed_per_90"},
+    {text: "Short passes per 90", dataI18n: "short_passes_per_90"},
+    {text: "Short pass completion %", dataI18n: "short_pass_completion_percentage"},
+    {text: "Short passes completed per 90", dataI18n: "short_passes_completed_per_90"},
+    {text: "Long passes per 90", dataI18n: "long_passes_per_90"},
+    {text: "Long pass accuracy %", dataI18n: "long_pass_accuracy_percentage"},
+    {text: "Long passes completed per 90", dataI18n: "long_passes_completed_per_90"},
+    {text: "Progressive passes per 90", dataI18n: "progressive_passes_per_90"},
+    {text: "Progressive pass accuracy %", dataI18n: "progressive_pass_accuracy_percentage"},
+    {text: "Progressive passes completed per 90", dataI18n: "progressive_passes_completed_per_90"},
+    {text: "Progressive passes (PAdj)", dataI18n: "progressive_passes_padj"},
+    {text: "Passes to final third per 90", dataI18n: "passes_to_final_third_per_90"},
+    {text: "Pass completion (to final third) %", dataI18n: "pass_completion_to_final_third_percentage"},
+    {text: "Accurate passes to final third per 90", dataI18n: "accurate_passes_to_final_third_per_90"},
+    {text: "Passes to penalty box per 90", dataI18n: "passes_to_penalty_box_per_90"},
+    {text: "Pass completion (to penalty box) %", dataI18n: "pass_completion_to_penalty_box_percentage"},
+    {text: "Accurate passes to penalty box per 90", dataI18n: "accurate_passes_to_penalty_box_per_90"},
+    {text: "Through passes per 90", dataI18n: "through_passes_per_90"},
+    {text: "Through pass completion %", dataI18n: "through_pass_completion_percentage"},
+    {text: "Through passes completed per 90", dataI18n: "through_passes_completed_per_90"},
+    {text: "Average pass length (m)", dataI18n: "average_pass_length_meters"},
+    {text: "Backward passes per 90", dataI18n: "backward_passes_per_90"},
+    {text: "Misplaced passes per 90", dataI18n: "misplaced_passes_per_90"},
+    {text: "Forward pass ratio", dataI18n: "forward_pass_ratio"},
+    {text: "Backward pass ratio", dataI18n: "backward_pass_ratio"},
+    {text: "CATEGORY: Possession", dataI18n: "category_possession"},
+    {text: "Passes received per 90", dataI18n: "passes_received_per_90"},
+    {text: "Touches per 90", dataI18n: "touches_per_90"},
+    {text: "Possessions lost per 90", dataI18n: "possessions_lost_per_90"},
+    {text: "Possessions won - lost per 90", dataI18n: "possessions_won_minus_lost_per_90"},
+    {text: "Possession +/-", dataI18n: "possession_plus_minus"},
+    {text: "Duels per 90", dataI18n: "duels_per_90"},
+    {text: "Duels won %", dataI18n: "duels_won_percentage"},
+    {text: "Duels won per 90", dataI18n: "duels_won_per_90"},
+    {text: "Progressive actions per 90", dataI18n: "progressive_actions_per_90"},
+    {text: "Progressive action rate", dataI18n: "progressive_action_rate"},
+    {text: "CATEGORY: Defending", dataI18n: "category_defending"},
+    {text: "Defensive duels per 90", dataI18n: "defensive_duels_per_90"},
+    {text: "Defensive duels won %", dataI18n: "defensive_duels_won_percentage"},
+    {text: "Defensive duels won per 90", dataI18n: "defensive_duels_won_per_90"},
+    {text: "Sliding tackles per 90", dataI18n: "sliding_tackles_per_90"},
+    {text: "Sliding tackles (PAdj)", dataI18n: "sliding_tackles_padj"},
+    {text: "Interceptions per 90", dataI18n: "interceptions_per_90"},
+    {text: "Interceptions (PAdj)", dataI18n: "interceptions_padj"},
+    {text: "Possessions won per 90", dataI18n: "possessions_won_per_90"},
+    {text: "Aerial duels per 90", dataI18n: "aerial_duels_per_90"},
+    {text: "Aerial duels won %", dataI18n: "aerial_duels_won_percentage"},
+    {text: "Aerial duels won per 90", dataI18n: "aerial_duels_won_per_90"},
+    {text: "Shots blocked per 90", dataI18n: "shots_blocked_per_90"},
+    {text: "CATEGORY: Disciplinary", dataI18n: "category_disciplinary"},
+    {text: "Fouls per 90", dataI18n: "fouls_per_90"},
+    {text: "Yellow cards per 90", dataI18n: "yellow_cards_per_90"},
+    {text: "Red cards per 90", dataI18n: "red_cards_per_90"},
+    {text: "CATEGORY: Set Pieces", dataI18n: "category_set_pieces"},
+    {text: "Free kicks per 90", dataI18n: "free_kicks_per_90"},
+    {text: "Direct free kicks per 90", dataI18n: "direct_free_kicks_per_90"},
+    {text: "Direct free kicks oT %", dataI18n: "direct_free_kicks_ot_percentage"},
+    {text: "Corners per 90", dataI18n: "corners_per_90"},
+    {text: "Penalties attempted", dataI18n: "penalties_attempted"},
+    {text: "Penalties scored", dataI18n: "penalties_scored"},
+    {text: "Penalty success rate %", dataI18n: "penalty_success_rate_percentage"}
 ];
-
 
 // Function to append options to dropdowns
 function appendOptions(selectElement, metrics) {
     metrics.forEach(function(metric) {
         if (metric.text.startsWith("CATEGORY:")) {
-            // Add a disabled option for category descriptors
             selectElement.append("option")
-                .text(metric.text.replace("CATEGORY: ", "")) // Remove "CATEGORY: " from the text
-                .attr("disabled", true) // Disable the option
+                .text(metric.text.replace("CATEGORY: ", ""))
+                .attr("disabled", true)
                 .attr("class", "category-descriptor")
-                .attr("data-i18n", metric.dataI18n); // Add a class for styling (optional)
+                .attr("data-i18n", metric.dataI18n);
         } else {
-            // Add a regular selectable option
             selectElement.append("option")
- .text(metric.text)
- .attr("value", metric.text)
- .attr("data-i18n", metric.dataI18n);
+                .text(metric.text)
+                .attr("value", metric.text)
+                .attr("data-i18n", metric.dataI18n);
         }
     });
 }
@@ -1191,26 +1222,23 @@ appendOptions(selectY, customMetricOrder);
 appendOptions(selectSize, customMetricOrder);
 
 
-
-
   var svg = d3.select("#scatter-plot")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
     .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-
-
-  var xMetric = header[3];
   var xMetric = header[3];
   var yMetric = header[3];
   var sizeMetric = header[3];
+
   var xScale = d3.scaleLinear()
     .domain([0, d3.max(data, function(d) { return d[3]; })])
     .range([0, width]);
-      var yScale = d3.scaleLinear()
+  var yScale = d3.scaleLinear()
     .domain([0, d3.max(data, function(d) { return d[3]; })])
     .range([height, 0]);
+
 // This code should be placed where you update your scatter plot
 
 // Check if both axes are xG per 90 or Goals per 90
@@ -1240,7 +1268,7 @@ svg.append("text")
   .attr("x", width)
   .attr("y", height + margin.top)
   .attr("data-i18n", customMetricOrder.find(m => m.text === header[3]).dataI18n)
-    .text(header[3])
+  .text(header[3])
   .style("font-family", "Arial")
   .style("font-size", "12px");
 
@@ -1252,7 +1280,7 @@ svg.append("text")
   .attr("y", -35)
   .attr("x", 0)
   .attr("data-i18n", customMetricOrder.find(m => m.text === header[3]).dataI18n)
-    .text(header[3])
+  .text(header[3])
   .style("font-family", "Arial")
   .style("font-size", "12px");
 
@@ -1404,7 +1432,7 @@ var circles = svg.selectAll("circle")
         .style("font-size", "12px")
         .style("user-select", "none")      
         .style("pointer-events", "none")
-.style("touch-action", "none")       
+        .style("touch-action", "none")
         .text(filteredNames[filteredData.indexOf(d)]);
     }
   });
@@ -1646,6 +1674,8 @@ var sizeScale = d3.scaleLinear()
   if (
     ((xMetric === 'xG per 90' || xMetric === 'Goals per 90') &&
     (yMetric === 'xG per 90' || yMetric === 'Goals per 90')) ||
+    ((xMetric === 'npxG per 90' || xMetric === 'Non-penalty goals per 90') &&
+    (yMetric === 'npxG per 90' || yMetric === 'Non-penalty goals per 90')) ||
     ((xMetric === 'xA per 90' || xMetric === 'Assists per 90') &&
     (yMetric === 'xA per 90' || yMetric === 'Assists per 90'))
 
@@ -1711,13 +1741,16 @@ var sizeScale = d3.scaleLinear()
                     .style("top", "-1000px");  
             }, 1500);
         }  
-        
-    // Simplest approach that worked before
-    tooltip.html(filteredNames[filteredData.indexOf(d)] + "<br/>" + 
-                xMetric + ": " + d[header.indexOf(xMetric)] + "<br/>" + 
-                yMetric + ": " + d[header.indexOf(yMetric)] + "<br/>" + 
-                sizeMetric + ": " + d[header.indexOf(sizeMetric)])
+    
+    // Get translations for the metrics
+    const xMetricTranslation = document.querySelector(`[data-i18n="${customMetricOrder.find(m => m.text === xMetric).dataI18n}"]`)?.textContent || xMetric;
+    const yMetricTranslation = document.querySelector(`[data-i18n="${customMetricOrder.find(m => m.text === yMetric).dataI18n}"]`)?.textContent || yMetric;
+    const sizeMetricTranslation = document.querySelector(`[data-i18n="${customMetricOrder.find(m => m.text === sizeMetric).dataI18n}"]`)?.textContent || sizeMetric;
 
+    tooltip.html(filteredNames[filteredData.indexOf(d)] + "<br/>" + 
+    xMetricTranslation + ": " + d[header.indexOf(xMetric)] + "<br/>" + 
+    yMetricTranslation + ": " + d[header.indexOf(yMetric)] + "<br/>" + 
+    sizeMetricTranslation + ": " + d[header.indexOf(sizeMetric)])
       .style("left", (d3.event.pageX + 10) + "px")
       .style("top", (d3.event.pageY - 28) + "px");
   })
@@ -1749,7 +1782,7 @@ var sizeScale = d3.scaleLinear()
         .style("font-size", "12px")
         .style("user-select", "none")      
         .style("pointer-events", "none")
-.style("touch-action", "none")       
+        .style("touch-action", "none")
         .text(filteredNames[filteredData.indexOf(d)]);
     }
 
@@ -1785,7 +1818,7 @@ var sizeScale = d3.scaleLinear()
     .style("font-size", "12px")
     .style("user-select", "none")      
     .style("pointer-events", "none")
-.style("touch-action", "none")       
+    .style("touch-action", "none")
     .text(function(d) {
       return filteredNames[filteredData.indexOf(d)];
     });
@@ -1871,7 +1904,7 @@ function circleClick(d, i) {
       .style("font-size", "12px")
       .style("user-select", "none")      
       .style("pointer-events", "none")
-.style("touch-action", "none")       
+      .style("touch-action", "none")
       .text(filteredNames[filteredData.indexOf(d)]);
   }
 
@@ -1989,6 +2022,7 @@ function selectAllCircles() {
   isBulkSelection = false;  // Re-enable chart update after bulk selection
   refreshChart()
 }
+	
 </script>
 
 
@@ -2012,8 +2046,7 @@ function selectAllCircles() {
 <a href="https://datamb.football/proplotst24/" target="_self" rel="noopener noreferrer">
   <button class="button-6" role="button">ST</button></a>
 
-
-  <a href="https://datamb.football/proplotgk/" target="_self" rel="noopener noreferrer">
+  <a href="https://datamb.football/proplotcb/" target="_self" rel="noopener noreferrer">
     <button class="button-7" role="button">&#8594; 23/24</button></a>
 
     <div class="dark-mode-toggle" onclick="toggleDarkMode()">
@@ -2021,6 +2054,7 @@ function selectAllCircles() {
     </div>
 
 
+  
 
 <script>
 
@@ -2089,67 +2123,67 @@ function selectAllCircles() {
       // Add click event listener to the screenshot icon
       document.querySelector('.button-screenshot').addEventListener('click', captureChart);
   </script>
-
 <script>
-  function setLanguage(language) {
-localStorage.setItem('preferredLanguage', language);
-// Update URL with language parameter
-const url = new URL(window.location.href);
-if (language === 'en') {
-  url.searchParams.delete('lang');
-} else {
-  url.searchParams.set('lang', language);
-}
-window.history.pushState({}, '', url);
-applyLanguage(language);
+		function setLanguage(language) {
+  localStorage.setItem('preferredLanguage', language);
+  // Update URL with language parameter
+  const url = new URL(window.location.href);
+  if (language === 'en') {
+    url.searchParams.delete('lang');
+  } else {
+    url.searchParams.set('lang', language);
+  }
+  window.history.pushState({}, '', url);
+  applyLanguage(language);
 }
 
 function getPreferredLanguage() {
-// Check URL parameter first
-const urlParams = new URLSearchParams(window.location.search);
-const langParam = urlParams.get('lang');
-if (langParam) {
-  return langParam;
-}
-return localStorage.getItem('preferredLanguage') || getBrowserLanguage() || 'en';
+  // Check URL parameter first
+  const urlParams = new URLSearchParams(window.location.search);
+  const langParam = urlParams.get('lang');
+  if (langParam) {
+    return langParam;
+  }
+  return localStorage.getItem('preferredLanguage') || getBrowserLanguage() || 'en';
 }
 
 function getBrowserLanguage() {
-return navigator.language.slice(0, 2);
+  return navigator.language.slice(0, 2);
 }
 
 function applyLanguage(language) {
-fetch(`locales/${language}.json`)
-  .then(response => response.json())
-  .then(translations => {
-    // Update text content for elements with data-i18n attribute
-    document.querySelectorAll('[data-i18n]').forEach(element => {
-      const keys = element.getAttribute('data-i18n').split('.');
-      let value = translations;
-      for (const key of keys) {
-        value = value[key];
-      }
-      if (value) {
-        element.textContent = value;
-      }
-    });
+  fetch(`locales/${language}.json`)
+    .then(response => response.json())
+    .then(translations => {
+      // Update text content for elements with data-i18n attribute
+      document.querySelectorAll('[data-i18n]').forEach(element => {
+        const keys = element.getAttribute('data-i18n').split('.');
+        let value = translations;
+        for (const key of keys) {
+          value = value[key];
+        }
+        if (value) {
+          element.textContent = value;
+        }
+      });
 
-    // Update placeholders for elements with data-i18n-placeholder attribute
-    document.querySelectorAll('[data-i18n-placeholder]').forEach(element => {
-      const key = element.getAttribute('data-i18n-placeholder');
-      const value = translations[key];
-      if (value) {
-        element.placeholder = value;
-      }
-    });
+      // Update placeholders for elements with data-i18n-placeholder attribute
+      document.querySelectorAll('[data-i18n-placeholder]').forEach(element => {
+        const key = element.getAttribute('data-i18n-placeholder');
+        const value = translations[key];
+        if (value) {
+          element.placeholder = value;
+        }
+      });
 
-  });
+      // Update meta tags
+    });
 }
 
 // Initialize translations
 const preferredLanguage = getPreferredLanguage();
 applyLanguage(preferredLanguage);
-</script>	
+</script>
 <br>		
 <br>		
 <br>		
@@ -2157,5 +2191,4 @@ applyLanguage(preferredLanguage);
   
 </body>
 </html>
-
 
