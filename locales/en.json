@@ -6,27 +6,27 @@
   },
   "search": {
     "placeholder": "Enter a team or player name...",
-    "placeholder2": "Enter name of striker..."
+    "placeholder2": "Enter name of winger..."
   },
   "table": {
     "percentiles": "Percentiles",
     "age": "Age",
-    "passrec": "Passes received",
-    "aerial": "Aerial%",
-    "xG": "Non-penalty goals",
-    "xAssist": "Expected goals",
-    "progPasses": "Passes to box",
-    "duel": "xA",
-    "attactions": "Att. actions",
+    "progCarries": "Prog. carries",
+    "dribbles": "Dribbles",
+    "npg": "Non-penalty goals",
+    "xgxa": "xG + xA",
+    "assists": "Assists",
+    "keyPasses": "Key passes",
+    "attActions": "Att. actions",
     "minutes": "Minutes played"
   },
   "radar": {
-    "xa": "xA",
-    "passesToBox": "Passes to box",
-    "xg": "xG",
+    "keyPasses": "Key Passes",
+    "assists": "Assists",
+    "xgxa": "xG+xA",
     "npg": "NPG",
-    "aerial": "Aerial%",
-    "passesRec": "Passes Rec",
+    "dribbles": "Dribbles",
+    "carries": "Carries",
     "attActions": "Att Actions"
   },
   "buttons": {
@@ -36,7 +36,7 @@
     "to": "Similar data to"
   },
   "meta": {
-    "title": "DataMB | Compare Strikers",
-    "description": "Compare striker statistics in the Top 7 Leagues. Visualize player performance. Find similar profiles. Use our radar tool to compare goals; xG; shots; aerial duels; dribbles; xA; progressive runs and more for strikers in Premier League, La Liga, Bundesliga, Serie A, Ligue 1, Eredivisie, Primeira Liga."
+    "title": "DataMB | Compare Wingers",
+    "description": "Compare winger and forward statistics in the Top 7 Leagues. Visualize player performance. Find similar profiles. Use our radar tool to compare goals; xG; shots; dribbles; key passes; xA; progressive runs and more for wingers and forwards in Premier League, La Liga, Bundesliga, Serie A, Ligue 1, Eredivisie, Primeira Liga."
   }
 } 
