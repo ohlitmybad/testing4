@@ -1741,7 +1741,15 @@ var sizeScale = d3.scaleLinear()
                     .style("top", "-1000px");  
             }, 1500);
         }  
-        tooltip.html(filteredNames[filteredData.indexOf(d)] + "<br/>" + xMetric + ": " + d[header.indexOf(xMetric)] + "<br/>" + yMetric + ": " + d[header.indexOf(yMetric)] + "<br/>" + sizeMetric + ": " + d[header.indexOf(sizeMetric)])
+    // Get the translated text directly from the dropdown options
+    const xMetricDisplay = selectX.select(`option[value="${xMetric}"]`).text();
+    const yMetricDisplay = selectY.select(`option[value="${yMetric}"]`).text();
+    const sizeMetricDisplay = selectSize.select(`option[value="${sizeMetric}"]`).text();
+    
+    tooltip.html(filteredNames[filteredData.indexOf(d)] + "<br/>" + 
+                xMetricDisplay + ": " + d[header.indexOf(xMetric)] + "<br/>" + 
+                yMetricDisplay + ": " + d[header.indexOf(yMetric)] + "<br/>" + 
+                sizeMetricDisplay + ": " + d[header.indexOf(sizeMetric)])
 
       .style("left", (d3.event.pageX + 10) + "px")
       .style("top", (d3.event.pageY - 28) + "px");
