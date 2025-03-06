@@ -2,698 +2,663 @@
 <html>
 <head>
   <meta name="language" content="en">
-  <link rel="alternate" hreflang="en" href="https://datamb.football/guide" />
-  <link rel="alternate" hreflang="x-default" href="https://datamb.football/guide" />  
-<link rel="shortcut icon" type="image/x-icon" href="https://datamb.football/favicon.ico">
-  <title translate="no">DataMB | Guide</title>
-  <meta name="viewport" content="width=device-width, initial-scale=0.66">
-  <meta property="og:image" content="https://datamb.football/vignettes/glossary.png">
+  <link rel="alternate" hreflang="en" href="https://datamb.football/centrebacks"/>
+  <link rel="alternate" hreflang="x-default" href="https://datamb.football/centrebacks"/>  
+  <meta name="viewport" content="width=device-width, user-scalable=no">
+  <link rel="shortcut icon" type="image/x-icon" href="https://datamb.football/favicon.ico">
+  <title translate="no">DataMB | Compare Centrebacks</title>
+  <meta property="og:image" content="https://datamb.football/vignettes/cb.png">
+				<meta name="description" content="Compare the statistics of defenders (centre-backs) in the Top 7 Leagues. Visualize player performance. Find similar profiles. Use our radar tool to compare duels; aerial duels; interceptions; tackles; passes; passing accuracy; progressive passes; progressive runs and more for centre-backs in Premier League, La Liga, Bundesliga, Serie A, Ligue 1, Eredivisie, Primeira Liga.">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@DataMB_">
-  <meta name="twitter:title" content="DataMB | Guide">
-  <meta name="twitter:description" content="Explanation of the tools, metrics, and methodology used by DataMB">
-  <meta name="twitter:image" content="https://datamb.football/vignettes/glossary.png">
-  <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+  <meta name="twitter:title" content="DataMB | Compare Centrebacks">
+  <meta name="twitter:description" content="Radar Comparison Tool">
+  <meta name="twitter:image" content="https://datamb.football/vignettes/cb.png">
+<link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+<script>
+  (function() {
+      var width = window.innerWidth;
+      var viewportMeta = document.querySelector('meta[name="viewport"]');
+      if (viewportMeta) {
+if (width < 770) {
+	      
+      var initialScale = width / 770;
+viewportMeta.setAttribute('content', 'width=device-width, initial-scale=' + initialScale + ', user-scalable=no');
+} else {
+            var fixedScale = 1;
+	viewportMeta.setAttribute('content', 'width=device-width, initial-scale=' + fixedScale + ', user-scalable=no');
 
-  <title>DataMB | Guide</title>
-    <style>
-        .google-play-container {
-          display: flex;
-          flex-direction: column; /* Arrange items in a column */
-          align-items: flex-end; /* Align items to the right */
-          margin-top: -20px; /* Adjust the margin-top to remove the space */
-        }
-        
-        .google-play-container img {
-          width: 162px;
-          height: 62px;
-        }
-            body {
-              font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-              margin: 0;
-              padding: 0;
-              display: flex;
-              background-color: #ffffff;
-              color: #1a1a1a;
-              line-height: 1.6;
-              text-align: justify;  /* Add text justification */
-            }
-        
-            h1, h2, h3, h4, h5 {
-              color: #111827;
-              font-weight: 600;
-              letter-spacing: -0.02em;
-            }
-        h5 {
-          font-weight: 150;
-          font-size: 1.05rem;
-          font-style: italic;
-        } 
-        
-            h4 {
-              font-size: 1.2rem;
-              font-weight: 200;
-            } 
-            h3 {
-              font-size: 1.5rem;
-              font-weight: 600;
-            }
-            h2 {
-              font-weight: 300;
-            font-size: 1.9rem;
-          }
-            a {
-              text-decoration: none;
-              color: #2563eb;
-              transition: color 0.2s ease;
-            }
-        
-            a:hover {
-              color: #1d4ed8;
-            }
-        
-            /* Left Navigation */
-            .nav-container {
-              width: 218px;
-                margin-top: 10px;
-              background-color: #ffffff;
-              color: #374151;
-              padding: 0px 20px;
-              height: calc(100vh - 60px); /* Subtract header height */
-              overflow-y: auto;
-              border-right: 1px solid #e5e7eb;
-              position: fixed;
-              left: 0;
-              top: 60px; /* Start below header */
-              z-index: 100; /* Reduced from 1000 */
-            }
-        
-            .nav-container h2 {
-              margin-top: 11px;
-              font-size: 1.5rem;
-              padding-bottom: 0.9rem;
-              border-bottom: 1px solid #e5e7eb;
-              padding-left: 10px;
-        
-            }
-        
-            .nav-container ul {
-              list-style: none;
-              padding: 0;
-            }
-        
-            .nav-container ul li {
-              margin: 10px 0;
-              padding: 2px;
-            }
-        
-            .nav-container ul li a {
-              color: #4b5563;
-              display: block;
-              padding: 8px;
-              border-radius: 5px;
-              transition: all 0.2s ease;
-            }
-        
-            .nav-container ul li a:hover {
-              background-color: #f3f4f6;
-              color: #2563eb;
-            }
-        
-            /* Hide all nested items by default */
-            .nav-container ul ul {
-              max-height: 0;
-              visibility: hidden;
-              overflow: hidden;
-              transition: max-height 0.5s ease, visibility 0.5s ease;
-              padding-left: 15px;
-            }
-        
-            /* Show nested items when parent is hovered or has active class */
-            .nav-container ul li:hover > ul,
-            .nav-container ul li.active > ul {
-              max-height: 1000px;
-              visibility: visible;
-              transition: max-height 0.3s ease, visibility 0s;
-              transition-delay: 0.27s; /* Increased from 0s to 0.5s */
-            }
-        
-            /* Show second level when parent is hovered or has active class */
-            .nav-container ul ul li:hover > ul,
-            .nav-container ul ul li.active > ul {
-              max-height: 1000px;
-              visibility: visible;
-              transition: max-height 0.3s ease, visibility 0s;
-              transition-delay: 0.27s; /* Increased from 0s to 0.5s */
-            }
-        
-            /* Add longer delay for hiding after hover */
-            .nav-container ul li > ul {
-              transition-delay: 0.8s; /* Reduced from 0.8s to 0.3s for faster hiding */
-            }
-        
-            .nav-container ul li.active > a {
-              background-color: #eff6ff;
-              color: #2563eb;
-              font-weight: 500;
-            }
-        
-            /* Main Content */
-            .content {
-              flex: 1;
-              padding: 10px 40px;
-              line-height: 1.6;
-              margin-left: 260px;
-              overflow-y: auto;
-              text-align: justify;  /* Add text justification */
-              margin-top: 60px; /* Match header height */
-            }
-        
-            .section {
-              opacity: 0;
-              display: none;
-              transition: opacity 0.3s ease;
-            }
-        
-            .section.active {
-              opacity: 1;
-              display: block;
-            }
-        
-        .contact-form {
-              background-color: #ffffff;
-              padding: 1.5rem;
-              margin: 1rem 0;
-              box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
-            }
-        
-            /* Contact Form */
-            .contact-form {
-              max-width: 80%;
-              margin: 20px auto;
-              padding: 30px;
-              background-color: #ffffff;
-              border-radius: 8px;
-              box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
-            }
-        
-            .form-group {
-              margin-bottom: 20px;
-            }
-        
-            .form-group label {
-              display: block;
-              margin-bottom: 8px;
-              font-weight: 500;
-              color: #374151;
-            }
-        
-            .contact-form input {
-              width: 100%;
-              padding: 0.75rem 0.75rem; /* Add horizontal padding just for the text */
-              background-color: #f9fafb;
-              border: 1px solid #e5e7eb;
-              border-radius: 0.375rem;
-              transition: all 0.2s ease;
-              font-family: inherit;
-              font-size: 0.95rem;
-              box-sizing: border-box; /* Ensure padding doesn't affect overall width */
-            }
-            .contact-form textarea {
-              width: 100%;
-              height: 200px;
-              padding: 0.75rem 0.75rem; /* Add horizontal padding just for the text */
-              background-color: #f9fafb;
-              border: 1px solid #e5e7eb;
-              border-radius: 0.375rem;
-              transition: all 0.2s ease;
-              font-family: inherit;
-              font-size: 0.95rem;
-              box-sizing: border-box; /* Ensure padding doesn't affect overall width */
-            }
-        
-            .contact-form input::placeholder,
-            .contact-form textarea::placeholder {
-              color: #9ca3af;
-            }
-        
-            .contact-form input:hover,
-            .contact-form textarea:hover {
-              background-color: #ffffff;
-              border-color: #d1d5db;
-            }
-        
-            .contact-form input:focus,
-            .contact-form textarea:focus {
-              outline: none;
-              border-color: #2563eb;
-              background-color: #ffffff;
-              box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
-            }
-        
-            .contact-form textarea {
-              min-height: 120px;
-              resize: vertical;
-            }
-        
-            .contact-form button {
-              display: inline-flex;
-              align-items: center;
-              justify-content: center;
-              width: 100%;
-              background-color: #2563eb;
-              color: #ffffff;
-              padding: 0.875rem 1.5rem;
-              border: none;
-              border-radius: 0.375rem;
-              font-weight: 500;
-              font-size: 1rem;
-              cursor: pointer;
-              transition: all 0.2s ease;
-            }
-        
-            .contact-form button:hover {
-              background-color: #1d4ed8;
-              transform: translateY(-1px);
-            }
-        
-            .contact-form button:active {
-              transform: translateY(0);
-            }
-        
-        
-        
-            /* Add scroll margin to all sections */
-            section, div[id] {
-              scroll-margin-top: 20px;
-            }
-        
-        
-            /* Add these styles */
-            .tool-section {
-              display: block;  /* Changed from grid to block */
-              margin: 30px 0;
-              overflow: hidden;  /* Clear floats */
-            }
-        
-        
-        
-        
-            /* Add this style for the divider */
-            hr.tool-divider {
-              width: 100%;
-              margin: 40px 0;
-              border: none;
-              border-top: 1px solid #e5e7eb;
-            }
-        
-            /* Add these new mobile styles */
-            .menu-toggle {
-              display: none;
-              position: fixed;
-              top: 80px;
-              right: 10px; /* Changed from left to right */
-              z-index: 1001;
-              background: #ffffff;
-              border: 1px solid #e5e7eb;
-              padding: 10px;
-              border-radius: 5px;
-              cursor: pointer;
-                            font-size: 16px;
-
-            }
-        
-            /* Modify existing nav-container styles */
-            .nav-container {
-              transition: transform 0.3s ease;
-            }
-        
-        
-            .single-line-image {
-              max-width: 90%; /* Slightly reduced from 100% to prevent edge-to-edge */
-              height: auto; /* Allow height to adjust naturally */
-              width: auto; /* Allow width to adjust naturally */
-              max-height: 500px; /* Reduced from 800px for more consistency */
-              display: block;
-              border-radius: 8px; /* Add slight rounding to corners */
-              box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-        
-              margin: 20px auto; /* Increased margin for better spacing */
-              object-fit: contain; /* Maintain aspect ratio while fitting within bounds */
-            }
-        
-            .single-line-image2 {
-              max-width: 90%; /* Slightly reduced from 100% to prevent edge-to-edge */
-              height: auto; /* Allow height to adjust naturally */
-              width: auto; /* Allow width to adjust naturally */
-              max-height: 500px; /* Reduced from 800px for more consistency */
-              display: block;
-              margin: 20px auto; /* Increased margin for better spacing */
-              object-fit: contain; /* Maintain aspect ratio while fitting within bounds */
-            }
-        
-        
-            .responsive-image {
-              height: auto; /* Allow height to adjust naturally */
-              width: auto; /* Allow width to adjust naturally */
-              max-height: 500px; /* Reduced from 800px for more consistency */
-              display: block;
-              border-radius: 8px; /* Add slight rounding to corners */
-              box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-              object-fit: contain; /* Maintain aspect ratio while fitting within bounds */
-            }
-        
-        
-            .tool-section img.responsive-image {
-              float: right;  /* Float image to the right */
-              max-width: 45%;  /* Slightly smaller to leave room for text */
-              margin: 0 0 40px 40px;  /* Add margin around image */
-            }
-        
-            .side-by-side-images {
-              display: flex;
-              gap: 20px;
-              margin: 20px 0;
-              margin-bottom: 30px;
-              flex-wrap: wrap; /* Allow wrapping on smaller screens */
-            }
-        
-            .side-by-side-images .responsive-image {
-              flex: 1;
-              min-width: 300px; /* Minimum width before wrapping */
-              max-width: 100%; /* Ensure image doesn't overflow container */
-              object-fit: contain;
-              margin: 0;
-            }
-        
-        
-            @media (max-width: 768px) {
-              
-              .menu-toggle {
-                display: block;
-              }
-        
-              .nav-container {
-                transform: translateX(-100%);
-                width: 80%;
-                max-width: 300px;
-                z-index: 1001;
-                top: 60px; /* Maintain position below header on mobile */
-              }
-        
-              .nav-container.active {
-                transform: translateX(0);
-              }
-        
-              .content {
-                margin-left: 0;
-                padding: 10px 20px;
-              }
-        
-              body {
-                display: block; /* Change from flex to block */
-              }
-        
-        
-              /* Adjust text justification for better mobile reading */
-              .content, body {
-                text-align: left;
-              }
-              
-        
-              .tool-section {
-                grid-template-columns: 1fr;
-                gap: 20px;
-              }
-        
-              .tool-description {
-                padding-right: 0;
-              }
-        
-                /* Make this specific pitch image smaller on mobile */
-          img[src*="kGPC5tC.png"].responsive-image {
-            max-width: 68% !important; /* Adjust this percentage to your needs */
-            margin: 20px auto; /* Centers the image */
-          }
-              /* Center all images on mobile */
-              .responsive-image {
-                margin-left: auto;
-                margin-right: auto;
-                max-width: 90%; /* Slightly reduced from 100% to prevent edge bleeding */
-              }
-        
-        
-              .single-line-image2 {
-                margin-left: auto;
-                margin-right: auto;
-                max-width: 100%; /* Slightly reduced from 100% to prevent edge bleeding */
-              }
-        
-              /* Handle side-by-side images on mobile */
-              .side-by-side-images {
-                flex-direction: column;
-              }
-        
-              .side-by-side-images .responsive-image:not(:first-child) {
-                display: none; /* Hide all but first image in side-by-side containers */
-              }
-        
-              /* Ensure tool section images are centered */
-              .tool-section img.responsive-image {
-                float: none;
-                max-width: 85%;
-                margin: 20px auto;
-              }
-        
-              .side-by-side-images .responsive-image {
-                width: 100%;
-                min-width: unset;
-                margin: 10px 0;
-              }
-        
-        
-              .side-by-side-images {
-                flex-direction: column;
-              }
-        
-          
-        
-        
-        
-              .contact-form {
-              background-color: #ffffff;
-              padding: 1.5rem;
-              margin: 1rem 0;
-              box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
-            }
-        
-            /* Contact Form */
-            .contact-form {
-              max-width: 80%;
-              margin: 20px auto;
-              padding: 30px;
-              background-color: #ffffff;
-              border-radius: 8px;
-              box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
-            }
-        
-            .form-group {
-              margin-bottom: 20px;
-            }
-        
-            .form-group label {
-              display: block;
-              margin-bottom: 8px;
-              font-weight: 500;
-              color: #374151;
-            }
-        
-            .contact-form input {
-              width: 100%;
-              padding: 0.75rem 0.75rem; /* Add horizontal padding just for the text */
-              background-color: #f9fafb;
-              border: 1px solid #e5e7eb;
-              border-radius: 0.375rem;
-              transition: all 0.2s ease;
-              font-family: inherit;
-              font-size: 0.95rem;
-              box-sizing: border-box; /* Ensure padding doesn't affect overall width */
-            }
-            .contact-form textarea {
-              width: 100%;
-              height: 200px;
-              padding: 0.75rem 0.75rem; /* Add horizontal padding just for the text */
-              background-color: #f9fafb;
-              border: 1px solid #e5e7eb;
-              border-radius: 0.375rem;
-              transition: all 0.2s ease;
-              font-family: inherit;
-              font-size: 0.95rem;
-              box-sizing: border-box; /* Ensure padding doesn't affect overall width */
-            }
-        
-            .contact-form input::placeholder,
-            .contact-form textarea::placeholder {
-              color: #9ca3af;
-            }
-        
-            .contact-form input:hover,
-            .contact-form textarea:hover {
-              background-color: #ffffff;
-              border-color: #d1d5db;
-            }
-        
-            .contact-form input:focus,
-            .contact-form textarea:focus {
-              outline: none;
-              border-color: #2563eb;
-              background-color: #ffffff;
-              box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
-            }
-        
-            .contact-form textarea {
-              min-height: 120px;
-              resize: vertical;
-            }
-        
-        
-        
-            .contact-form button {
-              display: inline-flex;
-              align-items: center;
-              justify-content: center;
-              width: 100%;
-              background-color: #2563eb;
-              color: #ffffff;
-              padding: 0.875rem 1.5rem;
-              border: none;
-              border-radius: 0.375rem;
-              font-weight: 500;
-              font-size: 1rem;
-              cursor: pointer;
-              transition: all 0.2s ease;
-            }
-        
-            .contact-form button:hover {
-              background-color: #1d4ed8;
-              transform: translateY(-1px);
-            }
-        
-            .contact-form button:active {
-              transform: translateY(0);
-            }
-            
-            }
-        
-            .header {
-              font-family: system-ui;
-padding: 20px;
-color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background-color: #fff;
-  position: fixed;
-  left: 0; /* Start from left edge */
-  right: 0;
-  top: 0;
-  z-index: 999;
-}
-
-.header .logo {
-  display: flex;
-  align-items: center;
-  margin-right: auto; /* Push logo to the left */
-  padding-top: 3.3px; /* Add space above the logo */
-}
-
-.header .logo img {
-  height: 34px;
-  width: auto;
-  opacity: 0.84;
-
-}
-
-.header .navigation {
-  display: flex;
-  align-items: center;
-  gap: 25px; /* Reduced gap between buttons */
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%); /* Center the navigation */
-}
-
-
-/* Hide navigation on small screens */
-@media screen and (max-width: 650px) {
- .header .navigation {
-    display: none;
   }
+    } 
+})();
+</script>
+	<script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+
+<defs>
+<style>
+
+	#matchingNames {
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-.header .button {
-  padding: 0.5rem 1rem;
-  text-decoration: none;
-  color: #333;
-  line-height: 1.6;  /* This is missing in guide/index.html */
-  border-radius: 4px;
-  transition: background-color 0.2s;
-  font-size: 1.1rem;  /* Added larger font size */
+body.dark-mode #matchingNames {
+  background-color: #333333;
+  box-shadow: 0px 4px 12px rgba(255, 253, 253, 0.1);
 }
 
-
-.header .button:hover {
-  background-color: #f0f0f0;
-  color: #2563eb;
+#matchingNames {
+  scrollbar-width: thin;
+  scrollbar-color: #c4c4c4 #f1f1f1;
 }
 
+body.dark-mode #matchingNames {
+  scrollbar-color: #888888 #333333;
+}
 
-
-
-#searchButton {
-  padding: 8.5px;  /* Reduced from 10px */
-  background-color: #0074d9;
-  color: #fff;
-  border: none;
-  width: 34px;  /* Reduced from 40px */
-  height: 34px;  /* Reduced from 40px */
-  border-radius: 50%;
+.name {
+  padding: 9px 12px;
+  font-size: 13px;
+  color: #333333;
   cursor: pointer;
-  font-size: 17px;  /* Reduced from 20px */
-}
-
-/* Add this to control icon size */
-#searchButton iconify-icon {
-  font-size: 17px;  /* Match the button's font-size */
   display: flex;
   align-items: center;
-  justify-content: center;
+  transition: background-color 0.2s ease-in-out;
+font-family: Arial, sans-serif !important;
+position: relative;
 }
 
-/* Group search and language buttons */
-.header-right {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-left: auto; /* Push buttons to the right */
+.name:hover {
+  background-color: #f5f5f5;
 }
 
-/* Adjust main content to account for fixed header */
-.content {
-  margin-top: 60px; /* Adjust this value based on your header height */
+body.dark-mode #matchingNames .name:hover {
+  background-color: #444444;
 }
+
+.fullName {
+  font-weight: bold;
+  color: #333333;
+  margin-right: 6px;
+}
+
+.age {
+  color: #777777;
+  margin-right: 4px;
+}
+
+.team {
+  color: #777777;
+}
+	
+	
+body {
+    background-color: white;
+}
+  body.dark-mode #searchInput {
+    color: #000; 
+        }	
+.result-color-blue {
+  color: #3062FB !important;
+  stroke: #3062FB;
+  fill: #3062FB;
+  fill-opacity: 0.02;
+}
+
+
+.result-color-pink {
+  color: #F62681 !important;
+stroke: #F62681;
+fill: #F62681;
+fill-opacity: 0.02;
+
+}
+
+.result-color-orange {
+  color: #55d149 !important;
+stroke: #55d149;
+fill: #55d149;
+fill-opacity: 0.02;
+}
+
+.result-color-green {
+  color: #FFCF5F !important;
+stroke: #FFCF5F;
+fill: #FFCF5F;
+fill-opacity: 0.02;
+}
+
+
+
+
+
+.result-color-bleu {
+  color: #900C3F  !important;
+  stroke: #900C3F ;
+  fill: #900C3F ;
+  fill-opacity: 0.02;
+}
+
+
+.result-color-rose {
+  color: #F09710 !important;
+stroke: #F09710;
+fill: #F09710;
+fill-opacity: 0.02;
+
+}
+
+
+.result-color-1 {
+  color: #3062FB !important;
+  stroke: #3062FB;
+  fill: #3062FB;
+  fill-opacity: 0.02;
+}
+
+
+.result-color-2 {
+  color: #F62681 !important;
+stroke: #F62681;
+fill: #F62681;
+fill-opacity: 0.02;
+
+}
+
+.result-color-3 {
+  color: #55d149 !important;
+stroke: #55d149;
+fill: #55d149;
+fill-opacity: 0.02;
+}
+
+.result-color-4 {
+  color: #FFCF5F !important;
+stroke: #FFCF5F;
+fill: #FFCF5F;
+fill-opacity: 0.02;
+}
+
+
+.result-color-5 {
+  color: #900C3F  !important;
+  stroke: #900C3F ;
+  fill: #900C3F ;
+  fill-opacity: 0.02;
+}
+
+
+.result-color-6 {
+  color: #F09710 !important;
+stroke: #F09710;
+fill: #F09710;
+fill-opacity: 0.02;
+
+}
+.result-color-7 {
+  color: #3062FB !important;
+  stroke: #3062FB;
+  fill: #3062FB;
+  fill-opacity: 0.02;
+}
+
+
+.result-color-8 {
+  color: #F62681 !important;
+stroke: #F62681;
+fill: #F62681;
+fill-opacity: 0.02;
+
+}
+
+.result-color-9 {
+  color: #55d149 !important;
+stroke: #55d149;
+fill: #55d149;
+fill-opacity: 0.02;
+}
+
+.result-color-10 {
+  color: #FFCF5F !important;
+stroke: #FFCF5F;
+fill: #FFCF5F;
+fill-opacity: 0.02;
+}
+
+
+.result-color-11 {
+  color: #900C3F  !important;
+  stroke: #900C3F ;
+  fill: #900C3F ;
+  fill-opacity: 0.02;
+}
+
+
+.result-color-12 {
+  color: #F09710 !important;
+stroke: #F09710;
+fill: #F09710;
+fill-opacity: 0.02;
+
+}
+
+
+.result-color-13 {
+  color: #3062FB !important;
+  stroke: #3062FB;
+  fill: #3062FB;
+  fill-opacity: 0.02;
+}
+
+
+.result-color-14 {
+  color: #F62681 !important;
+stroke: #F62681;
+fill: #F62681;
+fill-opacity: 0.02;
+
+}
+
+.result-color-15 {
+  color: #55d149 !important;
+stroke: #55d149;
+fill: #55d149;
+fill-opacity: 0.02;
+}
+
+.result-color-16 {
+  color: #FFCF5F !important;
+stroke: #FFCF5F;
+fill: #FFCF5F;
+fill-opacity: 0.02;
+}
+
+
+.result-color-17 {
+  color: #900C3F  !important;
+  stroke: #900C3F ;
+  fill: #900C3F ;
+  fill-opacity: 0.02;
+}
+
+
+.result-color-18 {
+  color: #F09710 !important;
+stroke: #F09710;
+fill: #F09710;
+fill-opacity: 0.02;
+
+}
+.result-color-19 {
+  color: #3062FB !important;
+  stroke: #3062FB;
+  fill: #3062FB;
+  fill-opacity: 0.02;
+}
+
+
+.result-color-20 {
+  color: #F62681 !important;
+stroke: #F62681;
+fill: #F62681;
+fill-opacity: 0.02;
+
+}
+
+.result-color-21 {
+  color: #55d149 !important;
+stroke: #55d149;
+fill: #55d149;
+fill-opacity: 0.02;
+}
+
+.result-color-22 {
+  color: #FFCF5F !important;
+stroke: #FFCF5F;
+fill: #FFCF5F;
+fill-opacity: 0.02;
+}
+
+
+.result-color-23 {
+  color: #900C3F  !important;
+  stroke: #900C3F ;
+  fill: #900C3F ;
+  fill-opacity: 0.02;
+}
+
+
+.result-color-24 {
+  color: #F09710 !important;
+stroke: #F09710;
+fill: #F09710;
+fill-opacity: 0.02;
+
+}
+
+
+.result-color-25 {
+  color: #3062FB !important;
+  stroke: #3062FB;
+  fill: #3062FB;
+  fill-opacity: 0.02;
+}
+
+
+.result-color-26 {
+  color: #F62681 !important;
+stroke: #F62681;
+fill: #F62681;
+fill-opacity: 0.02;
+
+}
+
+.result-color-27 {
+  color: #55d149 !important;
+stroke: #55d149;
+fill: #55d149;
+fill-opacity: 0.02;
+}
+
+.result-color-28 {
+  color: #FFCF5F !important;
+stroke: #FFCF5F;
+fill: #FFCF5F;
+fill-opacity: 0.02;
+}
+
+
+.result-color-29 {
+  color: #900C3F  !important;
+  stroke: #900C3F ;
+  fill: #900C3F ;
+  fill-opacity: 0.02;
+}
+
+
+.result-color-30 {
+  color: #F09710 !important;
+stroke: #F09710;
+fill: #F09710;
+fill-opacity: 0.02;
+
+}
+.result-color-31 {
+  color: #3062FB !important;
+  stroke: #3062FB;
+  fill: #3062FB;
+  fill-opacity: 0.02;
+}
+
+
+.result-color-32 {
+  color: #F62681 !important;
+stroke: #F62681;
+fill: #F62681;
+fill-opacity: 0.02;
+
+}
+
+.result-color-33 {
+  color: #55d149 !important;
+stroke: #55d149;
+fill: #55d149;
+fill-opacity: 0.02;
+}
+
+.result-color-34 {
+  color: #FFCF5F !important;
+stroke: #FFCF5F;
+fill: #FFCF5F;
+fill-opacity: 0.02;
+}
+
+
+.result-color-35 {
+  color: #900C3F  !important;
+  stroke: #900C3F ;
+  fill: #900C3F ;
+  fill-opacity: 0.02;
+}
+
+
+.result-color-36 {
+  color: #F09710 !important;
+stroke: #F09710;
+fill: #F09710;
+fill-opacity: 0.02;
+
+}
+
+
+.result-color-37 {
+  color: #3062FB !important;
+  stroke: #3062FB;
+  fill: #3062FB;
+  fill-opacity: 0.02;
+}
+
+
+.result-color-38 {
+  color: #F62681 !important;
+stroke: #F62681;
+fill: #F62681;
+fill-opacity: 0.02;
+
+}
+
+.result-color-39 {
+  color: #55d149 !important;
+stroke: #55d149;
+fill: #55d149;
+fill-opacity: 0.02;
+}
+
+.result-color-40 {
+  color: #FFCF5F !important;
+stroke: #FFCF5F;
+fill: #FFCF5F;
+fill-opacity: 0.02;
+}
+
+
+.result-color-41 {
+  color: #900C3F  !important;
+  stroke: #900C3F ;
+  fill: #900C3F ;
+  fill-opacity: 0.02;
+}
+
+
+.result-color-42 {
+  color: #F09710 !important;
+stroke: #F09710;
+fill: #F09710;
+fill-opacity: 0.02;
+
+}
+.result-color-43 {
+  color: #3062FB !important;
+  stroke: #3062FB;
+  fill: #3062FB;
+  fill-opacity: 0.02;
+}
+
+
+.result-color-44 {
+  color: #F62681 !important;
+stroke: #F62681;
+fill: #F62681;
+fill-opacity: 0.02;
+
+}
+
+.result-color-45 {
+  color: #55d149 !important;
+stroke: #55d149;
+fill: #55d149;
+fill-opacity: 0.02;
+}
+
+.result-color-46 {
+  color: #FFCF5F !important;
+stroke: #FFCF5F;
+fill: #FFCF5F;
+fill-opacity: 0.02;
+}
+
+
+.result-color-47 {
+  color: #900C3F  !important;
+  stroke: #900C3F ;
+  fill: #900C3F ;
+  fill-opacity: 0.02;
+}
+
+
+.result-color-48 {
+  color: #F09710 !important;
+stroke: #F09710;
+fill: #F09710;
+fill-opacity: 0.02;
+
+}
+
+   
+
+  /* !!!DARK MODE!!! */
+  body.dark-mode {
+    color: #f2f2f2;
+  }
+
+  body.dark-mode {
+    background-color: #0F0F0E;
+  }
+
+  body.dark-mode table {
+    background-color: #333333;
+  }
+
+  body.dark-mode tr:first-child th:first-child {
+  color: #5b5b5b;
+  
+}
+
+
+ body.dark-mode .metrics-table th {
+  color: #bcbcbc;
+  padding: 9px;
+}
+
+body.dark-mode #searchInput1 {
+    color: #000; 
+background-color : #cacaca;
+  }
+	
+ body.dark-mode	  #searchInput1::placeholder {
+    color: #363636; 
+  }
+
+ body.dark-mode	  #searchButton1 {
+    color: #fff !important; 
+background-color : #333333;
+  }
+
+
+
+
+
+
+  body.dark-mode svg text.label {
+    fill: #bcbcbc;
+  }
+
+
+
+  body.dark-mode svg text.label {
+    fill: #bcbcbc;
+  }
+
+body.dark-mode button {
+  background-color: #333333;
+}
+
+body.dark-mode button,
+body.dark-mode button:focus {
+  color: #f2f2f2;
+}
+
+body.dark-mode button:hover {
+  color: initial;
+}
+
+body.dark-mode .button-8 {
+  background-color: #13293d; 
+  color: #f2f2f2; 
+}
+
+body.dark-mode .button-8:hover,
+body.dark-mode .button-8:focus {
+  background-color: #3a6ea5;
+  color: #f2f2f2; 
+}
+
+body.dark-mode .button-8:hover,
+body.dark-mode .button-8:focus {
+  background-color: #3a6ea5;
+  color: #f2f2f2;
+}
+
+
+
+
+.dark-mode-toggle .toggle-icon::before {
+  font-family: "Ionicons";
+  content: "\f467"; 
+  font-size: 35px; 
+}
+
+body.dark-mode .dark-mode-toggle {
+  background-color: #333333;
+}
+
+
+
+body.dark-mode .dark-mode-toggle .toggle-icon::before {
+  font-family: "Ionicons";
+  content: "\f3b0"; 
+  font-size: 24px; 
+}
+
+
+
+body.dark-mode .toggle-slider {
+  background-color: #2B2C2E;
+}
+
+body.dark-mode input:checked + .toggle-slider:before {
+  background-color: #ccc; 
+}
+
+
+body.dark-mode .button-10 {
+  border: 0.1px solid #000000; 
+}
+
+
 
 
 
 .search-input-modal {
     display: none;
-    position: fixed; /* Change this to "fixed" to cover the entire viewport */
+    position: fixed; 
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.7); /* Increase opacity for better obscuring */
-    z-index: 2000; /* Increased from 999 */
+    background: rgba(0, 0, 0, 0.7); 
+    z-index: 999; 
 }
 
 .search-input-container {
@@ -704,7 +669,7 @@ color: #fff;
     background-color: #fff;
     padding: 20px;
     border-radius: 4px;
-    z-index: 2001; /* Increased from 1000 */
+    z-index: 1000; 
 }
 
 #searchInput {
@@ -736,7 +701,7 @@ color: #fff;
         }
 
         #autocompleteBox {
-            line-height: 2; /* Adjust the value as needed to control line spacing */
+            line-height: 2; 
             text-align: center !important;
 
         }
@@ -746,16 +711,669 @@ color: #fff;
             font-family: Arial, sans-serif;
             text-align: center !important;
             color: #333 !important;
-            cursor: pointer; /* Add pointer cursor style to the anchor element */
+            cursor: pointer; 
         }
 
         #autocompleteBox li:hover {
             background-color: #f0f0f0;
         }
-       
+        #searchButton {
+  padding: 8.5px;  /* Reduced from 10px */
+  background-color: #0074d9;
+  color: #fff;
+  border: none;
+  width: 34px;  /* Reduced from 40px */
+  height: 34px;  /* Reduced from 40px */
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 17px;  /* Reduced from 20px */
+}
+
+.button-10 {
+    position: absolute;
+    top: 607px;
+    left: 657px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40.1px;
+    height: 40.1px;
+    border-radius: 50%;
+  background-color: #e0e0de;
+  color: #333;
+  border: 0.1px solid #ccc;
+  cursor: pointer;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+  }
 
 
-        .language-switcher-container {
+.button-1 {
+  align-items: center;
+height: 20px;
+  background-color: #F9F9F9;
+  border-radius: 6px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+  box-sizing: border-box;
+  color: #121212;
+  cursor: pointer;
+  display: inline-flex;
+  flex: 1 1 auto;
+  font-family: Inter,sans-serif;
+  font-size: 0.82rem;
+  font-weight: 700;
+  justify-content: center;
+  line-height: 1;
+  margin: 0;
+  outline: none;
+  padding: 1rem 1.2rem;
+  text-align: center;
+  text-decoration: none;
+  transition: box-shadow .1s,-webkit-box-shadow .1s;
+  white-space: nowrap;
+  border: 0;
+  user-select: none;
+  position: absolute;
+top: 611px;
+  left: 55px;
+width: 85px; 
+ 
+  touch-action: manipulation;
+}
+
+.button-1:hover {
+   box-shadow: rgba(0, 0, 0, 0.4) 3px 3px 3px;
+}
+
+.button-2 {
+  align-items: center;
+  background-color: #F9F9F9;
+  border-radius: 6px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+  box-sizing: border-box;
+  color: #121212;
+  cursor: pointer;
+  display: inline-flex;
+  flex: 1 1 auto;
+  font-family: Inter,sans-serif;
+  font-size: 0.82rem;
+  font-weight: 700;
+  justify-content: center;
+  line-height: 1;
+  margin: 0;
+  outline: none;
+  padding: 1rem 1.2rem;
+  text-align: center;
+  text-decoration: none;
+  transition: box-shadow .1s,-webkit-box-shadow .1s;
+  white-space: nowrap;
+  border: 0;
+  user-select: none;
+  position: absolute;
+top: 611px;
+  left: 155px;
+height: 20px;
+width: 85px; 
+ 
+  touch-action: manipulation;
+}
+
+.button-2:hover {
+   box-shadow: rgba(0, 0, 0, 0.4) 3px 3px 3px;
+}
+
+.button-3 {
+  align-items: center;
+height: 20px;
+  background-color: #F9F9F9;
+  border-radius: 6px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+  box-sizing: border-box;
+  color: #121212;
+  cursor: pointer;
+  display: inline-flex;
+  flex: 1 1 auto;
+  font-family: Inter,sans-serif;
+  font-size: 0.82rem;
+  font-weight: 700;
+  justify-content: center;
+  line-height: 1;
+  margin: 0;
+  outline: none;
+  padding: 1rem 1.2rem;
+  text-align: center;
+  text-decoration: none;
+  transition: box-shadow .1s,-webkit-box-shadow .1s;
+  white-space: nowrap;
+  border: 0;
+  user-select: none;
+  position: absolute;
+top: 611px;
+  left: 255px;
+width: 85px; 
+ 
+  touch-action: manipulation;
+}
+
+.button-3:hover {
+   box-shadow: rgba(0, 0, 0, 0.4) 3px 3px 3px;
+}
+
+.button-4 {
+  align-items: center;
+  background-color: #F9F9F9;
+  border-radius: 6px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+  box-sizing: border-box;
+  color: #121212;
+  cursor: pointer;
+  display: inline-flex;
+  flex: 1 1 auto;
+  font-family: Inter,sans-serif;
+  font-size: 0.82rem;
+  font-weight: 700;
+  justify-content: center;
+  line-height: 1;
+  margin: 0;
+  outline: none;
+  padding: 1rem 1.2rem;
+  text-align: center;
+  text-decoration: none;
+  transition: box-shadow .1s,-webkit-box-shadow .1s;
+  white-space: nowrap;
+  border: 0;
+  user-select: none;
+  position: absolute;
+top: 611px;
+  left: 355px;
+height: 20px;
+width: 85px; 
+ 
+  touch-action: manipulation;
+}
+
+.button-4:hover {
+   box-shadow: rgba(0, 0, 0, 0.4) 3px 3px 3px;
+}
+
+
+
+.button-5 {
+  align-items: center;
+height: 20px;
+  background-color: #F9F9F9;
+  border-radius: 6px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+  box-sizing: border-box;
+  color: #121212;
+  cursor: pointer;
+  display: inline-flex;
+  flex: 1 1 auto;
+  font-family: Inter,sans-serif;
+  font-size: 0.82rem;
+  font-weight: 700;
+  justify-content: center;
+  line-height: 1;
+  margin: 0;
+  outline: none;
+  padding: 1rem 1.2rem;
+  text-align: center;
+  text-decoration: none;
+  transition: box-shadow .1s,-webkit-box-shadow .1s;
+  white-space: nowrap;
+  border: 0;
+  user-select: none;
+  position: absolute;
+top: 611px;
+  left: 455px;
+width: 85px; 
+ 
+  touch-action: manipulation;
+}
+
+.button-5:hover {
+   box-shadow: rgba(0, 0, 0, 0.4) 3px 3px 3px;
+}
+
+.button-6 {
+  align-items: center;
+  background-color: #F9F9F9;
+  border-radius: 6px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+  box-sizing: border-box;
+  color: #121212;
+  cursor: pointer;
+  display: inline-flex;
+  flex: 1 1 auto;
+  font-family: Inter,sans-serif;
+  font-size: 0.82rem;
+  font-weight: 700;
+  justify-content: center;
+  line-height: 1;
+  margin: 0;
+  outline: none;
+  padding: 1rem 1.2rem;
+  text-align: center;
+  text-decoration: none;
+  transition: box-shadow .1s,-webkit-box-shadow .1s;
+  white-space: nowrap;
+  border: 0;
+  user-select: none;
+  position: absolute;
+top: 611px;
+  left: 555px;
+height: 20px;
+width: 85px; 
+ 
+  touch-action: manipulation;
+}
+
+.button-6:hover {
+   box-shadow: rgba(0, 0, 0, 0.4) 3px 3px 3px;
+}
+
+
+
+svg text.label {
+    fill: #bcbcbc;
+  }
+	
+.icon2::before {
+  content: "\f118";
+  font-family: "Ionicons"; 
+font-size: 22px;
+}
+
+.icon3::before {
+  content: "\f448";
+  font-family: "Ionicons";
+font-size: 22px;
+}
+
+text {
+  font-family: Arial;
+}
+
+
+  #searchInput1::placeholder {
+    font-size : 18px; 
+  }
+
+
+td {
+    font-weight: bold;
+  }
+  th {
+    font-weight: normal;
+  }
+
+
+.icon::before {
+  content: "\f21c";
+  font-family: "Ionicons"; 
+font-size: 22px;
+}		
+
+body, html {
+            margin: 0;
+            padding: 0;
+        }
+
+
+table {
+   border-collapse: collapse;
+  width: 200px;
+  font-family: Arial;
+  border-radius: 10px;
+}
+
+.metrics-table {
+  background-color: #f2f2f2;
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+  width: 750px;
+  table-layout: fixed; 
+  border-collapse: collapse; 
+}
+
+
+.metrics-table th {
+  color: #000000;
+  padding: 6px 9px;
+  font-size: 11px;
+  text-align: center;
+  overflow: hidden; 
+}
+
+.metrics-table td {
+  padding: 4px 11px;
+  text-align: center;
+  word-wrap: break-word; 
+  overflow: hidden; 
+}
+
+.metrics-table th:nth-child(1),
+.metrics-table td:nth-child(1) {
+  width: 90px; 
+}
+
+.metrics-table th:nth-child(2),
+.metrics-table td:nth-child(2) {
+  width: 95px; 
+}
+
+.metrics-table th:nth-child(3),
+.metrics-table td:nth-child(3) {
+  width: 20px; 
+}
+
+
+tr:first-child th:first-child {
+  color: #5b5b5b;
+  font-weight: bold;
+  font-size: 12px;
+  word-wrap: break-word;
+  overflow: hidden; 
+}
+
+
+
+#searchInput1 {
+    width: 406px;
+    height: 32px;
+    font-size: 15px;
+    border-radius: 3px;
+    border-width: 0.5px;
+    padding: 1px;
+    padding-left: 5px; /* Adds extra padding on the left side */
+    margin-bottom: 1px;
+        }
+
+#searchButton1 {
+width: 32px;
+color: black !important;
+height: 32px;
+cursor: pointer;
+}
+
+
+  
+svg.radar {
+  width: 700px;
+  height: 485px;
+}
+
+
+.searchcontainer {
+    display: flex;
+    align-items: center;
+    position: relative;
+	  margin-left: 8px;
+            margin-top: 8px;
+	
+}
+
+.dark-mode-toggle {
+position: absolute;
+left: 93%;
+top:5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 37px;
+    height: 37px;
+    background-color: #e0e0de;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+  }
+
+
+.maxcontainer {
+position: absolute;
+    }
+
+
+
+.toggle-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+position: absolute;
+  top: 431.5px;
+  left: 620px;
+ width: 120px; 
+ 
+    }
+
+    .toggle-label {
+      font-size: 16px;
+      margin-right: 10px;
+    }
+
+    .toggle-checkbox {
+      width: 40px;
+      height: 20px;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .toggle-checkbox input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .toggle-slider {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      transition: 0.4s;
+    }
+
+    .toggle-slider:before {
+      content: "";
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      left: 2px;
+      bottom: 2px;
+      background-color: white;
+      transition: 0.4s;
+    }
+
+    input:checked + .toggle-slider {
+      background-color: #2196F3;
+    }
+
+    input:checked + .toggle-slider:before {
+      transform: translateX(20px);
+    }
+
+    .toggle-container2 {
+display: flex;
+align-items: center;
+justify-content: center;
+position: absolute;
+  top: 416.6px;
+  left: 5.9px;
+ width: 120px; 
+    }
+
+    img {
+            width: 40px;
+top: -400px;
+pointer-events: none;
+
+left: -953px;
+opacity: .8;
+        }
+
+
+
+  
+        .screenshotcontainer {
+            margin-left: 8px;
+        }
+        
+	.emptycontainer {
+    height: 166px;
+    width: 100%; 
+}
+.finalcontainer {
+  width: 100%;
+}
+
+
+
+.similar-table {
+  position: absolute;
+  left: 389.4px;
+  transform: translateX(-50%);
+  background-color: #f2f2f2;
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+  border-collapse: collapse; 
+}
+
+.similar-table th,
+.similar-table td {
+  text-align: center;
+  white-space: normal;
+  width: auto;
+
+}
+
+.similar-table th {
+  color: #000000;
+  padding: 6px 9px;
+  font-size: 11px;
+  overflow: hidden; 
+}
+
+.similar-table td {
+  padding: 4px 11px;
+}
+
+
+.header {
+  font-family: system-ui;
+  padding: 20px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header .logo {
+  display: flex;
+  align-items: center;
+  margin-right: auto; /* Push logo to the left */
+}
+
+.header .logo img {
+  height: 34px;
+  width: auto;
+  opacity: 0.84;
+}
+.header .logo-text {
+  margin-left: 10px;
+  font-size: 23px;
+  font-weight: 600;
+}
+
+.header .navigation {
+  display: flex;
+  align-items: center;
+  gap: 25px; /* Reduced gap between buttons */
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%); /* Center the navigation */
+}
+
+/* Hide navigation on small screens */
+@media screen and (max-width: 650px) {
+  .header .navigation {
+    display: none;
+  }
+}
+
+.header .button10 {
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  color: #333;
+  line-height: 1.6;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+  font-size: 1.1rem;  /* Added larger font size */
+}
+
+
+.header .button10:hover {
+  background-color: #f0f0f0;
+  color: #2563eb;
+
+}
+
+
+
+/* Group search and language buttons */
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: auto; /* Push buttons to the right */
+}
+
+header a {
+      color: black;
+      text-decoration: none;
+    }
+
+
+    body.dark-mode .header .button10 {
+      color: #aeaeae;
+}
+body.dark-mode .header .button10:hover {
+  color: #2563eb;
+background-color: #ffffff;
+}
+
+    body.dark-mode header a {
+      color: #aeaeae;
+}
+
+body.dark-mode .header .logo img {
+  opacity: 0.88;
+}
+
+
+body.dark-mode .language-button {
+      background-color: #0F0F0E;
+      color: #aeaeae;
+}
+
+body.dark-mode .language-button:hover {
+      background-color: #0F0F0E;
+      color: #aeaeae;
+}
+
+
+body.dark-mode .language-dropdown {
+
+  background: #e8e6e6;
+
+}
+
+body.dark-mode .language-option {
+
+  color: #000000;
+}
+
+
+.language-switcher-container {
   position: relative;
   display: none;
 }
@@ -799,9 +1417,7 @@ color: #fff;
   text-decoration: none;
 }
 
-.language-option:hover {
-  background: #f5f5f5;
-}
+
 
 .language-option iconify-icon {
   margin-right: 10px;
@@ -812,13 +1428,45 @@ color: #fff;
   display: block;
 }
 
-      
+
 </style>
+</defs>
+	
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.9/xlsx.full.min.js"></script>
 
 
+
+
+<header class="header">
+  <div class="logo">
+    <a href="https://datamb.football">
+        <img src="https://datamb.football/logo.png" alt="Player comparisons. Radar comparison tool. Visualise and compare midfielder statistics from the top 7 leagues : Premier League, La Liga, Bundesliga, Serie A, Ligue 1, Eredivisie, Primeira Liga"/></a>
+    <div class="logo-text"><a href="https://datamb.football">&nbsp;Radars</a></div>
+  </div>
+  <nav class="navigation">
+    <a href="https://datamb.football/teams" class="button10" data-i18n="header.home">Home</a>
+    <a href="https://datamb.football/join" class="button10" data-i18n="header.pro">Pro</a>
+    <a href="https://datamb.football/guide" class="button10" data-i18n="header.guide">Guide</a>
+  </nav>
+  <div class="header-right">
+  <div class="search-container">
+    <button id="searchButton"><iconify-icon icon="ion:search-outline"></iconify-icon></button>
+</div>
+  <div class="language-switcher-container">
+    <button class="language-button" id="languageButton">
+      <iconify-icon icon="heroicons:globe-alt"></iconify-icon>
+    </button>
+    <div class="language-dropdown" id="languageDropdown">
+      <a href="?lang=en" class="language-option"><iconify-icon icon="flag:gb-4x3"></iconify-icon>English</a>
+    </div>
+  </div></div>
+</header>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7677714701428206"
      crossorigin="anonymous"></script>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PSBMXX80EF"></script>
+</head>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PSBMXX80EF"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -828,1252 +1476,911 @@ color: #fff;
 </script>
 
 
-
-<header class="header">
-  <div class="logo">
-    <a href="https://datamb.football">
-        <img src="https://datamb.football/logo.png" alt="Player and team comparisons" /></a>
-    <div class="logo-text"><a href="https://datamb.football"></a></div>
-  </div>&nbsp;
-  <nav class="navigation">
-   <a href="https://datamb.football/radars" class="button" data-i18n="common.nav.players">Players</a>
-    <a href="https://datamb.football/join" class="button" data-i18n="common.nav.pro">Pro</a>
-    <a href="https://datamb.football/teams" class="button" data-i18n="common.nav.teams">Teams</a>  
-  </nav>  <div class="header-right">
-  <div class="search-container">
-    <button id="searchButton"><iconify-icon icon="ion:search-outline"></iconify-icon></button>
-  </div>
-  <div class="language-switcher-container">
-    <button class="language-button" id="languageButton">
-      <iconify-icon icon="heroicons:globe-alt"></iconify-icon>
-    </button>
-    <div class="language-dropdown" id="languageDropdown">
-      <a href="?lang=en" class="language-option"><iconify-icon icon="flag:gb-4x3"></iconify-icon>English</a>
-    </div>
+<div class="search-input-modal" id="searchInputModal">
+  <div class="search-input-container">
+      <input type="text" id="searchInput" data-i18n-placeholder="search.placeholder" placeholder="Enter a team or player name...">
+      <div id="autocompleteBox"></div>
   </div>
 </div>
-</header>
-<body>
 
-  <div class="search-input-modal" id="searchInputModal">
-    <div class="search-input-container">
-      <input type="text" id="searchInput" data-i18n-placeholder="search.placeholder" placeholder="Enter a team or player name...">
-        <div id="autocompleteBox"></div>
-    </div>
-  </div>
-  <!-- Add menu toggle button right after body tag -->
-  <button class="menu-toggle">☰</button>
-          <!-- Left Navigation -->
-          <div class="nav-container">
-            <ul class="tree">
-              <li><a href="#aboutus">About Us</a></li>
-              <li><a href="#ourservices">What We Offer</a>
-                <ul>
-                  <li><a href="#free">Free</a></li>
-                  <li><a href="#pro">Pro</a></li>
-                  <li><a href="#app">App</a></li>
-                </ul>
-              </li>
-              <li class="active"><a href="#toolguide">Platform Guide</a>
-                <ul>
-                  <li><a href="#database">Database</a></li>
-                  <li><a href="#radar">Radar</a></li>
-                  <li><a href="#plot">Plot</a></li>
-                  <li><a href="#rank">Rank</a></li>
-                  <li><a href="#index">Index</a></li>
-                  <li><a href="#search">Search</a></li>
-                  <li><a href="#aichat">AI Chat</a></li>
-                  <li><a href="#teamtools">Teams</a></li>
-                  <li><a href="#profiles">Profiles</a></li>
-                </ul>
-              </li>
-              <li><a href="#metricsglossary">Metrics Glossary</a>
-                <ul>
-                  <li><a href="#radarglossary">Radar Glossary</a></li>
-                  <li><a href="#allmetrics">Full Glossary</a>
-                    <ul>
-                        <li><a href="#definitions">Definitions</a></li>
-                      <li><a href="#performanceindex">Performance Index</a></li>
-                      <li><a href="#possession">Possession +/-</a></li>
-                    </ul>
-                  </li>
-                  <li><a href="#teammetrics">Team Metrics</a></li>
-                </ul>
-              </li>
-              <li><a href="#account">Account & Subscription</a>
-                <ul>
-                  <li><a href="#subscribe">Sign Up</a></li>
-                  <li><a href="#login">Log In</a></li>
-                  <li><a href="#cancel">Cancel Subscription</a></li>
-                  <li><a href="#changepassword">Change Password</a></li>
-                </ul>
-              </li>
-              <li><a href="#news">News & Updates</a></li>
-              <li><a href="#contact">Contact Us</a></li>
-            </ul><br>
-          </div>
-        
-          <!-- Main Content -->
-          <div class="content">
-            <section id="aboutus" class="section">
-              <h2>About Us</h2>
-              <div class="section-content">
-                <p>DataMB offers football data solutions designed to present complex statistics in an intuitive, interactive and visually compelling way. Whether you're a scout, analyst, agent, media, or fan, our tools help all actors across football fill their data needs better through custom data visualizations.<br><br>We provide a free website, a subscription-based platform, and a mobile app.</p>
-        
-                <ul>
-                    <li>Our comprehensive <a href="#database">database</a> covers 40 leagues, spanning 4 seasons, with over 120 different <a href="#allmetrics">metrics</a>.</li>
-                    <li>A range of interactive tools to present data effectively in various formats. Look up data the way you want it, present the data the way you want it:</li> 
-                     <ul>
-                      <li>Starting with the players: <a href="#radar">Radar</a> and <a href="#rank">Rank</a></li>
-                      <li>Starting with the metrics: <a href="#plot">Plot</a>, <a href="#index">Index</a>, and <a href="#search">Search</a></li>
-                     </ul>
-                    
-                </ul>
-                With over 5 million data points and endless visualizations, our platform offers exclusive tools and metrics you won't find anywhere else — including Possession +/-, our unique Performance Index, and a range of bespoke metrics.<br>
-                  <br>Our database and offerings are continually expanding with more leagues, metrics, and features to enhance analysis for all users.</li>
-                  
-        
-                <h4>Beyond Raw Stats</h4>
-                <p>Football analysis isn't just about numbers—our tools provide deeper insights with accessible, contextualized visuals that you can personalize and tailor to your taste and needs.</p>
-                <p>We bridge the gap between traditional data visualization providers (which lack customization and interactivity) and the challenges of building your own visualizations from scratch.</p>
-                <p class="testimonial">Trusted by some of the biggest first division clubs and sports agencies, DataMB Pro's extensive database and interactive platform is the best value on the market for your data visualization needs.</p>
-             <br> <a href="#contact">Contact us</a> for more information.
-              </div>
-            </section>
-        
-            <!-- Our Services -->
-            <section id="ourservices" class="section">
-              <h2>What We Offer</h2>
-             <img src="https://datamb.football/PRO1/1.png" alt="DataMB Pro" class="single-line-image2"><br>
-              <div id="free">
-                <h3>Free Tools</h3>
-                <p class="subtitle">A great starting point for football data enthusiasts.</p>
-                <ul>
-                    <li>Data limited to the Top 7 European leagues</li>
-                    <li><a href="#radar">Player radar comparison tool</a> (Current and last season)</li>
-                    <li><a href="#teamtools">Team radar comparison tool</a> (Current and last season)</li>
-                    <li><a href="#teamtools">Team plot tool</a> (Current season)</li>
-                    <li><a href="#profiles">Player and team profiles</a> (Current season)</li>
-                    <li><a href="#app">App</a> access to player radars</a></li>
-                </ul>
-                    <br> <hr class="tool-divider">
-              </div>
-        
-              <div id="pro">
-                <h3>DataMB Pro</h3>
-            The most comprehensive data visualization solution on the market.
-                <ul>
-                    <li><a href="#toolguide">Access to every tool and the entire database</a></li>
-                    <li>Data from 40 leagues worldwide</li>
-                    <li>More seasons (up to 2022)</li>
-                    <li><a href="#allmetrics">Extensive metrics:</a> 120+ stats, including exclusive in-house metrics</li>
-                    <li>Full <a href="#app">app</a> integration: Enjoy the complete Pro experience on the app</li>
-                    <li>No Ads for an uninterrupted experience</li>
-                  </ul>
-        
-                <h4>Available Tools</h4>
-                <ul>
-                    <li><a href="#radar">Radar comparison tool</a> (More leagues and seasons than the free version)</li>
-                    <li><a href="#plot">Plot tool</a> (Graph up to 3 metrics at a time)</li>
-                    <li><a href="#index">Index tool</a> (Advanced performance leaderboards)</li>
-                    <li><a href="#rank">Rank tool</a> (In-depth player data profiles)</li>
-                    <li><a href="#search">Search tool</a> (Player search by attributes)</li>
-                    <li><a href="#aichat">DataMB Chat</a> (AI Agent for text queries or custom chart drawing)</li>
-                    <li><a href="#teamtools">Team plots & radars</a> (Same as the free version)</li>
-                </ul>
-        
-        
-                <h4>Pricing Options</h4>
-                <ul>
-                    <li>Monthly: 8€ (or equivalent in your currency)</li>
-                    <li>Biannually: 44€</li>
-                    <li>Yearly: 80€</li>
-                    <li><a href="#contact">Contact us</a> for bulk rates if you are a part of a group looking for multiple accounts for your team</li>
-                </ul>
-                <h4>Payment Options</h4>
-                <ul>
-                    <li>Default: Guest checkout with Credit/Debit Card via PayPal</li>
-                    <li>Alternative: Stripe checkout available <a href="https://datamb.football/turkiye" target="_blank">here</a> for countries or individuals without PayPal access</li>
-                    <li><a href="#contact">Contact us</a> for additional payment options</li>
-                </ul><br>
-                <img src="https://i.imgur.com/zQJSXZU.png" alt="Subscribe to Pro" class="single-line-image">
-        
-                    <a href="https://datamb.football/join" style="display: block; text-align: center;" target="_blank">Subscribe to Pro</a>
-                <br><hr class="tool-divider">
-              </div>
-        
-              <div id="app">
-                <h3>App</h3>
-                <p class="subtitle">Our mobile app is available for Android & iOS and offers a streamlined football analysis experience.</p>
-                <h4>Features</h4>
-                <ul>
-                    <li>Free player radars: Simplified UI, only 3 similar players and no percentile values shown</li>
-                    <li>Full DataMB Pro access: Subscribers get complete access to the Pro platform on the app</li>
-                </ul><br>
-                <div class="side-by-side-images">
-                  <img src="https://i.imgur.com/kXqSpwA.jpeg" alt="DataMB App" class="responsive-image">
-                  <img src="https://i.imgur.com/GA4GQdz.jpeg" alt="DataMB Pro App" class="responsive-image">
-                </div><br>
-                <div class="google-play-container">
-                  <a href='https://play.google.com/store/apps/details?id=com.datamb.datamb.webviewflutter&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png'></a>
-               <a href='https://apps.apple.com/app/datamb/id6456224067?l=en-GB'><img alt='Download on the App Store' src='https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg'></a> </div>
-               <br><hr class="tool-divider">
-              </div>
-            </section>
-        
-            <!-- Tool Guide -->
-            <section id="toolguide" class="section active">
-              <h2>Platform Guide</h2>
-        
-              <div id="database">
-                <h3>Database</h3>
-                
-                <div class="tool-basics">
-             
-                        <li>All of our tools use <strong>league data only</strong>.</li>
-                        <br>
-                            <li>A minimum of <strong>1000 league minutes</strong> by the end of season is required to appear in the database, with the threshold progressively raised throughout the season.</li>
-                           <ul>→ Current threshold for 2024/25: 720 minutes</ul>
-                       
-                    
-                              <li>Database is updated <strong>every week</strong>.<ul>→ Last update: 03.03.2025</ul></li>
-                            
-        
-                            <img src="https://i.imgur.com/HKgGFAc.png" alt="DataMB Database" class="single-line-image2">
-               
-        <br>
-                    <li><strong>Player names: </strong>Names are generally formatted as 'F. Lastname'. Searching by first name may not yield results.</li>
-        
-                    <div class="position-info">
-                        <div class="tool-section">
-                          <div class="tool-description">                  <img src="https://i.imgur.com/kGPC5tC.png" alt="Pitch" class="responsive-image">
-                            <br><li>
-                         <strong>Positional templates: </strong>Players in the database are categorized into 6 positional groups based on their general position on the pitch.</li>
-                            <ul><ul>
-                              <li>Some players may fit multiple position and appear in both templates</li>
-                              <li>Rank, Index and AI Chat allow for template-free analysis</li>
-                            </ul>
-                        
-                          </div>
-                        </div>
-                        <li><strong>Leagues available: </strong>England Premier League, Spain La Liga, Italy Serie A, Germany Bundesliga, France Ligue 1, Netherlands Eredivisie, Portugal Liga Primeira, Belgium Pro League, Scotland Premiership, Austria Bundesliga, Switzerland Super League, Denmark Superliga, Norway Eliteserien, Sweden Allsvenskan, Czech Republic Fortuna Liga, Serbia Superliga, Croatia HNL, Poland Ekstraklasa, Greece Super League, Israel Ligat HaAl, Russia Premier League, Ukraine VBET League, Turkey Süper Lig, Saudi Pro League, Japan J1 League, Korea K-League 1, United States MLS, Mexico Liga MX, Brazil Serie A, Argentina Primera Division, Uruguay Primera Division, Ecuador LigaPro, Colombia Primera A, Paraguay First Division, Chile Primera Division, England Championship, Spain Segunda Division, Italy Serie B, Germany 2. Bundesliga, France Ligue 2</li>
-        
-                        <br><br>
-                    </div>  <hr class="tool-divider">
-        
-              </div>
-              <div id="radar">
-                <h3>Radar — <i>Free & Pro</i></h3>
-                <div class="tool-section">
-                  <div class="tool-description">          <img src="https://i.imgur.com/WnuYabc.png" alt="Radar Comparison Tool" class="responsive-image">
-        
-                    <p>The radar comparison tool visually represents player percentile rankings, allowing for the comparison of multiple players' profiles and output. Similar radar profiles in the database are also shown for each player, which Pro users can filter.
-                      <ul>
-                        <li>Leagues (Free): Top 7 Leagues</li>
-                        <li>Seasons (Free): Current and past season</li>
-                        <li>Leagues (Pro): All 40 leagues</li>
-                        <li>Seasons (Pro): Up to 2022</li>
-                        <li>Metrics: <a href="#radarglossary">7 key metrics</a> per position</li>
-                      </ul>
-                    <ul> <li>Top 7 Leagues percentiles computed together for each position and season</li>
-                    <li>All other leagues percentiles computed together for each position and season</li>
-                  </ul>Percentiles represent how a player's raw per 90 value for a statistic ranks within their group (80th percentile = better than 80% of players in the sample). Raw values are not displayed on the radar, but can be found on other tools.<br><br>
-                  
-                      
-                  
-                    <h4>How to Use</h4>
-            
-                    <ul>
-                      <li>Choose a position template</li>
-                        <li>Search player by last name</li>
-                        <li>Click on the player in the list or press '+' or Enter to select the first match</li>
-                        <li>Up to 6 colors for different players</li>
-                        <li>Click 'x' to remove a player</li>
-                        <li>Click the bottom-right toggle for unfill/fill radar outlines</li>
-                        <li>Click the camera icon to save a screenshot</li>    
-                        <li>Click on a similar player to add their radar</li>
-			        <li><strong>PRO</strong> Filter similar players by Age (U30, U25, U23, U21); Season (Current, All) or League (Top 7, Outside Top 7, All)</li>
-                    </ul>
-                    <br>
-                  </div>
-                </div>
-         
-              </div>
-              <hr class="tool-divider">
-              <div id="plot">
-                <h3>Plot — <i>Pro</i></h3>        
-                <div class="tool-section">
-                  <div class="tool-description">          <img src="https://i.imgur.com/fCwgAzu.png" alt="Plot Tool" class="responsive-image">
-        
-                    <p>The plot tool allows you to visualize player performances in a scatter-plot format, based on your choice of three metrics.</p>
-                    <ul>
-                      <li>Leagues: All 40 leagues</li>
-                        <li>Seasons: Current & past season</li>
-                        <li>Metrics: <a href="#allmetrics">100+ metrics</a> (per 90)</li>
-                    </ul><br>
-                    <h4>How to Use</h4>
-                <ol>
-                    <li>Choose a position template</li>
-                    <li>First dropdown controls metrics for the x-axis</li>
-                    <li>Second dropdown controls metrics for the y-axis</li>
-                    <li>Third dropdown controls dot size</li>
-                    <li>Filter by age and league</li>
-                  </ol>
-                <ul>
-                  <li>Metrics are sorted by categories (greyed out items in the selectors)</li>
-                    <li>Hover over a dot to read player details (name and raw values for all three metrics)</li>
-                    <li>Search by last name to highlight a player's dot in pink</li>
-                    <li>Click on a dot to show/hide the player's name on the plot</li>
-                    <li>"Click All" selects all visible dots (unselects those already selected)</li>
-                    <li>Click on the chart icon to add/remove median lines</li>
-                    <li> Identity (x=y) line appears when both Goals and xG (or NPG and npxG; or Assists and xA) are selected. This helps visualize who is over or underachieving on their expected values</li>
-                    <li>Dot colors are league-based for ease of distinction when multiple leagues are chosen</li>
-                    <li>Click on "Screenshot" to generate a screenshot</li>
-                    <li>By essence, plots use per 90 metrics rather than totals; but selecting minutes played via dot size can provide context</li>
-                    <li>Click "23/24" to load past season data (some features and metrics may not exist for past seasons)</li>
-                </ul><br>
-                  </div>
-                </div>
-                
-              </div>
-              <hr class="tool-divider">
-              <div id="rank">
-                <h3>Rank — <i>Pro</i></h3>
-                <div class="tool-section">
-                  <div class="tool-description">          <img src="https://i.imgur.com/eOPRRls.png" alt="Rank Tool" class="responsive-image">
-        
-                    <p>Rank any player worldwide against your choice of sample (League, World...) for 100+ metrics, displaying results in both histogram (bar charts) and pizza chart format. Exclusive DataMB tool.</p>
-        
-                    <ul>
-                        <li>Rank (Top 7) contains players from the Top 7 leagues</li>
-                        <li>Rank (All) contains the players from all 40 leagues</li>
-                    </ul>
-                    <ul>
-                        <li>Seasons: Current season only (for now)</li>
-                        <li>Metrics: <a href="#allmetrics">100+ metrics</a> (both per 90 and Total)</li>
-                    </ul><br>
-                    <h4>How to Use</h4>
-             
-                    <ul><li>Search by last name, click on the arrow, select name from dropdown</li  >
-                    <li>Select the sample you want to compare to (default is League and Position per 90)</li>
-              
-                <ul>
-                    <li>League and Position: vs all players in the same league and position</li>
-                    <li>Top 5 and Position: vs Top 5 League players in the same position</li>
-                    <li>Top 7 and Position: vs Top 7 League players in the same position</li>
-                    <li>World and Position: vs all players in the world for the same position</li>
-                    <li>League: vs all players in the same league</li>
-                    <li>Top 5: vs all Top 5 League players</li>
-                    <li>Top 7: vs all Top 7 League player</li>
-                    <li>World: vs all players in the world</li>
-                    <li>Per 90 & Total: Both available for each sample</li>
-                </ul><br>
-        
-                
-                    <li>Click the blue toggle to switch from Per 90 to Total</li>
-                    <li>Bars will be displayed from best to worst rank. Click the green toggle to switch from this ascending order to a default order of metrics for the player's position, grouped by similar data categories and significance</li>
-                    <li>You can restrict the sample further using age filters</li>
-                    <li>The tool will display the player's rank in the chosen sample for all of our metrics in bar format. It will also display a pizza chart containing 12 default metrics</li>
-                    <li>Click the chart icon to customize the Pizza chart and add/remove any metric</li>
-                    <li>The size and color of both pizza segments & rank bars are determined using the percentile value equivalent to the player's rank in the sample</li>
-                    <li>Hover on a rank bar to read the raw value for the statistic</li>
-                    <li>Click on a rank bar to show/hide the value permanently</li>
-                  </ul>
-        <br>
-                <strong>Note: </strong>If the spinner loads indefinitely, the player may not be in the chosen sample (too old for age selection, Eredivisie/Liga Primeira player compared against Top 5)</p>
-        <br>
-                  </div>
-                </div>
-        
-                
-              </div>
-              <hr class="tool-divider">
-              <div id="index">
-                <h3>Index — <i>Pro</i></h3>
-                <div class="tool-section">
-                  <div class="tool-description">
-                    <img src="https://i.imgur.com/SXDy7GI.png" alt="Index Tool" class="responsive-image">
-                <p>The Index Tool displays a curated interactive leaderboard for all our metrics and leagues, along with a seasonal performance indicator by league and position.</p>
-                <ul>
-                  <li>Leagues: All 40 leagues</li>
-                  <li>Seasons: Current season only (for now)</li>
-                    <li>Metrics: <a href="#allmetrics">100+ metrics</a> (both per 90 and total)</li>
-                </ul><br>
-                <h4>How to Use</h4>
-                <ul>
-                    <li>Filters: Choose a metric, filter by league, position, and age</li>
-                    <li>Default is the Performance Index, our in-house metric aimed at determining who has been the highest performing player throughout the season in a specific league and position</li>
-                    <li>This metric is therefore available only for individual leagues and positions. Choice of 'All Leagues' or 'All positions' are greyed out when the metric is selected. Link to metric explanation</li>
-                    <li>Some metrics do not have a total version (e.g., PAdj metrics, percentage metrics), but all per 90 metrics are available as totals</li>
-                    <li>Click the green toggle to switch between per 90 and totals</li>
-                    <li>For the metrics where applicable, click the arrow to sort by ascending or descending order</li>
-                    <li>Metrics are sorted by categories (greyed out items in the selectors)</li>
-                    <li>Bar size indicate performance relative to the top performer's value in the metric (except for the Performance Index, where 100 is used as the top value)</li>
-                    <li>Color indicates player percentile rank for the metric in the sample</li>
-                </ul>
-        
-                <br>
-              </div>
-              <hr class="tool-divider">
-              <div id="search">
-                <h3>Search — <i>Pro</i></h3>
-                <div class="tool-section">
-                  <div class="tool-description">          <img src="https://pbs.twimg.com/media/GjlQwntWgAEhSZQ?format=jpg&name=large" alt="Search Tool" class="responsive-image">
-        
-                    <p>Radars, but the other way around. Instead of searching for a player to get their data, search for specific data and find the matching player(s).</p>
-                    <ul>
-                        <li>Leagues: All 40 leagues</li>
-                        <li>Seasons: Current & past season</li>
-                        <li>Metrics: <a href="#radarglossary">7 key metrics</a> per position 
-                          <li>Like the radar tool, it uses per 90 percentiles instead of raw values</li>
-                        <li>Top 7 leagues percentiles computed together by season and position</li>
-                        <li>All other leagues percentiles computed together by season and position</li>
-                    </ul><br>
-                    <h4>How to Use</h4>
-                <ul>
-                    <li>Choose a position template</li>
-                    <li>Filter by league, age, minutes played</li>
-                    <li>Search for players ranking over specific radar percentile values</li>
-                    <li>Combine multiple metrics to refine your search results</li>
-                    <li>Click on "23/24" to load past season data</li>
-                </ul>
-              </div>
-            </div>       </div>
-          </div>
-                      </div>
-              <hr class="tool-divider">
-              <div id="aichat">
-                <h3>DataMB Chat — <i>Pro</i></h3>
-                <div class="side-by-side-images">
-                  <img src="https://pbs.twimg.com/media/GCh5ad6WAAEuUQA?format=png&name=900x900" alt="DataMB Chat" class="responsive-image">
-                  <img src="https://pbs.twimg.com/media/GLzH8CMWYAAgkSv?format=png&name=900x900" alt="DataMB Chat" class="responsive-image">
-                </div>
-                    <h4>Two AI Chatbots: One can answer text queries, the other can draw charts for you!</h4>
-                    <ul>
-                        <li>Leagues: Top 5 Leagues only</li>
-                        <li>Seasons: Current season only</li>
-                        <li>Metrics: All basic stats, plus footedness, birth country, market value, and more information</li>
-                        <li>Can accomplish a wide range of tasks and perform operations beyond existing tools</li>
-                        <li>Provides additional insights not available elsewhere (computing new metrics, plotting across positions...)</li>
-                        <li>Still in Beta</li>
-                        <li>More information on the <a href="https://datamb.football/chatguide">Chat Guide</a></li>
-                      
-                      </ul>
-              
-        <br>
-              </div>
-              <hr class="tool-divider">
-              <div id="teamtools">
-                <h3>Team Tools — <i>Free & Pro</i></h3>
-                <div class="tool-section">
-                  <div class="tool-description"> 
-                <img src="https://i.imgur.com/irOKFvz.png" alt="Team Radar Tool" class="responsive-image">
-                <h4>Team Radars</h4>       
-                <ul>
-                    <li>Leagues: Top 7 Leagues only</li>
-                    <li>Seasons: Current & past season</li>
-                    <li>Metrics: <a href="#teammetrics">7 key parameters</a> (percentiles for groups of metrics, computed against all Top 7 league teams for each season)</li>
-                                      <li>Similar team profiles</li>  
-                  <li>More information on how to use the tool @ <a href="#radar">Player Radars</a></li>
-                  </ul></div></div>
-                  <div class="tool-section">
-                    <div class="tool-description"> <img src="https://i.imgur.com/0uWokCl.png" alt="Team Plot Tool" class="responsive-image">
-            
-                  <h4>Team Plots</h4>        <ul>
-                      <li>Leagues: Top 7 Leagues only</li>
-                      <li>Seasons: Current season only</li>
-                      <li>Metrics: <a href="#teammetrics">18 metrics</a>, per 90</li>
-                      <li>Choose two metrics to plot, filter by leagues</li>
-                      <li>More information on how to use the tool @ <a href="#plot">Player Plots</a></li>
-        
-          
-                  </ul>    <br>  </div></div><hr class="tool-divider">
-        
-              </div>
-              <div id="profiles">
-                <h3>Profiles — <i>Free</i></h3>
-               
-                <p>Basic insights for individual players and teams. Access profiles on the <a href="https://datamb.football" target="_blank">home page</a>, or click the search icon in the header of every page of the free website.</p>
-                <div class="tool-section">
-                  <div class="tool-description">           <img src="https://i.imgur.com/iAxLdVn.png" alt="Player Profile" class="responsive-image">
-        
-                <h4>Player Profiles</h4>       
-                <ul>
-                    <li>Seasonal radar chart vs Top 7 League players in position</li> 
-                    <li>Two default Top 7 League plots per position</li>
-                </ul></div></div><div class="tool-section">
-                  <div class="tool-description">           <img src="https://i.imgur.com/kAYRgr1.png" alt="Team Profile" class="responsive-image">
-        
-                <h4>Team Profiles</h4>       
-                <ul>
-                    <li>Seasonal radar chart vs Top 7 League teams</li>
-                    <li>Default Top 7 League plot (Goals vs Goals conceded)</li>
-                    <li>List of all the team's players in the database this season.</li>
-                    <li>For players included in two position samples, the two profiles have an equal chance of being displayed on the team page</li>
-                </ul>      </div></div>
-                <hr class="tool-divider">
-        
-        
-              </div></div>
-            </section>
-        
-            <!-- Metrics Glossary -->
-            <section id="metricsglossary" class="section">
-              <h2>Metrics Glossary</h2>
-              <div id="radarglossary">
-                <h3>Radar Glossary</h3>
-                <p class="intro">All the statistics below are then converted into percentiles within the top-seven leagues for each position.</p>
-                
-                <div class="position-metrics">
-                    <h4>Goalkeepers</h4>
-                    <ul>
-                        <li>
-                            <strong>Defensive actions per 90</strong>
-                            <br>Sum of sweeping actions such as interceptions, tackles and ground duels with opposing players; normalized per 90 minutes.
-                        </li><br>
-                        <li>
-                            <strong>Aerials duels per 90</strong>
-                            <br>The number of aerial duels in which the goalkeeper participates; normalized per 90 minutes.
-                          </li><br>
-                        <li>
-                            <strong>Exits per 90</strong>
-                            <br>The amount of times the keeper leaves his line (whether to claim a cross or to sweep); normalized per 90 minutes.
-                        </li><br>
-                        <li>
-                            <strong>Passes per 90</strong>
-                            <br>The number of passes attempted by the goalkeeper; normalized per 90 minutes.
-                        </li><br>
-                        <li>
-                            <strong>Long pass accuracy %</strong>
-                                  <br>The percentage of long passes successfully completed by the goalkeeper.
-                        </li><br>
-                        <li>
-                            <strong>Short pass completion %</strong>
-                            <br>The percentage of short and medium passes successfully completed by the goalkeeper.
-                        </li><br>
-                        <li>
-                            <strong>Prevented goals (PSxG - GA) per 90</strong>
-                            <br>The difference between the post-shot expected goals (PSxG) prevented by the goalkeeper and the goals conceded (GA); normalized per 90 minutes.
-                        </li><br>
-                    </ul>
-        
-                    <h4>Centrebacks</h4>
-                    <ul>
-                        <li>
-                            <strong>Passes completed per 90</strong>
-                            <br>The number of passes successfully completed by a centre-back; normalized per 90 minutes.
-                        </li><br>
-                        <li>
-                            <strong>Forward pass completion %</strong>
-                            <br>Pass completion (completed/attempted), excluding backwards and sideways passes.
-                        </li><br>
-                        <li>
-                            <strong>Progressive passes per 90</strong>
-                            <br>Completed passes that help the team significantly advance towards the opponent's goal; normalized per 90 minutes.
-                        </li><br>
-                        <li>
-                            <strong>Defensive actions per 90</strong>
-                            <br>Sum of tackles, interceptions and ground duels won; normalized per 90 minutes.
-                        </li><br>
-                        <li>
-                            <strong>Defensive duels won %</strong>
-                            <br>The percentage of defensive duels won by a centre-back.
-                        </li><br>
-                        <li>
-                            <strong>Aerial duels won %</strong>
-                            <br>The percentage of aerial duels won by a centre-back.
-                        </li><br>
-                        <li>
-                            <strong>Progressive carries per 90</strong>
-                            <br>Runs with the ball that significantly advance the team's position; normalized per 90 minutes.
-                        </li><br>
-                    </ul>
-        
-                    <h4>Fullbacks</h4>
-                    <ul>
-                        <li>
-                            <strong>Cross accuracy %</strong>
-                            <br>The percentage of crosses successfully delivered by a full-back.
-                        </li><br>
-                        <li>
-                            <strong>Expected assists per 90</strong>
-                            <br>The number of assists expected from a full-back based on the quality of their deliveries and the positions of teammates; normalized per 90 minutes.
-                        </li><br>
-                        <li>
-                            <strong>Progressive passes per 90</strong>
-                            <br>Completed passes that help the team significantly advance towards the opponent's goal; normalized per 90 minutes.
-                        </li><br>
-                        <li>
-                            <strong>Defensive actions per 90</strong>
-                            <br>Sum of tackles, interceptions and ground duels won; normalized per 90 minutes.
-                        </li><br>
-                        <li>
-                            <strong>Defensive duels won %</strong>
-                            <br>The percentage of defensive duels won by a full-back.
-                        </li><br>
-                        <li>
-                            <strong>Aerial duels won %</strong>
-                            <br>The percentage of aerial duels won by a full-back.
-                        </li><br>
-                        <li>
-                            <strong>Progressive carries per 90</strong>
-                            <br>Runs with the ball that significantly advance the team's position; normalized per 90 minutes.
-                        </li><br>
-                    </ul>
-        
-                    <h4>Midfielders</h4>
-                    <ul>
-                        <li>
-                            <strong>Duels won %</strong>
-                            <br>The percentage of duels won by a midfielder.
-                        </li><br>
-                        <li>
-                            <strong>Defensive actions per 90</strong>
-                            <br>Sum of tackles, interceptions and ground duels won; normalized per 90 minutes.
-                        </li><br>
-                        <li>
-                            <strong>Progressive carries per 90</strong>
-                            <br>Runs with the ball that significantly advance the team's position; normalized per 90 minutes.
-                        </li><br>
-                        <li>
-                            <strong>Forward passes per 90</strong>
-                            <br>The number of passes attempted by a midfielder, excluding backwards and sideways passes; normalized per 90 minutes.
-                        </li><br>
-                        <li>
-                            <strong>Forward pass completion %</strong>
-                            <br>Pass completion (completed/attempted), excluding backwards and sideways passes.
-                        </li><br>
-                        <li>
-                            <strong>Key passes per 90</strong>
-                            <br>Open-play passes that directly lead to a goal-scoring opportunity; normalized per 90 minutes.
-                        </li><br>
-                        <li>
-                            <strong>Progressive passes per 90</strong>
-                            <br>Completed passes that help the team significantly advance towards the opponent's goal; normalized per 90 minutes.
-                        </li><br>
-                    </ul>
-        
-                    <h4>Wingers</h4>
-                    <ul>
-                        <li>
-                            <strong>Progressive carries per 90</strong>
-                            <br>Runs with the ball that significantly advance the team's position; normalized per 90 minutes.
-                        </li><br>
-                        <li>
-                            <strong>Successful dribbles per 90</strong>
-                            <br>The number of dribbles successfully completed by a winger; normalized per 90 minutes.
-                        </li><br>
-                        <li>
-                            <strong>Non-penalty goals per 90</strong>
-                            <br>The number of goals scored by a winger excluding penalty kicks; normalized per 90 minutes.
-                        </li><br>
-                        <li>
-                            <strong>xG + xA per 90</strong>
-                            <br>The sum of expected goals (xG) and expected assists (xA) for a winger; normalized per 90 minutes.
-                        </li><br>
-                        <li>
-                            <strong>Assists per 90</strong>
-                            <br>The number of goals directly assisted by a winger; normalized per 90 minutes.
-                        </li><br>
-                        <li>
-                            <strong>Key passes per 90</strong>
-                            <br>Passes that directly lead to a goal-scoring opportunity; normalized per 90 minutes.
-                        </li><br>
-                        <li>
-                            <strong>Attacking actions per 90</strong>
-                            <br>Sum of shots, crosses and dribbles; normalized per 90 minutes.
-                        </li><br>
-                    </ul>
-        
-                    <h4>Strikers</h4>
-                    <ul>
-                        <li>
-                            <strong>Passes received per 90</strong>
-                            <br>The number of passes received by a striker from his team-mates; normalized per 90 minutes.
-                        </li><br>
-                        <li>
-                            <strong>Aerial duels won %</strong>
-                            <br>The percentage of aerial duels won by a striker.
-                        </li><br>
-                        <li>
-                            <strong>Non-penalty goals per 90</strong>
-                            <br>The number of goals scored by a striker excluding penalty kicks; normalized per 90 minutes.
-                        </li><br>
-                        <li>
-                            <strong>Expected goals per 90</strong>
-                            <br>The number of goals expected from a striker based on the quality of their chances; normalized per 90 minutes.
-                        </li><br>
-                        <li>
-                            <strong>Passes to penalty box per 90</strong>
-                            <br>The number of passes delivered by a striker into the opponent's penalty area; normalized per 90 minutes.
-                        </li><br>
-                        <li>
-                            <strong>Expected assists per 90</strong>
-                            <br>The number of assists expected from a striker based on the quality of their chance creation and the positions of teammates; normalized per 90 minutes.
-                        </li><br>
-                        <li>
-                            <strong>Attacking actions per 90</strong>
-                            <br>Sum of shots, crosses and dribbles; normalized per 90 minutes.
-                        </li><br>
-                    </ul>
-                </div>
-              </div>
-              <hr class="tool-divider">
-              <div id="allmetrics">
-                <h3>All Metrics Glossary</h3>
-                <div id="definitions">
-                    <h5>Goalkeeping</h5>
-                                <ul>
-                        <li><strong>Saves</strong><i> (per 90)</i><br>Amount of saves made by the goalkeeper.</li><br>
-                        <li><strong>Save percentage %</strong><br>Percentage of shots on target saved by the goalkeeper</li><br>
-                        <li><strong>Shots conceded</strong><i> (per 90)</i><br>Number of shots faced by the goalkeeper.</li><br>
-                        <li><strong>xG conceded</strong><i> (per 90)</i><br>Amount of expected goals (xG) conceded by the goalkeeper.</li><br>
-                        <li><strong>Goals conceded</strong><i> (per 90)</i><br>Amount of goals conceded by the goalkeeper.</li><br>
-                        <li><strong>Prevented goals</strong><i> (per 90)</i><br>Difference between post-shot expected goals conceded (PSxG) and actual goals conceded (GA). Also refered to as PSxG-GA.</li><br>
-                        <li><strong>Exits</strong><i> (per 90)</i><br>Amount of times the goalkeeper leaves his line (whether to claim a cross or to sweep). Also refered to as Line exits.</li><br>
-                        <li><strong>Clean sheets</strong><br>Amount of matches in which the goalkeeper does not concede a goal.</li><br>
-                    </ul>
-        
-                    <h5>Defending</h5>
-                    <ul>
-                        <li><strong>Defensive duels</strong><i> (per 90)</i><br>Amount of defensive (ground) duels contested.</li><br>
-                        <li><strong>Defensive duels won</strong><i> (per 90)</i><br>Amount of defensive (ground) duels won.</li><br>
-                        <li><strong>Defensive duels won %</strong><br>Percentage of defensive duels won.</li><br>
-                        <li><strong>Aerial duels</strong><i> (per 90)</i><br>Number of times the player contests for the ball in the air.</li><br>
-                        <li><strong>Aerial duels won</strong><i> (per 90)</i><br>Amount of aerial duels won.</li><br>
-                        <li><strong>Aerial duels won %</strong><br>Percentage of aerial duels won.</li><br>
-                        <li><strong>Interceptions</strong><i> (per 90)</i><br>Number of times the player intercepts a pass from the opponent.</li><br>
-                        <li><strong>Interceptions (PAdj)</strong><br>Possession-adjusted interceptions. The number of interceptions for every 30 opponent possessions.</li><br>
-                        <li><strong>Sliding tackles</strong><i> (per 90)</i><br>Number of times the player gets to the ground to dispossess an opponent.</li><br>
-                        <li><strong>Sliding tackles (PAdj)</strong><br>Possession-adjusted sliding tackles. The number of sliding tackles for every 30 opponent possessions.</li><br>
-                        <li><strong>Shots blocked</strong><i> (per 90)</i><br>Number of opponent shots blocked</li><br>
-                        <li><strong>Possessions won</strong><i> (per 90)</i><br>Number of times the player recovers possession for their team. Sum of sliding tackles, interceptions, and defensive duels won.</li><br>
-                    </ul>
-        
-                    <h5>Possession</h5>
-                    <ul>
-                        <li><strong>Touches</strong><i> (per 90)</i><br>Number of times the player has possession of the ball. Also refered to as Possessions, Ball possessions.</li><br>
-                        <li><strong>Passes received</strong><i> (per 90)</i><br>Number of times the player receives a pass from a teammate.</li><br>
-                        <li><strong>Duels</strong><i> (per 90)</i><br>Amount of duels contested, both with and without the ball.</li><br>
-                        <li><strong>Duels won</strong><i> (per 90)</i><br>Amount of duels won.</li><br>
-                        <li><strong>Duels won %</strong><br>Percentage of duels won out of total duels contested.</li><br>
-                        <li><strong>Possessions lost</strong><i> (per 90)</i><br>Number of times the player loses possession.</li><br>
-                        <li><strong>Possessions won - lost</strong><i> (per 90)</i><br>Difference between the amount of possessions won and the amount of possessions lost by the player.</li><br>
-                        <li><strong>Possession +/-</strong><br>How many times the player wins or loses the ball for every 100 ball possessions. Link to full definition.</li><br>
-                        <li><strong>Progressive actions</strong><i> (per 90)</i><br>Sum of progressive passes and progressive carries.</li><br>
-                        <li><strong>Progressive action rate</strong><br>Number of progressive actions for every 100 ball possessions.</li><br>
-                    </ul>
-        
-                    <h5>Passing</h5>
-                    <ul>
-                        <li><strong>Passes</strong><i> (per 90)</i><br>Total passes attempted.</li><br>
-                        <li><strong>Passes completed</strong><i> (per 90)</i><br>Number of successful passes completed.</li><br>
-                        <li><strong>Pass completion %</strong><br>Percentage of passes completed.</li><br>
-                        <li><strong>Forward passes</strong><i> (per 90)</i><br>Passes attempted, excluding backward and sideways passes.</li><br>
-                        <li><strong>Forward passes completed</strong><i> (per 90)</i><br>Number of completed forward passes.</li><br>
-                        <li><strong>Forward pass completion %</strong><br>Percentage of forward passes completed.</li><br>
-                        <li><strong>Short passes</strong><i> (per 90)</i><br>Passes attempted with a distance under 40 meters.</li><br>
-                        <li><strong>Short passes completed</strong><i> (per 90)</i><br>Number of completed short passes.</li><br>
-                        <li><strong>Short pass completion %</strong><br>Percentage of short passes completed.</li><br>
-                        <li><strong>Long passes</strong><i> (per 90)</i><br>Passes attempted with a distance over 40 meters.</li><br>
-                        <li><strong>Long passes completed</strong><i> (per 90)</i><br>Number of completed long passes.</li><br>
-                        <li><strong>Long pass accuracy %</strong><br>Percentage of short passes completed.</li><br>
-                        <li><strong>Progressive passes</strong><i> (per 90)</i><br>Passes attempted to help the team significantly advance towards the opponent's goal.</li><br>
-                        <li><strong>Progressive passes completed</strong><i> (per 90)</i><br>Number of completed progressive passes.</li><br>
-                        <li><strong>Progressive pass accuracy %</strong><br>Percentage of progressive passes completed.</li><br>
-                        <li><strong>Progressive passes (PAdj)</strong><br>Number of progressive passes for every 100 ball possessions. Also refered to as Progressive passes per 100 touches.</li><br>
-                        <li><strong>Passes to final third</strong><i> (per 90)</i><br>Passes attempted into the final third of the pitch.</li><br>
-                        <li><strong>Accurate passes to final third</strong><i> (per 90)</i><br>Number of completed passes into the final third.</li><br>
-                        <li><strong>Pass completion (to final third) %</strong><br>Percentage of passes to the final third completed.</li><br>
-                        <li><strong>Accurate passes to penalty box</strong><i> (per 90)</i><br>Number of completed passes into the penalty box/area.</li><br>
-                        <li><strong>Passes to penalty box</strong><i> (per 90)</i><br>Passes attempted into the penalty box/area.</li><br>
-                        <li><strong>Pass completion (to penalty box) %</strong><br>Percentage of passes to the penalty box/area completed.</li><br>
-                        <li><strong>Through passes</strong><i> (per 90)</i><br>Line-breaking passes attempted to split defenders.</li><br>
-                        <li><strong>Through passes completed</strong><i> (per 90)</i><br>Number of completed through passes.</li><br>
-                        <li><strong>Through pass completion %</strong><br>Percentage of through passes completed.</li><br>
-                            <li><strong>Forward pass ratio</strong><br>Percentage of total passes that are played forward.</li><br>
-                          <li><strong>Misplaced passes</strong><i> (per 90)</i><br>Number of inaccurate or incomplete passes.</li><br>
-                        <li><strong>Backward passes</strong><i> (per 90)</i><br>Number of passes that are played backward.</li><br>
-                        <li><strong>Backward pass ratio</strong><br>Percentage of total passes that are played backward.</li><br>
-                          <li><strong>Average pass length (m)</strong><br>Average distance of all passes in meters.</li><br>
-                    </ul>
-        
-                    <h5>Dribbling & Ball-Carrying</h5>
-                    <ul>
-                        <li><strong>Progressive carries</strong><i> (per 90)</i><br>Runs with the ball that significantly advance the team's position. Also refered to as Progressive runs.</li><br>
-                        <li><strong>Accelerations</strong><i> (per 90)</i><br>Runs with the ball at a significantly high speed.</li><br>
-                        <li><strong>Ball-carrying frequency</strong><br>Number of progressive carries for every 100 ball possessions. Also refered to as Progressive carries per 100 touches.</li><br>
-                        <li><strong>Dribbles attempted</strong><i> (per 90)</i><br>Total amount of dribbles (take-ons) attempted.</li><br>
-                        <li><strong>Successful dribbles</strong><i> (per 90)</i><br>Amount of dribbles that were successfully completed.</li><br>
-                        <li><strong>Dribble success rate %</strong><br>Percentage of successful dribbles out of all dribble attempts.</li><br>
-                        <li><strong>Dribbles per 100 touches</strong><br>Amount of dribbles attempted for every 100 ball possessions. Also refered to as Dribble frequency.</li><br>
-                        <li><strong>Offensive duels</strong><i> (per 90)</i><br>Amount of ground duels contested with the ball.</li><br>
-                        <li><strong>Offensive duels won</strong><i> (per 90)</i><br>Amount of offensive duels won.</li><br>
-                        <li><strong>Offensive duels won %</strong><br>Percentage of offensive duels won out of total offensive duels.</li><br>
-                        <li><strong>Successful attacking actions</strong><i> (per 90)</i><br>Sum of successful dribbles, accurate crosses, and shots on target.</li><br>
-                        <li><strong>Fouls suffered</strong><i> (per 90)</i><br>Number of times the player is fouled.</li><br>
-                    </ul>
-        
-                    <h5>Goal Creating</h5>
-                    <ul>
-                        <li><strong>Assists</strong><i> (per 90)</i><br>Passes that directly lead to a goal.</li><br>
-                        <li><strong>Expected assists</strong><i> (per 90)</i><br>xA is the sum of the xG values of shots that follow a player's passes. Also refered to as xAG.</li><br>
-                        <li><strong>xA per 100 passes</strong><br>Amount of expected assists accumulated for every 100 pass attempts.</li><br>
-                        <li><strong>Key passes</strong><i> (per 90)</i><br>Open-play passes that directly lead to a goal-scoring opportunity. Also refered to as Big chances created.</li><br>
-                        <li><strong>Goals + Assists</strong><i> (per 90)</i><br>Sum of goals scored and assists delivered. Also refered to as G+A.</li><br>  
-                        <li><strong>Non-penalty goals + assists</strong><i> (per 90)</i><br>Sum of non-penalty goals scored and assists delivered. Also refered to as NPG+A.</li><br>
-                        <li><strong>xG+xA</strong><i> (per 90)</i><br>Sum of expected goals and expected assists.</li><br>
-                        <li><strong>Non-penalty xG+xA</strong><i> (per 90)</i><br>Sum of non-penalty expected goals and expected assists. Also refered to as npxG+xA.</li><br>
-                        <li><strong>Assists - xA</strong><i> (per 90)</i><br>Difference between actual assists and expected assists. Also refered to as xA under/overperformance, xA differential.</li><br>
-                        <li><strong>Assists per xA</strong><br>Ratio of assists to expected assists.</li><br>
-                        <li><strong>Shot assists</strong><i> (per 90)</i><br>Passes that directly lead to a shot. Also refered to as Key passes for some data providers.</li><br>
-                        <li><strong>Chance creation ratio</strong><br>Number of key passes for every 100 pass attempt. Also refered to as Key passes per 100 passes.</li><br>
-                          <li><strong>Pre-assists</strong><i> (per 90)</i><br>Passes that directly lead to an assist.</li><br>
-                        <li><strong>Crosses</strong><i> (per 90)</i><br>Amount of crosses attempted.</li><br>
-                        <li><strong>Accurate crosses</strong><i> (per 90)</i><br>Amount of crosses that successfully reach a teammate.</li><br>
-                        <li><strong>Cross accuracy %</strong><br>Percentage of crosses that successfully reach a teammate.</li><br>
-                        <li><strong>Crosses to box</strong><i> (per 90)</i><br>Crosses targeted into the goalkeeper's box.</li><br>
-                        <li><strong>Deep completions</strong><i> (per 90)</i><br>Non-cross passes played into a radius of 20 meters of the opponent goal.</li><br>
-                    </ul>
-        
-                    <h5>Goal Scoring</h5>
-                    <ul>
-                        <li><strong>Goals</strong><i> (per 90)</i><br>Number of goals scored.</li><br>
-                        <li><strong>Non-penalty goals</strong><i> (per 90)</i><br>Number of goals scored, excluding penalties. Also refered to as NPG.</li><br>
-                        <li><strong>Expected goals</strong><i> (per 90)</i><br>Sum of the expected values (probability of resulting in goal) for the player's shots. Also refered to as xG.</li><br>
-                        <li><strong>Non-penalty xG</strong><i> (per 90)</i><br>Expected goals, excluding penalties. Also refered to as npxG.</li><br>
-                        <li><strong>xG/Shot</strong><br>Expected goals per shot taken (average xG value of the player's shots).</li><br>
-                        <li><strong>npxG/Shot</strong><br>Expected goals per shot taken, excluding penalties.</li><br>
-                        <li><strong>Shots</strong><i> (per 90)</i><br>Number of shots taken.</li><br>
-                        <li><strong>Shots on target</strong><i> (per 90)</i><br>Number of shots that hit the opponent goal.</li><br>
-                        <li><strong>Shots on target % (SoT%)</strong><br>Percentage of shots on target out of total shots.</li><br>
-                        <li><strong>Goal conversion %</strong><br>Percentage of the player's shots that result in goals.</li><br>
-                        <li><strong>Goals - xG</strong><i> (per 90)</i><br>Difference between goals scored and expected goals. Also refered to as xG under/overperformance, xG differential.</li><br>
-                        <li><strong>Goals per xG</strong><br>Ratio of goals scored to expected goals.</li><br>
-                        <li><strong>Goals per 100 touches</strong><br>Number of goals scored for every 100 ball possessions.</li><br>
-                        <li><strong>Shot frequency</strong><br>Number of shots taken for every 100 ball possessions. Also refered to as Shots per 100 touches.</li><br>
-                        <li><strong>xG per 100 touches</strong><br>Amount of expected goals for every 100 ball possessions.</li><br>
-                        <li><strong>Headed goals</strong><i> (per 90)</i><br>Number of goals scored with the head.</li><br>
-                        <li><strong>Touches in box</strong><i> (per 90)</i><br>Number of touches inside the opponent's penalty area.</li><br>
-                    </ul>
-        
-                    <h5>Discipline & Set-Pieces</h5>
-                    <ul>
-                        <li><strong>Fouls</strong><i> (per 90)</i><br>Number of times the player commits a foul.</li><br>
-                        <li><strong>Yellow cards</strong><i> (per 90)</i><br>Amount of yellow cards received.</li><br>
-                        <li><strong>Red cards</strong><i> (per 90)</i><br>Amount of red cards received.</li><br>
-                        <li><strong>Free kicks</strong><i> (per 90)</i><br>Amount of free kicks taken.</li><br>
-                        <li><strong>Direct free kicks</strong><i> (per 90)</i><br>Amount of free kicks taken directly on goal.</li><br>
-                        <li><strong>Direct free kicks on target %</strong><br>Accuracy of direct free kicks.</li><br>
-                        <li><strong>Corners</strong><i> (per 90)</i><br>Amount of corner kicks taken.</li><br>
-                        <li><strong>Penalties attempted</strong><br>Amount of penalty kicks taken.</li><br>
-                        <li><strong>Penalties scored</strong><br>Amount of penalty kicks converted.</li><br>
-                        <li><strong>Penalty success rate %</strong><br>Conversion rate of penalty kicks.</li><br>
-                    </ul>
-        
-                    <h5>Miscellaneous</h5>
-                    <ul>
-                          <li><strong>Minutes played</strong><br>Total amount of minutes played, including extra-time.</li><br>
-                        <li><strong>Minutes per match</strong><br>Average number of minutes played per match.</li><br>
-                        <li><strong>Performance Index</strong><br>The Performance Index metric aims to measure who has been the highest performing player throughout the season in a specific league and position.</li><br>
-                    </ul>
-                </div>
-        
-                <div id="performanceindex">
-                    <h4>Performance Index</h4>
-                    <p>The Performance Index is defined differently for each position, and measured only for each individual league and position; meaning you won't be able to compare values across leagues and positions, and why these options are greyed out from the index tool when Performance Index metric is selected.</p>
-                    
-                    <p>Here is the corresponding metric table used for each position, along with their respective weight in the total score.</p>
-        <br>
-                    <ul>
-                        <li>
-                            <strong>Goalkeeper:</strong>
-Prevented goals per 90 x6, Save percentage % x4, Clean sheets x2, Pass completion % x2, Aerial duels per 90, Interceptions per 90, Passes per 90, Forward passes per 90, Short passes per 90, Long passes per 90, Exits per 90, Defensive duels won %, Forward pass completion %, Short pass completion %, Long pass accuracy %, Progressive pass accuracy %, Minutes played x6
-                        </li><br>
-                        <li>
-                            <strong>Centre-back:</strong>
-Defensive duels won % x4, Aerial duels won % x3, Forward passes per 90 x3, Pass completion % x3, Forward pass completion % x3, Progressive carries per 90 x2, Progressive passes per 90 x2, Possessions won per 90, Defensive duels per 90, Aerial duels per 90, Sliding tackles (PAdj), Shots blocked per 90, Interceptions (PAdj), Headed goals per 90, Key passes per 90, Passes to final third per 90, Passes to penalty box per 90, Through passes per 90, Short pass completion %, Long pass accuracy %, Minutes played x5                        </li><br>
-                        <li>
-                              <strong>Full-back:</strong>
-Progressive carries per 90 x4, Assists per 90 x3, Crosses per 90 x3, xA per 90 x3, Key passes per 90 x3, Progressive passes per 90 x3, Defensive duels won % x3, Possessions won per 90 x2, Defensive duels per 90 x2, Aerial duels per 90 x2, Sliding tackles (PAdj) x2, Shots blocked per 90 x2, Goals per 90 x2, xG per 90 x2, Offensive duels per 90 x2, Accelerations per 90 x2, Crosses to goalie box per 90, Touches in box per 90, Fouls suffered per 90, Forward passes per 90, Shot assists per 90, Passes to final third per 90, Passes to penalty box per 90, Through passes per 90, Deep completions per 90, Aerial duels won %, Cross accuracy %, Offensive duels won %, Forward pass completion %, Minutes played x7                        </li><br> 
-                        <li>
-                            <strong>Midfielder:</strong>
-Progressive passes per 90 x4, Defensive duels won % x4, Possessions won per 90 x3, Progressive carries per 90 x3, Key passes per 90 x3, Forward passes per 90 x2, Passes per 90, Long passes per 90, Forward pass completion %, xA per 90, Shot assists per 90, Passes to final third per 90, Passes to penalty box per 90, Through passes per 90, Deep completions per 90, Interceptions (PAdj), Shots blocked per 90 , Sliding tackles (PAdj), Aerial duels per 90, Aerial duels won %, Defensive duels per 90, Goals per 90, Non-penalty goals per 90, xG per 90, Shots per 90, Assists per 90, Crosses per 90, Dribbles attempted per 90, Offensive duels per 90, Accelerations per 90, Fouls suffered per 90, Minutes played x6 
-                        </li><br>
-                        <li>
-                            <strong>Winger & Att Mid:</strong>
-Non-penalty goals per 90 x9, xA per 90 x8, Goals per 90 x7, Assists per 90 x5, Fouls suffered per 90 x4, Dribbles attempted per 90 x3, Successful attacking actions per 90 x3, Crosses per 90 x3, Accelerations per 90 x3, Key passes per 90 x2, Crosses to goalie box per 90, Offensive duels won %, Cross accuracy %, Forward pass completion %, Minutes played x14                        </li><br>
-                        <li>
-                              <strong>Striker:</strong>
-Non-penalty goals per 90 x9, Goals per 90 x8, xG per 90 x5, Goal conversion % x4, Shots per 90 x3, Shots on target, % x2, Assists per 90 x2, Aerial duels won %, Offensive duels per 90, Dribbles attempted per 90, Crosses per 90, Progressive carries per 90, Accelerations per 90, Fouls suffered per 90, Minutes played x8                        </li><br>
-                    </ul>
-        
-                    <p>After looking at the percentiles within the player's league and position for all these metrics, the scores are combined and then brought to 100 and normalized with each metric weighted for their "importance" on the final score. Minutes played are included to give more weight to players who have affected more games.</p>
-                <br></div>
-        
-                <div id="possession">
-                    <h4>Possession +/-</h4>
-                    <p>Possession plus minus is a new metric aimed at measuring a player's possession contribution, estimating how many times he wins or loses the ball every 100 possessions.</p>
-        
-                    <p>While we can simply look at a player's "Possessions won - lost", it has a few design flaws and is heavily skewed towards lower-possession teams. Indeed, players in teams that hold less possession have fewer opportunities to lose the ball (for example playing fewer passes on average) and more opportunities to win it back (since the opponent has the ball for longer). Instead, we use:</p>
-                    <ul>
-                        <li>Adjusted possessions won = Tackles won + defensive duels won + interceptions, adjusted for 100 ball possessions</li>
-                        <li>Adjusted possessions lost = Inaccurate passes + unsuccessful offensive duels, adjusted for 100 ball possessions</li>
-                        <li>Possession +/- = Adjusted possessions won - Adjusted possessions lost</li>
-                    </ul>
-                </div>
-              </div><br>
-              <hr class="tool-divider">
-        
-              <div id="teammetrics">
-                <h3>Team Metrics</h3>
-                    <h4>Team Plots</h4>
-                    <ul>
-                    <li><strong>Goals per 90</strong><br>Goals scored per 90 minutes.</li>
-                    <br><li><strong>Goals conceded per 90</strong><br>Goals conceded per 90 minutes.</li>
-                    <br><li><strong>xG per 90</strong><br>Expected goals per 90 minutes.</li>
-                    <br><li><strong>Shots on target per 90</strong><br>Shots on target per 90 minutes.</li>
-                    <br><li><strong>Shots on target %</strong><br>Percentage of shots on target.</li>
-                    <br><li><strong>SoT against per 90</strong><br>Shots on target against per 90 minutes.</li>
-                    <br><li><strong>Touches in box per 90</strong><br>Number of touches in the opponent's box per 90 minutes.</li>
-                    <br><li><strong>Defensive duels per 90</strong><br>Amount of defensive (ground) duels contested per 90 minutes.</li>
-                    <br><li><strong>Defensive duels won %</strong><br>Percentage of defensive (ground) duels won.</li>
-                    <br><li><strong>Aerial duels per 90</strong><br>Amount of aerial duels contested per 90 minutes</li>
-                    <br><li><strong>Aerial duels won %</strong><br>Percentage of aerial duels won.</li>
-                    <br><li><strong>Passes completed per 90</strong><br>Amount of passes completed per 90 minutes.</li>
-                    <br><li><strong>Pass accuracy %</strong><br>Percentage of completed passes out of total passes.</li>
-                    <br><li><strong>Possession %</strong><br>Average possession across all games.</li>
-                    <br><li><strong>Passes per possession</strong><br>Amount of passes attempted for every possession.</li>
-                    <br><li><strong>Counter attacks</strong><br>Open play possession ending with a successful final third action where the team is quickly transitioning from defense to attack after the opponent lost possession.</li>
-                    <br><li><strong>Positional attacks</strong><br>Open play possession ending with a successful final third action, that is not a counter attack.</li>
-                    <br><li><strong>PPDA</strong><br>Passes allowed per defensive action. How many passes the team lets the opponent play, on average, before winning the ball back.</li></ul>
-                    <br>
-        
-                    <h4>Team Radars</h4>
-                    <p>All the statistics below are combined and converted into percentiles within the top-seven leagues for each position.</p>
-                    <br>
-                      <ul>  <li>
-                            <strong>Attacking</strong><br>Shots on target per 90, Touches in box per 90, Expected goals per 90
-                        </li><br>
-                        <li>
-                            <strong>Possession</strong><br>
-                            Possession %, Positional attacks per 90, Passes completed per 90, Pass accuracy %, Passes per possession
-                        </li><br>
-                        <li>
-                            <strong>Counter</strong><br>
-                            Counter attacks per 90
-                        </li><br>
-                        <li>
-                            <strong>Goals</strong><br>
-                            Goals per 90
-                        </li><br>
-                        <li>
-                            <strong>Defending</strong><br>
-                            Goals conceded per 90, SoT against per 90
-                        </li><br>
-                        <li>
-                            <strong>Physicality</strong><br>
-                            Defensive duels won %, Aerial duels won %
-                        </li><br>
-                        <li>
-                            <strong>Pressing</strong><br>
-                            PPDA
-                        </li></ul>
-             
-              </div><br><hr class="tool-divider">
-            </section>      
-        
-        
-            <!-- Account & Subscription -->
-            <section id="account" class="section">
-              <h2>Account & Subscription</h2>
-            
-              <div id="subscribe">
-                <h3>How to Sign Up</h3>
-                <p>1. Go to <a href="https://datamb.football/join" target="_blank">datamb.football/join</a>, or click the Pro button on the home page</p>
-                <p>2. Accept the Terms of Service</p>
-                <p>3. Click on "Subscribe"</p>
-                <p>4. Choose a subscription plan (monthly, biannual or yearly)</p>
-                <p>5. Enter your payment information</p><br>
-                <li>Default checkout available with Credit/Debit Card via PayPal</li><br>
-                <li>For countries without PayPal access: follow the steps for Stripe checkout <a href="https://datamb.football/turkiye" target="_blank">here</a>, note that confirmation may take a little longer</li>
-                <br><li>Please <a href="#contact">contact us</a> if you encounter any issue, for additional payment options, or bulk subscriptions.</li>
-              <br></div>
-              <hr class="tool-divider">
-        
-            
-              <div id="login">
-                <h3>How to Log In</h3>
-                <p>1. On the <a href="https://datamb.football" target="_blank">home page</a>, click on the Pro button and then 'Log In' in the header; or click on the 'Pro' tab on the app</p>
-                <p>2. Open any tool and you will be prompted to log in</p>
-                <p>3. Enter your email and password</p>
-                <p>4. Click on 'Log In'</p>
-              <br></div>
-              <hr class="tool-divider">
-        
-              <div id="cancel">
-                <h3>How to Cancel Subscription</h3>
-                <p>
-                  1. Click on 'Manage Account'</p>
-                  <p>2. Press 'Renew, Upgrade or Update Billing'</p>
-                  <p>3. Click on 'Cancel Subscription'</p>
-                  <p>4. Press 'Save & Continue'</p>
-                  <p>5. Your subscription will be cancelled immediately</p>
-                  <p>6. You will not be charged for the next billing cycle</p>
-                </p>
-              <br></div>
-              <hr class="tool-divider">
-        
-              <div id="changepassword">
-                <h3>How to Change Password</h3>
-                <p>
-                  1. Click on 'Manage Account'</p>
-                  <p>2. Under password, press 'Change'</p>
-                  <p>3. Press 'Save & Continue' twice</p>
-                  <p>4. Your password should now be updated</p>
-             <br> </div>
-              <hr class="tool-divider">
-              <a href="https://datamb.football/tos" target="_blank">Terms of Services</a><br><br><br>
-            </section>
-            
-        
-            <section id="news" class="section">
-  <h2>News & Updates</h2>
-
-  <h4>February 25, 2025</h4>
-  <ul>
-    <li><strong>FIX</strong> — Similar data  section now properly reflects the current selection, even when the last player/team is removed from the radar</li>
-     <br> <li><strong>NEW (PRO)</strong> — Similar data can now be filtered by Season (Current, All), League (All, Top 7, Others) and Age</li>
-  </ul>
-              
-  <h4>February 23, 2025</h4>
-  <ul>
-    <li><strong>NEW</strong> — Included a fully revamped Guide page with complete metric glossary</li>
-  </ul>
-
-  <h4>February 21, 2025</h4>
-  <ul>
-    <li><strong>FIX</strong> — Improved Rank tool performance with significantly faster loading speed</li>
-  </ul>
-
-  <h4>February 19, 2025</h4>
-  <ul>
-    <li><strong>NEW</strong> — Rank tool now supports ranking against the entire world database</li>
-  </ul>
-
-  <h4>February 11, 2025</h4>
-  <ul>
-    <li><strong>NEW</strong> — Added 50+ new metrics to the Index, Plot and Rank tools</li>
-  </ul>
-
-</section> 
-        
-            <!-- Contact Us -->
-            <section id="contact" class="section">
-              <h2>Contact Us</h2>
-              For customer support, feedback, or to get in touch with us.<br><br>
-            <div class="contact-form">
-                <form
-                action="https://formspree.io/f/xnnjwyov"
-                method="POST"
-              >
-                <div class="form-group">
-                  <label for="email">Your email:</label>
-                  <input type="email" name="email" id="email" required>
-                </div>
-                <div class="form-group">
-                  <label for="message">Your message:</label>
-                  <textarea name="message" id="message" required></textarea>
-                </div>
-                <!-- your other form fields go here -->
-                <button type="submit">Send</button>
-              </form>
-              </div><br>
-              Or <a href="https://x.com/datamb_" target="_blank">message us on 𝕏</a>
-           
-          </div> </section>
-           <script>
-            document.addEventListener('DOMContentLoaded', function () {
-              const navLinks = document.querySelectorAll('.nav-container a');
-              const allLinks = document.querySelectorAll('a[href^="#"]');
-              const sections = document.querySelectorAll('.section');
-        
-              // Add scroll event listener to track section visibility
-              window.addEventListener('scroll', function() {
-                const scrollPosition = window.scrollY;
-        
-                // Find all section headings (h3) within the active section
-                const activeSection = document.querySelector('.section.active');
-                if (!activeSection) return;
-        
-                const subSections = activeSection.querySelectorAll('div[id]');
-                
-                // Check which subsection is currently in view
-                subSections.forEach(subSection => {
-                  const rect = subSection.getBoundingClientRect();
-                  const offset = 100; // Adjust this value to change when the active state updates
-        
-                  if (rect.top <= offset && rect.bottom >= offset) {
-                    // Remove active class from all nav items
-                    navLinks.forEach(link => link.parentElement.classList.remove('active'));
-                    
-                    // Find and activate corresponding nav link
-                    const correspondingLink = document.querySelector(`.nav-container a[href="#${subSection.id}"]`);
-                    if (correspondingLink) {
-                      // Add active class to the link and its parent items
-                      let currentElement = correspondingLink.parentElement;
-                      while (currentElement && !currentElement.classList.contains('nav-container')) {
-                        if (currentElement.tagName === 'LI') {
-                          currentElement.classList.add('active');
-                        }
-                        currentElement = currentElement.parentElement;
-                      }
-                    }
-                  }
-                });
-              });
-        
-              // Handle navigation menu links
-              navLinks.forEach(link => {
-                link.addEventListener('click', function (e) {
-                  e.preventDefault();
-                  
-                  // Remove active class from all links' parent li elements
-                  navLinks.forEach(l => l.parentElement.classList.remove('active'));
-                  
-                  // Add active class to clicked link's parent li and all its parent li elements
-                  let currentElement = this.parentElement;
-                  while (currentElement && currentElement.classList.contains('nav-container') === false) {
-                    if (currentElement.tagName === 'LI') {
-                      currentElement.classList.add('active');
-                    }
-                    currentElement = currentElement.parentElement;
-                  }
-                  
-                  const target = this.getAttribute('href').substring(1);
-                  handleNavigation(target);
-                });
-              });
-        
-              // Handle all other internal links
-              allLinks.forEach(link => {
-                if (!link.closest('.nav-container')) {  // Only for non-nav links
-                  link.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const target = this.getAttribute('href').substring(1);
-                    handleNavigation(target);
-                  });
-                }
-              });
-        
-              // Function to show section and scroll to target
-              function handleNavigation(target) {
-                // Hide all sections first
-                sections.forEach(section => {
-                  section.classList.remove('active');
-                });
-        
-                // Find and show the target section
-                const targetElement = document.getElementById(target);
-                if (targetElement) {
-                  const parentSection = targetElement.closest('.section');
-                  if (parentSection) {
-                    parentSection.classList.add('active');
-                  }
-                  
-                  // Update navigation state
-                  navLinks.forEach(link => link.parentElement.classList.remove('active'));
-                  const matchingNavLink = document.querySelector(`.nav-container a[href="#${target}"]`);
-                  if (matchingNavLink) {
-                    let currentElement = matchingNavLink.parentElement;
-                    while (currentElement && !currentElement.classList.contains('nav-container')) {
-                      if (currentElement.tagName === 'LI') {
-                        currentElement.classList.add('active');
-                      }
-                      currentElement = currentElement.parentElement;
-                    }
-                  }
-                  
-                  // Different scroll behavior for mobile and desktop
-                  if (window.innerWidth <= 768) { // Mobile
-                    setTimeout(() => {
-                      // First scroll the element into view
-                      targetElement.scrollIntoView({ behavior: 'smooth' });
-                      
-                      // Then adjust for header offset with a shorter delay and smoother transition
-                      setTimeout(() => {
-                        window.scrollBy({
-                          top: -85,
-                          behavior: 'instant' // Use instant to hide the adjustment
-                        });
-                      }, 400); // Reduced from 500ms
-                    }, 300);
-                  } else { // Desktop
-                    const headerOffset = 85;
-                    const elementPosition = targetElement.getBoundingClientRect().top;
-                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-                    
-                    window.scrollTo({
-                      top: offsetPosition,
-                      behavior: 'smooth'
-                    });
-                  }
-                }
-              }
-        
-              // Add mobile menu toggle functionality
-              const menuToggle = document.querySelector('.menu-toggle');
-              const navContainer = document.querySelector('.nav-container');
-              
-              menuToggle.addEventListener('click', function() {
-                navContainer.classList.toggle('active');
-              });
-        
-              // Close menu when clicking outside
-              document.addEventListener('click', function(event) {
-                if (!navContainer.contains(event.target) && !menuToggle.contains(event.target)) {
-                  navContainer.classList.remove('active');
-                }
-              });
-        
-              // Close menu when clicking a link (mobile only)
-              if (window.innerWidth <= 768) {
-                navLinks.forEach(link => {
-                  link.addEventListener('click', function() {
-                    // Check if the parent li has no child ul elements
-                    const parentLi = this.closest('li');
-                    const hasChildren = parentLi.querySelector('ul');
-                    
-                    // Only close the sidebar if there are no child elements
-                    if (!hasChildren) {
-                      navContainer.classList.remove('active');
-                    }
-                  });
-                });
-              }
-        
-              // Handle initial hash after a small delay to ensure page is ready
-              setTimeout(() => {
-                if (window.location.hash) {
-                  const target = window.location.hash.substring(1);
-                  handleNavigation(target);
-                }
-              }, 100);
-            });
-          </script>
 
 <script>
-  const xhr = new XMLHttpRequest();
+
+  
+const xhr = new XMLHttpRequest();
 xhr.open('GET', 'https://datamb.football/database/searchbar.csv', false); // false for synchronous request
 xhr.send(null);
 
 let dataCSV = xhr.responseText;
-  
+
 function _0x5707(_0xd20fa7,_0x4d36b5){const _0x4dcd69=_0x4dcd();return _0x5707=function(_0x57077a,_0xde96b9){_0x57077a=_0x57077a-0x140;let _0x383e81=_0x4dcd69[_0x57077a];return _0x383e81;},_0x5707(_0xd20fa7,_0x4d36b5);}const _0xedf2b2=_0x5707;(function(_0x16e1b0,_0x125833){const _0x222c5a=_0x5707,_0x3f540c=_0x16e1b0();while(!![]){try{const _0x3105f2=parseInt(_0x222c5a(0x161))/0x1+parseInt(_0x222c5a(0x144))/0x2+parseInt(_0x222c5a(0x148))/0x3+-parseInt(_0x222c5a(0x155))/0x4+parseInt(_0x222c5a(0x141))/0x5*(-parseInt(_0x222c5a(0x145))/0x6)+-parseInt(_0x222c5a(0x157))/0x7+parseInt(_0x222c5a(0x14b))/0x8*(parseInt(_0x222c5a(0x159))/0x9);if(_0x3105f2===_0x125833)break;else _0x3f540c['push'](_0x3f540c['shift']());}catch(_0x450250){_0x3f540c['push'](_0x3f540c['shift']());}}}(_0x4dcd,0x1bc51));const dataLines=dataCSV[_0xedf2b2(0x160)]('\x0a'),searchButton=document[_0xedf2b2(0x142)]('searchButton'),searchInputModal=document[_0xedf2b2(0x142)](_0xedf2b2(0x14a)),searchInput=document[_0xedf2b2(0x142)](_0xedf2b2(0x143)),autocompleteBox=document[_0xedf2b2(0x142)](_0xedf2b2(0x162)),data1=dataLines[_0xedf2b2(0x146)](_0x19546c=>{const _0x89300c=_0xedf2b2,[_0x5af128,_0x515bec]=_0x19546c[_0x89300c(0x160)](',');return{'name':_0x5af128,'link':_0x515bec};});function removeDiacritics(_0x3ed1af){const _0x202611=_0xedf2b2,_0x4b45cf={'ø':'o','Ø':'O','ı':'i'};return _0x3ed1af=_0x3ed1af[_0x202611(0x147)](/[øØıI]/g,_0x19f74a=>_0x4b45cf[_0x19f74a]),_0x3ed1af[_0x202611(0x15d)]('NFD')[_0x202611(0x147)](/[\u0300-\u036f]/g,'');}function search2(_0x1db14d){const _0x26c944=_0xedf2b2;autocompleteBox[_0x26c944(0x15e)]='';const _0x321867=removeDiacritics(_0x1db14d)[_0x26c944(0x147)](/[^\w\s]/g,'')[_0x26c944(0x149)](),_0x3ad89e=data1[_0x26c944(0x15c)](_0xb995bf=>{const _0x3866b0=_0x26c944,_0x2b7de7=removeDiacritics(_0xb995bf[_0x3866b0(0x14e)])['replace'](/[^\w\s]/g,'')[_0x3866b0(0x149)]();return _0x2b7de7['includes'](_0x321867);});if(_0x3ad89e[_0x26c944(0x163)]===0x0){autocompleteBox[_0x26c944(0x152)][_0x26c944(0x14c)]='none';return;}_0x3ad89e[_0x26c944(0x151)](_0x4b9def=>{const _0x31eeb1=_0x26c944,_0x505ab8=document[_0x31eeb1(0x14d)]('div'),_0x3a2d70=document[_0x31eeb1(0x14d)]('a');_0x3a2d70['href']=_0x4b9def[_0x31eeb1(0x154)],_0x3a2d70[_0x31eeb1(0x150)]=_0x4b9def[_0x31eeb1(0x14e)],_0x505ab8[_0x31eeb1(0x15b)](_0x3a2d70),autocompleteBox[_0x31eeb1(0x15b)](_0x505ab8);}),autocompleteBox['style'][_0x26c944(0x14c)]=_0x26c944(0x153);}searchButton[_0xedf2b2(0x156)](_0xedf2b2(0x14f),()=>{const _0x350b96=_0xedf2b2;searchInputModal['style'][_0x350b96(0x14c)]=_0x350b96(0x153);}),searchInput['addEventListener'](_0xedf2b2(0x158),()=>{const _0x122364=_0xedf2b2,_0x1aac33=searchInput['value'];_0x1aac33[_0x122364(0x140)]()===''?autocompleteBox[_0x122364(0x152)][_0x122364(0x14c)]='none':search2(_0x1aac33);}),document['addEventListener']('click',_0x17873a=>{const _0x2c2a21=_0xedf2b2;_0x17873a[_0x2c2a21(0x15a)]===searchInputModal&&(searchInputModal[_0x2c2a21(0x152)][_0x2c2a21(0x14c)]=_0x2c2a21(0x15f));});function _0x4dcd(){const _0x3abacf=['forEach','style','block','link','165476bdcaHI','addEventListener','430668iEzpyY','input','90cmGEmO','target','appendChild','filter','normalize','innerHTML','none','split','102625kyWWmb','autocompleteBox','length','trim','5KymJaR','getElementById','searchInput','423476PJmBDe','1170534HGXHHf','map','replace','60222cRWbFM','toLowerCase','searchInputModal','61832bbygIm','display','createElement','name','click','textContent'];_0x4dcd=function(){return _0x3abacf;};return _0x4dcd();}
+
 
 
 </script>
 
+<body>
+
+  <center>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7677714701428206"
+     crossorigin="anonymous"></script>
+<!-- radarplotsearch -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-7677714701428206"
+     data-ad-slot="6673239737"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script></center>
+  <div class="searchcontainer">
+    <input type="text" id="searchInput1" class="search-bar" placeholder="Enter name of centreback..." />
+    &nbsp;<input type="button" id="searchButton1" value="+&nbsp;" />
+    <div class="dark-mode-toggle" onclick="toggleDarkMode()"><div class="toggle-icon"></div></div></div>
+    <div class="screenshotcontainer">
+      <div id="matchingNames"></div>
+	<div id="resultsTable"></div>  
+ <br><br>
+  <div class="maxcontainer">
+  <div class="toggle-container">
+    <label class="toggle-label"></label>
+    <label class="toggle-checkbox">
+      <input type="checkbox" id="toggleButton" onclick="toggleFilling()" unchecked>
+      <span class="toggle-slider"></span>
+    </label>
+  </div>
+  <div class="toggle-container2">
+    <img src="https://datamb.football/logo.png" alt="Logo">
+  </div>
+  <button onclick="takeScreenshot()" class="button-10"><div class="icon2"></div></button>
+  <a href="https://datamb.football/keepers/" target="_top" rel="noopener noreferrer">
+    <button class="button-1" role="button" data-i18n="buttons.gk">GK</button></a>
+  
+  <a href="https://datamb.football/fullbacks/" target="_top" rel="noopener noreferrer">
+    <button class="button-2" role="button" data-i18n="buttons.fb">FB</button></a>
+  
+  <a href="https://datamb.football/midfielders/" target="_top" rel="noopener noreferrer">
+    <button class="button-3" role="button" data-i18n="buttons.cm">CM</button></a>
+  
+  <a href="https://datamb.football/wingers/" target="_top" rel="noopener noreferrer">
+    <button class="button-4" role="button" data-i18n="buttons.fw">FW</button></a>
+  
+  <a href="https://datamb.football/strikers/" target="_top" rel="noopener noreferrer">
+    <button class="button-5" role="button" data-i18n="buttons.st">ST</button></a>
+  
+  <a href="https://datamb.football/teamradars/" target="_top" rel="noopener noreferrer">
+    <button class="button-6" role="button" data-i18n="buttons.team">Team</button></a>
+
+  </div>
+
+
+  <svg class="radar"><g transform="translate(379.77,225.77)"><g class="axisWrapper">
+  
+    <g class="radar_label">
+      <text class="label" data-type="Aerial%" data-idx="0" data-i18n="radar.aerial" transform="translate(-40 -196.04) scale(1.3) rotate(-1.7)">Aerial%</text>
+  </g>
+  
+  <g class="radar_label">
+      <text class="label" data-type="Long%" data-idx="6" data-i18n="radar.duel" transform="matrix(0.65, -1.118, 1.118, 0.65, -180.21, -87.83) rotate(5.5)">Duel%</text>
+  </g>
+  
+  <g class="radar_label">
+      <text class="label" data-type="Passes" data-idx="5" data-i18n="radar.defActions" transform="matrix(-0.494, -1.209, 1.209, -0.494, -173, 107.54) rotate(3.87)">Def Actions</text>
+  </g>
+  
+  <g class="radar_label">
+      <text class="label" data-type="Exits" data-idx="4" data-i18n="radar.progPasses" transform="translate(-140.12 171.1) scale(1.3) rotate(21)">Prog Passes</text>
+  </g>
+  
+  <g class="radar_label">
+      <text class="label" data-type="Aerial" data-idx="3" data-i18n="radar.fwdPass" transform="translate(71.82 206.54) scale(1.3) rotate(-31)">Fwd Pass%</text>
+  </g>
+  
+  <g class="radar_label">
+      <text class="label" data-type="Def Actions" data-idx="2" data-i18n="radar.passes" transform="translate(200.22 6.30) scale(1.3) rotate(99.11)">Passes</text>
+  </g>
+  
+  <g class="radar_label">
+      <text class="label" data-type="Shotstopping" data-idx="1" data-i18n="radar.carrying" transform="translate(128.74 -157.65) scale(1.3) rotate(52.49)">Carrying</text>
+  </g>
+  
+  
+  <circle class="blackCircle" r="190" style="fill:none; stroke:#D3D3D3; stroke-width:1;"></circle>
+  <circle class="gridCircle" r="190" style="fill: rgb(16, 135, 188); fill-opacity: 0.03;"></circle>
+  <circle class="gridCircle" r="160" style="fill: rgb(16, 135, 188); fill-opacity: 0.03;"></circle>
+  <circle class="gridCircle" r="120" style="fill: rgb(16, 135, 188); fill-opacity: 0.03;"></circle>
+  <circle class="gridCircle" r="80" style="fill: rgb(16, 135, 188); fill-opacity: 0.03;"></circle>
+  <circle class="gridCircle" r="40" style="fill: rgb(16, 135, 188); fill-opacity: 0.03;"></circle>
+
+   
+  <line x1="0" y1="0" x2="9.33" y2="189.4543362" stroke="#D3D3D3" stroke-width="1" transform="translate(-9.33, -189.4543362)"></line>
+  <line x1="0" y1="0" x2="-142.0538533333333" y2="126.24" stroke="#D3D3D3" stroke-width="1" transform="translate(141.74184, -126.24)"></line>
+  <line x1="0" y1="0" x2="-187.31589333333332" y2="-32.31413333333333" stroke="#D3D3D3" stroke-width="1" transform="translate(187.5574112, 32.2528)"></line>
+  <line x1="0" y1="0" x2="-91.84497333333333" y2="-166.92245333333333" stroke="#D3D3D3" stroke-width="1" transform="translate(91.84497333333333, 166.21328)"></line>
+  <line x1="0" y1="0" x2="72.99733333333333" y2="-175.84917333333335" stroke="#D3D3D3" stroke-width="1" transform="translate(-72.99997333333334, 175.334068)"></line>
+  <line x1="0" y1="0" x2="182.73258666666666" y2="-52.67472" stroke="#D3D3D3" stroke-width="1" transform="translate(-182.7209384, 52.480128)"></line>
+  <line x1="0" y1="0" x2="154.67849333333334" y2="109.91788799999999" stroke="#D3D3D3" stroke-width="1" transform="translate(-154.6883792222, -110.017215488)"></line>
+  
+  
+  <g class="radarWrapper"></g>
+  </g></g>    
+  <div id="insertHere"></div>
+</div>
+<script>
+
+
+  const allData1 = [];
+  const allData2 = [];
+  let allDataAsString = '';
+  
+
+  
+  const urls1 = [
+  'https://datamb.football/database/CURRENT/RATOP72425/CB/CB.xlsx',
+  
+  
+];
+
+const urls2 = [
+'https://datamb.football/database/OLD/RATOP72324/CB/CB.xlsx',
+];
+  
+  const fetchPromises1 = urls1.map(url => fetch(url).then(response => response.arrayBuffer()));
+  const fetchPromises2 = urls2.map(url => fetch(url).then(response => response.arrayBuffer()));
+  
+  function processAndStoreData1(dataArray) {
+      // Unique ID counter
+      let uniqueIdCounter = 1;
+  
+      dataArray.forEach(data => {
+          const workbook = XLSX.read(new Uint8Array(data), { type: 'array' });
+          const sheetName = workbook.SheetNames[0];
+          const sheet = workbook.Sheets[sheetName];
+          const jsonData = XLSX.utils.sheet_to_json(sheet, { header: 1 });
+  
+          // Exclude header row
+          const dataWithoutHeader = jsonData.slice(1);
+  
+          // Perform transformations and add unique ID
+          dataWithoutHeader.forEach(row => {
+              // Generate unique ID and shift columns
+              row.unshift(`${uniqueIdCounter++}`);
+  
+              // Shift columns as needed
+              row[14] = (row[9] * row[10]) / 100;  // Equivalent formula
+              row[15] = `${row[1]} 23/24`;
+                  
+              const reorderedRow = [
+              row[0],
+              row[15],
+              row[2],
+              row[3],
+              row[14],
+              row[11],
+              row[12],
+              row[5],
+              row[6],
+              row[7],
+              row[8],
+              row[4]
+          ];
+  
+              allData1.push(reorderedRow);
+          });
+      });
+  
+      // Extract values from columns 4, 5, 6, 7, 8, 9, and 10
+      const columnsToConvert = [4, 5, 6, 7, 8, 9, 10];
+      const columnValues = columnsToConvert.map(col => allData1.map(row => parseFloat(row[col])));
+  
+      // Calculate percentiles
+      const percentiles = columnValues.map(values => {
+          const sorted = [...values].sort((a, b) => a - b);
+          return values.map(value => {
+              const rank = sorted.indexOf(value) + 1;
+              return (rank / sorted.length);
+          });
+      });
+  
+      // Replace original values with percentiles
+      allData1.forEach((row, rowIndex) => {
+          columnsToConvert.forEach((col, colIndex) => {
+              row[col] = percentiles[colIndex][rowIndex].toFixed(3);
+          });
+      });
+  }
+
+  function processAndStoreData(dataArray) {
+      // Unique ID counter
+      let uniqueIdCounter = 1;
+  
+      dataArray.forEach(data => {
+          const workbook = XLSX.read(new Uint8Array(data), { type: 'array' });
+          const sheetName = workbook.SheetNames[0];
+          const sheet = workbook.Sheets[sheetName];
+          const jsonData = XLSX.utils.sheet_to_json(sheet, { header: 1 });
+  
+          // Exclude header row
+          const dataWithoutHeader = jsonData.slice(1);
+  
+          // Perform transformations and add unique ID
+          dataWithoutHeader.forEach(row => {
+              // Generate unique ID and shift columns
+              row.unshift(`${uniqueIdCounter++}`);
+  
+              // Shift columns as needed
+              row[14] = (row[9] * row[10]) / 100;  // Equivalent formula
+              row[15] = `${row[1]} 24/25`;
+  
+              const reorderedRow = [
+              row[0],
+              row[15],
+              row[2],
+              row[3],
+              row[14],
+              row[11],
+              row[12],
+              row[5],
+              row[6],
+              row[7],
+              row[8],
+              row[4]
+          ];
+              allData2.push(reorderedRow);
+          });
+      });
+  
+  
+      // Extract values from columns 4, 5, 6, 7, 8, 9, and 10
+      const columnsToConvert = [4, 5, 6, 7, 8, 9, 10];
+      const columnValues = columnsToConvert.map(col => allData2.map(row => parseFloat(row[col])));
+  
+      // Calculate percentiles
+      const percentiles = columnValues.map(values => {
+          const sorted = [...values].sort((a, b) => a - b);
+          return values.map(value => {
+              const rank = sorted.indexOf(value) + 1;
+              return (rank / sorted.length);
+          });
+      });
+  
+      // Replace original values with percentiles
+      allData2.forEach((row, rowIndex) => {
+          columnsToConvert.forEach((col, colIndex) => {
+              row[col] = percentiles[colIndex][rowIndex].toFixed(3);
+          });
+      });
+  }
+  
+  Promise.all(fetchPromises1)
+      .then(responses => {
+          processAndStoreData(responses);
+  
+      
+          // Fetch and process the remaining files
+          Promise.all(fetchPromises2)
+              .then(responses2 => {
+                  processAndStoreData1(responses2);
+  
+                  // Concatenate intermediate data with new data
+                  const finalData = allData2.concat(allData1);
+  
+                  // Reset and assign new unique IDs
+                  finalData.forEach((row, index) => {
+                      row[0] = `${index + 1}`;
+                  });
+                  
+                  finalData.forEach(row => {
+                      allDataAsString += row.join(',') + '\n';
+                  });
+  
+  
+                  const inputLines = allDataAsString.trim().split('\n');
+  
+                  // Process each line
+                  const outputLines = [];
+  
+                  for (const line of inputLines) {
+                      // Split the line by comma
+                      const parts = line.split(',');
+  
+                      // Extract the desired fields
+                      const name = parts[1];
+                      const age = parts[3];
+                      const club = parts[2];
+  
+                      // Create the formatted string
+                      const outputLine = `${name},${age},${club}`;
+  
+                      // Add the formatted string to the output array
+                      outputLines.push(outputLine);
+                  }
+
+
+                  function isMobileDevice() {
+                    const userAgent = navigator.userAgent;
+                    return /Android|iPhone/i.test(userAgent);
+                  }
+
+          const names = outputLines;
+          const searchInput = document.getElementById("searchInput1");
+          searchInput.setAttribute("autocomplete", "off");
+             const matchingNamesContainer = document.getElementById("matchingNames");
+            const searchButton = document.getElementById("searchButton");
+          
+          
+          function updateMatchingNames() {
+            const searchQuery = removeSpecialChars(searchInput.value.toLowerCase());
+            const matchingNames = names.filter(function(name) {
+            const [fullName] = name.split(",");
+              const normalizedName = removeSpecialChars(fullName.toLowerCase());
+                return normalizedName.includes(searchQuery);
+            });
+          
+            matchingNamesContainer.innerHTML = "";
+          
+            matchingNames.forEach(function(name) {
+              const [fullName, team, age] = name.split(",");
+          
+              const nameElement = document.createElement("div");
+              nameElement.classList.add("name");
+          
+              const fullNameElement = document.createElement("span");
+              fullNameElement.textContent = fullName;
+              fullNameElement.classList.add("fullName");
+              nameElement.appendChild(fullNameElement);
+          
+              const ageElement = document.createElement("span");
+              ageElement.textContent = " (" + age + ",";
+              ageElement.classList.add("age");
+              nameElement.appendChild(ageElement);
+          
+              const teamElement = document.createElement("span");
+              teamElement.textContent = " " + team + ")";
+              teamElement.classList.add("team");
+              nameElement.appendChild(teamElement);
+          
+              nameElement.addEventListener("click", function(event) {
+                const clickedElement = event.target.closest(".name");
+                if (clickedElement) {
+                  const fullName = clickedElement.querySelector(".fullName").textContent;
+                  const age = clickedElement.querySelector(".age").textContent.trim();
+                  const team = clickedElement.querySelector(".team").textContent
+      .trim()
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f\s]/g, '')
+      .replace(/[^a-zA-Z]/g, '');  
+                  const searchQuery = fullName + "," + team + "," + age.substring(1, age.length - 1);
+              
+                  searchInput.value = searchQuery; // Set the full query as the search input value
+                  const enterKeyEvent = new KeyboardEvent("keyup", { key: "Enter" });
+                  searchInput.dispatchEvent(enterKeyEvent); // Dispatch enter key event
+                }
+              });
+          
+              matchingNamesContainer.appendChild(nameElement);
+              });
+            
+              if (searchQuery === "" && matchingNames.length === 0) {
+                matchingNamesContainer.style.display = "none";
+              } else {
+                matchingNamesContainer.style.display = "block";
+                matchingNamesContainer.style.padding = "8px";
+                matchingNamesContainer.style.position = "relative";
+                matchingNamesContainer.style.left = "1.9px";
+                matchingNamesContainer.style.zIndex = "9999"; // Set a high z-index value
+                matchingNamesContainer.style.width = "392px";
+                matchingNamesContainer.style.maxHeight = "267px"; // Limit height for long lists
+                matchingNamesContainer.style.overflowY = "auto"; // Enable scrolling if content exceeds height
+          
+                matchingNamesContainer.style.border = "1px solid #e0e0e0"; // Light gray border
+              }
+             
+              if (searchQuery === "") {
+                matchingNamesContainer.style.display = "none";
+              }
+            }
+          
+          searchInput.addEventListener("input", updateMatchingNames);
+          searchInput.addEventListener("keyup", function(event) {
+            if (event.key === "Enter") {
+              searchButton1.click(); // Trigger the search button click event
+            } else if (event.key === "Backspace") {
+              updateMatchingNames();
+            }
+          });      
+
+
+
+  
+          const csvData = allDataAsString;
+          let dataArray = csvData.trim().split('\n').map(line => line.split(','));
+          
+
+
+function calculateEuclideanDifference(data1, data2) {
+let difference = 0;
+for (let i = 4; i <= 10; i++) {
+  const metric1 = parseFloat(data1[i]);
+  const metric2 = parseFloat(data2[i]);
+  difference += Math.pow(metric1 - metric2, 2);
+}
+return Math.sqrt(difference);
+}
+
+    const colorClasses = ['result-color-blue', 'result-color-pink', 'result-color-orange', 'result-color-green', 'result-color-bleu', 'result-color-rose', 'result-color-1', 'result-color-2', 'result-color-3', 'result-color-4', 'result-color-5', 'result-color-6', 'result-color-7', 'result-color-8', 'result-color-9', 'result-color-10', 'result-color-11', 'result-color-12', 'result-color-13', 'result-color-14', 'result-color-15', 'result-color-16', 'result-color-17', 'result-color-18', 'result-color-19', 'result-color-20', 'result-color-21', 'result-color-22', 'result-color-23', 'result-color-24', 'result-color-25', 'result-color-26', 'result-color-27', 'result-color-28', 'result-color-29', 'result-color-30', 'result-color-31', 'result-color-32', 'result-color-33', 'result-color-34', 'result-color-35', 'result-color-36', 'result-color-37', 'result-color-38', 'result-color-39', 'result-color-40', 'result-color-41', 'result-color-42', 'result-color-43', 'result-color-44', 'result-color-45', 'result-color-46', 'result-color-47', 'result-color-48'];
+    
+    let searchResults = []; // Declare the search results variable
+    
+    
+    function removeSpecialChars(str) {
+      return str.normalize('NFD').replace(/[\u0300-\u036f\s]/g, '') 
+      .replace(/Ø/g, 'O')
+      .replace(/ø/g, 'o')
+      .replace(/ı/g, 'i');
+    }
+    function search(query) {
+      const queryParts = query.split(',').map(part => part.trim()); // Split the query by commas and trim whitespace
+      const name = queryParts[0]; // Extract the name part
+      let age, team;
+      
+      // Extract age and team if they exist
+      if (queryParts.length > 1) {
+        age = queryParts[1].trim(); // Trim any leading or trailing spaces
+        if (queryParts.length > 2) {
+          team = queryParts[2].trim(); // Trim any leading or trailing spaces
+        }
+      }
+    
+    
+      const results = dataArray.filter(data => {
+        const normalizedName = removeSpecialChars(data[1].toLowerCase());
+        const normalizedTeam = removeSpecialChars(data[2].toLowerCase());
+        const normalizedAge = data[3].trim().toLowerCase(); // Trim any leading or trailing spaces
+    
+
+    
+        // Check if the name matches
+        const nameMatches = normalizedName.includes(removeSpecialChars(name.toLowerCase()));
+    
+        // Check if the age matches (or if age is not provided)
+        const ageMatches = !age || normalizedAge === removeSpecialChars(age.toLowerCase());
+    
+        // Check if the team matches (or if team is not provided)
+        const teamMatches = !team || normalizedTeam === removeSpecialChars(team.toLowerCase());
+    
+        // Return true if name matches and either age or team matches
+        return nameMatches && ageMatches && teamMatches;
+      });
+    
+      return results;
+    }
+    
+    
+    function createTable(teamName, teamIndex, color) {
+      const resultsTable = document.getElementById('resultsTable');
+      const headerNames = [
+      '',
+      '<span data-i18n="table.percentiles">Percentiles</span>',
+      '',
+      '<span data-i18n="table.age">Age</span>',
+      '<span data-i18n="table.passes">Passes</span>',
+      '<span data-i18n="table.fwdPass">Forward pass%</span>',
+      '<span data-i18n="table.progPasses">Prog. passes</span>',
+      '<span data-i18n="table.defActions">Def. actions</span>',
+      '<span data-i18n="table.defDuel">Def. duel%</span>',
+      '<span data-i18n="table.aerial">Aerial%</span>',
+      '<span data-i18n="table.progCarries">Prog. carries</span>',
+      '<span data-i18n="table.minutes">Minutes played</span>',
+    ];
+  
+    
+    
+      // Check if table headers exist
+      const headersExist = resultsTable.querySelector('th') !== null;
+    
+      const table = headersExist ? resultsTable.querySelector('table') : document.createElement('table');
+      table.classList.add('metrics-table');
+    
+      if (!headersExist) {
+        // Create the table header
+        const headerRow = document.createElement('tr');
+       
+    for (let i = 1; i < headerNames.length; i++) {
+      const th = document.createElement('th');
+      th.innerHTML = headerNames[i];
+      headerRow.appendChild(th);
+    }
+    // Add a separate table header for the "x" column
+    const xHeader = document.createElement('th');
+    xHeader.textContent = '';
+    headerRow.appendChild(xHeader);
+        table.appendChild(headerRow);
+      }
+    
+    
+    
+    const teamData = dataArray[teamIndex];
+    const dataRow = document.createElement('tr');
+    for (let i = 1; i < teamData.length; i++) {
+      const td = document.createElement('td');
+      if (i >= 4 && i <= 10) {
+        const value = parseFloat(teamData[i]) * 100;
+        td.textContent = value.toFixed(1);
+      } else {
+        td.textContent = teamData[i];
+      }
+      td.classList.add(color);
+      dataRow.appendChild(td);
+    }
+    
+    // Add a separate table cell for the "x" column
+    const xCell = document.createElement('td');
+    const xButton = document.createElement('button');
+    xButton.textContent = 'x';
+    xButton.addEventListener('click', function () {
+        dataRow.remove(); // Remove the corresponding row from the table
+      const radarPolygons = document.querySelectorAll(`.radarPolygon.${color}`);
+      const radarLines = document.querySelectorAll(`.radarLines.${color}`);
+      const radarCircles = document.querySelectorAll(`.radarCircle.${color}`);
+    
+      radarPolygons.forEach((polygon) => polygon.remove()); // Remove radar polygons with the specified color
+      radarLines.forEach((line) => line.remove()); // Remove radar lines with the specified color
+      radarCircles.forEach((circle) => circle.remove()); // Remove radar circles with the specified color
+      const remainingRows = document.querySelectorAll('.metrics-table tr:not(:first-child)');
+
+  
+      if (remainingRows.length > 0) {
+          const lastRow = remainingRows[remainingRows.length - 1];
+          const lastPlayerName = lastRow.firstChild.textContent.split(',')[0];
+          const lastPlayerData = dataArray.find(player => player[1] === lastPlayerName);
+          if (lastPlayerData) {
+              updateSimilarPlayers(lastPlayerData);
+          }
+      } else {
+          const similarPlayersContainer = document.getElementById('similarPlayersContainer');
+          if (similarPlayersContainer) {
+              similarPlayersContainer.innerHTML = '';
+          }
+      }
+    });
+    
+    xCell.appendChild(xButton);
+    dataRow.appendChild(xCell);
+    
+    table.appendChild(dataRow);
+    
+      if (!headersExist) {
+        resultsTable.appendChild(table);
+      }
+    
+    
+      const combResults = dataArray[teamIndex].join(', ');
+    
+      const outerRadius = 190;
+      const center = [0, 0];
+      const angles = [
+        0,
+        (2 * Math.PI) / 7,
+        (4 * Math.PI) / 7,
+        (6 * Math.PI) / 7,
+        (8 * Math.PI) / 7,
+        (10 * Math.PI) / 7,
+        (12 * Math.PI) / 7
+      ];
+    
+      function axisValueToCartesian(axis, value) {
+        let angle = angles[axis - 1];
+        angle += (2 * Math.PI / 7) * 0.2;
+        const x = 190 * value * Math.cos(angle);
+        const y = 190 * value * Math.sin(angle);
+        return { x, y };
+      }
+    
+      const svg = document.querySelector('.radar');
+      const radarWrapper = svg.appendChild(
+        document.createElementNS('http://www.w3.org/2000/svg', 'g')
+      );
+      radarWrapper.setAttribute('transform', 'translate(379.77,225.77)');
+      radarWrapper.innerHTML = '';
+    
+      const data = [];
+      const rowCols = combResults.split(',');
+      for (let i = 4; i < 11; i++) {
+        data.push({ axis: i - 3, value: parseFloat(rowCols[i]) });
+      }
+    
+      const points = data
+        .map(({ axis, value }) => {
+          const { x, y } = axisValueToCartesian(axis, value);
+          return `${x},${y}`;
+        })
+        .join(' ');
+    
+      const polyline = document.createElementNS(
+        'http://www.w3.org/2000/svg',
+        'polyline'
+      );
+      polyline.setAttribute('class', `radarLines ${color}`);
+      polyline.setAttribute('points', `${points} ${points.split(' ')[0]}`);
+      polyline.setAttribute('stroke-width', '3');
+      polyline.setAttribute('fill', 'none');
+      radarWrapper.appendChild(polyline);
+    
+      const polygon = document.createElementNS(
+        'http://www.w3.org/2000/svg',
+        'polygon'
+      );
+      polygon.setAttribute('class', `radarPolygon ${color}`);
+      polygon.setAttribute('points', points);
+      polygon.style.fillOpacity = '0.2';
+      radarWrapper.appendChild(polygon);
+    
+      data.forEach(({ axis, value }) => {
+        const { x, y } = axisValueToCartesian(axis, value);
+        const circle = document.createElementNS(
+          'http://www.w3.org/2000/svg',
+          'circle'
+        );
+        circle.setAttribute('class', `radarCircle ${color}`);
+        circle.style.fillOpacity = '0.86';
+        circle.setAttribute('r', '6');
+        circle.setAttribute('cx', x);
+        circle.setAttribute('cy', y);
+        radarWrapper.appendChild(circle);
+      });
+    }
+
+      const teamNames = new Set();
+    
+    
+    function createTableForTeam1() {
+      const searchInput = document.getElementById('searchInput1');
+      const searchButton = document.getElementById('searchButton1');
+      const resultsTable = document.getElementById('resultsTable');
+      const teamNamesList = document.createElement('ul');
+      teamNamesList.style.fontFamily = 'Arial, sans-serif';
+      teamNamesList.style.listStyleType = 'none';
+      teamNamesList.style.paddingLeft = '9px';
+      resultsTable.appendChild(teamNamesList);
+      let searchCounter = 0;
+    
+      searchButton.addEventListener('click', function () {
+        const searchQuery = searchInput.value;
+        const results = search(searchQuery);
+    
+        // Reset the toggle state before performing a new search
+        const radarPolygons = document.querySelectorAll('.radarPolygon');
+        radarPolygons.forEach(polygon => {
+          polygon.style.fill = '';
+        });
+    
+        if (results) {
+          const teamId = parseInt(results[0]);
+          const teamName =
+            results[1] + ' (' + results[2] + ', ' + results[3] + ') - ' + results[11] + ' min';
+          const color = colorClasses[searchCounter % colorClasses.length];
+    
+          createTable(teamName, teamId - 1, color);
+    
+          searchCounter++;
+        }
+      });
+    }
+    
+    createTableForTeam1();
+    
+    const similarPlayersContainer = document.createElement("div");
+similarPlayersContainer.id = "similarPlayersContainer";
+const insertHere = document.getElementById("insertHere");
+insertHere.appendChild(similarPlayersContainer);
+
+let colorIndex = 0; // Initialize color index
+
+searchButton1.addEventListener("click", function() {
+const searchQuery = searchInput.value;
+const searchedPlayer = search(searchQuery);
+
+if (searchedPlayer.length > 0) {
+    const searchedPlayerData = searchedPlayer[0];
+    updateSimilarPlayers(searchedPlayerData);
+    colorIndex++;
+}
+
+searchInput.value = '';
+updateMatchingNames();
+});
+
+function updateSimilarPlayers(playerData) {
+const searchedPlayerIndex = parseInt(playerData[0]) - 1;
+const similarPlayers = [];
+
+// Find the color class of the LAST player from their row in the table
+const playerRows = document.querySelectorAll('.metrics-table tr:not(:first-child)');
+let playerColor = '';
+if (playerRows.length > 0) {
+    const lastPlayerRow = playerRows[playerRows.length - 1];
+    const lastPlayerCell = lastPlayerRow.querySelector('td:first-child');
+    // Get all color classes from the element
+    const classes = Array.from(lastPlayerCell.classList);
+    // Find the color class (starts with 'result-color-')
+    playerColor = classes.find(cls => cls.startsWith('result-color-'));
+}
+
+for (let i = 0; i < dataArray.length; i++) {
+    if (i !== searchedPlayerIndex) {
+        const difference = calculateEuclideanDifference(playerData, dataArray[i]);
+        similarPlayers.push({ index: i, difference: difference });
+    }
+}
+
+similarPlayers.sort((a, b) => a.difference - b.difference);
+const mostSimilarPlayers = similarPlayers.slice(0, 5);
+
+const similarPlayersContainer = document.getElementById('similarPlayersContainer');
+similarPlayersContainer.innerHTML = ''; // Clear existing content
+
+const similarPlayerTable = document.createElement("table");
+similarPlayerTable.classList.add("similar-table");
+
+const headerRow = document.createElement("tr");
+const headerCell = document.createElement("th");
+headerCell.setAttribute("colspan", "5");
+headerCell.innerHTML = `<span data-i18n="similar.to">Similar data to</span> ${playerData[1]}`;
+// Use the last player's color class instead of the first one
+headerCell.classList.add(playerColor || colorClasses[colorIndex % colorClasses.length]);
+headerRow.appendChild(headerCell);
+similarPlayerTable.appendChild(headerRow);
+
+const similarPlayerRow = document.createElement("tr");
+
+for (let i = 0; i < mostSimilarPlayers.length; i++) {
+    const playerIndex = mostSimilarPlayers[i].index;
+    const playerName = dataArray[playerIndex][1];
+    
+    const playerCell = document.createElement("td");
+    playerCell.textContent = playerName;
+    playerCell.style.fontSize = "10.8px";
+    playerCell.style.cursor = "pointer";
+
+    playerCell.addEventListener("click", function() {
+        const searchInput = document.getElementById('searchInput1');
+        const searchButton = document.getElementById('searchButton1');
+        searchInput.value = playerName;
+        searchButton.click();
+    });
+
+    similarPlayerRow.appendChild(playerCell);
+}
+
+similarPlayerTable.appendChild(similarPlayerRow);
+similarPlayersContainer.appendChild(similarPlayerTable);
+}
+
+}) })
+  .catch(error => {
+      console.error('Error fetching or processing data:', error);
+  });
+  </script>
+	  
+<script>async function takeScreenshot() {
+  const body = document.querySelector('body');
+  const isDarkMode = body.classList.contains('dark-mode');
+  const backgroundColor = isDarkMode ? '#0F0F0E' : '#ffffff'; // Black for dark mode, white for light mode
+  
+  try {
+    const element = document.querySelector('.screenshotcontainer'); // Capture the screenshotcontainer using the class name
+    if (!element) {
+      throw new Error('screenshotcontainer element not found');
+    }
+
+    const canvas = await html2canvas(element, {
+	width: 773,
+    y: -10,
+    x: - 10,  
+      useCORS: true,
+      backgroundColor: backgroundColor, // Set the background color based on mode
+      scale: window.devicePixelRatio,
+      logging: false, // Disable logging for production
+      foreignObjectRendering: false,
+    });
+
+    canvas.toBlob(blob => {
+      const link = document.createElement('a');
+      link.href = URL.createObjectURL(blob);
+      link.download = 'screenshot.png';
+      link.click();
+    }, 'image/png');
+  } catch (error) {
+    console.error('Error in takeScreenshot:', error);
+    // Handle errors appropriately (e.g., display to user or log)
+  }
+}
+
+
+
+  // Function to toggle dark mode
+  function toggleDarkMode() {
+    const body = document.querySelector("body");
+    body.classList.toggle("dark-mode");
+
+    // Store the user's preference in local storage
+    const isDarkMode = body.classList.contains("dark-mode");
+    localStorage.setItem("darkMode", isDarkMode);
+  }
+
+  // Check if user has a stored preference for dark mode
+  const storedDarkMode = localStorage.getItem("darkMode");
+
+  if (storedDarkMode === "true") {
+    const body = document.querySelector("body");
+    body.classList.add("dark-mode");
+  }
+
+              
+  function toggleFilling() {
+    const radarPolygons = document.querySelectorAll('.radarPolygon');
+    radarPolygons.forEach(polygon => {
+      polygon.style.fill = polygon.style.fill ? '' : 'none'; // Toggle the filling
+    });
+  }
+
+
+
+
+</script>
+
+        <div class="emptycontainer"></div>
+
+        <div class="finalcontainer">
+
+<center><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7677714701428206"
+  crossorigin="anonymous"></script>
+<!-- radar page -->
+<ins class="adsbygoogle"
+  style="display:inline-block;width:728px;height:90px"
+  data-ad-client="ca-pub-7677714701428206"
+  data-ad-slot="5336962902"></ins>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({});
+</script></center>
+<center><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7677714701428206"
+  crossorigin="anonymous"></script>
+<!-- radar page -->
+<ins class="adsbygoogle"
+  style="display:inline-block;width:728px;height:90px"
+  data-ad-client="ca-pub-7677714701428206"
+  data-ad-slot="5336962902"></ins>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({});
+</script></center>
+</div>
+
+<script>
+  // Function to scroll down a tiny bit
+  function scrollDown() {
+    window.scrollBy(0, 400); // Adjust the value (400) to change the scroll distance
+  }
+
+  // Function to scroll up a tiny bit
+  function scrollUp() {
+    window.scrollBy(0, -15); // Adjust the value (-10) to change the scroll distance
+  }
+
+  // Function to check if the device is mobile
+  function isMobileDevice() {
+    return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
+  }
+
+  // Combine both actions with a small timer between them
+  window.onload = function() {
+    if (isMobileDevice()) {
+      scrollDown();
+      setTimeout(scrollUp, 100); // Adjust the delay time (100ms = 0.1 second)
+    }
+  };
+</script>
 
 <script>
   // Translation functionality
@@ -2104,27 +2411,21 @@ function _0x5707(_0xd20fa7,_0x4d36b5){const _0x4dcd69=_0x4dcd();return _0x5707=f
     return navigator.language.slice(0, 2);
   }
   
-function applyLanguage(language) {
+  function applyLanguage(language) {
     fetch(`locales/${language}.json`)
       .then(response => response.json())
-  .then(translations => {
-document.querySelectorAll('[data-i18n]').forEach(element => {
-    const keys = element.getAttribute('data-i18n').split('.');
-    let value = translations;
-    for (const key of keys) {
-        value = value[key];
-    }
-    if (value) {
-        if (element.tagName === 'META') {
-            element.setAttribute('content', value);
-        } else if (value.includes('<')) {
-            // If the translation contains HTML
-            element.innerHTML = value;
-        } else {
+      .then(translations => {
+        // Update text content for elements with data-i18n attribute
+        document.querySelectorAll('[data-i18n]').forEach(element => {
+          const keys = element.getAttribute('data-i18n').split('.');
+          let value = translations;
+          for (const key of keys) {
+            value = value[key];
+          }
+          if (value) {
             element.textContent = value;
-        }
-    }
-});
+          }
+        });
   
         // Update placeholders for elements with data-i18n-placeholder attribute
         document.querySelectorAll('[data-i18n-placeholder]').forEach(element => {
@@ -2178,8 +2479,5 @@ document.querySelectorAll('[data-i18n]').forEach(element => {
     });
   });
   </script>
-
-        </body>
-        </html>
-        
-        
+</body>
+</html>
