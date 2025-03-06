@@ -1741,16 +1741,8 @@ var sizeScale = d3.scaleLinear()
                     .style("top", "-1000px");  
             }, 1500);
         }  
-    
-    // Get translations for the metrics
-    const xMetricTranslation = document.querySelector(`[data-i18n="${customMetricOrder.find(m => m.text === xMetric).dataI18n}"]`)?.textContent || xMetric;
-    const yMetricTranslation = document.querySelector(`[data-i18n="${customMetricOrder.find(m => m.text === yMetric).dataI18n}"]`)?.textContent || yMetric;
-    const sizeMetricTranslation = document.querySelector(`[data-i18n="${customMetricOrder.find(m => m.text === sizeMetric).dataI18n}"]`)?.textContent || sizeMetric;
+        tooltip.html(filteredNames[filteredData.indexOf(d)] + "<br/>" + xMetric + ": " + d[header.indexOf(xMetric)] + "<br/>" + yMetric + ": " + d[header.indexOf(yMetric)] + "<br/>" + sizeMetric + ": " + d[header.indexOf(sizeMetric)])
 
-    tooltip.html(filteredNames[filteredData.indexOf(d)] + "<br/>" + 
-    xMetricTranslation + ": " + d[header.indexOf(xMetric)] + "<br/>" + 
-    yMetricTranslation + ": " + d[header.indexOf(yMetric)] + "<br/>" + 
-    sizeMetricTranslation + ": " + d[header.indexOf(sizeMetric)])
       .style("left", (d3.event.pageX + 10) + "px")
       .style("top", (d3.event.pageY - 28) + "px");
   })
