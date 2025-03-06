@@ -1207,10 +1207,10 @@ function appendOptions(selectElement, metrics) {
                 .attr("data-i18n", metric.dataI18n); // Add a class for styling (optional)
         } else {
             // Add a regular selectable option
-            const option = selectElement.append("option")
-                .text(metric.text)
-                .attr("value", metric.text)
-                .attr("data-i18n", metric.dataI18n);
+            selectElement.append("option")
+ .text(metric.text)
+ .attr("value", metric.text)
+ .attr("data-i18n", metric.dataI18n);
         }
     });
 }
@@ -1220,13 +1220,8 @@ appendOptions(selectX, customMetricOrder);
 appendOptions(selectY, customMetricOrder);
 appendOptions(selectSize, customMetricOrder);
 
-// Make sure to apply translations to the dropdown options after they're created
-// This ensures they have the correct language from the start
-document.addEventListener('DOMContentLoaded', function() {
-    // Apply language after options are added to ensure they're translated
-    const currentLanguage = getPreferredLanguage();
-    applyLanguage(currentLanguage);
-});
+
+
 
   var svg = d3.select("#scatter-plot")
     .attr("width", width + margin.left + margin.right)
@@ -2031,20 +2026,67 @@ function selectAllCircles() {
   refreshChart()
 }
 
-function setLanguage(language) {
-  localStorage.setItem('preferredLanguage', language);
-  // Update URL with language parameter
-  const url = new URL(window.location.href);
-  if (language === 'en') {
-    url.searchParams.delete('lang');
-  } else {
-    url.searchParams.set('lang', language);
-  }
-  window.history.pushState({}, '', url);
-  
-  // Apply the language change
-  applyLanguage(language);
+function applyLanguage(language) {
+  fetch(`locales/${language}.json`)
+    .then(response => response.json())
+    .then(translations => {
+      // Update text content for elements with data-i18n attribute
+      document.querySelectorAll('[data-i18n]').forEach(element => {
+        const keys = element.getAttribute('data-i18n').split('.');
+        let value = translations;
+        for (const key of keys) {
+          value = value[key];
+        }
+        if (value) {
+          // Special handling for select options
+          if (element.tagName === 'OPTION') {
+            // Don't update category descriptors
+            if (!element.hasAttribute('disabled')) {
+              element.textContent = value;
+            }
+          } else {
+            element.textContent = value;
+          }
+        }
+      });
+
+      // Update placeholders for elements with data-i18n-placeholder attribute
+      document.querySelectorAll('[data-i18n-placeholder]').forEach(element => {
+        const key = element.getAttribute('data-i18n-placeholder');
+        const value = translations[key];
+        if (value) {
+          element.placeholder = value;
+        }
+      });
+
+      // Force a chart update to refresh the labels with new translations
+      if (typeof updateChart === 'function') {
+        updateChart();
+      }
+  });
 }
+
+// Initialize translations after DOM is fully loaded
+document.addEventListener('DOMContentLoaded', function() {
+  const preferredLanguage = getPreferredLanguage();
+  applyLanguage(preferredLanguage);
+});
+
+// Also apply translations when metrics are changed
+selectX.on('change', function() {
+  const preferredLanguage = getPreferredLanguage();
+  applyLanguage(preferredLanguage);
+});
+
+selectY.on('change', function() {
+  const preferredLanguage = getPreferredLanguage();
+  applyLanguage(preferredLanguage);
+});
+
+selectSize.on('change', function() {
+  const preferredLanguage = getPreferredLanguage();
+  applyLanguage(preferredLanguage);
+});
 </script>
 
 
@@ -2182,7 +2224,15 @@ function applyLanguage(language) {
           value = value[key];
         }
         if (value) {
-          element.textContent = value;
+          // Special handling for select options
+          if (element.tagName === 'OPTION') {
+            // Don't update category descriptors
+            if (!element.hasAttribute('disabled')) {
+              element.textContent = value;
+            }
+          } else {
+            element.textContent = value;
+          }
         }
       });
 
@@ -2194,22 +2244,35 @@ function applyLanguage(language) {
           element.placeholder = value;
         }
       });
-      
-      // Update dropdown options with data-i18n attributes
-      document.querySelectorAll('select option[data-i18n]').forEach(option => {
-        const dataI18n = option.getAttribute('data-i18n');
-        if (dataI18n && translations[dataI18n]) {
-          option.textContent = translations[dataI18n];
-        }
-      });
-      
-      // Force update of the metric display values in tooltips
+
+      // Force a chart update to refresh the labels with new translations
+      if (typeof updateChart === 'function') {
+        updateChart();
+      }
   });
 }
 
-// Initialize translations
-const preferredLanguage = getPreferredLanguage();
-applyLanguage(preferredLanguage);
+// Initialize translations after DOM is fully loaded
+document.addEventListener('DOMContentLoaded', function() {
+  const preferredLanguage = getPreferredLanguage();
+  applyLanguage(preferredLanguage);
+});
+
+// Also apply translations when metrics are changed
+selectX.on('change', function() {
+  const preferredLanguage = getPreferredLanguage();
+  applyLanguage(preferredLanguage);
+});
+
+selectY.on('change', function() {
+  const preferredLanguage = getPreferredLanguage();
+  applyLanguage(preferredLanguage);
+});
+
+selectSize.on('change', function() {
+  const preferredLanguage = getPreferredLanguage();
+  applyLanguage(preferredLanguage);
+});
 </script> 
   <br>		
   <br>		
