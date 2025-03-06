@@ -2059,10 +2059,7 @@ function applyLanguage(language) {
         }
       });
 
-      // Force a chart update to refresh the labels with new translations
-      if (typeof updateChart === 'function') {
-        updateChart();
-      }
+
   });
 }
 
@@ -2072,21 +2069,7 @@ document.addEventListener('DOMContentLoaded', function() {
   applyLanguage(preferredLanguage);
 });
 
-// Also apply translations when metrics are changed
-selectX.on('change', function() {
-  const preferredLanguage = getPreferredLanguage();
-  applyLanguage(preferredLanguage);
-});
 
-selectY.on('change', function() {
-  const preferredLanguage = getPreferredLanguage();
-  applyLanguage(preferredLanguage);
-});
-
-selectSize.on('change', function() {
-  const preferredLanguage = getPreferredLanguage();
-  applyLanguage(preferredLanguage);
-});
 </script>
 
 
@@ -2224,15 +2207,7 @@ function applyLanguage(language) {
           value = value[key];
         }
         if (value) {
-          // Special handling for select options
-          if (element.tagName === 'OPTION') {
-            // Don't update category descriptors
-            if (!element.hasAttribute('disabled')) {
-              element.textContent = value;
-            }
-          } else {
-            element.textContent = value;
-          }
+          element.textContent = value;
         }
       });
 
@@ -2245,10 +2220,6 @@ function applyLanguage(language) {
         }
       });
 
-      // Force a chart update to refresh the labels with new translations
-      if (typeof updateChart === 'function') {
-        updateChart();
-      }
   });
 }
 
@@ -2258,21 +2229,7 @@ document.addEventListener('DOMContentLoaded', function() {
   applyLanguage(preferredLanguage);
 });
 
-// Also apply translations when metrics are changed
-selectX.on('change', function() {
-  const preferredLanguage = getPreferredLanguage();
-  applyLanguage(preferredLanguage);
-});
 
-selectY.on('change', function() {
-  const preferredLanguage = getPreferredLanguage();
-  applyLanguage(preferredLanguage);
-});
-
-selectSize.on('change', function() {
-  const preferredLanguage = getPreferredLanguage();
-  applyLanguage(preferredLanguage);
-});
 </script> 
   <br>		
   <br>		
