@@ -2,18 +2,18 @@
 <html>
 <head>
   <meta name="language" content="en">
-  <link rel="alternate" hreflang="en" href="https://datamb.football/strikers"/>
-  <link rel="alternate" hreflang="x-default" href="https://datamb.football/strikers"/>  
+  <link rel="alternate" hreflang="en" href="https://datamb.football/wingers"/>
+  <link rel="alternate" hreflang="x-default" href="https://datamb.football/wingers"/>  
   <meta name="viewport" content="width=device-width, user-scalable=no">
   <link rel="shortcut icon" type="image/x-icon" href="https://datamb.football/favicon.ico">
-  <title data-i18n="meta.title">DataMB | Compare Strikers</title>
-  <meta property="og:image" content="https://datamb.football/vignettes/st.png">
-  <meta name="description" data-i18n="meta.description" content="Compare the statistics of strikers (centre-forwards) in the Top 7 Leagues. Visualize player performance. Find similar profiles. Use our radar tool to compare aerial duels; goals; crosses; dribbles; xG; xA; passes received and more for strikers in Premier League, La Liga, Bundesliga, Serie A, Ligue 1, Eredivisie, Primeira Liga.">
+  <title data-i18n="meta.title">DataMB | Compare Wingers</title>
+  <meta property="og:image" content="https://datamb.football/vignettes/fw.png">
+  <meta name="description" data-i18n="meta.description" content="Compare winger and attacking midfielder statistics in the Top 7 Leagues. Visualize player performance. Find similar profiles. Use our radar tool to compare goals; assists; xG and xA; dribbles; progressive runs; key passes and more for wingers in Premier League, La Liga, Bundesliga, Serie A, Ligue 1, Eredivisie, Primeira Liga.">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@DataMB_">
-  <meta name="twitter:title" content="DataMB | Compare Strikers">
+  <meta name="twitter:title" content="DataMB | Compare Wingers">
   <meta name="twitter:description" content="Radar Comparison Tool">
-  <meta name="twitter:image" content="https://datamb.football/vignettes/st.png">
+  <meta name="twitter:image" content="https://datamb.football/vignettes/fw.png">
 <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
 <script>
   (function() {
@@ -36,7 +36,7 @@ viewportMeta.setAttribute('content', 'width=device-width, initial-scale=' + init
 
 <defs>
 <style>
-	#matchingNames {
+#matchingNames {
   background-color: #ffffff;
   border-radius: 8px;
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
@@ -102,12 +102,10 @@ body.dark-mode #matchingNames .team {
 .team {
   color: #777777;
 }
-
 	
 body {
     background-color: white;
 }
-
 	  body.dark-mode #searchInput {
     color: #000; 
         }
@@ -1020,6 +1018,7 @@ text {
 
 
 
+
 td {
     font-weight: bold;
   }
@@ -1095,7 +1094,6 @@ tr:first-child th:first-child {
   word-wrap: break-word;
   overflow: hidden; 
 }
-
 
 
 #searchInput1 {
@@ -1278,6 +1276,7 @@ opacity: .8;
   padding: 4px 11px;
 }
 
+
 .header {
   font-family: system-ui;
   padding: 20px;
@@ -1448,7 +1447,6 @@ body.dark-mode .language-option {
   display: block;
 }
 
-
 </style>
 </defs>
 	
@@ -1535,7 +1533,7 @@ function _0x5707(_0xd20fa7,_0x4d36b5){const _0x4dcd69=_0x4dcd();return _0x5707=f
      (adsbygoogle = window.adsbygoogle || []).push({});
 </script></center>
   <div class="searchcontainer">
-    <input type="text" id="searchInput1" class="search-bar" data-i18n-placeholder="search.placeholder2" placeholder="Enter name of striker..." />
+    <input type="text" id="searchInput1" class="search-bar" data-i18n-placeholder="search.placeholder2" placeholder="Enter name of winger..." />
     &nbsp;<input type="button" id="searchButton1" value="+&nbsp;" />
     <div class="dark-mode-toggle" onclick="toggleDarkMode()"><div class="toggle-icon"></div></div></div>
     <div class="screenshotcontainer">
@@ -1566,8 +1564,8 @@ function _0x5707(_0xd20fa7,_0x4d36b5){const _0x4dcd69=_0x4dcd();return _0x5707=f
   <a href="https://datamb.football/midfielders/" target="_top" rel="noopener noreferrer">
     <button class="button-4" role="button">CM</button></a>
   
-  <a href="https://datamb.football/wingers/" target="_top" rel="noopener noreferrer">
-    <button class="button-5" role="button">FW</button></a>
+  <a href="https://datamb.football/strikers/" target="_top" rel="noopener noreferrer">
+    <button class="button-5" role="button">ST</button></a>
   
   <a href="https://datamb.football/teamradars/" target="_top" rel="noopener noreferrer">
     <button class="button-6" role="button" data-i18n="buttons.team">Team</button></a>
@@ -1578,33 +1576,32 @@ function _0x5707(_0xd20fa7,_0x4d36b5){const _0x4dcd69=_0x4dcd();return _0x5707=f
   <svg class="radar"><g transform="translate(379.77,225.77)"><g class="axisWrapper">
   
     <g class="radar_label">
-      <text class="label" data-type="Aerial%" data-idx="0" data-i18n="radar.xa" transform="translate(-23.6 -199) scale(1.3) rotate(-1.7)">xA</text>
+      <text class="label" data-type="Aerial%" data-idx="0" data-i18n="radar.keyPasses" transform="translate(-60 -196.04) scale(1.3) rotate(-1.7)">Key Passes</text>
   </g>
   
   <g class="radar_label">
-      <text class="label" data-type="Long%" data-idx="6" data-i18n="radar.passesToBox" transform="matrix(0.65, -1.118, 1.118, 0.65, -200.21, -61.03) rotate(6)">Passes to box</text>
+      <text class="label" data-type="Long%" data-idx="6" data-i18n="radar.assists" transform="matrix(0.65, -1.118, 1.118, 0.65, -184.21, -84.03) rotate(5.5)">Assists</text>
   </g>
   
   <g class="radar_label">
-      <text class="label" data-type="Passes" data-idx="5" data-i18n="radar.xg" transform="matrix(-0.494, -1.209, 1.209, -0.494, -190, 63.54) rotate(3.87)">xG</text>
+      <text class="label" data-type="Passes" data-idx="5" data-i18n="radar.xgxa" transform="matrix(-0.494, -1.209, 1.209, -0.494, -181, 82) rotate(5)">xG+xA</text>
   </g>
   
   <g class="radar_label">
-      <text class="label" data-type="Exits" data-idx="4" data-i18n="radar.npg" transform="translate(-105.12 188.16) scale(1.3) rotate(21)">NPG</text>
+      <text class="label" data-type="Exits" data-idx="4" data-i18n="radar.npg" transform="translate(-101.5 190.16) scale(1.3) rotate(21)">NPG</text>
   </g>
   
   <g class="radar_label">
-      <text class="label" data-type="Aerial" data-idx="3" data-i18n="radar.aerial" transform="translate(78.82 201.54) scale(1.3) rotate(-31)">Aerial%</text>
+      <text class="label" data-type="Aerial" data-idx="3" data-i18n="radar.dribbles" transform="translate(71.82 206.54) scale(1.3) rotate(-31)">Dribbles</text>
   </g>
   
   <g class="radar_label">
-      <text class="label" data-type="Def Actions" data-idx="2" data-i18n="radar.passesRec" transform="translate(203.22 -10.30) scale(1.3) rotate(99.11)">Passes Rec</text>
+      <text class="label" data-type="Def Actions" data-idx="2" data-i18n="radar.carries" transform="translate(200.22 6.30) scale(1.3) rotate(99.11)">Carries</text>
   </g>
   
   <g class="radar_label">
-      <text class="label" data-type="Shotstopping" data-idx="1" data-i18n="radar.attActions" transform="translate(125.64 -163.65) scale(1.3) rotate(49.49)">Att Actions</text>
+      <text class="label" data-type="Shotstopping" data-idx="1" data-i18n="radar.attActions" transform="translate(125.64 -163.65) scale(1.3) rotate(52.49)">Att Actions</text>
   </g>
-  
   
   
   <circle class="blackCircle" r="190" style="fill:none; stroke:#D3D3D3; stroke-width:1;"></circle>
@@ -1631,7 +1628,6 @@ function _0x5707(_0xd20fa7,_0x4d36b5){const _0x4dcd69=_0x4dcd();return _0x5707=f
 <script>
 
 
-
   const allData1 = [];
   const allData2 = [];
   let allDataAsString = '';
@@ -1639,13 +1635,13 @@ function _0x5707(_0xd20fa7,_0x4d36b5){const _0x4dcd69=_0x4dcd();return _0x5707=f
 
   
   const urls1 = [
-  'https://datamb.football/database/CURRENT/RATOP72425/ST/ST.xlsx',
+  'https://datamb.football/database/CURRENT/RATOP72425/FW/FW.xlsx',
   
   
 ];
 
 const urls2 = [
-'https://datamb.football/database/OLD/RATOP72324/ST/ST.xlsx',
+'https://datamb.football/database/OLD/RATOP72324/FW/FW.xlsx',
 ];
   
   
@@ -1671,23 +1667,25 @@ const urls2 = [
               row.unshift(`${uniqueIdCounter++}`);
   
               // Shift columns as needed
-  
               row[15] = `${row[1]} 23/24`;
-              
+              row[14] = (row[9] * row[10]) / 100;  // Equivalent formula
+              row[16] = (row[7] + row[12]);  // Equivalent formula
+
+
               // Reorder columns
               const reorderedRow = [
-              row[0],
-              row[15],
-              row[2],
-              row[3],
-              row[9],
-              row[5],
-              row[7],
-              row[8],
-              row[11],
-              row[10],
-              row[6],
-              row[4]
+                  row[0],
+                  row[15],
+                  row[2],
+                  row[3],
+                  row[11],
+                  row[14],
+                  row[6],
+                  row[16],
+                  row[8],
+                  row[13],
+                  row[5],
+                  row[4]
               ];
   
               allData1.push(reorderedRow);
@@ -1734,23 +1732,26 @@ const urls2 = [
               row.unshift(`${uniqueIdCounter++}`);
   
               // Shift columns as needed
-     
-              row[15] = `${row[1]} 24/25`;
   
+              row[15] = `${row[1]} 24/25`;
+              row[14] = (row[9] * row[10]) / 100;  // Equivalent formula
+              row[16] = (row[7] + row[12]);  // Equivalent formula
+
+
               // Reorder columns
               const reorderedRow = [
-              row[0],
-              row[15],
-              row[2],
-              row[3],
-              row[9],
-              row[5],
-              row[7],
-              row[8],
-              row[11],
-              row[10],
-              row[6],
-              row[4]
+                  row[0],
+                  row[15],
+                  row[2],
+                  row[3],
+                  row[11],
+                  row[14],
+                  row[6],
+                  row[16],
+                  row[8],
+                  row[13],
+                  row[5],
+                  row[4]
               ];
   
               allData2.push(reorderedRow);
@@ -1990,16 +1991,17 @@ return Math.sqrt(difference);
       '<span data-i18n="table.percentiles">Percentiles</span>',
       '',
       '<span data-i18n="table.age">Age</span>',
-      '<span data-i18n="table.passrec">Passes received</span>',
-      '<span data-i18n="table.aerial">Aerial%</span>',
-      '<span data-i18n="table.xG">Non-penalty goals</span>',
-      '<span data-i18n="table.xAssist">Expected goals</span>',
-      '<span data-i18n="table.progPasses">Passes to box</span>',
-      '<span data-i18n="table.duel">xA</span>',
-      '<span data-i18n="table.attactions">Att. actions</span>',
+      '<span data-i18n="table.progCarries">Prog. carries</span>',
+      '<span data-i18n="table.dribbles">Dribbles</span>',
+      '<span data-i18n="table.npg">Non-penalty goals</span>',
+      '<span data-i18n="table.xgxa">xG + xA</span>',
+      '<span data-i18n="table.assists">Assists</span>',
+      '<span data-i18n="table.keyPasses">Key passes</span>',
+      '<span data-i18n="table.attActions">Att. actions</span>',
       '<span data-i18n="table.minutes">Minutes played</span>',
     ];
   
+    
     
       // Check if table headers exist
       const headersExist = resultsTable.querySelector('th') !== null;
@@ -2287,7 +2289,6 @@ similarPlayersContainer.appendChild(similarPlayerTable);
       console.error('Error fetching or processing data:', error);
   });
   
-
 </script>
 	  
 <script>async function takeScreenshot() {
