@@ -6,28 +6,28 @@
   },
   "search": {
     "placeholder": "Enter a team or player name...",
-    "placeholder2": "Enter name of keeper..."
+    "placeholder2": "Enter name of fullback..."
   },
   "table": {
     "percentiles": "Percentiles",
     "age": "Age",
-    "short": "Short%",
-    "long": "Long%",
-    "passes": "Passes",
-    "exits": "Exits",
-    "aerial": "Aerials",
-    "defActions": "Def. Actions",
-    "shotstopping": "PSxG-GA",
+    "cross": "Cross%",
+    "xa": "xA",
+    "progPasses": "Prog. passes",
+    "defActions": "Def. actions",
+    "defDuel": "Def. duel%",
+    "aerial": "Aerial%",
+    "progCarries": "Prog. carries",
     "minutes": "Minutes played"
   },
   "radar": {
-    "short": "Short%",
-    "long": "Long%",
-    "passes": "Passes",
-    "exits": "Exits",
-    "aerial": "Aerial",
+    "aerial": "Aerial%",
+    "duel": "Duel%",
     "defActions": "Def Actions",
-    "shotstopping": "Shot-stopping"
+    "progPasses": "Prog Passes",
+    "xAssist": "xAssist",
+    "cross": "Cross%",
+    "carrying": "Carrying"
   },
   "buttons": {
     "team": "Team"
@@ -36,7 +36,7 @@
     "to": "Similar data to"
   },
   "meta": {
-    "title": "DataMB | Compare Goalkeepers",
-    "description": "Compare goalkeeper statistics in the Top 7 Leagues. Visualize player performance. Find similar profiles. Use our radar tool to compare saves; PSxG; crosses claimed; sweeping; passing accuracy; long pass accuracy and more for goalkeepers in Premier League, La Liga, Bundesliga, Serie A, Ligue 1, Eredivisie, Primeira Liga."
+    "title": "DataMB | Compare Fullbacks",
+    "description": "Compare fullback and wing-back statistics in the Top 7 Leagues. Visualize player performance. Find similar profiles. Use our radar tool to compare duels; aerial duels; interceptions; tackles; xA; crossing accuracy; progressive passes; progressive runs and more for fullbacks and wing-backs in Premier League, La Liga, Bundesliga, Serie A, Ligue 1, Eredivisie, Primeira Liga."
   }
 } 
