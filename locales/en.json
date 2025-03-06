@@ -1,4 +1,8 @@
 {
+  "meta": {
+    "title": "DataMB | Compare Teams",
+    "description": "Compare the statistics of teams in the Top 7 Leagues. Visualize team performance. Use our radar tool and plot tools to compare Goals, Goals conceded, xG, Shots on target, Pressing, Defensive duels, Pass completion and more for teams in Premier League, La Liga, Bundesliga, Serie A, Ligue 1, Eredivisie, Primeira Liga."
+  },
   "header": {
     "home": "Home",
     "pro": "Pro",
@@ -6,37 +10,32 @@
   },
   "search": {
     "placeholder": "Enter a team or player name...",
-    "placeholder2": "Enter name of winger..."
-  },
-  "table": {
-    "percentiles": "Percentiles",
-    "age": "Age",
-    "progCarries": "Prog. carries",
-    "dribbles": "Dribbles",
-    "npg": "Non-penalty goals",
-    "xgxa": "xG + xA",
-    "assists": "Assists",
-    "keyPasses": "Key passes",
-    "attActions": "Att. actions",
-    "minutes": "Minutes played"
+    "placeholder2": "Enter name of team..."
   },
   "radar": {
-    "keyPasses": "Key Passes",
-    "assists": "Assists",
-    "xgxa": "xG+xA",
-    "npg": "NPG",
-    "dribbles": "Dribbles",
-    "carries": "Carries",
-    "attActions": "Att Actions"
+    "physicality": "Physicality",
+    "defending": "Defending",
+    "counters": "Counters",
+    "possession": "Possession",
+    "attacking": "Attacking",
+    "goals": "Goals",
+    "pressing": "Pressing"
   },
-  "buttons": {
-    "team": "Team"
+  "table": {
+    "percentile": "Percentiles",
+    "season": "Season",
+    "goals": "Goals",
+    "attacking": "Attacking",
+    "possession": "Possession",
+    "counters": "Counters",
+    "defending": "Defending",
+    "physicality": "Physicality",
+    "pressing": "Pressing"
   },
   "similar": {
     "to": "Similar data to"
   },
-  "meta": {
-    "title": "DataMB | Compare Wingers",
-    "description": "Compare winger and forward statistics in the Top 7 Leagues. Visualize player performance. Find similar profiles. Use our radar tool to compare goals; xG; shots; dribbles; key passes; xA; progressive runs and more for wingers and forwards in Premier League, La Liga, Bundesliga, Serie A, Ligue 1, Eredivisie, Primeira Liga."
+  "buttons": {
+    "team": "Team Plots"
   }
 } 
