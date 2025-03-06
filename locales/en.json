@@ -1,0 +1,54 @@
+{
+  "search": {
+    "placeholder": "Search for a player..."
+  },
+  "samePositionAndLeague": "vs League and Position, per 90",
+  "samePositionAndLeagueWithMinutes": "vs League and Position",
+  "position5": "vs Top 5 Leagues and Positions, per 90",
+  "position5WithMinutes": "vs Top 5 Leagues and Positions",
+  "position": "vs Top 7 Leagues and Position, per 90",
+  "positionWithMinutes": "vs Top 7 Leagues and Position",
+  "league": "vs League, per 90",
+  "leagueWithMinutes": "vs League",
+  "top5": "vs Top 5 Leagues, per 90",
+  "top5WithMinutes": "Top 5 Leagues",
+  "allCsv": "vs Top 7 Leagues, per 90",
+  "allCsvWithMinutes": "vs Top 7 Leagues, per 90",
+  "metrics": {
+    "Goals": "Goals",
+    "Assists": "Assists",
+    "Shots": "Shots",
+    "Passes": "Passes"
+  },
+"age": {
+    "all": "Age"
+  },
+  "leagues": {
+    "premierLeague": "Premier League",
+    "laLiga": "La Liga",
+    "bundesliga": "Bundesliga",
+    "serieA": "Serie A",
+    "ligue1": "Ligue 1",
+    "ligaPortugal": "Liga Portugal",
+    "eredivisie": "Eredivisie",
+    "top5": "Top 5 League",
+    "top7": "Top 7 League"
+  },
+  "positions": {
+    "goalkeeper": "Goalkeeper",
+    "centreback": "Centre-back",
+    "fullback": "Full-back",
+    "midfielder": "Midfielder",
+    "winger": "Winger",
+    "striker": "Striker",
+    "all": "Player"
+  },
+  "player_comparison": {
+    "title": "vs {league} {suffix} {position}s",
+    "per90": ", per 90"
+  },
+  "hover": {
+    "per90": "Per 90 : Yes / No",
+    "ascending": "Ascending : Yes / No"
+  }
+}
