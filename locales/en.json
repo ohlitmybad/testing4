@@ -15,9 +15,9 @@
     "long": "Long%",
     "passes": "Passes",
     "exits": "Exits",
-    "aerial": "Aerial",
-    "defActions": "Def Actions",
-    "shotstopping": "Shot-stopping",
+    "aerial": "Aerials",
+    "defActions": "Def. Actions",
+    "shotstopping": "PSxG-GA",
     "minutes": "Minutes played"
   },
   "radar": {
