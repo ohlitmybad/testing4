@@ -1,9 +1,7 @@
-
 <!DOCTYPE html>
 <html>
 <head>
 	<meta name="robots" content="noindex">
-
 
 	<script src="https://d3js.org/d3.v5.min.js"></script>
 <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
@@ -138,7 +136,6 @@ body.dark-mode input:checked + .toggle-slider:before {
 }
 
 
-
 .dark-mode-toggle {
     position: absolute;
     top: 15.3px;
@@ -153,6 +150,7 @@ body.dark-mode input:checked + .toggle-slider:before {
     cursor: pointer;
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
   }
+
 
 
 
@@ -181,6 +179,8 @@ font-size: 22px;
 font-size: 22px;
 }
 
+
+	 
 .button-screenshot, .select-all-button {
     margin: 10px;
     cursor: pointer;
@@ -299,6 +299,7 @@ opacity: .055;
 
 	     
 
+
 .button-1 {
   align-items: center;
 height: 20px;
@@ -336,16 +337,16 @@ width: 72px;
     box-shadow: rgba(0, 0, 0, 0.4) 3px 3px 3px;
 }
 
-body.dark-mode .button-2 {
+body.dark-mode .button-6 {
   /* Override button background color */
   background-color: #646464;
 }
 
 .button-2 {
   align-items: center;
-  background-color: #e7e4e4;
+  background-color: #F9F9F9;
   border-radius: 6px;
-  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.24);
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
   box-sizing: border-box;
   color: #121212;
   cursor: pointer;
@@ -375,7 +376,7 @@ width: 72px;
 }
 
 .button-2:hover {
-  box-shadow: rgba(0, 0, 0, 0.24) 3px 3px 3px;
+   box-shadow: rgba(0, 0, 0, 0.4) 3px 3px 3px;
 }
 
 .button-3 {
@@ -493,9 +494,9 @@ width: 72px;
 
 .button-6 {
   align-items: center;
-  background-color: #F9F9F9;
+  background-color: #e7e4e4;
   border-radius: 6px;
-  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.24);
   box-sizing: border-box;
   color: #121212;
   cursor: pointer;
@@ -525,7 +526,7 @@ width: 72px;
 }
 
 .button-6:hover {
-   box-shadow: rgba(0, 0, 0, 0.4) 3px 3px 3px;
+  box-shadow: rgba(0, 0, 0, 0.24) 3px 3px 3px;
 }
 .button-7 {
   align-items: center;
@@ -602,7 +603,6 @@ width: 72px;
   box-shadow: rgba(0, 0, 0, 0.4) 3px 3px 3px;
 }
 
-
 #SFctr {
 	font-size: 15px !important;
 }
@@ -625,10 +625,8 @@ body.dark-mode #SFctr td {
 #SFctr input[type="email"] {
 	border-radius: 8px;
 
-}
-	     
+}	     
 </style>
-
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.9/xlsx.full.min.js"></script>
@@ -642,10 +640,6 @@ body.dark-mode #SFctr td {
 
 	<br>
 	<br><br>
-
-	
-	
-
 
 	
 <svg id="scatter-plot"></svg>
@@ -722,20 +716,22 @@ body.dark-mode #SFctr td {
   </select>
   <button class="select-all-button" onclick="selectAllCircles()" data-i18n="click_all">Click All</button>
   <button onclick="takeScreenshot()" class="button-screenshot" data-i18n="screenshot">Screenshot</button>
-  <br>
-  <select id="select-x"></select>
-  <select id="select-y"></select>
-  <select id="select-size"></select>
+ <br>
+ <select id="select-x"></select>
+ <select id="select-y"></select>
+ <select id="select-size"></select>
 <button id="toggle-median-lines" class="toggle-button"><div class="icon"></div></button></div>
 <script>
+
 
 const allData = [];
 let isFirstFileProcessed = false;
 
 const urls = [
- 'https://datamb.football/database/CURRENT/TOP72425/CB/CB.xlsx',
-   'https://datamb.football/database/CURRENT/PRO2425/CB/CB.xlsx',
-'https://datamb.football/database/CURRENT/PRO2024/CB/CB.xlsx',
+ 'https://datamb.football/database/CURRENT/TOP72425/ST/ST.xlsx',
+   'https://datamb.football/database/CURRENT/PRO2425/ST/ST.xlsx',
+'https://datamb.football/database/CURRENT/PRO2024/ST/ST.xlsx',
+
 ];
 
 
@@ -764,7 +760,7 @@ Promise.all(fetchPromises)
             });
 
             // 3. Insert new columns and fill with appropriate values
-            if (url === 'https://datamb.football/database/CURRENT/TOP72425/CB/CB.xlsx' && !isFirstFileProcessed) {
+            if (url === 'https://datamb.football/database/CURRENT/TOP72425/ST/ST.xlsx' && !isFirstFileProcessed) {
                 // Include header only for the first file ('gk4.xlsx')
                 jsonData.forEach(row => row.unshift(null)); // Insert empty column at the beginning
                 jsonData[0][0] = "ID"; // Set header for the new column
@@ -789,7 +785,7 @@ Promise.all(fetchPromises)
             });
 
             // 5. Collect the transformed data (excluding header for non-first 'gk4.xlsx')
-            allData.push(...(url === 'https://datamb.football/database/CURRENT/TOP72425/CB/CB.xlsx' ? jsonData : jsonData.slice(1)));
+            allData.push(...(url === 'https://datamb.football/database/CURRENT/TOP72425/ST/ST.xlsx' ? jsonData : jsonData.slice(1)));
         });
 
 const leagues = {
@@ -1001,8 +997,7 @@ const leagues = {
 
 "Serie A": [
 "Milan", "Juventus", "Atalanta", "Lazio", "Napoli", "Roma", "Monza", "Internazionale", "Lecce", "Torino", "Parma", "Udinese", "Genoa", "Hellas Verona", "Bologna", "Fiorentina", "Cagliari", "Venezia", "Como", "Empoli", 
-], 
-  
+],
 
 };
 
@@ -1078,6 +1073,7 @@ var yMedian = d3.median(data, function(d) { return d[header.indexOf(yMetric)]; }
 var names = data.map(function(row) {
   return row[1];
 });
+
 
 const customMetricOrder = [
     {text: "Minutes played", dataI18n: "minutes_played"},
@@ -1198,17 +1194,20 @@ const customMetricOrder = [
     {text: "Penalty success rate %", dataI18n: "penalty_success_rate_percentage"}
 ];
 
+
 // Function to append options to dropdowns
 function appendOptions(selectElement, metrics) {
     metrics.forEach(function(metric) {
         if (metric.text.startsWith("CATEGORY:")) {
+            // Add a disabled option for category descriptors
             selectElement.append("option")
-                .text(metric.text.replace("CATEGORY: ", ""))
-                .attr("disabled", true)
+                .text(metric.text.replace("CATEGORY: ", "")) // Remove "CATEGORY: " from the text
+                .attr("disabled", true) // Disable the option
                 .attr("class", "category-descriptor")
-                .attr("data-i18n", metric.dataI18n);
+                .attr("data-i18n", metric.dataI18n); // Add a class for styling (optional)
         } else {
-            selectElement.append("option")
+            // Add a regular selectable option
+            const option = selectElement.append("option")
                 .text(metric.text)
                 .attr("value", metric.text)
                 .attr("data-i18n", metric.dataI18n);
@@ -1221,6 +1220,13 @@ appendOptions(selectX, customMetricOrder);
 appendOptions(selectY, customMetricOrder);
 appendOptions(selectSize, customMetricOrder);
 
+// Make sure to apply translations to the dropdown options after they're created
+// This ensures they have the correct language from the start
+document.addEventListener('DOMContentLoaded', function() {
+    // Apply language after options are added to ensure they're translated
+    const currentLanguage = getPreferredLanguage();
+    applyLanguage(currentLanguage);
+});
 
   var svg = d3.select("#scatter-plot")
     .attr("width", width + margin.left + margin.right)
@@ -1268,7 +1274,7 @@ svg.append("text")
   .attr("x", width)
   .attr("y", height + margin.top)
   .attr("data-i18n", customMetricOrder.find(m => m.text === header[3]).dataI18n)
-  .text(header[3])
+    .text(header[3])
   .style("font-family", "Arial")
   .style("font-size", "12px");
 
@@ -1280,7 +1286,7 @@ svg.append("text")
   .attr("y", -35)
   .attr("x", 0)
   .attr("data-i18n", customMetricOrder.find(m => m.text === header[3]).dataI18n)
-  .text(header[3])
+    .text(header[3])
   .style("font-family", "Arial")
   .style("font-size", "12px");
 
@@ -1432,7 +1438,7 @@ var circles = svg.selectAll("circle")
         .style("font-size", "12px")
         .style("user-select", "none")      
         .style("pointer-events", "none")
-        .style("touch-action", "none")
+.style("touch-action", "none")       
         .text(filteredNames[filteredData.indexOf(d)]);
     }
   });
@@ -1741,6 +1747,9 @@ var sizeScale = d3.scaleLinear()
                     .style("top", "-1000px");  
             }, 1500);
         }  
+
+    // Get translations for the metrics
+
     // Get the translated text directly from the dropdown options
     const xMetricDisplay = selectX.select(`option[value="${xMetric}"]`).text();
     const yMetricDisplay = selectY.select(`option[value="${yMetric}"]`).text();
@@ -1750,8 +1759,7 @@ var sizeScale = d3.scaleLinear()
                 xMetricDisplay + ": " + d[header.indexOf(xMetric)] + "<br/>" + 
                 yMetricDisplay + ": " + d[header.indexOf(yMetric)] + "<br/>" + 
                 sizeMetricDisplay + ": " + d[header.indexOf(sizeMetric)])
-
-      .style("left", (d3.event.pageX + 10) + "px")
+    .style("left", (d3.event.pageX + 10) + "px")
       .style("top", (d3.event.pageY - 28) + "px");
   })
   .on("mouseout", function(d) {
@@ -1782,7 +1790,7 @@ var sizeScale = d3.scaleLinear()
         .style("font-size", "12px")
         .style("user-select", "none")      
         .style("pointer-events", "none")
-        .style("touch-action", "none")
+.style("touch-action", "none")       
         .text(filteredNames[filteredData.indexOf(d)]);
     }
 
@@ -1818,7 +1826,7 @@ var sizeScale = d3.scaleLinear()
     .style("font-size", "12px")
     .style("user-select", "none")      
     .style("pointer-events", "none")
-    .style("touch-action", "none")
+.style("touch-action", "none")       
     .text(function(d) {
       return filteredNames[filteredData.indexOf(d)];
     });
@@ -1904,7 +1912,7 @@ function circleClick(d, i) {
       .style("font-size", "12px")
       .style("user-select", "none")      
       .style("pointer-events", "none")
-      .style("touch-action", "none")
+.style("touch-action", "none")       
       .text(filteredNames[filteredData.indexOf(d)]);
   }
 
@@ -2022,7 +2030,21 @@ function selectAllCircles() {
   isBulkSelection = false;  // Re-enable chart update after bulk selection
   refreshChart()
 }
-	
+
+function setLanguage(language) {
+  localStorage.setItem('preferredLanguage', language);
+  // Update URL with language parameter
+  const url = new URL(window.location.href);
+  if (language === 'en') {
+    url.searchParams.delete('lang');
+  } else {
+    url.searchParams.set('lang', language);
+  }
+  window.history.pushState({}, '', url);
+  
+  // Apply the language change
+  applyLanguage(language);
+}
 </script>
 
 
@@ -2046,15 +2068,13 @@ function selectAllCircles() {
 <a href="https://datamb.football/proplotst24/" target="_self" rel="noopener noreferrer">
   <button class="button-6" role="button">ST</button></a>
 
-  <a href="https://datamb.football/proplotcb/" target="_self" rel="noopener noreferrer">
+  <a href="https://datamb.football/proplotst/" target="_self" rel="noopener noreferrer">
     <button class="button-7" role="button">&#8594; 23/24</button></a>
-
+  
     <div class="dark-mode-toggle" onclick="toggleDarkMode()">
       <div class="toggle-icon"></div>
     </div>
 
-
-  
 
 <script>
 
@@ -2077,9 +2097,7 @@ function selectAllCircles() {
     }
 
   </script>
-		
-    
-  <script>// Function to capture and download the chart area
+		<script>// Function to capture and download the chart area
       function captureChart() {
           // Get the SVG element
           const svg = document.getElementById('scatter-plot');
@@ -2123,7 +2141,8 @@ function selectAllCircles() {
       // Add click event listener to the screenshot icon
       document.querySelector('.button-screenshot').addEventListener('click', captureChart);
   </script>
-<script>
+  
+  <script>
 		function setLanguage(language) {
   localStorage.setItem('preferredLanguage', language);
   // Update URL with language parameter
@@ -2175,20 +2194,29 @@ function applyLanguage(language) {
           element.placeholder = value;
         }
       });
-
-      // Update meta tags
-    });
+      
+      // Update dropdown options with data-i18n attributes
+      document.querySelectorAll('select option[data-i18n]').forEach(option => {
+        const dataI18n = option.getAttribute('data-i18n');
+        if (dataI18n && translations[dataI18n]) {
+          option.textContent = translations[dataI18n];
+        }
+      });
+      
+      // Force update of the metric display values in tooltips
+  });
 }
 
 // Initialize translations
 const preferredLanguage = getPreferredLanguage();
 applyLanguage(preferredLanguage);
-</script>
-<br>		
-<br>		
-<br>		
-<br>
+</script> 
+  <br>		
+  <br>		
+  <br>		
+  <br>
+    
+  </body>
+  </html>
   
-</body>
-</html>
-
+  
