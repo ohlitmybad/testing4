@@ -1,20 +1,164 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head>	
+
+    <meta name="viewport" content="user-scalable=no">
 	<meta name="robots" content="noindex">
 
-	<script src="https://d3js.org/d3.v5.min.js"></script>
+
 <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
 
 
-
-
+<defs>
 <style>
 
+.hidden {
+            display: none;
+        }
 body {
     background-color: white;
+    
   }
-	
+
+button {
+Height: 30px;
+}
+
+.button-6 {
+  position: relative;
+  top: -20px;
+  left: 20px;
+  width: 20%;
+  touch-action: manipulation;
+  cursor: pointer;
+}
+
+
+
+/* Add custom CSS to style the layout */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap; /* Enable wrapping of flex items */
+}
+
+.inputs {
+  flex: 0 0 20%;
+  padding: 20px;
+  flex-direction: column; /* Stack the inputs vertically */
+font-size: 12px;
+}
+
+.inputs input {
+  margin-bottom: 5px;
+}
+
+   
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin-bottom: 5px;
+}
+
+button {
+  margin-top: 5px;
+}
+
+
+#tableWrapper {
+  width: 70%;
+  position: absolute;
+  top: 35px;
+  right: 2.5%;
+  max-height: 645px; /* Set the desired fixed height */
+  overflow: auto;
+}
+
+
+
+
+table {
+  border-collapse: collapse;
+ 
+}
+
+
+/* Apply styles to header cells and data cells */
+th, td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: left;
+}
+
+
+td {
+  font-size: 13px;
+}
+
+
+
+/* Set the desired fixed width for the rest of the data cells */
+td:not(:first-child) {
+text-align: center;
+  user-select: none; /* Prevent text selection in table cells */
+
+}
+
+/* Set the desired fixed width for the header cells (including the first column) */
+th {
+  background-color: #f2f2f2;
+  font-size: 10px; /* Set the desired font size for header cells */
+text-align: center;
+  position: relative; /* Add this for positioning the arrows */
+
+}
+
+
+th:not(:first-child) {
+  width: 10%;
+}
+
+
+
+
+th:not(:first-child)::after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 55%; /* Adjust this value to position the arrow vertically inside the cell */
+  left: 0%; /* Adjust this value to position the arrow horizontally inside the cell */
+  width: 0;
+  height: 0;
+  border-left: 3px solid transparent;
+  border-right: 3px solid transparent;
+  border-top: 6px solid black;
+  transform: translateX(-50%);
+}
+
+th:not(:first-child)::before {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: 55%; /* Adjust this value to position the arrow vertically inside the cell */
+  left: 0%; /* Adjust this value to position the arrow horizontally inside the cell */
+  width: 0;
+  height: 0;
+  border-left: 3px solid transparent;
+  border-right: 3px solid transparent;
+  border-bottom: 6px solid black;
+  transform: translateX(-50%);
+}
+
+
   /* Dark Mode Styles */
   body.dark-mode,
   body.dark-mode * {
@@ -37,73 +181,58 @@ body.dark-mode .tooltip {
 
 
 
- body.dark-mode #search-bar {
-    color: #000; /* Specify the desired text color for dark mode */
-background-color : #999
-  }
-	
- body.dark-mode	  #search-bar::placeholder {
-    color: #fff; /* Specify the desired color for the placeholder text */
-  }
 
-  body.dark-mode svg .x-label {
-    /* Override SVG text color */
-    fill: #f2f2f2;
-  }
-
-
-  body.dark-mode svg .y-label {
-    /* Override SVG text color */
-    fill: #f2f2f2;
-  }
+body.dark-mode th {
+  color: #000000; /* Set the text color to a light color in dark mode */
+}
 
 body.dark-mode select {
   color: #f2f2f2; /* Set the text color to a light color in dark mode */
   background-color: #333333; /* Set the background color to a dark color in dark mode */
 }
 
-
-body.dark-mode .player-name {
-  fill: #ffffff; /* Set the fill color to white in dark mode */
+body.dark-mode input {
+  color: #f2f2f2; /* Set the text color to a light color in dark mode */
+  background-color: #333333; /* Set the background color to a dark color in dark mode */
 }
 
-body.dark-mode button {
-  /* Override button background color */
-  background-color: #333333;
+ .dark-mode-toggle {
+    position: relative;
+    left: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 35px;
+    height: 35px;
+    background-color: #e0e0de;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+    margin-bottom: 15px;
+  }
+
+  @media (max-width: 767px) {
+	  
+
+  .dark-mode-toggle {
+    left: 11.1%;
+  }
+  #tableWrapper {
+  max-height: 950px; /* Set the desired fixed height */
+  width: 72.8%;
+}
+.inputs {
+  width: 10px;
+ 
 }
 
-body.dark-mode button,
-body.dark-mode button:focus {
-  /* Override button text color */
-  color: #f2f2f2;
 }
 
-body.dark-mode button:hover {
-  /* Preserve button hover property */
-  color: initial;
+.dark-mode-toggle .toggle-icon::before {
+  font-family: "Ionicons";
+  content: "\f467"; /* Unicode value for the moon icon in Ionicons */
+  font-size: 32px; /* Adjust the value as needed */
 }
-
-
-body.dark-mode .button-8 {
-  /* Override button background color */
-  background-color: #13293d; /* Dark blue color */
-  color: #f2f2f2; /* Off-white color */
-}
-
-body.dark-mode .button-8:hover,
-body.dark-mode .button-8:focus {
-  /* Override button hover and focus state */
-  background-color: #3a6ea5; /* Darker blue color */
-  color: #f2f2f2; /* Off-white color */
-}
-
-body.dark-mode .button-8:hover,
-body.dark-mode .button-8:focus {
-  /* Override button hover and focus state */
-  background-color: #3a6ea5; /* Darker blue color */
-  color: #f2f2f2; /* Off-white color */
-}
-
 
 body.dark-mode .dark-mode-toggle {
   background-color: #333333;
@@ -114,149 +243,30 @@ body.dark-mode .dark-mode-toggle {
 body.dark-mode .dark-mode-toggle .toggle-icon::before {
   font-family: "Ionicons";
   content: "\f3b0"; /* Unicode value for the sun icon in Ionicons */
-  font-size: 24px; /* Adjust the value as needed */
+  font-size: 21px; /* Adjust the value as needed */
+}
+
+body.dark-mode button {
+  color: #f2f2f2; /* Set the text color to a light color in dark mode */
+  background-color: #333333; /* Set the background color to a dark color in dark mode */
+}
+
+.player-info {
+  font-style: italic;
+  font-size: 11.3px; /* Adjust the font size as desired */
+}
+
+.no-results-message {
+  margin: 21px; /* Adjust the margin as desired */
+color: red;
 }
 
 
 
-body.dark-mode .toggle-slider {
-  background-color: #2B2C2E; /* Darker background color for dark mode */
-}
 
-body.dark-mode input:checked + .toggle-slider:before {
-  background-color: #ccc; /* Darker background color for dark mode */
-}
-
-
-
-.dark-mode-toggle .toggle-icon::before {
-  font-family: "Ionicons";
-  content: "\f467"; /* Unicode value for the moon icon in Ionicons */
-  font-size: 35px; /* Adjust the value as needed */
-}
-
-
-.dark-mode-toggle {
-    position: absolute;
-    top: 15.3px;
-    left: 93%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 37px;
-    height: 37px;
-    background-color: #e0e0de;
-    border-radius: 50%;
-    cursor: pointer;
-    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+ body.dark-mode {
+    background-color: #0F0F0E;
   }
-
-
-
-
-
-
-
-.icon::before {
-  content: "\f2b5";
-  font-family: "Ionicons"; /* Replace with the appropriate font */
-font-size: 22px;
-}
-
-
-
-
-
-.icon4::before {
-  content: "\f21c";
-  font-family: "Ionicons"; /* Replace with the appropriate font */
-font-size: 22px;
-}		
-
-.icon3::before {
-  content: "\f448";
-  font-family: "Ionicons"; /* Replace with the appropriate font */
-font-size: 22px;
-}
-
-
-	 
-.button-screenshot, .select-all-button {
-    margin: 10px;
-    cursor: pointer;
-    background-color: #fff;
-    border-radius: 25px;
-    border-style: none;
-    box-shadow: rgba(0, 0, 0, .2) 0 1px 0px 0px, rgba(0, 0, 0, .14) 0 0px 0px 0, rgba(0, 0, 0, .12) 0 0px 3px 0;
-    box-sizing: border-box;
-    color: #3c4043;
-    font-family: "Google Sans", Roboto, Arial, sans-serif;
-    font-size: 14px;
-    font-weight: 500;
-    height: 24px;
-    letter-spacing: .25px;
-    padding: 2px 24px;
-    width: 120px; /* Fixed width */
-    text-align: center;
-}
-
-
-body.dark-mode .button-screenshot {
-    margin: 10px;
-    cursor: pointer;
-  border-radius: 25px;
-  border-style: none;
-  box-shadow: rgba(255, 253, 253, 0.5) 0 1px 0px 0px,rgba(255, 250, 250, 0.18) 0 0px 0px 0,rgba(255, 251, 251, 0.18) 0 0px 3px 0;
-  box-sizing: border-box;
-  font-family: "Google Sans",Roboto,Arial,sans-serif;
-  font-size: 14px;
-  font-weight: 500;
-  height: 24px;
-  letter-spacing: .25px;
-  padding: 2px 24px;
-}
-
-
-
-body.dark-mode .select-all-button {
-    margin: 10px;
-    cursor: pointer;
-  border-radius: 25px;
-  border-style: none;
-  box-shadow: rgba(255, 253, 253, 0.5) 0 1px 0px 0px,rgba(255, 250, 250, 0.18) 0 0px 0px 0,rgba(255, 251, 251, 0.18) 0 0px 3px 0;
-  box-sizing: border-box;
-  font-family: "Google Sans",Roboto,Arial,sans-serif;
-  font-size: 14px;
-  font-weight: 500;
-  height: 24px;
-  letter-spacing: .25px;
-  padding: 2px 24px;
-}
-
-
-circle.highlighted {
-  stroke: #ff00ff;
-  stroke-width: 3px;
-}
-
-
-
-circle {
-  cursor: pointer;
-}
-
-
-
-
-	     
-
-.container {
-    position:absolute;
-    top: 750px;
-    left: 88px; /* Position the container from the right */
-    white-space: nowrap;
-
-}
 
   select {
     
@@ -264,344 +274,19 @@ circle {
     font-size: 13px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    margin-right: 10px;
+    margin-bottom: 8px;
 }
 
-#search-bar {
+
+input {
+    
     padding: 4px 6px;
     font-size: 13px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    margin-right: 10px;
-  }
-
-
-
-.toggle-button {
-  background-color: #f5f5f5;
-  color: #333;
-  padding: 6px 12px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  cursor: pointer;
-	margin-left: 15px;
 }
 
-img {
-            width: 200px;
-position: absolute;
-top: 235px;
-pointer-events: none;
-z-index: -1; 
-left: 475px;
-opacity: .055; 	
-	}
-
-	     
-
-
-.button-1 {
-  align-items: center;
-height: 20px;
-background-color: #F9F9F9;
-  border-radius: 6px;
-  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
-  box-sizing: border-box;
-  color: #121212;
-  cursor: pointer;
-  display: inline-flex;
-  flex: 1 1 auto;
-  font-family: Inter,sans-serif;
-  font-size: 0.82rem;
-  font-weight: 700;
-  justify-content: center;
-  line-height: 1;
-  margin: 0;
-  outline: none;
-  padding: 1rem 1.2rem;
-  text-align: center;
-  text-decoration: none;
-  transition: box-shadow .1s,-webkit-box-shadow .1s;
-  white-space: nowrap;
-  border: 0;
-  user-select: none;
-  position: absolute;
-  top: 15px;
-  left: 18px;
-width: 72px; 
- 
-  touch-action: manipulation;
-}
-
-.button-1:hover {
-    box-shadow: rgba(0, 0, 0, 0.4) 3px 3px 3px;
-}
-
-body.dark-mode .button-6 {
-  /* Override button background color */
-  background-color: #646464;
-}
-
-.button-2 {
-  align-items: center;
-  background-color: #F9F9F9;
-  border-radius: 6px;
-  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
-  box-sizing: border-box;
-  color: #121212;
-  cursor: pointer;
-  display: inline-flex;
-  flex: 1 1 auto;
-  font-family: Inter,sans-serif;
-  font-size: 0.82rem;
-  font-weight: 700;
-  justify-content: center;
-  line-height: 1;
-  margin: 0;
-  outline: none;
-  padding: 1rem 1.2rem;
-  text-align: center;
-  text-decoration: none;
-  transition: box-shadow .1s,-webkit-box-shadow .1s;
-  white-space: nowrap;
-  border: 0;
-  user-select: none;
-  position: absolute;
-  top: 15px;
-  left: 108px;
-height: 20px;
-width: 72px; 
- 
-  touch-action: manipulation;
-}
-
-.button-2:hover {
-   box-shadow: rgba(0, 0, 0, 0.4) 3px 3px 3px;
-}
-
-.button-3 {
-  align-items: center;
-height: 20px;
-  background-color: #F9F9F9;
-  border-radius: 6px;
-  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
-  box-sizing: border-box;
-  color: #121212;
-  cursor: pointer;
-  display: inline-flex;
-  flex: 1 1 auto;
-  font-family: Inter,sans-serif;
-  font-size: 0.82rem;
-  font-weight: 700;
-  justify-content: center;
-  line-height: 1;
-  margin: 0;
-  outline: none;
-  padding: 1rem 1.2rem;
-  text-align: center;
-  text-decoration: none;
-  transition: box-shadow .1s,-webkit-box-shadow .1s;
-  white-space: nowrap;
-  border: 0;
-  user-select: none;
-  position: absolute;
-  top: 15px;
-  left: 198px;
-width: 72px; 
- 
-  touch-action: manipulation;
-}
-
-.button-3:hover {
-   box-shadow: rgba(0, 0, 0, 0.4) 3px 3px 3px;
-}
-
-.button-4 {
-  align-items: center;
-  background-color: #F9F9F9;
-  border-radius: 6px;
-  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
-  box-sizing: border-box;
-  color: #121212;
-  cursor: pointer;
-  display: inline-flex;
-  flex: 1 1 auto;
-  font-family: Inter,sans-serif;
-  font-size: 0.82rem;
-  font-weight: 700;
-  justify-content: center;
-  line-height: 1;
-  margin: 0;
-  outline: none;
-  padding: 1rem 1.2rem;
-  text-align: center;
-  text-decoration: none;
-  transition: box-shadow .1s,-webkit-box-shadow .1s;
-  white-space: nowrap;
-  border: 0;
-  user-select: none;
-  position: absolute;
-  top: 15px;
-  left: 288px;
-height: 20px;
-width: 72px; 
- 
-  touch-action: manipulation;
-}
-
-.button-4:hover {
-   box-shadow: rgba(0, 0, 0, 0.4) 3px 3px 3px;
-}
-
-
-
-.button-5 {
-  align-items: center;
-height: 20px;
-  background-color: #F9F9F9;
-  border-radius: 6px;
-  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
-  box-sizing: border-box;
-  color: #121212;
-  cursor: pointer;
-  display: inline-flex;
-  flex: 1 1 auto;
-  font-family: Inter,sans-serif;
-  font-size: 0.82rem;
-  font-weight: 700;
-  justify-content: center;
-  line-height: 1;
-  margin: 0;
-  outline: none;
-  padding: 1rem 1.2rem;
-  text-align: center;
-  text-decoration: none;
-  transition: box-shadow .1s,-webkit-box-shadow .1s;
-  white-space: nowrap;
-  border: 0;
-  user-select: none;
-  position: absolute;
-  top: 15px;
-  left: 378px;
-width: 72px; 
- 
-  touch-action: manipulation;
-}
-
-.button-5:hover {
-   box-shadow: rgba(0, 0, 0, 0.4) 3px 3px 3px;
-}
-
-.button-6 {
-  align-items: center;
-  background-color: #e7e4e4;
-  border-radius: 6px;
-  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.24);
-  box-sizing: border-box;
-  color: #121212;
-  cursor: pointer;
-  display: inline-flex;
-  flex: 1 1 auto;
-  font-family: Inter,sans-serif;
-  font-size: 0.82rem;
-  font-weight: 700;
-  justify-content: center;
-  line-height: 1;
-  margin: 0;
-  outline: none;
-  padding: 1rem 1.2rem;
-  text-align: center;
-  text-decoration: none;
-  transition: box-shadow .1s,-webkit-box-shadow .1s;
-  white-space: nowrap;
-  border: 0;
-  user-select: none;
-  position: absolute;
-  top: 15px;
-  left: 468px;
-height: 20px;
-width: 72px; 
- 
-  touch-action: manipulation;
-}
-
-.button-6:hover {
-  box-shadow: rgba(0, 0, 0, 0.24) 3px 3px 3px;
-}
-.button-7 {
-  align-items: center;
-  background-color: #F9F9F9;
-  border-radius: 6px;
-  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
-  box-sizing: border-box;
-  color: #121212;
-  cursor: pointer;
-  display: inline-flex;
-  flex: 1 1 auto;
-  font-family: Inter,sans-serif;
-  font-size: 0.82rem;
-  font-weight: 700;
-  justify-content: center;
-  line-height: 1;
-  margin: 0;
-  outline: none;
-  padding: 1rem 1.2rem;
-  text-align: center;
-  text-decoration: none;
-  transition: box-shadow .1s,-webkit-box-shadow .1s;
-  white-space: nowrap;
-  border: 0;
-  user-select: none;
-  position: absolute;
-  top: 15px;
-  left: 558px;
-height: 20px;
-width: 72px; 
- 
-  touch-action: manipulation;
-}
-
-.button-7:hover {
-   box-shadow: rgba(0, 0, 0, 0.4) 3px 3px 3px;
-}
-
-
-
-.button-9 {
-  align-items: center;
-  background-color: #e0e0de;
-  border-radius: 25px;
-  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
-  box-sizing: border-box;
-  color: #121212;
-  cursor: pointer;
-  display: inline-flex;
-  flex: 1 1 auto;
-  font-family: Inter,sans-serif;
-  font-size: 1.82rem;
-  font-weight: 700;
-  justify-content: center;
-  line-height: 1;
-  margin: 0;
-  outline: none;
-  padding: 0.1rem;
-  text-align: center;
-  text-decoration: none;
-  transition: box-shadow .1s,-webkit-box-shadow .1s;
-  white-space: nowrap;
-  border: 0;
-  user-select: none;
-  position: absolute;
-  top: 10px;
-  left: 878px;
-  width: 50px; 
- 
-  touch-action: manipulation;
-}
-
-.button-9:hover {
-  box-shadow: rgba(0, 0, 0, 0.4) 3px 3px 3px;
-}
+	
 
 #SFctr {
 	font-size: 15px !important;
@@ -625,173 +310,127 @@ body.dark-mode #SFctr td {
 #SFctr input[type="email"] {
 	border-radius: 8px;
 
-}	     
+}
 </style>
+
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.9/xlsx.full.min.js"></script>
 
 	
-	
 </head>
 
 <body>
-		  <script type="text/javascript">document.body.style.visibility="hidden";</script><div id="SFctr" data-org="31002" data-mfl="64c215764c0b6076026762a3"><div style="clear:both"></div></div><script type="text/javascript" src="https://cdn.membershipworks.com/mfl.js"></script>
 
-	<br>
-	<br><br>
+    <script type="text/javascript">document.body.style.visibility="hidden";</script><div id="SFctr" data-org="31002" data-mfl="64c215764c0b6076026762a3"><div style="clear:both"></div></div><script type="text/javascript" src="https://cdn.membershipworks.com/mfl.js"></script>
 
-	
-<svg id="scatter-plot"></svg>
 <div class="container">
-  <input type="text" id="search-bar" placeholder="Search player..." data-i18n-placeholder="search_player_placeholder">
+  <div class="inputs">
+  <form id="searchForm">
+    <select id="datasetSelector" data-i18n="selectors.dataset">
+      <option value="dataset1">Goalkeepers</option>
+      <option value="dataset2">Centre-backs</option>
+      <option value="dataset3">Full-backs</option>
+      <option value="dataset4">Midfielders</option>
+      <option value="dataset5">Wingers</option>
+      <option value="dataset6">Strikers</option>
+    </select>
 
+    <select id="league">
+      <option value="All" data-i18n="league.all">🌎 All Leagues</option>
+      <option value="Top 5 Leagues" data-i18n="league.top5">🇪🇺 Top 5 Leagues</option>
+      <option value="Top 7 Leagues" data-i18n="league.top7">🇪🇺 Top 7 Leagues</option>
+      <option value="Premier League">🏴󠁧󠁢󠁥󠁮󠁧󠁿 Premier League</option>
+      <option value="La Liga">🇪🇸 La Liga</option>
+      <option value="Bundesliga">🇩🇪 Bundesliga</option>
+      <option value="Serie A">🇮🇹 Serie A</option> 
+      <option value="Ligue 1">🇫🇷 Ligue 1</option>
+      <option value="Liga Portugal">🇵🇹 Liga Portugal</option>
+      <option value="Eredivisie">🇳🇱 Eredivisie</option>
+      <option value="Belgium Pro League">🇧🇪 Belgium</option>
+      <option value="Scotland Premiership">🏴󠁧󠁢󠁳󠁣󠁴󠁿 Scotland</option>
+      <option value="Austrian Bundesliga">🇦🇹 Austria</option>
+      <option value="Swiss Super League">🇨🇭 Switzerland</option>      
+      <option value="Süper Lig">🇹🇷 Türkiye</option>
+      <option value="Denmark Superliga">🇩🇰 Denmark</option>
+      <option value="Sweden Allsvenskan">🇸🇪 Sweden</option>
+      <option value="Norway Eliteserien">🇳🇴 Norway</option>
+      <option value="Croatia HNL">🇭🇷 Croatia</option>
+      <option value="Serbia SuperLiga">🇷🇸 Serbia</option>
+      <option value="Czech Fortuna Liga">🇨🇿 Czech Republic</option>
+      <option value="Poland">🇵🇱 Poland</option>
+      <option value="Ukraine">🇺🇦 Ukraine</option>
+      <option value="Russia">🇷🇺 Russia</option>
+      <option value="Greece">🇬🇷 Greece</option>
+      <option value="Israel">🇮🇱 Israel</option>
+      <option value="J1 League">🇯🇵 Japan</option>
+      <option value="K League 1">🇰🇷 Korea</option>
+      <option value="Saudi Pro League">🇸🇦 Saudi Arabia</option>
+      <option value="MLS">🇺🇸 United States</option>
+      <option value="LigaMX">🇲🇽 Mexico</option>
+      <option value="Brazil Serie A">🇧🇷 Brazil</option>
+      <option value="Argentina Primera">🇦🇷 Argentina</option>
+      <option value="Uruguay Primera">🇺🇾 Uruguay</option>
+      <option value="Chile">🇨🇱 Chile</option>
+      <option value="Colombia">🇨🇴 Colombia</option>
+      <option value="Ecuador">🇪🇨 Ecuador</option>
+      <option value="Paraguay">🇵🇾 Paraguay</option>
+      <option value="Championship">🏴󠁧󠁢󠁥󠁮󠁧󠁿 Championship</option>
+      <option value="Segunda Division">🇪🇸 Spain Segunda</option>
+      <option value="Serie B">🇮🇹 Serie B</option>
+      <option value="Bundesliga 2">🇩🇪 2. Bundesliga</option>
+      <option value="Ligue 2">🇫🇷 Ligue 2</option>  
+      <option value="Non Top 7 Leagues">🌍 Outside Top 7</option>
+      <option value="South America">🌎 South America</option>
+      <option value="Scandinavia">🌍 Scandinavia</option>
+      <option value="Balkans">🌍 Eastern Europe</option>
+    </select>
 
-  <select id="select-league">
-    <option value="all" data-i18n="all_leagues">🌍 All Leagues</option>
-    <option value="Top 7 Leagues" data-i18n="top_7_leagues">🇪🇺 Top 7 Leagues</option>
-    <option value="Top 5 Leagues" data-i18n="top_5_leagues">🇪🇺 Top 5 Leagues</option>
-    <option value="Premier League" data-i18n="premier_league">🏴󠁧󠁢󠁥󠁮󠁧󠁿 Premier League</option>
-    <option value="La Liga" data-i18n="la_liga">🇪🇸 La Liga</option>
-    <option value="Bundesliga" data-i18n="bundesliga">🇩🇪 Bundesliga</option>
-    <option value="Serie A" data-i18n="serie_a">🇮🇹 Serie A</option>
-    <option value="Ligue 1" data-i18n="ligue_1">🇫🇷 Ligue 1</option>
-    <option value="Liga Portugal" data-i18n="liga_portugal">🇵🇹 Liga Portugal</option>
-    <option value="Eredivisie" data-i18n="eredivisie">🇳🇱 Eredivisie</option>
-    <option value="Belgium Pro League" data-i18n="belgium_pro_league">🇧🇪 Belgium</option>
-    <option value="Scotland Premiership" data-i18n="scotland_premiership">🏴󠁧󠁢󠁳󠁣󠁴󠁿 Scotland</option>
-    <option value="Austrian Bundesliga" data-i18n="austrian_bundesliga">🇦🇹 Austria</option>
-    <option value="Swiss Super League" data-i18n="swiss_super_league">🇨🇭 Switzerland</option>
-    <option value="Süper Lig" data-i18n="super_lig">🇹🇷 Türkiye</option>
-    <option value="Denmark Superliga" data-i18n="denmark_superliga">🇩🇰 Denmark</option>
-    <option value="Sweden Allsvenskan" data-i18n="sweden_allsvenskan">🇸🇪 Sweden</option>
-    <option value="Norway Eliteserien" data-i18n="norway_eliteserien">🇳🇴 Norway</option>
-    <option value="Croatia HNL" data-i18n="croatia_hnl">🇭🇷 Croatia</option>
-    <option value="Serbia SuperLiga" data-i18n="serbia_superliga">🇷🇸 Serbia</option>
-    <option value="Czech Fortuna Liga" data-i18n="czech_fortuna_liga">🇨🇿 Czech Republic</option>
-    <option value="Poland" data-i18n="poland">🇵🇱 Poland</option>
-    <option value="Ukraine" data-i18n="ukraine">🇺🇦 Ukraine</option>
-    <option value="Russia" data-i18n="russia">🇷🇺 Russia</option>
-    <option value="Greece" data-i18n="greece">🇬🇷 Greece</option>
-    <option value="Israel" data-i18n="israel">🇮🇱 Israel</option>
-    <option value="J1 League" data-i18n="j1_league">🇯🇵 Japan</option>
-    <option value="K League 1" data-i18n="k_league_1">🇰🇷 Korea</option>
-    <option value="Saudi Pro League" data-i18n="saudi_pro_league">🇸🇦 Saudi Arabia</option>
-    <option value="MLS" data-i18n="mls">🇺🇸 United States</option>
-    <option value="LigaMX" data-i18n="ligamx">🇲🇽 Mexico</option>
-    <option value="Brazil Serie A" data-i18n="brazil_serie_a">🇧🇷 Brazil</option>
-    <option value="Argentina Primera" data-i18n="argentina_primera">🇦🇷 Argentina</option>
-    <option value="Uruguay Primera" data-i18n="uruguay_primera">🇺🇾 Uruguay</option>
-    <option value="Chile" data-i18n="chile">🇨🇱 Chile</option>
-    <option value="Colombia" data-i18n="colombia">🇨🇴 Colombia</option>
-    <option value="Ecuador" data-i18n="ecuador">🇪🇨 Ecuador</option>
-    <option value="Paraguay" data-i18n="paraguay">🇵🇾 Paraguay</option>
-    <option value="Championship" data-i18n="championship">🏴󠁧󠁢󠁥󠁮󠁧󠁿 Championship</option>
-    <option value="Segunda Division" data-i18n="segunda_division">🇪🇸 Spain Segunda</option>
-    <option value="Serie B" data-i18n="serie_b">🇮🇹 Serie B</option>
-    <option value="Bundesliga 2" data-i18n="bundesliga_2">🇩🇪 2. Bundesliga</option>
-    <option value="Ligue 2" data-i18n="ligue_2">🇫🇷 Ligue 2</option>
-    <option value="Outside Top 7" data-i18n="outside_top_7">🌍 Outside Top 7</option>
-    <option value="South America" data-i18n="south_america">🌎 South America</option>
-    <option value="Scandinavia" data-i18n="scandinavia">🌍 Scandinavia</option>
-    <option value="Eastern Europe" data-i18n="eastern_europe">🌍 Eastern Europe</option>
-  </select>
-  <select id="select-age">
-    <option value="all" data-i18n="age">Age</option>
-    <option value="17" data-i18n="u17">U17</option>
-    <option value="18" data-i18n="u18">U18</option>
-    <option value="19" data-i18n="u19">U19</option>
-    <option value="20" data-i18n="u20">U20</option>
-    <option value="21" data-i18n="u21">U21</option>
-    <option value="22" data-i18n="u22">U22</option>
-    <option value="23" data-i18n="u23">U23</option>
-    <option value="24" data-i18n="u24">U24</option>
-    <option value="25" data-i18n="u25">U25</option>
-    <option value="26" data-i18n="u26">U26</option>
-    <option value="27" data-i18n="u27">U27</option>
-    <option value="28" data-i18n="u28">U28</option>
-    <option value="29" data-i18n="u29">U29</option>
-    <option value="30" data-i18n="u30">U30</option>
-    <option value="35" data-i18n="u35">U35</option>
-  </select>
-  <button class="select-all-button" onclick="selectAllCircles()" data-i18n="click_all">Click All</button>
-  <button onclick="takeScreenshot()" class="button-screenshot" data-i18n="screenshot">Screenshot</button>
- <br>
- <select id="select-x"></select>
- <select id="select-y"></select>
- <select id="select-size"></select>
-<button id="toggle-median-lines" class="toggle-button"><div class="icon"></div></button></div>
-<script>
+    <label for="defensiveActions" data-i18n="metrics.gk.def_actions">Defensive Actions</label>
+    <input type="number" id="defensiveActionsLow" min="0" max="100" placeholder="Percentile 0-100">
 
+    <label for="aerialsContested" data-i18n="metrics.gk.aerials">Aerials Contested</label>
+    <input type="number" id="aerialsContestedLow" min="0" max="100" placeholder="Percentile 0-100">
 
-const allData = [];
-let isFirstFileProcessed = false;
+    <label for="exitLine" data-i18n="metrics.gk.exit_line">Exit Line</label>
+    <input type="number" id="exitLineLow" min="0" max="100" placeholder="Percentile 0-100">
 
-const urls = [
- 'https://datamb.football/database/CURRENT/TOP72425/ST/ST.xlsx',
-   'https://datamb.football/database/CURRENT/PRO2425/ST/ST.xlsx',
-'https://datamb.football/database/CURRENT/PRO2024/ST/ST.xlsx',
+    <label for="passes" data-i18n="metrics.gk.passes">Passes</label>
+    <input type="number" id="passesLow" min="0" max="100" placeholder="Percentile 0-100">
 
-];
+    <label for="longPassPercentage" data-i18n="metrics.gk.long_pass">Long Pass %</label>
+    <input type="number" id="longPassPercentageLow" min="0" max="100" placeholder="Percentile 0-100">
 
+    <label for="shortPassPercentage" data-i18n="metrics.gk.short_pass">Short Pass %</label>
+    <input type="number" id="shortPassPercentageLow" min="0" max="100" placeholder="Percentile 0-100">
 
-const fetchPromises = urls.map(url => fetch(url).then(response => response.arrayBuffer()));
+    <label for="psxg" data-i18n="metrics.gk.psxg_ga">PSxG - GA</label>
+    <input type="number" id="psxgLow" min="0" max="100" placeholder="Percentile 0-100">
 
-Promise.all(fetchPromises)
-    .then(responses => {
-        responses.forEach((data, index) => {
-            const url = urls[index]; // Get the URL of the current file being processed
-            const workbook = XLSX.read(new Uint8Array(data), { type: 'array' });
-            const sheetName = workbook.SheetNames[0];
-            const sheet = workbook.Sheets[sheetName];
-            const jsonData = XLSX.utils.sheet_to_json(sheet, { header: 1 });
+    <label for="ageLow" data-i18n="search.age">Age</label>
+    <input type="number" id="ageLow" min="0" placeholder="15">
+    <input type="number" id="ageHigh" min="0" placeholder="45">
 
-            // Perform transformations
-            // 1. Cut column C and paste it to the end
-            const columnC = jsonData.map(row => row[2]);
-            jsonData.forEach((row, index) => row.push(columnC[index]));
-            jsonData.forEach(row => row.splice(2, 1));
+    <label for="minutesPlayedLow" data-i18n="search.minutes">Minutes Played</label>
+    <input type="number" id="minutesPlayedLow" min="0" placeholder="0">
+    <label for="minutesPlayedHigh"></label>
+    <input type="number" id="minutesPlayedHigh" min="0" placeholder="10,000">
 
-            // 2. Delete specified columns
-            const columnsToDelete = [27, 28, 29, 30, 40, 47, 48, 49, 55, 59, 61, 70, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 92, 105, 107, 123, 128];
-            columnsToDelete.sort((a, b) => b - a); // Sort in descending order
-            columnsToDelete.forEach(col => {
-                jsonData.forEach(row => row.splice(col, 1));
-            });
-
-            // 3. Insert new columns and fill with appropriate values
-            if (url === 'https://datamb.football/database/CURRENT/TOP72425/ST/ST.xlsx' && !isFirstFileProcessed) {
-                // Include header only for the first file ('gk4.xlsx')
-                jsonData.forEach(row => row.unshift(null)); // Insert empty column at the beginning
-                jsonData[0][0] = "ID"; // Set header for the new column
-                isFirstFileProcessed = true; // Mark the first file as processed
-            } else {
-                // Exclude header for all other files
-                jsonData.forEach(row => row.unshift(undefined)); // Insert undefined at the beginning
-            }
-
-            // Fill ID column
-            for (let i = 1; i < jsonData.length; i++) {
-                jsonData[i][0] = i;
-            }
-
-            // 4. Replace ", m" with " m" and ", %" with " %"
-            jsonData.forEach(row => {
-                for (let i = 0; i < row.length; i++) {
-                    if (typeof row[i] === 'string') {
-                        row[i] = row[i].replace(', m', ' m').replace(', %', ' %');
-                    }
-                }
-            });
-
-            // 5. Collect the transformed data (excluding header for non-first 'gk4.xlsx')
-            allData.push(...(url === 'https://datamb.football/database/CURRENT/TOP72425/ST/ST.xlsx' ? jsonData : jsonData.slice(1)));
-        });
+    <button type="submit" data-i18n="search.button">Search</button>
+  </form>
+  </div>
+</div>
+  <div id="resultsContainer">
+    <!-- The search results will be displayed here -->
+  </div> 
+<div id="tableWrapper">
+  <script>
 
 const leagues = {
- 
-  
-  "Ecuador": [
+
+
+   
+    "Ecuador": [
       "Universidad", "Técnico Universitario", "Orense", "Mushuc Runa", 
       "Macará", "Libertad (ECU)", "LDU Quito", "Independiente del Valle", 
       "Imbabura", "Emelec", "El Nacional", "Deportivo Cuenca", 
@@ -1002,545 +641,1850 @@ const leagues = {
 };
 
 
-function getTeamLeague(team) {
-            for (const [league, teams] of Object.entries(leagues)) {
-                if (teams.includes(team)) {
-                    return league;
-                }
-            }
-            return "Unknown League";
-        }
-
-        const outputLines = [];
-let playerId = 1; // Initialize player ID counter
-
-allData.forEach((row, index) => {
-    // Ensure row has at least 3 elements
-    if (row.length >= 3) {
-        const team = row[2];
-        const league = getTeamLeague(team);
-        row[0] = playerId++; // Update the first element with the incremented player ID
-        row[2] = league; // Replace the third element with the league information
-        outputLines.push(row.join(",")); // Join the modified parts back into a line
-    } else {
-        // Handle rows that don't have at least 3 elements as needed
-        outputLines.push(row.join(","));
-    }
-});
-
-const output_data = outputLines.join("\n");
-
-// Concatenate the extra header row with the fetched CSV data
-let csvData = output_data;
+const allData1 = [];
+  const allData2 = [];
+  const allData3 = [];
+  const allData4 = [];
+  const allData5 = [];
+  const allData6 = [];
+  const allData7 = [];
+  const allData8 = [];
+  const allData9 = [];
+  const allData10 = [];
+  const allData11 = [];
+  const allData12 = [];
+    let allDataAsString1 = '';
+    let allDataAsString2 = '';
+    let allDataAsString3 = '';
+    let allDataAsString4 = '';
+    let allDataAsString5 = '';
+    let allDataAsString6 = '';
 
 
-
-        // Replace all '\n' characters with actual new rows in the CSV
-        csvData = csvData.split('\\n').join('\n');
-
-
-
-
-var rows = csvData.trim().split('\n');
-var header = rows[0].split(',');
-var data = rows.slice(1).map(function(row) {
-  return row.split(',').map(function(d, i) {
-    if (i >= 3) { // Assuming columns 2 and onwards contain numeric values
-      return parseFloat(d);
-    } else {
-      return d;
-    }
-  });
-});
-
-  var margin = { top: 40, right: 80, bottom: 100, left: 100 };
-  var width = 1080 - margin.left - margin.right;
-  var height = 720 - margin.top - margin.bottom;
-
-var medianLinesVisible = false;
-
-
-var selectX = d3.select("#select-x");
-var selectY = d3.select("#select-y");
-var selectSize = d3.select("#select-size");
-
-
-var xMedian = d3.median(data, function(d) { return d[header.indexOf(xMetric)]; });
-var yMedian = d3.median(data, function(d) { return d[header.indexOf(yMetric)]; });
-
-
-
-var names = data.map(function(row) {
-  return row[1];
-});
-
-
-const customMetricOrder = [
-    {text: "Minutes played", dataI18n: "minutes_played"},
-    {text: "CATEGORY: Goal Scoring", dataI18n: "category_goal_scoring"},
-    {text: "Goals per 90", dataI18n: "goals_per_90"},
-    {text: "Non-penalty goals per 90", dataI18n: "non_penalty_goals_per_90"},
-    {text: "xG per 90", dataI18n: "xg_per_90"},
-    {text: "xG/Shot", dataI18n: "xg_per_shot"},
-    {text: "npxG per 90", dataI18n: "npxg_per_90"},
-    {text: "npxG/Shot", dataI18n: "npxg_per_shot"},
-    {text: "Goals per 100 touches", dataI18n: "goals_per_100_touches"},
-    {text: "xG per 100 touches", dataI18n: "xg_per_100_touches"},
-    {text: "Shot frequency", dataI18n: "shot_frequency"},
-    {text: "Shots per 90", dataI18n: "shots_per_90"},
-    {text: "Shots on target %", dataI18n: "shots_on_target_percentage"},
-    {text: "Shots on target per 90", dataI18n: "shots_on_target_per_90"},
-    {text: "Goal conversion %", dataI18n: "goal_conversion_percentage"},
-    {text: "Goals - xG per 90", dataI18n: "goals_minus_xg_per_90"},
-    {text: "Headed goals per 90", dataI18n: "headed_goals_per_90"},
-    {text: "Touches in box per 90", dataI18n: "touches_in_box_per_90"},
-    {text: "CATEGORY: Goal Creation", dataI18n: "category_goal_creation"},
-    {text: "Assists per 90", dataI18n: "assists_per_90"},
-    {text: "xA per 90", dataI18n: "xa_per_90"},
-    {text: "xA per 100 passes", dataI18n: "xa_per_100_passes"},
-    {text: "Goals + Assists per 90", dataI18n: "goals_plus_assists_per_90"},
-    {text: "NPG+A per 90", dataI18n: "npg_plus_a_per_90"},
-    {text: "xG+xA per 90", dataI18n: "xg_plus_xa_per_90"},
-    {text: "npxG+xA per 90", dataI18n: "npxg_plus_xa_per_90"},
-    {text: "Key passes per 90", dataI18n: "key_passes_per_90"},
-    {text: "Chance creation ratio", dataI18n: "chance_creation_ratio"},
-    {text: "Assists - xA per 90", dataI18n: "assists_minus_xa_per_90"},
-    {text: "Shot assists per 90", dataI18n: "shot_assists_per_90"},
-    {text: "Pre-assists per 90", dataI18n: "pre_assists_per_90"},
-    {text: "Crosses per 90", dataI18n: "crosses_per_90"},
-    {text: "Cross accuracy %", dataI18n: "cross_accuracy_percentage"},
-    {text: "Accurate crosses per 90", dataI18n: "accurate_crosses_per_90"},
-    {text: "Crosses to box per 90", dataI18n: "crosses_to_box_per_90"},
-    {text: "Deep completions per 90", dataI18n: "deep_completions_per_90"},
-    {text: "CATEGORY: Dribbling and Ball-Carrying", dataI18n: "category_dribbling_and_ball_carrying"},
-    {text: "Dribbles attempted per 90", dataI18n: "dribbles_attempted_per_90"},
-    {text: "Dribble success rate %", dataI18n: "dribble_success_rate_percentage"},
-    {text: "Successful dribbles per 90", dataI18n: "successful_dribbles_per_90"},
-    {text: "Dribbles per 100 touches", dataI18n: "dribbles_per_100_touches"},
-    {text: "Successful attacking actions per 90", dataI18n: "successful_attacking_actions_per_90"},
-    {text: "Offensive duels per 90", dataI18n: "offensive_duels_per_90"},
-    {text: "Offensive duels won %", dataI18n: "offensive_duels_won_percentage"},
-    {text: "Offensive duels won per 90", dataI18n: "offensive_duels_won_per_90"},
-    {text: "Progressive carries per 90", dataI18n: "progressive_carries_per_90"},
-    {text: "Ball-carrying frequency", dataI18n: "ball_carrying_frequency"},
-    {text: "Accelerations per 90", dataI18n: "accelerations_per_90"},
-    {text: "Fouls suffered per 90", dataI18n: "fouls_suffered_per_90"},
-    {text: "CATEGORY: Passing", dataI18n: "category_passing"},
-    {text: "Passes per 90", dataI18n: "passes_per_90"},
-    {text: "Pass completion %", dataI18n: "pass_completion_percentage"},
-    {text: "Passes completed per 90", dataI18n: "passes_completed_per_90"},
-    {text: "Forward passes per 90", dataI18n: "forward_passes_per_90"},
-    {text: "Forward pass completion %", dataI18n: "forward_pass_completion_percentage"},
-    {text: "Forward passes completed per 90", dataI18n: "forward_passes_completed_per_90"},
-    {text: "Short passes per 90", dataI18n: "short_passes_per_90"},
-    {text: "Short pass completion %", dataI18n: "short_pass_completion_percentage"},
-    {text: "Short passes completed per 90", dataI18n: "short_passes_completed_per_90"},
-    {text: "Long passes per 90", dataI18n: "long_passes_per_90"},
-    {text: "Long pass accuracy %", dataI18n: "long_pass_accuracy_percentage"},
-    {text: "Long passes completed per 90", dataI18n: "long_passes_completed_per_90"},
-    {text: "Progressive passes per 90", dataI18n: "progressive_passes_per_90"},
-    {text: "Progressive pass accuracy %", dataI18n: "progressive_pass_accuracy_percentage"},
-    {text: "Progressive passes completed per 90", dataI18n: "progressive_passes_completed_per_90"},
-    {text: "Progressive passes (PAdj)", dataI18n: "progressive_passes_padj"},
-    {text: "Passes to final third per 90", dataI18n: "passes_to_final_third_per_90"},
-    {text: "Pass completion (to final third) %", dataI18n: "pass_completion_to_final_third_percentage"},
-    {text: "Accurate passes to final third per 90", dataI18n: "accurate_passes_to_final_third_per_90"},
-    {text: "Passes to penalty box per 90", dataI18n: "passes_to_penalty_box_per_90"},
-    {text: "Pass completion (to penalty box) %", dataI18n: "pass_completion_to_penalty_box_percentage"},
-    {text: "Accurate passes to penalty box per 90", dataI18n: "accurate_passes_to_penalty_box_per_90"},
-    {text: "Through passes per 90", dataI18n: "through_passes_per_90"},
-    {text: "Through pass completion %", dataI18n: "through_pass_completion_percentage"},
-    {text: "Through passes completed per 90", dataI18n: "through_passes_completed_per_90"},
-    {text: "Average pass length (m)", dataI18n: "average_pass_length_meters"},
-    {text: "Backward passes per 90", dataI18n: "backward_passes_per_90"},
-    {text: "Misplaced passes per 90", dataI18n: "misplaced_passes_per_90"},
-    {text: "Forward pass ratio", dataI18n: "forward_pass_ratio"},
-    {text: "Backward pass ratio", dataI18n: "backward_pass_ratio"},
-    {text: "CATEGORY: Possession", dataI18n: "category_possession"},
-    {text: "Passes received per 90", dataI18n: "passes_received_per_90"},
-    {text: "Touches per 90", dataI18n: "touches_per_90"},
-    {text: "Possessions lost per 90", dataI18n: "possessions_lost_per_90"},
-    {text: "Possessions won - lost per 90", dataI18n: "possessions_won_minus_lost_per_90"},
-    {text: "Possession +/-", dataI18n: "possession_plus_minus"},
-    {text: "Duels per 90", dataI18n: "duels_per_90"},
-    {text: "Duels won %", dataI18n: "duels_won_percentage"},
-    {text: "Duels won per 90", dataI18n: "duels_won_per_90"},
-    {text: "Progressive actions per 90", dataI18n: "progressive_actions_per_90"},
-    {text: "Progressive action rate", dataI18n: "progressive_action_rate"},
-    {text: "CATEGORY: Defending", dataI18n: "category_defending"},
-    {text: "Defensive duels per 90", dataI18n: "defensive_duels_per_90"},
-    {text: "Defensive duels won %", dataI18n: "defensive_duels_won_percentage"},
-    {text: "Defensive duels won per 90", dataI18n: "defensive_duels_won_per_90"},
-    {text: "Sliding tackles per 90", dataI18n: "sliding_tackles_per_90"},
-    {text: "Sliding tackles (PAdj)", dataI18n: "sliding_tackles_padj"},
-    {text: "Interceptions per 90", dataI18n: "interceptions_per_90"},
-    {text: "Interceptions (PAdj)", dataI18n: "interceptions_padj"},
-    {text: "Possessions won per 90", dataI18n: "possessions_won_per_90"},
-    {text: "Aerial duels per 90", dataI18n: "aerial_duels_per_90"},
-    {text: "Aerial duels won %", dataI18n: "aerial_duels_won_percentage"},
-    {text: "Aerial duels won per 90", dataI18n: "aerial_duels_won_per_90"},
-    {text: "Shots blocked per 90", dataI18n: "shots_blocked_per_90"},
-    {text: "CATEGORY: Disciplinary", dataI18n: "category_disciplinary"},
-    {text: "Fouls per 90", dataI18n: "fouls_per_90"},
-    {text: "Yellow cards per 90", dataI18n: "yellow_cards_per_90"},
-    {text: "Red cards per 90", dataI18n: "red_cards_per_90"},
-    {text: "CATEGORY: Set Pieces", dataI18n: "category_set_pieces"},
-    {text: "Free kicks per 90", dataI18n: "free_kicks_per_90"},
-    {text: "Direct free kicks per 90", dataI18n: "direct_free_kicks_per_90"},
-    {text: "Direct free kicks oT %", dataI18n: "direct_free_kicks_ot_percentage"},
-    {text: "Corners per 90", dataI18n: "corners_per_90"},
-    {text: "Penalties attempted", dataI18n: "penalties_attempted"},
-    {text: "Penalties scored", dataI18n: "penalties_scored"},
-    {text: "Penalty success rate %", dataI18n: "penalty_success_rate_percentage"}
+    const urls1 = [
+    'https://datamb.football/database/CURRENT/RATOP72425/GK/GK.xlsx',
 ];
 
+    const urls2 = [
+    'https://datamb.football/database/CURRENT/RAPRO2425/GK/GK.xlsx',
+'https://datamb.football/database/CURRENT/RAPRO2024/GK/GK.xlsx',
 
-// Function to append options to dropdowns
-function appendOptions(selectElement, metrics) {
-    metrics.forEach(function(metric) {
-        if (metric.text.startsWith("CATEGORY:")) {
-            // Add a disabled option for category descriptors
-            selectElement.append("option")
-                .text(metric.text.replace("CATEGORY: ", "")) // Remove "CATEGORY: " from the text
-                .attr("disabled", true) // Disable the option
-                .attr("class", "category-descriptor")
-                .attr("data-i18n", metric.dataI18n); // Add a class for styling (optional)
-        } else {
-            // Add a regular selectable option
-            selectElement.append("option")
- .text(metric.text)
- .attr("value", metric.text)
- .attr("data-i18n", metric.dataI18n);
-        }
-    });
-}
+    ]
 
-// Append options to dropdowns
-appendOptions(selectX, customMetricOrder);
-appendOptions(selectY, customMetricOrder);
-appendOptions(selectSize, customMetricOrder);
+    const urls3 = [
+    'https://datamb.football/database/CURRENT/RATOP72425/CB/CB.xlsx',
+  ];
+
+    const urls4 = [
+  
+    'https://datamb.football/database/CURRENT/RAPRO2425/CB/CB.xlsx',
+'https://datamb.football/database/CURRENT/RAPRO2024/CB/CB.xlsx',
 
 
+    ]
+
+    const urls5 = [
+    'https://datamb.football/database/CURRENT/RATOP72425/FB/FB.xlsx',
+
+  
+];
+
+    const urls6 = [
+    'https://datamb.football/database/CURRENT/RAPRO2425/FB/FB.xlsx',
+'https://datamb.football/database/CURRENT/RAPRO2024/FB/FB.xlsx',
 
 
-  var svg = d3.select("#scatter-plot")
-    .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom)
-    .append("g")
-    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-  var xMetric = header[3];
-  var yMetric = header[3];
-  var sizeMetric = header[3];
-
-  var xScale = d3.scaleLinear()
-    .domain([0, d3.max(data, function(d) { return d[3]; })])
-    .range([0, width]);
-  var yScale = d3.scaleLinear()
-    .domain([0, d3.max(data, function(d) { return d[3]; })])
-    .range([height, 0]);
-
-// This code should be placed where you update your scatter plot
-
-// Check if both axes are xG per 90 or Goals per 90
-var xAxis = d3.axisBottom(xScale)
-  .tickSize(0); 
-var yAxis = d3.axisLeft(yScale)
-  .tickSize(0); 
-
-var xExtent = d3.extent(data, function(d) { return d[header.indexOf(xMetric)]; });
-var yExtent = d3.extent(data, function(d) { return d[header.indexOf(yMetric)]; });
-var sizeExtent = d3.extent(data, function(d) { return d[header.indexOf(sizeMetric)]; });
-
-svg.append("g")
-  .attr("transform", "translate(0," + height + ")")
-  .call(xAxis)
-  .selectAll("text")
-  .remove();
-
-svg.append("g")
-  .call(yAxis)
-  .selectAll("text")
-  .remove();
-
-svg.append("text")
-  .attr("class", "x-label")
-  .attr("text-anchor", "end")
-  .attr("x", width)
-  .attr("y", height + margin.top)
-  .attr("data-i18n", customMetricOrder.find(m => m.text === header[3]).dataI18n)
-    .text(header[3])
-  .style("font-family", "Arial")
-  .style("font-size", "12px");
-
-
-svg.append("text")
-  .attr("class", "y-label")
-  .attr("text-anchor", "end")
-  .attr("transform", "rotate(-90)")
-  .attr("y", -35)
-  .attr("x", 0)
-  .attr("data-i18n", customMetricOrder.find(m => m.text === header[3]).dataI18n)
-    .text(header[3])
-  .style("font-family", "Arial")
-  .style("font-size", "12px");
-
-
-svg.append("g")
-  .attr("class", "x-axis")
-  .attr("transform", "translate(0," + height + ")")
-  .call(d3.axisBottom(xScale).tickSize(0));
-
-svg.append("g")
-  .attr("class", "y-axis")
-  .call(d3.axisLeft(yScale).tickSize(0));
-
-
-var tooltip = d3.select("body")
-  .append("div")
-  .attr("class", "tooltip")
-  ;
-
-tooltip.style("position", "absolute")
-  .style("background-color", "#f9f9f9")
-  .style("border", "solid")
-  .style("border-width", "1px")
-  .style("border-radius", "5px")
-  .style("padding", "10px")
-  .style("font-size", "12px")
-  .style("left", "-1000px")
-  .style("top", "-1000px");
-	
-  document.addEventListener('touchstart', function(event) {
-  // Ensure tooltip is a valid DOM element
-  var tooltip = document.querySelector('#tooltip'); // or use getElementById('tooltip') if it's an ID
-
-  if (tooltip && !tooltip.contains(event.target)) {
-    tooltip.style.display = 'none';
-  }
-});
-
-var names = rows.slice(1).map(function(row) {
-  return row.split(',')[1];
-});
-
-
-
-function updateCirclesData(filteredRows, filteredNames) {
-  circles = svg.selectAll("circle").data(filteredRows);
-}
-
-var searchBar = document.getElementById("search-bar");
-
-searchBar.addEventListener("input", function() {
-  var searchTerm = searchBar.value.toLowerCase();
-
-  if (searchTerm === '') {
-    resetSearch();
-    return;
-  }
-
-  searchTerm = removeSpecialCharsAndDiacritics(searchTerm);
-
-  // Filter circles based on search term
-  circles.classed("highlighted", false);
-
-  circles.filter(function(d, i) {
-      var name = removeSpecialCharsAndDiacritics(filteredNames[i].toLowerCase());
-      return name.includes(searchTerm);
-    })
-    .classed("highlighted", true);
-});
-
-function removeSpecialCharsAndDiacritics(str) {
-  return str.normalize('NFD').replace(/[\u0300-\u036f\s]/g, '') 
-              .replace(/Ø/g, 'O')
-              .replace(/ø/g, 'o')
-              .replace(/ı/g, 'i');
-            }
-
-
-
-
-
-
-var clickedCircles = []; // array to keep track of clicked circles
-var filteredData; // declare filteredData in a higher scope
-var filteredNames; // declare filteredNames in a higher scope
-
-
-
-
-var circles = svg.selectAll("circle")
-.data(data)
-  .enter()
-  .append("circle")
-  .attr("cx", function(d) { return xScale(d[header.indexOf(xMetric)]); })
-  .attr("cy", function(d) { return yScale(d[header.indexOf(yMetric)]); })
-  .attr("r", 8)  .style("fill", "#4682B4B4")
-  .on("mouseout", function(d) {
-    if (!d3.select(this).classed("clicked")) {
-      // If the circle is not clicked, reset its color to #4682B4B4
-      d3.select(this).attr("r", 5).style("fill", "#4682B4B4");
-    } else {
-      // If the circle is clicked, apply the league color
-      d3.select(this).attr("r", 5).style("fill", leagueColorScale(d[2]));
-    }
-
-    // Hide the tooltip and reset its position
-    tooltip
-      .style("left", "-1000px")
-      .style("top", "-1000px");
-
-    tooltip.transition()
-      .duration(500)
-      ;
-})
-  .on("mouseout", function(d) {
-    if (!d3.select(this).classed("clicked")) {
-      d3.select(this).attr("r", 5);
-        tooltip
-        .style("left", "-1000px")  // Move tooltip off-screen
-        .style("top", "-1000px") // Move tooltip off-screen
-        .classed("hovered", false)
-        .style("fill", "#4682B4B4");
-    }
+    ]
     
-    tooltip.transition()
-      .duration(500)
-      ;
-  })
-  .on("click", function(d) {
-    var identifier = d[0];  // Unique identifier
-    var index = clickedCircles.indexOf(identifier);
 
-    if (index > -1) {
-      // If already clicked, remove from clickedCircles and reset color
-      clickedCircles.splice(index, 1);
-      d3.select(this).style("fill", "#4682B4B4");  // Reset to default color
-      svg.select(".player-name-" + identifier).remove();  // Remove player name
-    } else {
-      // If not clicked, add to clickedCircles and apply league color
-      clickedCircles.push(identifier);
-      d3.select(this).style("fill", leagueColorScale(d[2]));  // Apply league color
-
-      // Append player name below the circle
-      svg.append("text")
-        .attr("class", "player-name player-name-" + identifier)
-        .attr("x", xScale(d[header.indexOf(xMetric)]) - 20)
-        .attr("y", yScale(d[header.indexOf(yMetric)]) + 20)
-        .style("font-family", "Arial")
-        .style("font-size", "12px")
-        .style("user-select", "none")      
-        .style("pointer-events", "none")
-.style("touch-action", "none")       
-        .text(filteredNames[filteredData.indexOf(d)]);
-    }
-  });
-  svg.on("mouseleave", function() {
-  tooltip
-         .style("left", "-1000px")
-         .style("top", "-1000px");
-});
-
-
-
-
-
-
-// X-axis median line
-var xMedianLine = svg.append("line")
-  .attr("class", "x-median")
-  .attr("x1", xScale(xMedian))
-  .attr("y1", 0)
-  .attr("x2", xScale(xMedian))
-  .attr("y2", height)
-  .style("stroke", "red")
-  .style("stroke-dasharray", "4")
-  .style("display", medianLinesVisible ? "block" : "none");
-
-// Y-axis median line
-var yMedianLine = svg.append("line")
-  .attr("class", "y-median")
-  .attr("x1", 0)
-  .attr("y1", yScale(yMedian))
-  .attr("x2", width)
-  .attr("y2", yScale(yMedian))
-  .style("stroke", "red")
-  .style("stroke-dasharray", "4")
-  .style("display", medianLinesVisible ? "block" : "none");
-
-
-  updateChart();
-
-
-
-
-  function updateChart() {
-  xMetric = selectX.property("value");
-  yMetric = selectY.property("value");
-  var sizeMetric = selectSize.property("value");
-
-
-
-  var selectedLeague = document.getElementById("select-league").value;
-  var selectedAge = document.getElementById("select-age").value;
-  var leagueColorScale = d3.scaleOrdinal()
-  .domain([
-  "Serie A", "Bundesliga", "Premier League", "La Liga", "Ligue 1",
-  "Liga Portugal", "Eredivisie", "Scotland Premiership",
-  "Austrian Bundesliga","Belgium Pro League","Swiss Super League",
-  "Süper Lig","Denmark Superliga","Sweden Allsvenskan","Norway Eliteserien",
-  "Croatia HNL","Serbia SuperLiga","Czech Fortuna Liga","Poland","Ukraine",
-  "Russia","Greece","Israel","J1 League","K League 1","Saudi Pro League",
-  "MLS","LigaMX","Brazil Serie A","Argentina Primera","Uruguay Primera",
-  "Chile","Colombia","Ecuador","Paraguay","Championship",
-  "Segunda Division","Serie B","Bundesliga 2","Ligue 2"
-])
-  .range([
-  "rgba(82,145,255,0.9)", "rgba(137,210,100,0.8)", "rgba(255,87,149,0.8)", "rgba(255, 240, 100, 0.8)", 
-  "rgba(107,252,246,0.8)", "rgba(255, 165, 132, 0.8)", "rgba(197,142,255,0.8)", 
-  "rgba(255,143,207,0.8)", "rgba(93,255,178,0.8)", "rgba(255,249,181,0.8)", "rgba(255,104,104,0.8)",
-  "rgba(82,145,255,0.9)", "rgba(137,210,100,0.8)", "rgba(255,87,149,0.8)", "rgba(255, 240, 100, 0.8)", 
-  "rgba(107,252,246,0.8)", "rgba(255, 165, 132, 0.8)", "rgba(197,142,255,0.8)", 
-  "rgba(255,143,207,0.8)", "rgba(93,255,178,0.8)", "rgba(255,249,181,0.8)", "rgba(255,104,104,0.8)",
-  "rgba(82,145,255,0.9)", "rgba(137,210,100,0.8)", "rgba(255,87,149,0.8)", "rgba(255, 240, 100, 0.8)", 
-  "rgba(255,143,207,0.8)", "rgba(255,249,181,0.8)", "rgba(93,255,178,0.8)",  "rgba(255,104,104,0.8)",
-  "rgba(82,145,255,0.9)", "rgba(107,252,246,0.8)", "rgba(255, 165, 132, 0.8)", "rgba(197,142,255,0.8)", 
-  "rgba(137,210,100,0.8)", "rgba(255,87,149,0.8)", "rgba(255, 240, 100, 0.8)", 
-  "rgba(107,252,246,0.8)", "rgba(255, 165, 132, 0.8)", "rgba(197,142,255,0.8)"
-]);
-  var leagues = [
-  "Serie A", "Bundesliga", "Premier League", "La Liga", "Ligue 1",
-  "Liga Portugal", "Eredivisie", "Scotland Premiership",
-  "Austrian Bundesliga","Belgium Pro League","Swiss Super League",
-  "Süper Lig","Denmark Superliga","Sweden Allsvenskan","Norway Eliteserien",
-  "Croatia HNL","Serbia SuperLiga","Czech Fortuna Liga","Poland","Ukraine",
-  "Russia","Greece","Israel","J1 League","K League 1","Saudi Pro League",
-  "MLS","LigaMX","Brazil Serie A","Argentina Primera","Uruguay Primera",
-  "Chile","Colombia","Ecuador","Paraguay","Championship",
-  "Segunda Division","Serie B","Bundesliga 2","Ligue 2"
+    const urls7 = [
+    'https://datamb.football/database/CURRENT/RATOP72425/CM/CM.xlsx',
 ];
 
+    const urls8 = [
+    'https://datamb.football/database/CURRENT/RAPRO2425/CM/CM.xlsx',
+    'https://datamb.football/database/CURRENT/RAPRO2024/CM/CM.xlsx',
+    ]
 
-// Function to get color based on whether the circle is clicked or not
-function getCircleColor(d) {
-  // Check if the circle is clicked
-  if (clickedCircles.includes(d[0])) {
-    return leagueColorScale(d[2]);  // Apply league color if clicked
+    const urls9 = [
+    'https://datamb.football/database/CURRENT/RATOP72425/FW/FW.xlsx',
+
+];
+
+    const urls10 = [
+    'https://datamb.football/database/CURRENT/RAPRO2425/FW/FW.xlsx',
+    'https://datamb.football/database/CURRENT/RAPRO2024/FW/FW.xlsx',
+
+
+    ]
+
+    const urls11 = [
+    'https://datamb.football/database/CURRENT/RATOP72425/ST/ST.xlsx',
+
+];
+
+    const urls12 = [
+   'https://datamb.football/database/CURRENT/RAPRO2425/ST/ST.xlsx',
+    'https://datamb.football/database/CURRENT/RAPRO2024/ST/ST.xlsx',
+
+    ]
+
+
+    const fetchPromises1 = urls1.map(url => fetch(url).then(response => response.arrayBuffer()));
+const fetchPromises2 = urls2.map(url => fetch(url).then(response => response.arrayBuffer()));
+
+    function processAndStoreData1(dataArray) {
+        // Unique ID counter
+        let uniqueIdCounter = 1;
+    
+        dataArray.forEach(data => {
+            const workbook = XLSX.read(new Uint8Array(data), { type: 'array' });
+            const sheetName = workbook.SheetNames[0];
+            const sheet = workbook.Sheets[sheetName];
+            const jsonData = XLSX.utils.sheet_to_json(sheet, { header: 1 });
+    
+            // Exclude header row
+            const dataWithoutHeader = jsonData.slice(1);
+    
+            // Perform transformations and add unique ID
+            dataWithoutHeader.forEach(row => {
+                // Generate unique ID and shift columns
+                row.unshift(`${uniqueIdCounter++}`);
+    
+                // Shift columns as needed
+                row.splice(12, 0, row.splice(4, 1)[0]);
+                row.splice(7, 0, row.splice(11, 1)[0]);
+                row.splice(9, 0, row.splice(10, 1)[0]);
+                row[15] = `${row[1]}`;
+                row.splice(16, 1);
+    
+                // Reorder columns
+                const reorderedRow = [
+                    row[0],
+                    row[15],
+                    row[2],
+                    row[4],
+                    row[5],
+                    row[11],
+                    row[6],
+                    row[10],
+                    row[8],
+                    row[9],
+                    row[7],
+                    row[3]
+                ];
+                allData1.push(reorderedRow);
+            });
+         
+
+function getTeamLeague1(team) {
+          for (const [league, teams] of Object.entries(leagues)) {
+              if (teams.includes(team)) {
+                  return league;
+              }
+          }
+          return "Unknown League";
+      }
+
+      const outputLines = [];
+      allData1.forEach(row => {
+          if (row.length >= 3) {
+              const team = row[2];
+              const league = getTeamLeague1(team);
+              row[12] = league; // Replace the third element with the league information
+              outputLines.push(row.join(",")); // Join the modified parts back into a line
+          } else {
+              // Handle rows that don't have at least 3 elements as needed
+              outputLines.push(row.join(","));
+          }
+      });
+        });
+    
+        // Extract values from columns 4, 5, 6, 7, 8, 9, and 10
+        const columnsToConvert = [3, 4, 5, 6, 7, 8, 9];
+        const columnValues = columnsToConvert.map(col => allData1.map(row => parseFloat(row[col])));
+    
+        // Calculate percentiles
+        const percentiles = columnValues.map(values => {
+            const sorted = [...values].sort((a, b) => a - b);
+            return values.map(value => {
+                const rank = sorted.indexOf(value) + 1;
+                return (rank / sorted.length);
+            });
+        });
+    
+        // Replace original values with percentiles
+        allData1.forEach((row, rowIndex) => {
+            columnsToConvert.forEach((col, colIndex) => {
+                row[col] = percentiles[colIndex][rowIndex].toFixed(3);
+            });
+        });
+    }
+
+    function processAndStoreData2(dataArray) {
+        // Unique ID counter
+        let uniqueIdCounter = 1;
+    
+        dataArray.forEach(data => {
+            const workbook = XLSX.read(new Uint8Array(data), { type: 'array' });
+            const sheetName = workbook.SheetNames[0];
+            const sheet = workbook.Sheets[sheetName];
+            const jsonData = XLSX.utils.sheet_to_json(sheet, { header: 1 });
+    
+            // Exclude header row
+            const dataWithoutHeader = jsonData.slice(1);
+    
+            // Perform transformations and add unique ID
+            dataWithoutHeader.forEach(row => {
+                // Generate unique ID and shift columns
+                row.unshift(`${uniqueIdCounter++}`);
+    
+                // Shift columns as needed
+                row.splice(12, 0, row.splice(4, 1)[0]);
+                row.splice(7, 0, row.splice(11, 1)[0]);
+                row.splice(9, 0, row.splice(10, 1)[0]);
+                row[15] = `${row[1]}`;
+                row.splice(16, 1);
+    
+                const reorderedRow = [
+                    row[0],
+                    row[15],
+                    row[2],
+                    row[4],
+                    row[5],
+                    row[11],
+                    row[6],
+                    row[10],
+                    row[8],
+                    row[9],
+                    row[7],
+                    row[3]
+                ];
+    
+                allData2.push(reorderedRow);
+            });
+           
+
+function getTeamLeague2(team) {
+          for (const [league, teams] of Object.entries(leagues)) {
+              if (teams.includes(team)) {
+                  return league;
+              }
+          }
+          return "Unknown League";
+      }
+
+      const outputLines = [];
+      allData2.forEach(row => {
+          if (row.length >= 3) {
+              const team = row[2];
+              const league = getTeamLeague2(team);
+              row[12] = league; // Replace the third element with the league information
+              outputLines.push(row.join(",")); // Join the modified parts back into a line
+          } else {
+              // Handle rows that don't have at least 3 elements as needed
+              outputLines.push(row.join(","));
+          }
+      });
+        });
+    
+        // Extract values from columns 4, 5, 6, 7, 8, 9, and 10
+        const columnsToConvert = [3, 4, 5, 6, 7, 8, 9];
+        const columnValues = columnsToConvert.map(col => allData2.map(row => parseFloat(row[col])));
+    
+        // Calculate percentiles
+        const percentiles = columnValues.map(values => {
+            const sorted = [...values].sort((a, b) => a - b);
+            return values.map(value => {
+                const rank = sorted.indexOf(value) + 1;
+                return (rank / sorted.length);
+            });
+        });
+    
+        // Replace original values with percentiles
+        allData2.forEach((row, rowIndex) => {
+            columnsToConvert.forEach((col, colIndex) => {
+                row[col] = percentiles[colIndex][rowIndex].toFixed(3);
+            });
+        });
+    }
+
+  
+
+    
+    Promise.all(fetchPromises1)
+        .then(responses => {
+            processAndStoreData1(responses);
+    
+        
+            // Fetch and process the remaining files
+            Promise.all(fetchPromises2)
+                .then(responses2 => {
+                    processAndStoreData2(responses2);
+    
+
+                    // Concatenate intermediate data with new data
+                    const finalData = allData1.concat(allData2);
+    
+                    // Reset and assign new unique IDs
+                    finalData.forEach((row, index) => {
+                        row[0] = `${index + 1}`;
+                    });
+                    
+                    finalData.forEach(row => {
+                        allDataAsString1 += row.join(',') + '\n';
+                    });
+    
+// Replace all '\n' characters with actual new rows in the CSV
+let csvData1 = allDataAsString1.split('\\n').join('\n');
+
+// Convert the CSV string into an array of rows
+let rows = csvData1.split('\n');
+
+// Remove the last row
+rows.pop();
+
+// Join the rows back into a single string
+csvData1 = rows.join('\n');
+
+
+const fetchPromises3 = urls3.map(url => fetch(url).then(response => response.arrayBuffer()));
+const fetchPromises4 = urls4.map(url => fetch(url).then(response => response.arrayBuffer()));
+
+    function processAndStoreData3(dataArray) {
+        // Unique ID counter
+        let uniqueIdCounter = 1;
+    
+        dataArray.forEach(data => {
+            const workbook = XLSX.read(new Uint8Array(data), { type: 'array' });
+            const sheetName = workbook.SheetNames[0];
+            const sheet = workbook.Sheets[sheetName];
+            const jsonData = XLSX.utils.sheet_to_json(sheet, { header: 1 });
+    
+            // Exclude header row
+            const dataWithoutHeader = jsonData.slice(1);
+    
+            // Perform transformations and add unique ID
+            dataWithoutHeader.forEach(row => {
+                // Generate unique ID and shift columns
+                row.unshift(`${uniqueIdCounter++}`);
+    
+                // Shift columns as needed
+                row.splice(12, 0, row.splice(4, 1)[0]);
+                row.splice(7, 0, row.splice(11, 1)[0]);
+                row.splice(9, 0, row.splice(10, 1)[0]);
+                row[15] = `${row[1]}`;
+                row[14] = (row[9] * row[10]) / 100;  // Equivalent formula
+                row.splice(16, 1);
+    
+                // Reorder columns
+                const reorderedRow = [
+                    row[0],
+                    row[15],
+                    row[2],
+                    row[14],
+                    row[11],
+                    row[7],
+                    row[4],
+                    row[5],
+                    row[6],
+                    row[8],
+                    row[12],
+                    row[3]
+                ];
+                allData3.push(reorderedRow);
+            });
+         
+
+function getTeamLeague3(team) {
+          for (const [league, teams] of Object.entries(leagues)) {
+              if (teams.includes(team)) {
+                  return league;
+              }
+          }
+          return "Unknown League";
+      }
+
+      const outputLines = [];
+      allData3.forEach(row => {
+          if (row.length >= 3) {
+              const team = row[2];
+              const league = getTeamLeague3(team);
+              row[12] = league; // Replace the third element with the league information
+              outputLines.push(row.join(",")); // Join the modified parts back into a line
+          } else {
+              // Handle rows that don't have at least 3 elements as needed
+              outputLines.push(row.join(","));
+          }
+      });
+        });
+    
+        // Extract values from columns 4, 5, 6, 7, 8, 9, and 10
+        const columnsToConvert = [3, 4, 5, 6, 7, 8, 9];
+        const columnValues = columnsToConvert.map(col => allData3.map(row => parseFloat(row[col])));
+    
+        // Calculate percentiles
+        const percentiles = columnValues.map(values => {
+            const sorted = [...values].sort((a, b) => a - b);
+            return values.map(value => {
+                const rank = sorted.indexOf(value) + 1;
+                return (rank / sorted.length);
+            });
+        });
+    
+        // Replace original values with percentiles
+        allData3.forEach((row, rowIndex) => {
+            columnsToConvert.forEach((col, colIndex) => {
+                row[col] = percentiles[colIndex][rowIndex].toFixed(3);
+            });
+        });
+    }
+
+    function processAndStoreData4(dataArray) {
+        // Unique ID counter
+        let uniqueIdCounter = 1;
+    
+        dataArray.forEach(data => {
+            const workbook = XLSX.read(new Uint8Array(data), { type: 'array' });
+            const sheetName = workbook.SheetNames[0];
+            const sheet = workbook.Sheets[sheetName];
+            const jsonData = XLSX.utils.sheet_to_json(sheet, { header: 1 });
+    
+            // Exclude header row
+            const dataWithoutHeader = jsonData.slice(1);
+    
+            // Perform transformations and add unique ID
+            dataWithoutHeader.forEach(row => {
+                // Generate unique ID and shift columns
+                row.unshift(`${uniqueIdCounter++}`);
+    
+                // Shift columns as needed
+                row.splice(12, 0, row.splice(4, 1)[0]);
+                row.splice(7, 0, row.splice(11, 1)[0]);
+                row.splice(9, 0, row.splice(10, 1)[0]);
+                row[15] = `${row[1]}`;
+                row[14] = (row[9] * row[10]) / 100;  // Equivalent formula
+                row.splice(16, 1);
+    
+                // Reorder columns
+                const reorderedRow = [
+                    row[0],
+                    row[15],
+                    row[2],
+                    row[14],
+                    row[11],
+                    row[7],
+                    row[4],
+                    row[5],
+                    row[6],
+                    row[8],
+                    row[12],
+                    row[3]
+                ];
+    
+                allData4.push(reorderedRow);
+            });
+           
+
+function getTeamLeague4(team) {
+          for (const [league, teams] of Object.entries(leagues)) {
+              if (teams.includes(team)) {
+                  return league;
+              }
+          }
+          return "Unknown League";
+      }
+
+      const outputLines = [];
+      allData4.forEach(row => {
+          if (row.length >= 3) {
+              const team = row[2];
+              const league = getTeamLeague4(team);
+              row[12] = league; // Replace the third element with the league information
+              outputLines.push(row.join(",")); // Join the modified parts back into a line
+          } else {
+              // Handle rows that don't have at least 3 elements as needed
+              outputLines.push(row.join(","));
+          }
+      });
+        });
+    
+        // Extract values from columns 4, 5, 6, 7, 8, 9, and 10
+        const columnsToConvert = [3, 4, 5, 6, 7, 8, 9];
+        const columnValues = columnsToConvert.map(col => allData4.map(row => parseFloat(row[col])));
+    
+        // Calculate percentiles
+        const percentiles = columnValues.map(values => {
+            const sorted = [...values].sort((a, b) => a - b);
+            return values.map(value => {
+                const rank = sorted.indexOf(value) + 1;
+                return (rank / sorted.length);
+            });
+        });
+    
+        // Replace original values with percentiles
+        allData4.forEach((row, rowIndex) => {
+            columnsToConvert.forEach((col, colIndex) => {
+                row[col] = percentiles[colIndex][rowIndex].toFixed(3);
+            });
+        });
+    }
+
+  
+
+    
+    Promise.all(fetchPromises3)
+        .then(responses3 => {
+            processAndStoreData3(responses3);
+    
+        
+            // Fetch and process the remaining files
+            Promise.all(fetchPromises4)
+                .then(responses4 => {
+                    processAndStoreData4(responses4);
+    
+
+                    // Concatenate intermediate data with new data
+                    const finalData = allData3.concat(allData4);
+    
+                    // Reset and assign new unique IDs
+                    finalData.forEach((row, index) => {
+                        row[0] = `${index + 1}`;
+                    });
+                    
+                    finalData.forEach(row => {
+                        allDataAsString2 += row.join(',') + '\n';
+                    });
+    
+
+                    let csvData2 = allDataAsString2.split('\\n').join('\n');
+let rows2 = csvData2.split('\n');
+rows2.pop();
+csvData2 = rows2.join('\n');
+
+const fetchPromises5 = urls5.map(url => fetch(url).then(response => response.arrayBuffer()));
+const fetchPromises6 = urls6.map(url => fetch(url).then(response => response.arrayBuffer()));
+
+    function processAndStoreData5(dataArray) {
+        // Unique ID counter
+        let uniqueIdCounter = 1;
+    
+        dataArray.forEach(data => {
+            const workbook = XLSX.read(new Uint8Array(data), { type: 'array' });
+            const sheetName = workbook.SheetNames[0];
+            const sheet = workbook.Sheets[sheetName];
+            const jsonData = XLSX.utils.sheet_to_json(sheet, { header: 1 });
+    
+            // Exclude header row
+            const dataWithoutHeader = jsonData.slice(1);
+    
+            // Perform transformations and add unique ID
+            dataWithoutHeader.forEach(row => {
+                // Generate unique ID and shift columns
+                row.unshift(`${uniqueIdCounter++}`);
+    
+                // Shift columns as needed
+
+                row[15] = `${row[1]}`;
+    
+                // Reorder columns
+                const reorderedRow = [
+                row[0],
+                row[15],
+                row[2],
+                row[8],
+                row[10],
+                row[11],
+                row[5],
+                row[6],
+                row[7],
+                row[9],
+                row[4],
+                row[3]
+                ];
+                allData5.push(reorderedRow);
+            });
+         
+
+function getTeamLeague5(team) {
+          for (const [league, teams] of Object.entries(leagues)) {
+              if (teams.includes(team)) {
+                  return league;
+              }
+          }
+          return "Unknown League";
+      }
+
+      const outputLines = [];
+      allData5.forEach(row => {
+          if (row.length >= 3) {
+              const team = row[2];
+              const league = getTeamLeague5(team);
+              row[12] = league; // Replace the third element with the league information
+              outputLines.push(row.join(",")); // Join the modified parts back into a line
+          } else {
+              // Handle rows that don't have at least 3 elements as needed
+              outputLines.push(row.join(","));
+          }
+      });
+        });
+    
+        // Extract values from columns 4, 5, 6, 7, 8, 9, and 10
+        const columnsToConvert = [3, 4, 5, 6, 7, 8, 9];
+        const columnValues = columnsToConvert.map(col => allData5.map(row => parseFloat(row[col])));
+    
+        // Calculate percentiles
+        const percentiles = columnValues.map(values => {
+            const sorted = [...values].sort((a, b) => a - b);
+            return values.map(value => {
+                const rank = sorted.indexOf(value) + 1;
+                return (rank / sorted.length);
+            });
+        });
+    
+        // Replace original values with percentiles
+        allData5.forEach((row, rowIndex) => {
+            columnsToConvert.forEach((col, colIndex) => {
+                row[col] = percentiles[colIndex][rowIndex].toFixed(3);
+            });
+        });
+    }
+
+    function processAndStoreData6(dataArray) {
+        // Unique ID counter
+        let uniqueIdCounter = 1;
+    
+        dataArray.forEach(data => {
+            const workbook = XLSX.read(new Uint8Array(data), { type: 'array' });
+            const sheetName = workbook.SheetNames[0];
+            const sheet = workbook.Sheets[sheetName];
+            const jsonData = XLSX.utils.sheet_to_json(sheet, { header: 1 });
+    
+            // Exclude header row
+            const dataWithoutHeader = jsonData.slice(1);
+    
+            // Perform transformations and add unique ID
+            dataWithoutHeader.forEach(row => {
+                // Generate unique ID and shift columns
+                row.unshift(`${uniqueIdCounter++}`);
+    
+                // Shift columns as needed
+
+                row[15] = `${row[1]}`;
+                const reorderedRow = [
+                row[0],
+                row[15],
+                row[2],
+                row[8],
+                row[10],
+                row[11],
+                row[5],
+                row[6],
+                row[7],
+                row[9],
+                row[4],
+                row[3]
+                ];
+    
+                allData6.push(reorderedRow);
+            });
+           
+
+function getTeamLeague6(team) {
+          for (const [league, teams] of Object.entries(leagues)) {
+              if (teams.includes(team)) {
+                  return league;
+              }
+          }
+          return "Unknown League";
+      }
+
+      const outputLines = [];
+      allData6.forEach(row => {
+          if (row.length >= 3) {
+              const team = row[2];
+              const league = getTeamLeague6(team);
+              row[12] = league; // Replace the third element with the league information
+              outputLines.push(row.join(",")); // Join the modified parts back into a line
+          } else {
+              // Handle rows that don't have at least 3 elements as needed
+              outputLines.push(row.join(","));
+          }
+      });
+        });
+    
+        // Extract values from columns 4, 5, 6, 7, 8, 9, and 10
+        const columnsToConvert = [3, 4, 5, 6, 7, 8, 9];
+        const columnValues = columnsToConvert.map(col => allData6.map(row => parseFloat(row[col])));
+    
+        // Calculate percentiles
+        const percentiles = columnValues.map(values => {
+            const sorted = [...values].sort((a, b) => a - b);
+            return values.map(value => {
+                const rank = sorted.indexOf(value) + 1;
+                return (rank / sorted.length);
+            });
+        });
+    
+        // Replace original values with percentiles
+        allData6.forEach((row, rowIndex) => {
+            columnsToConvert.forEach((col, colIndex) => {
+                row[col] = percentiles[colIndex][rowIndex].toFixed(3);
+            });
+        });
+    }
+
+  
+
+    
+    Promise.all(fetchPromises5)
+        .then(responses5 => {
+            processAndStoreData5(responses5);
+    
+        
+            // Fetch and process the remaining files
+            Promise.all(fetchPromises6)
+                .then(responses6 => {
+                    processAndStoreData6(responses6);
+    
+
+                    // Concatenate intermediate data with new data
+                    const finalData = allData5.concat(allData6);
+    
+                    // Reset and assign new unique IDs
+                    finalData.forEach((row, index) => {
+                        row[0] = `${index + 1}`;
+                    });
+                    
+                    finalData.forEach(row => {
+                        allDataAsString3 += row.join(',') + '\n';
+                    });
+    
+
+                    let csvData3 = allDataAsString3.split('\\n').join('\n');
+let rows3 = csvData3.split('\n');
+rows3.pop();
+csvData3 = rows3.join('\n');
+
+
+const fetchPromises7 = urls7.map(url => fetch(url).then(response => response.arrayBuffer()));
+const fetchPromises8 = urls8.map(url => fetch(url).then(response => response.arrayBuffer()));
+
+    function processAndStoreData7(dataArray) {
+        // Unique ID counter
+        let uniqueIdCounter = 1;
+    
+        dataArray.forEach(data => {
+            const workbook = XLSX.read(new Uint8Array(data), { type: 'array' });
+            const sheetName = workbook.SheetNames[0];
+            const sheet = workbook.Sheets[sheetName];
+            const jsonData = XLSX.utils.sheet_to_json(sheet, { header: 1 });
+    
+            // Exclude header row
+            const dataWithoutHeader = jsonData.slice(1);
+    
+            // Perform transformations and add unique ID
+            dataWithoutHeader.forEach(row => {
+                // Generate unique ID and shift columns
+                row.unshift(`${uniqueIdCounter++}`);
+    
+                // Shift columns as needed
+
+                row[15] = `${row[1]}`;
+    
+                // Reorder columns
+                const reorderedRow = [
+                row[0],
+                row[15],
+                row[2],
+                row[5],
+              row[6],
+              row[7],
+              row[8],
+              row[9],
+              row[10],
+              row[11],
+              row[4],
+                row[3]
+                ];
+                allData7.push(reorderedRow);
+            });
+         
+
+function getTeamLeague7(team) {
+          for (const [league, teams] of Object.entries(leagues)) {
+              if (teams.includes(team)) {
+                  return league;
+              }
+          }
+          return "Unknown League";
+      }
+
+      const outputLines = [];
+      allData7.forEach(row => {
+          if (row.length >= 3) {
+              const team = row[2];
+              const league = getTeamLeague7(team);
+              row[12] = league; // Replace the third element with the league information
+              outputLines.push(row.join(",")); // Join the modified parts back into a line
+          } else {
+              // Handle rows that don't have at least 3 elements as needed
+              outputLines.push(row.join(","));
+          }
+      });
+        });
+    
+        // Extract values from columns 4, 5, 6, 7, 8, 9, and 10
+        const columnsToConvert = [3, 4, 5, 6, 7, 8, 9];
+        const columnValues = columnsToConvert.map(col => allData7.map(row => parseFloat(row[col])));
+    
+        // Calculate percentiles
+        const percentiles = columnValues.map(values => {
+            const sorted = [...values].sort((a, b) => a - b);
+            return values.map(value => {
+                const rank = sorted.indexOf(value) + 1;
+                return (rank / sorted.length);
+            });
+        });
+    
+        // Replace original values with percentiles
+        allData7.forEach((row, rowIndex) => {
+            columnsToConvert.forEach((col, colIndex) => {
+                row[col] = percentiles[colIndex][rowIndex].toFixed(3);
+            });
+        });
+    }
+
+    function processAndStoreData8(dataArray) {
+        // Unique ID counter
+        let uniqueIdCounter = 1;
+    
+        dataArray.forEach(data => {
+            const workbook = XLSX.read(new Uint8Array(data), { type: 'array' });
+            const sheetName = workbook.SheetNames[0];
+            const sheet = workbook.Sheets[sheetName];
+            const jsonData = XLSX.utils.sheet_to_json(sheet, { header: 1 });
+    
+            // Exclude header row
+            const dataWithoutHeader = jsonData.slice(1);
+    
+            // Perform transformations and add unique ID
+            dataWithoutHeader.forEach(row => {
+                // Generate unique ID and shift columns
+                row.unshift(`${uniqueIdCounter++}`);
+    
+                // Shift columns as needed
+
+                row[15] = `${row[1]}`;
+    
+                const reorderedRow = [
+                row[0],
+                row[15],
+                row[2],
+                row[5],
+              row[6],
+              row[7],
+              row[8],
+              row[9],
+              row[10],
+              row[11],
+              row[4],
+                row[3]
+                ];
+    
+                allData8.push(reorderedRow);
+            });
+           
+
+function getTeamLeague8(team) {
+          for (const [league, teams] of Object.entries(leagues)) {
+              if (teams.includes(team)) {
+                  return league;
+              }
+          }
+          return "Unknown League";
+      }
+
+      const outputLines = [];
+      allData8.forEach(row => {
+          if (row.length >= 3) {
+              const team = row[2];
+              const league = getTeamLeague8(team);
+              row[12] = league; // Replace the third element with the league information
+              outputLines.push(row.join(",")); // Join the modified parts back into a line
+          } else {
+              // Handle rows that don't have at least 3 elements as needed
+              outputLines.push(row.join(","));
+          }
+      });
+        });
+    
+        // Extract values from columns 4, 5, 6, 7, 8, 9, and 10
+        const columnsToConvert = [3, 4, 5, 6, 7, 8, 9];
+        const columnValues = columnsToConvert.map(col => allData8.map(row => parseFloat(row[col])));
+    
+        // Calculate percentiles
+        const percentiles = columnValues.map(values => {
+            const sorted = [...values].sort((a, b) => a - b);
+            return values.map(value => {
+                const rank = sorted.indexOf(value) + 1;
+                return (rank / sorted.length);
+            });
+        });
+    
+        // Replace original values with percentiles
+        allData8.forEach((row, rowIndex) => {
+            columnsToConvert.forEach((col, colIndex) => {
+                row[col] = percentiles[colIndex][rowIndex].toFixed(3);
+            });
+        });
+    }
+
+  
+
+    
+    Promise.all(fetchPromises7)
+        .then(responses7 => {
+            processAndStoreData7(responses7);
+    
+        
+            // Fetch and process the remaining files
+            Promise.all(fetchPromises8)
+                .then(responses8 => {
+                    processAndStoreData8(responses8);
+    
+
+                    // Concatenate intermediate data with new data
+                    const finalData = allData7.concat(allData8);
+    
+                    // Reset and assign new unique IDs
+                    finalData.forEach((row, index) => {
+                        row[0] = `${index + 1}`;
+                    });
+                    
+                    finalData.forEach(row => {
+                        allDataAsString4 += row.join(',') + '\n';
+                    });
+    
+
+
+                    let csvData4 = allDataAsString4.split('\\n').join('\n');
+let rows4 = csvData4.split('\n');
+rows4.pop();
+csvData4 = rows4.join('\n');
+
+
+
+const fetchPromises9 = urls9.map(url => fetch(url).then(response => response.arrayBuffer()));
+const fetchPromises10 = urls10.map(url => fetch(url).then(response => response.arrayBuffer()));
+
+    function processAndStoreData9(dataArray) {
+        // Unique ID counter
+        let uniqueIdCounter = 1;
+    
+        dataArray.forEach(data => {
+            const workbook = XLSX.read(new Uint8Array(data), { type: 'array' });
+            const sheetName = workbook.SheetNames[0];
+            const sheet = workbook.Sheets[sheetName];
+            const jsonData = XLSX.utils.sheet_to_json(sheet, { header: 1 });
+    
+            // Exclude header row
+            const dataWithoutHeader = jsonData.slice(1);
+    
+            // Perform transformations and add unique ID
+            dataWithoutHeader.forEach(row => {
+                // Generate unique ID and shift columns
+                row.unshift(`${uniqueIdCounter++}`);
+    
+                // Shift columns as needed
+
+                row[15] = `${row[1]}`;
+                row[14] = (row[9] * row[10]) / 100;  // Equivalent formula
+              row[16] = (row[7] + row[12]);  // Equivalent formula
+
+
+                // Reorder columns
+                const reorderedRow = [
+                row[0],
+                row[15],
+                row[2],
+                row[11],
+                  row[14],
+                  row[6],
+                  row[16],
+                  row[8],
+                  row[13],
+                  row[5],
+                  row[4],
+                row[3]
+                ];
+                allData9.push(reorderedRow);
+            });
+         
+
+function getTeamLeague9(team) {
+          for (const [league, teams] of Object.entries(leagues)) {
+              if (teams.includes(team)) {
+                  return league;
+              }
+          }
+          return "Unknown League";
+      }
+
+      const outputLines = [];
+      allData9.forEach(row => {
+          if (row.length >= 3) {
+              const team = row[2];
+              const league = getTeamLeague9(team);
+              row[12] = league; // Replace the third element with the league information
+              outputLines.push(row.join(",")); // Join the modified parts back into a line
+          } else {
+              // Handle rows that don't have at least 3 elements as needed
+              outputLines.push(row.join(","));
+          }
+      });
+        });
+    
+        // Extract values from columns 4, 5, 6, 7, 8, 9, and 10
+        const columnsToConvert = [3, 4, 5, 6, 7, 8, 9];
+        const columnValues = columnsToConvert.map(col => allData9.map(row => parseFloat(row[col])));
+    
+        // Calculate percentiles
+        const percentiles = columnValues.map(values => {
+            const sorted = [...values].sort((a, b) => a - b);
+            return values.map(value => {
+                const rank = sorted.indexOf(value) + 1;
+                return (rank / sorted.length);
+            });
+        });
+    
+        // Replace original values with percentiles
+        allData9.forEach((row, rowIndex) => {
+            columnsToConvert.forEach((col, colIndex) => {
+                row[col] = percentiles[colIndex][rowIndex].toFixed(3);
+            });
+        });
+    }
+
+    function processAndStoreData10(dataArray) {
+        // Unique ID counter
+        let uniqueIdCounter = 1;
+    
+        dataArray.forEach(data => {
+            const workbook = XLSX.read(new Uint8Array(data), { type: 'array' });
+            const sheetName = workbook.SheetNames[0];
+            const sheet = workbook.Sheets[sheetName];
+            const jsonData = XLSX.utils.sheet_to_json(sheet, { header: 1 });
+    
+            // Exclude header row
+            const dataWithoutHeader = jsonData.slice(1);
+    
+            // Perform transformations and add unique ID
+            dataWithoutHeader.forEach(row => {
+                // Generate unique ID and shift columns
+                row.unshift(`${uniqueIdCounter++}`);
+    
+                // Shift columns as needed
+
+                row[15] = `${row[1]}`;
+                row[14] = (row[9] * row[10]) / 100;  // Equivalent formula
+              row[16] = (row[7] + row[12]);  // Equivalent formula
+    
+                const reorderedRow = [
+                row[0],
+                row[15],
+                row[2],
+                row[11],
+                  row[14],
+                  row[6],
+                  row[16],
+                  row[8],
+                  row[13],
+                  row[5],
+                  row[4],
+                row[3]
+                ];
+    
+                allData10.push(reorderedRow);
+            });
+           
+
+function getTeamLeague10(team) {
+          for (const [league, teams] of Object.entries(leagues)) {
+              if (teams.includes(team)) {
+                  return league;
+              }
+          }
+          return "Unknown League";
+      }
+
+      const outputLines = [];
+      allData10.forEach(row => {
+          if (row.length >= 3) {
+              const team = row[2];
+              const league = getTeamLeague10(team);
+              row[12] = league; // Replace the third element with the league information
+              outputLines.push(row.join(",")); // Join the modified parts back into a line
+          } else {
+              // Handle rows that don't have at least 3 elements as needed
+              outputLines.push(row.join(","));
+          }
+      });
+        });
+    
+        // Extract values from columns 4, 5, 6, 7, 8, 9, and 10
+        const columnsToConvert = [3, 4, 5, 6, 7, 8, 9];
+        const columnValues = columnsToConvert.map(col => allData10.map(row => parseFloat(row[col])));
+    
+        // Calculate percentiles
+        const percentiles = columnValues.map(values => {
+            const sorted = [...values].sort((a, b) => a - b);
+            return values.map(value => {
+                const rank = sorted.indexOf(value) + 1;
+                return (rank / sorted.length);
+            });
+        });
+    
+        // Replace original values with percentiles
+        allData10.forEach((row, rowIndex) => {
+            columnsToConvert.forEach((col, colIndex) => {
+                row[col] = percentiles[colIndex][rowIndex].toFixed(3);
+            });
+        });
+    }
+
+  
+
+    
+    Promise.all(fetchPromises9)
+        .then(responses9 => {
+            processAndStoreData9(responses9);
+    
+        
+            // Fetch and process the remaining files
+            Promise.all(fetchPromises10)
+                .then(responses10 => {
+                    processAndStoreData10(responses10);
+    
+
+                    // Concatenate intermediate data with new data
+                    const finalData = allData9.concat(allData10);
+    
+                    // Reset and assign new unique IDs
+                    finalData.forEach((row, index) => {
+                        row[0] = `${index + 1}`;
+                    });
+                    
+                    finalData.forEach(row => {
+                        allDataAsString5 += row.join(',') + '\n';
+                    });
+    
+
+                    let csvData5 = allDataAsString5.split('\\n').join('\n');
+let rows5 = csvData5.split('\n');
+rows5.pop();
+csvData5 = rows5.join('\n');
+
+const fetchPromises11 = urls11.map(url => fetch(url).then(response => response.arrayBuffer()));
+const fetchPromises12 = urls12.map(url => fetch(url).then(response => response.arrayBuffer()));
+
+    function processAndStoreData11(dataArray) {
+        // Unique ID counter
+        let uniqueIdCounter = 1;
+    
+        dataArray.forEach(data => {
+            const workbook = XLSX.read(new Uint8Array(data), { type: 'array' });
+            const sheetName = workbook.SheetNames[0];
+            const sheet = workbook.Sheets[sheetName];
+            const jsonData = XLSX.utils.sheet_to_json(sheet, { header: 1 });
+    
+            // Exclude header row
+            const dataWithoutHeader = jsonData.slice(1);
+    
+            // Perform transformations and add unique ID
+            dataWithoutHeader.forEach(row => {
+                // Generate unique ID and shift columns
+                row.unshift(`${uniqueIdCounter++}`);
+    
+                // Shift columns as needed
+
+                row[15] = `${row[1]}`;
+    
+                const reorderedRow = [
+                row[0],
+                row[15],
+                row[2],
+                row[9],
+              row[5],
+              row[7],
+              row[8],
+              row[11],
+              row[10],
+              row[6],
+              row[4],
+                row[3]
+                ];
+                allData11.push(reorderedRow);
+            });
+         
+
+function getTeamLeague11(team) {
+          for (const [league, teams] of Object.entries(leagues)) {
+              if (teams.includes(team)) {
+                  return league;
+              }
+          }
+          return "Unknown League";
+      }
+
+      const outputLines = [];
+      allData11.forEach(row => {
+          if (row.length >= 3) {
+              const team = row[2];
+              const league = getTeamLeague11(team);
+              row[12] = league; // Replace the third element with the league information
+              outputLines.push(row.join(",")); // Join the modified parts back into a line
+          } else {
+              // Handle rows that don't have at least 3 elements as needed
+              outputLines.push(row.join(","));
+          }
+      });
+        });
+    
+        // Extract values from columns 4, 5, 6, 7, 8, 9, and 10
+        const columnsToConvert = [3, 4, 5, 6, 7, 8, 9];
+        const columnValues = columnsToConvert.map(col => allData11.map(row => parseFloat(row[col])));
+    
+        // Calculate percentiles
+        const percentiles = columnValues.map(values => {
+            const sorted = [...values].sort((a, b) => a - b);
+            return values.map(value => {
+                const rank = sorted.indexOf(value) + 1;
+                return (rank / sorted.length);
+            });
+        });
+    
+        // Replace original values with percentiles
+        allData11.forEach((row, rowIndex) => {
+            columnsToConvert.forEach((col, colIndex) => {
+                row[col] = percentiles[colIndex][rowIndex].toFixed(3);
+            });
+        });
+    }
+
+    function processAndStoreData12(dataArray) {
+        // Unique ID counter
+        let uniqueIdCounter = 1;
+    
+        dataArray.forEach(data => {
+            const workbook = XLSX.read(new Uint8Array(data), { type: 'array' });
+            const sheetName = workbook.SheetNames[0];
+            const sheet = workbook.Sheets[sheetName];
+            const jsonData = XLSX.utils.sheet_to_json(sheet, { header: 1 });
+    
+            // Exclude header row
+            const dataWithoutHeader = jsonData.slice(1);
+    
+            // Perform transformations and add unique ID
+            dataWithoutHeader.forEach(row => {
+                // Generate unique ID and shift columns
+                row.unshift(`${uniqueIdCounter++}`);
+    
+                // Shift columns as needed
+
+                row[15] = `${row[1]}`;
+    
+                const reorderedRow = [
+                row[0],
+                row[15],
+                row[2],
+                row[9],
+              row[5],
+              row[7],
+              row[8],
+              row[11],
+              row[10],
+              row[6],
+              row[4],
+                row[3]
+                ];
+                allData12.push(reorderedRow);
+            });
+           
+
+function getTeamLeague12(team) {
+          for (const [league, teams] of Object.entries(leagues)) {
+              if (teams.includes(team)) {
+                  return league;
+              }
+          }
+          return "Unknown League";
+      }
+
+      const outputLines = [];
+      allData12.forEach(row => {
+          if (row.length >= 3) {
+              const team = row[2];
+              const league = getTeamLeague12(team);
+              row[12] = league; // Replace the third element with the league information
+              outputLines.push(row.join(",")); // Join the modified parts back into a line
+          } else {
+              // Handle rows that don't have at least 3 elements as needed
+              outputLines.push(row.join(","));
+          }
+      });
+        });
+    
+        // Extract values from columns 4, 5, 6, 7, 8, 9, and 10
+        const columnsToConvert = [3, 4, 5, 6, 7, 8, 9];
+        const columnValues = columnsToConvert.map(col => allData12.map(row => parseFloat(row[col])));
+    
+        // Calculate percentiles
+        const percentiles = columnValues.map(values => {
+            const sorted = [...values].sort((a, b) => a - b);
+            return values.map(value => {
+                const rank = sorted.indexOf(value) + 1;
+                return (rank / sorted.length);
+            });
+        });
+    
+        // Replace original values with percentiles
+        allData12.forEach((row, rowIndex) => {
+            columnsToConvert.forEach((col, colIndex) => {
+                row[col] = percentiles[colIndex][rowIndex].toFixed(3);
+            });
+        });
+    }
+
+  
+
+    
+    Promise.all(fetchPromises11)
+        .then(responses11 => {
+            processAndStoreData11(responses11);
+    
+        
+            // Fetch and process the remaining files
+            Promise.all(fetchPromises12)
+                .then(responses12 => {
+                    processAndStoreData12(responses12);
+    
+
+                    // Concatenate intermediate data with new data
+                    const finalData = allData11.concat(allData12);
+    
+                    // Reset and assign new unique IDs
+                    finalData.forEach((row, index) => {
+                        row[0] = `${index + 1}`;
+                    });
+                    
+                    finalData.forEach(row => {
+                        allDataAsString6 += row.join(',') + '\n';
+                    });
+    
+
+                    let csvData6 = allDataAsString6.split('\\n').join('\n');
+let rows6 = csvData6.split('\n');
+rows6.pop();
+csvData6 = rows6.join('\n');
+
+
+let selectedLeague = "All"; // Declare the selectedLeague variable outside the event listener
+
+document.getElementById('league').addEventListener('change', function () {
+  selectedLeague = this.value;
+});
+    // Store data for each dataset in separate arrays
+    const dataArray1 = csvData1.split('\n').map(line => line.split(','));
+    const dataArray2 = csvData2.split('\n').map(line => line.split(','));
+    const dataArray3 = csvData3.split('\n').map(line => line.split(','));
+    const dataArray4 = csvData4.split('\n').map(line => line.split(','));
+    const dataArray5 = csvData5.split('\n').map(line => line.split(','));
+    const dataArray6 = csvData6.split('\n').map(line => line.split(','));
+
+
+
+
+
+ const metricNames1 = [
+      'Def actions',
+      'Aerials',
+      'Exit line',
+      'Passes',
+      'Long pass%',
+      'Short pass%',
+      'PSxG - GA'
+    ];
+
+    // Metric names for CB
+    const metricNames2 = [
+      'Passes',
+      'Forward pass%',
+      'Prog passes',
+      'Def actions',
+      'Def duel%',
+      'Aerial%',
+      'Prog carries'
+    ];
+
+    // Metric names for FB
+    const metricNames3 = [
+      'Cross%',
+      'xA',
+      'Prog passes',
+      'Def actions',
+      'Def duel%',
+      'Aerial%',
+      'Prog carries'
+    ];
+
+    // Metric names for CM
+    const metricNames4 = [
+      'Duel%',
+      'Def actions',
+      'Prog carries',
+      'Forward passes',
+      'Forward pass%',
+      'Key passes',
+      'Prog passes'
+    ];
+
+    // Metric names for FW
+    const metricNames5 = [
+      'Prog carries',
+      'Dribbles',
+      'NPG',
+      'xG+xA',
+      'Assists',
+      'Key passes',
+      'Off actions'
+    ];
+
+    // Metric names for ST
+    const metricNames6 = [
+      'Pass received',
+      'Aerial%',
+      'NPG',
+      'xG',
+      'Pass to pen',
+      'xA',
+      'Off actions'
+    ];
+
+
+    // Function to update metric labels based on the selected dataset
+  function updateMetricLabels(dataset) {
+    const labels = document.querySelectorAll('label[for]');
+    const inputs = document.querySelectorAll('input[type="number"]');
+    let position = '';
+    
+    // Determine position code based on dataset
+    switch(dataset) {
+      case 'dataset1': position = 'gk'; break;
+      case 'dataset2': position = 'cb'; break;
+      case 'dataset3': position = 'fb'; break;
+      case 'dataset4': position = 'cm'; break;
+      case 'dataset5': position = 'fw'; break;
+      case 'dataset6': position = 'st'; break;
+    }
+
+    // Update metric labels based on position
+    if (position === 'gk') {
+      updateLabel('defensiveActions', 'metrics.gk.def_actions');
+      updateLabel('aerialsContested', 'metrics.gk.aerials');
+      updateLabel('exitLine', 'metrics.gk.exit_line');
+      updateLabel('passes', 'metrics.gk.passes');
+      updateLabel('longPassPercentage', 'metrics.gk.long_pass');
+      updateLabel('shortPassPercentage', 'metrics.gk.short_pass');
+      updateLabel('psxg', 'metrics.gk.psxg_ga');
+    } else if (position === 'cb') {
+      updateLabel('defensiveActions', 'metrics.cb.passes');
+      updateLabel('aerialsContested', 'metrics.cb.forward_pass');
+      updateLabel('exitLine', 'metrics.cb.prog_passes');
+      updateLabel('passes', 'metrics.cb.def_actions');
+      updateLabel('longPassPercentage', 'metrics.cb.def_duel');
+      updateLabel('shortPassPercentage', 'metrics.cb.aerial');
+      updateLabel('psxg', 'metrics.cb.prog_carries');
+    } else if (position === 'fb') {
+      updateLabel('defensiveActions', 'metrics.fb.cross');
+      updateLabel('aerialsContested', 'metrics.fb.xa');
+      updateLabel('exitLine', 'metrics.fb.prog_passes');
+      updateLabel('passes', 'metrics.fb.def_actions');
+      updateLabel('longPassPercentage', 'metrics.fb.def_duel');
+      updateLabel('shortPassPercentage', 'metrics.fb.aerial');
+      updateLabel('psxg', 'metrics.fb.prog_carries');
+    } else if (position === 'cm') {
+      updateLabel('defensiveActions', 'metrics.cm.duel');
+      updateLabel('aerialsContested', 'metrics.cm.def_actions');
+      updateLabel('exitLine', 'metrics.cm.prog_carries');
+      updateLabel('passes', 'metrics.cm.forward_passes');
+      updateLabel('longPassPercentage', 'metrics.cm.forward_pass');
+      updateLabel('shortPassPercentage', 'metrics.cm.key_passes');
+      updateLabel('psxg', 'metrics.cm.prog_passes');
+    } else if (position === 'fw') {
+      updateLabel('defensiveActions', 'metrics.fw.prog_carries');
+      updateLabel('aerialsContested', 'metrics.fw.dribbles');
+      updateLabel('exitLine', 'metrics.fw.npg');
+      updateLabel('passes', 'metrics.fw.xg_xa');
+      updateLabel('longPassPercentage', 'metrics.fw.assists');
+      updateLabel('shortPassPercentage', 'metrics.fw.key_passes');
+      updateLabel('psxg', 'metrics.fw.off_actions');
+    } else if (position === 'st') {
+      updateLabel('defensiveActions', 'metrics.st.pass_received');
+      updateLabel('aerialsContested', 'metrics.st.aerial');
+      updateLabel('exitLine', 'metrics.st.npg');
+      updateLabel('passes', 'metrics.st.xg');
+      updateLabel('longPassPercentage', 'metrics.st.pass_to_pen');
+      updateLabel('shortPassPercentage', 'metrics.st.xa');
+      updateLabel('psxg', 'metrics.st.off_actions');
+    }
+
+    // Reapply translations after updating data-i18n attributes
+    applyTranslations();
   }
-  return "#4682B4B4";  // Default state is #4682B4B4
+
+  function updateLabel(forAttribute, translationKey) {
+    const label = document.querySelector(`label[for="${forAttribute}"]`);
+    if (label) {
+      label.setAttribute('data-i18n', translationKey);
+    }
+  }
+
+  document.getElementById('datasetSelector').addEventListener('change', function () {
+    const selectedDataset = document.getElementById('datasetSelector').value;
+    updateMetricLabels(selectedDataset);
+    clearSearchInputs();
+  });
+
+  // Initialize the metric labels based on the default dataset
+  updateMetricLabels('dataset1');
+
+
+
+    function clearSearchInputs() {
+      // Clear all input fields
+      const inputs = document.querySelectorAll('input[type="number"]');
+      inputs.forEach(input => (input.value = ''));
+
+      // Clear the results container
+      const resultsContainer = document.getElementById('resultsContainer');
+      resultsContainer.innerHTML = '';
+    }
+
+    document.getElementById('searchForm').addEventListener('submit', function (event) {
+  event.preventDefault();
+
+  // Get the selected dataset and league
+  const selectedDataset = document.getElementById('datasetSelector').value;
+  selectedLeague = document.getElementById('league').value;
+
+    // Get the user-entered percentile values from the form
+    const defensiveActionsLow = parseInt(document.getElementById('defensiveActionsLow').value);
+    const aerialsContestedLow = parseInt(document.getElementById('aerialsContestedLow').value);
+    const exitLineLow = parseInt(document.getElementById('exitLineLow').value);
+    const passesLow = parseInt(document.getElementById('passesLow').value);
+    const longPassPercentageLow = parseInt(document.getElementById('longPassPercentageLow').value);
+    const shortPassPercentageLow = parseInt(document.getElementById('shortPassPercentageLow').value);
+    const psxgLow = parseInt(document.getElementById('psxgLow').value);
+    const ageLow = parseInt(document.getElementById('ageLow').value);
+    const ageHigh = parseInt(document.getElementById('ageHigh').value);
+    const minutesPlayedLow = parseInt(document.getElementById('minutesPlayedLow').value);
+    const minutesPlayedHigh = parseInt(document.getElementById('minutesPlayedHigh').value);
+
+    // Determine the dataArray based on the selected dataset
+    let dataArray;
+    switch (selectedDataset) {
+      case 'dataset2':
+        dataArray = dataArray2;
+        break;
+      case 'dataset3':
+        dataArray = dataArray3;
+        break;
+      case 'dataset4':
+        dataArray = dataArray4;
+        break;
+      case 'dataset5':
+        dataArray = dataArray5;
+        break;
+      case 'dataset6':
+        dataArray = dataArray6;
+        break;
+      default:
+        dataArray = dataArray1;
+    }
+
+    // Filter the dataArray based on user-entered percentiles
+    const restrictedPlayers = reverseSearch(
+  [
+    [defensiveActionsLow],
+    [aerialsContestedLow],
+    [exitLineLow],
+    [passesLow],
+    [longPassPercentageLow],
+    [shortPassPercentageLow],
+    [psxgLow],
+    [ageLow, ageHigh],
+    [minutesPlayedLow, minutesPlayedHigh]
+  ],
+  dataArray, // Pass the dataArray as a parameter
+  selectedLeague // Pass the selected league as a parameter
+);
+const resultsContainer = document.getElementById('resultsContainer');
+resultsContainer.innerHTML = '';
+
+if (restrictedPlayers.length === 0) {
+  const noResultsMessage = document.createElement('p');
+  noResultsMessage.setAttribute('data-i18n', 'search.no_results');
+  noResultsMessage.classList.add('no-results-message'); // Add a class to the element
+  resultsContainer.appendChild(noResultsMessage);
+  applyTranslations(); // Apply translations after adding the element
+} else {
+  // Create the table element
+  const table = document.createElement('table');
+
+  // Create the table header
+  const tableHeader = createTableHeader();
+  table.appendChild(tableHeader);
+
+  // Create the table body
+  const tableBody = document.createElement('tbody');
+
+  // Add the player data rows to the table body
+  restrictedPlayers.forEach(playerData => {
+    const playerRow = document.createElement('tr');
+    tableBody.appendChild(playerRow);
+
+    // Add the player name and other info in the first column
+    const playerNameCell = document.createElement('td');
+    const playerName = playerData[1];
+    const playerData2 = playerData[2];
+    const playerData11 = playerData[11];
+    const playerData10 = playerData[10];
+
+
+    // Create a formatted HTML string
+    const formattedText = `<span>${playerName}</span><br><span class="player-info">${playerData11}, ${playerData2}, ${playerData10} min</span>`;
+
+    // Set the formatted HTML as the content of playerNameCell
+    playerNameCell.innerHTML = formattedText;
+    playerRow.appendChild(playerNameCell);
+
+    // Add the player metric values in the subsequent columns
+      for (let i = 3; i <= 9; i++) {
+  const metricValueCell = document.createElement('td');
+  const numericValue = (parseFloat(playerData[i]) * 100).toFixed(2);
+
+  // Apply the color inline style based on the value range
+  metricValueCell.textContent = numericValue;
+  if (numericValue >= 75 && numericValue <= 100) {
+    metricValueCell.style.color = 'green';
+  } else if (numericValue >= 0 && numericValue <= 25) {
+    metricValueCell.style.color = 'red';
+  }
+  
+  playerRow.appendChild(metricValueCell);
+}
+  });
+
+  // Append the table body to the table
+  table.appendChild(tableBody);
+
+  // Append the table to the wrapper container
+  const tableWrapper = document.getElementById('tableWrapper');
+  tableWrapper.innerHTML = ''; // Clear any previous content
+  tableWrapper.appendChild(table);
 }
 
-  filteredData = data;
-        filteredNames = names;
-      
+    });
 
-        
-        if (selectedLeague !== "all") {
-          var leaguesToInclude2 = ["Premier League", "La Liga", "Bundesliga", "Serie A", "Ligue 1", "Liga Portugal", "Eredivisie"];
-  var leaguesToInclude = ["Premier League", "La Liga", "Bundesliga", "Serie A", "Ligue 1"];
-  var leaguesToInclude3 = ["Scotland Premiership",
+let sortColumnIndex = -1;
+let ascending = true;
+
+function createTableHeader() {
+  const tableHeader = document.createElement('thead');
+  const headerRow = document.createElement('tr');
+  const selectedDataset = document.getElementById('datasetSelector').value;
+  let metricLabels;
+  let position = '';
+  
+  // Determine position code based on dataset
+  switch(selectedDataset) {
+    case 'dataset2':
+      position = 'cb';
+      metricLabels = metricNames2;
+      break;
+    case 'dataset3':
+      position = 'fb';
+      metricLabels = metricNames3;
+      break;
+    case 'dataset4':
+      position = 'cm';
+      metricLabels = metricNames4;
+      break;
+    case 'dataset5':
+      position = 'fw';
+      metricLabels = metricNames5;
+      break;
+    case 'dataset6':
+      position = 'st';
+      metricLabels = metricNames6;
+      break;
+    default:
+      position = 'gk';
+      metricLabels = metricNames1;
+      break;
+  }
+
+  const emptyHeaderCell = document.createElement('th');
+  emptyHeaderCell.textContent = '';
+  headerRow.appendChild(emptyHeaderCell);
+
+  // Create array of metric keys based on position
+  const metricKeys = position === 'gk' ? 
+    ['def_actions', 'aerials', 'exit_line', 'passes', 'long_pass', 'short_pass', 'psxg_ga'] :
+    position === 'cb' ?
+    ['passes', 'forward_pass', 'prog_passes', 'def_actions', 'def_duel', 'aerial', 'prog_carries'] :
+    position === 'fb' ?
+    ['cross', 'xa', 'prog_passes', 'def_actions', 'def_duel', 'aerial', 'prog_carries'] :
+    position === 'cm' ?
+    ['duel', 'def_actions', 'prog_carries', 'forward_passes', 'forward_pass', 'key_passes', 'prog_passes'] :
+    position === 'fw' ?
+    ['prog_carries', 'dribbles', 'npg', 'xg_xa', 'assists', 'key_passes', 'off_actions'] :
+    ['pass_received', 'aerial', 'npg', 'xg', 'pass_to_pen', 'xa', 'off_actions'];
+
+  for (let i = 0; i < metricLabels.length; i++) {
+    const headerCell = document.createElement('th');
+    const translationKey = `metrics.${position}.${metricKeys[i]}`;
+    const translation = getNestedTranslation(translations, translationKey);
+    headerCell.textContent = translation || metricLabels[i]; // Fallback to original label if translation not found
+    headerCell.style.cursor = 'pointer';
+
+    // Add click event listener to the header cell for sorting
+    headerCell.addEventListener('click', () => {
+      sortColumn(i);
+    });
+
+    headerRow.appendChild(headerCell);
+  }
+
+  tableHeader.appendChild(headerRow);
+  return tableHeader;
+}
+
+
+function sortColumn(columnIndex) {
+  // Check if it's a different column or the same column that needs to be reversed
+  if (sortColumnIndex === columnIndex) {
+    ascending = !ascending;
+  } else {
+    ascending = false;
+    sortColumnIndex = columnIndex;
+  }
+
+  // Get the table body rows
+  const tableBody = document.querySelector('tbody');
+  const rows = Array.from(tableBody.querySelectorAll('tr'));
+
+  // Sort the rows based on the selected column
+  rows.sort((row1, row2) => {
+    const value1 = parseFloat(row1.children[columnIndex + 1].textContent);
+    const value2 = parseFloat(row2.children[columnIndex + 1].textContent);
+
+    if (ascending) {
+      return value1 - value2;
+    } else {
+      return value2 - value1;
+    }
+  });
+
+  // Clear the current table body content
+  tableBody.innerHTML = '';
+
+  // Append the sorted rows to the table body
+  rows.forEach(row => {
+    tableBody.appendChild(row);
+  });
+}
+
+
+  document.getElementById('datasetSelector').addEventListener('change', function () {
+    const selectedDataset = document.getElementById('datasetSelector').value;
+
+    // Call the function with the selected dataset to update the metric labels
+    switch (selectedDataset) {
+      case 'dataset2':
+        updateMetricLabels('dataset2');
+        break;
+      case 'dataset3':
+        updateMetricLabels('dataset3');
+        break;
+      case 'dataset4':
+        updateMetricLabels('dataset4');
+        break;
+      case 'dataset5':
+        updateMetricLabels('dataset5');
+        break;
+      case 'dataset6':
+        updateMetricLabels('dataset6');
+        break;
+      default:
+        updateMetricLabels('dataset1');
+        break;
+    }
+
+    // Clear the search inputs and results when the dataset selector changes
+    clearSearchInputs();
+});
+
+function reverseSearch(percentiles, dataArray, selectedLeague) {
+  return dataArray.filter(data => {
+    for (let i = 3; i <= 9; i++) {
+      const metricValue = parseFloat(data[i]) * 100;
+      if (metricValue < percentiles[i - 3][0]) {
+        return false;
+      }
+    }
+
+    const age = parseInt(data[11]);
+    if (age < percentiles[7][0] || age > percentiles[7][1]) {
+      return false;
+    }
+
+    const minutesPlayed = parseInt(data[10]);
+    if (minutesPlayed < percentiles[8][0] || (percentiles[8][1] && minutesPlayed > percentiles[8][1])) {
+      return false;
+    }
+
+    if (selectedLeague !== "All") {
+  if (selectedLeague === "Top 7 Leagues") {
+    const topSevenLeagues = [
+      "Premier League",
+      "La Liga",
+      "Bundesliga",
+      "Serie A",
+      "Ligue 1",
+      "Eredivisie",
+      "Liga Portugal"
+    ];
+    const playerLeague = data[12]; // Assuming the league is in the 12th column (index 11)
+    if (!topSevenLeagues.includes(playerLeague)) {
+      return false;
+    }
+  } else if (selectedLeague === "Top 5 Leagues") {
+    const topFiveLeagues = [
+      "Premier League",
+      "La Liga",
+      "Bundesliga",
+      "Serie A",
+      "Ligue 1"
+    ];
+    const playerLeague = data[12]; // Assuming the league is in the 12th column (index 11)
+    if (!topFiveLeagues.includes(playerLeague)) {
+      return false;
+    }
+  } else if (selectedLeague === "Non Top 7 Leagues") {
+    const dataMBProLeagues = [
+      "Scotland Premiership",
       "Belgium Pro League",
       "Swiss Super League",
       "Ukraine",
@@ -1573,491 +2517,81 @@ function getCircleColor(d) {
       "Bundesliga 2",
       "Serie B",
       "Ligue 2",
-      "Unknown League"];
-  var leaguesToInclude4 = ["Brazil Serie A",
+      "Unknown League"
+    ];
+    const playerLeague = data[12]; // Assuming the league is in the 12th column (index 11)
+    if (!dataMBProLeagues.includes(playerLeague)) {
+      return false;
+    }
+  } else if (selectedLeague === "South America") {
+    const southAmericaLeagues = [
+      "Brazil Serie A",
       "Argentina Primera",
       "Uruguay Primera",
       "Colombia",
       "Chile",
       "Paraguay",
-      "Ecuador"];
-  var leaguesToInclude5 = [    "Norway Eliteserien",
+      "Ecuador",
+    ];
+    const playerLeague = data[12]; // Assuming the league is in the 12th column (index 11)
+    if (!southAmericaLeagues.includes(playerLeague)) {
+      return false;
+    }
+  } else if (selectedLeague === "Scandinavia") {
+    const scandinaviaLeagues = [
+      "Norway Eliteserien",
       "Denmark Superliga",
-      "Sweden Allsvenskan"];
-  var leaguesToInclude6 = [      "Czech Fortuna Liga",
+      "Sweden Allsvenskan"
+    ];
+    const playerLeague = data[12]; // Assuming the league is in the 12th column (index 11)
+    if (!scandinaviaLeagues.includes(playerLeague)) {
+      return false;
+    }
+  } else if (selectedLeague === "Balkans") {
+    const balkansLeagues = [
+      "Czech Fortuna Liga",
       "Serbia SuperLiga",
       "Croatia HNL",
       "Russia",
       "Ukraine",
-      "Poland"];
-
-
-  filteredData = filteredData.filter(function(d) {
-    var league = d[2]; // Assuming d is an array where league is at index 2
-
-    if (selectedLeague === "Top 7 Leagues") {
-      return leaguesToInclude2.includes(league); // Check if league is in top 5 leagues
-    } else if (selectedLeague === "Top 5 Leagues") {
-      return leaguesToInclude.includes(league); // Check if league is in top 5 leagues
-    } else if (selectedLeague === "Outside Top 7") {
-      return leaguesToInclude3.includes(league); // Check if league is in top 5 leagues
-    } else if (selectedLeague === "South America") {
-      return leaguesToInclude4.includes(league); // Check if league is in top 5 leagues
-    } else if (selectedLeague === "Scandinavia") {
-      return leaguesToInclude5.includes(league); // Check if league is in top 5 leagues
-    } else if (selectedLeague === "Eastern Europe") {
-      return leaguesToInclude6.includes(league); // Check if league is in top 5 leagues
-    } else {
-      return league && league.trim() === selectedLeague; // Filter based on selected league
+      "Poland"
+    ];
+    const playerLeague = data[12]; // Assuming the league is in the 12th column (index 11)
+    if (!balkansLeagues.includes(playerLeague)) {
+      return false;
     }
-  });
-
-    // Filter names based on filtered data
-    filteredNames = names.filter(function(name, i) {
-      return filteredData.includes(data[i]); // Assuming data and filteredData have the same structure
-    });
-  }
-
-if (selectedAge !== "all") {
-    var ageLimit = parseInt(selectedAge);
-    filteredData = filteredData.filter(function(d) {
-        var age = parseInt(d[header.indexOf('Age')]); // Convert age to integer
-        return age <= ageLimit;
-    });
-
-
-    // Filter names based on filtered data
-    filteredNames = names.filter(function(name, i) {
-        return filteredData.includes(data[i]); // Assuming data and filteredData have the same structure
-    });
-}
-
-var sizeScale = d3.scaleLinear()
-  .domain(d3.extent(filteredData, function(d) { return d[header.indexOf(sizeMetric)]; }))
-  .range([6, 14.8]);  // Adjust the circle size range
-
-  // Update scales with filtered data
-  xScale.domain(d3.extent(filteredData, function(d) { return d[header.indexOf(xMetric)]; })).nice();
-  yScale.domain(d3.extent(filteredData, function(d) { return d[header.indexOf(yMetric)]; })).nice();
-
-  
-
-  // Remove the existing median lines and the previous x=y line
-  svg.selectAll(".median-line").remove();
-  svg.selectAll(".xy-line").remove();
-  
-  // Create new median lines
-  if (medianLinesVisible) {
-    // Calculate the new medians based on the selected metrics
-    var xMedian = d3.median(filteredData, function(d) { return d[header.indexOf(xMetric)]; });
-    var yMedian = d3.median(filteredData, function(d) { return d[header.indexOf(yMetric)]; });
-
-    // X-axis median line
-    svg.append("line")
-      .attr("class", "median-line")
-      .attr("x1", xScale(xMedian))
-      .attr("y1", 0)
-      .attr("x2", xScale(xMedian))
-      .attr("y2", height)
-      .style("stroke", "red")
-      .style("stroke-dasharray", "4");
-
-    // Y-axis median line
-    svg.append("line")
-      .attr("class", "median-line")
-      .attr("x1", 0)
-      .attr("y1", yScale(yMedian))
-      .attr("x2", width)
-      .attr("y2", yScale(yMedian))
-      .style("stroke", "red")
-      .style("stroke-dasharray", "4");
-  }
-  if (
-    ((xMetric === 'xG per 90' || xMetric === 'Goals per 90') &&
-    (yMetric === 'xG per 90' || yMetric === 'Goals per 90')) ||
-    ((xMetric === 'npxG per 90' || xMetric === 'Non-penalty goals per 90') &&
-    (yMetric === 'npxG per 90' || yMetric === 'Non-penalty goals per 90')) ||
-    ((xMetric === 'xA per 90' || xMetric === 'Assists per 90') &&
-    (yMetric === 'xA per 90' || yMetric === 'Assists per 90'))
-
-  ) {
-    // Get the smaller maximum value of x and y
-// Calculate the intersection points for the x=y line
-  var minX = d3.min(filteredData, d => d[header.indexOf(xMetric)]);
-  var maxX = d3.max(filteredData, d => d[header.indexOf(xMetric)]);
-  var minY = d3.min(filteredData, d => d[header.indexOf(yMetric)]);
-  var maxY = d3.max(filteredData, d => d[header.indexOf(yMetric)]);
-
-// Get the smaller max between the x and y axes
-  var maxVal = Math.min(maxX, maxY);
-
-// Get the larger min between the x and y axes
-  var minVal = Math.max(minX, minY);
-
-// Now draw the line only within these bounds
-  svg.append("line")
-    .attr("class", "xy-line")
-    .attr("x1", xScale(minVal))
-    .attr("y1", yScale(minVal))
-    .attr("x2", xScale(maxVal))
-    .attr("y2", yScale(maxVal))
-    .style("stroke", "green")
-    .style("stroke-dasharray", "4");
-  }
-
-
-  svg.select(".x-label")
-    .text(xMetric);
-
-  svg.select(".y-label")
-    .text(yMetric);
-
-    circles = svg.selectAll("circle")
-    .data(filteredData)
-
-  circles.exit().remove();
-
-  circles.enter()
-  .append("circle")
-  .merge(circles)
-  .attr("cx", function(d) {
-    return xScale(d[header.indexOf(xMetric)]);
-  })
-  .attr("cy", function(d) {
-    return yScale(d[header.indexOf(yMetric)]);
-  })
-  .attr("r", function(d) {
-    return sizeScale(d[header.indexOf(sizeMetric)]);  // Set the circle radius
-  })
-  .style("fill", function(d) {
-    return getCircleColor(d);  // Set color based on click state and league
-  })
-  .on("mouseover", function(d) {
-    d3.select(this).style("fill", "red");  // Temporarily change color to red on hover
-    tooltip.transition().duration(200).style("opacity", 0.9);
-    if (/Mobi|Android/i.test(navigator.userAgent)) {  
-            setTimeout(function() {
-                tooltip
-                    .style("left", "-1000px") 
-                    .style("top", "-1000px");  
-            }, 1500);
-        }  
-
-    // Get translations for the metrics
-
-    // Get the translated text directly from the dropdown options
-    const xMetricDisplay = selectX.select(`option[value="${xMetric}"]`).text();
-    const yMetricDisplay = selectY.select(`option[value="${yMetric}"]`).text();
-    const sizeMetricDisplay = selectSize.select(`option[value="${sizeMetric}"]`).text();
-    
-    tooltip.html(filteredNames[filteredData.indexOf(d)] + "<br/>" + 
-                xMetricDisplay + ": " + d[header.indexOf(xMetric)] + "<br/>" + 
-                yMetricDisplay + ": " + d[header.indexOf(yMetric)] + "<br/>" + 
-                sizeMetricDisplay + ": " + d[header.indexOf(sizeMetric)])
-    .style("left", (d3.event.pageX + 10) + "px")
-      .style("top", (d3.event.pageY - 28) + "px");
-  })
-  .on("mouseout", function(d) {
-    // Revert to original color (either league color or red if clicked)
-    d3.select(this).style("fill", getCircleColor(d));
-    tooltip.transition().duration(500);
-  })
-  .on("click", function(d) {
-    var identifier = d[0];  // Use unique identifier for the circle
-    var index = clickedCircles.indexOf(identifier);
-
-    if (index > -1) {
-      // If already clicked, remove from clickedCircles and remove the name
-      clickedCircles.splice(index, 1);
-      d3.selectAll(".player-name-" + identifier).remove();  // Remove name
-      if (!isBulkSelection) {
-        updateChart();  // Only update the chart if not in bulk selection mode
-      }    } else {
-      // If not clicked, add to clickedCircles and show the name
-      clickedCircles.push(identifier);
-
-      // Append the player name below the circle
-      svg.append("text")
-        .attr("class", "player-name player-name-" + identifier)
-        .attr("x", xScale(d[header.indexOf(xMetric)]) - 20)
-        .attr("y", yScale(d[header.indexOf(yMetric)]) + 20)
-        .style("font-family", "Arial")
-        .style("font-size", "12px")
-        .style("user-select", "none")      
-        .style("pointer-events", "none")
-.style("touch-action", "none")       
-        .text(filteredNames[filteredData.indexOf(d)]);
+  } else if (selectedLeague === "Top 5 Leagues - 2nd Div.") {
+    const secondDivLeagues = [
+      "Championship",
+      "Segunda Division",
+      "Bundesliga 2",
+      "Serie B",
+      "Ligue 2"
+    ];
+    const playerLeague = data[12]; // Assuming the league is in the 12th column (index 11)
+    if (!secondDivLeagues.includes(playerLeague)) {
+      return false;
     }
-
-    // Update the circle color after the click
-    d3.select(this).style("fill", getCircleColor(d));
-  });
-
-  svg.selectAll(".player-name").remove(); // Remove existing player names
-
-  // Display player names for clicked circles
-  var clickedCirclesData = filteredData.filter(function(d) {
-    return clickedCircles.includes(d[0]);
-  });
-
-  var playerNames = svg.selectAll(".player-name")
-    .data(clickedCirclesData, function(d) {
-      return d[0]; // Use unique identifier as the data key
-    });
-
-  playerNames.exit().remove();
-
-  playerNames.enter()
-    .append("text")
-    .attr("class", "player-name")
-    .merge(playerNames)
-    .attr("x", function(d) {
-      return xScale(d[header.indexOf(xMetric)]) - 20;
-    })
-    .attr("y", function(d) {
-      return yScale(d[header.indexOf(yMetric)]) + 20;
-    })
-    .style("font-family", "Arial")
-    .style("font-size", "12px")
-    .style("user-select", "none")      
-    .style("pointer-events", "none")
-.style("touch-action", "none")       
-    .text(function(d) {
-      return filteredNames[filteredData.indexOf(d)];
-    });
-
-    updateCirclesData(filteredData, filteredNames);
-
-
-  svg.select(".x-axis")
-    .transition()
-    .duration(1000)
-    .call(d3.axisBottom(xScale).tickSize(0));
-
-  svg.select(".y-axis")
-    .transition()
-    .duration(1000)
-    .call(d3.axisLeft(yScale).tickSize(0));
-
-
-}
-
-
-
-
-document.getElementById('select-y').addEventListener('change', function(event) {
-    updateChart(event.target.value); // Call updateChart with the selected value
-});
-
-
-document.getElementById('select-x').addEventListener('change', function(event) {
-    updateChart(event.target.value); // Call updateChart with the selected value
-});
-
-
-document.getElementById('select-league').addEventListener('change', function(event) {
-  updateChart('all');
-    updateChart(event.target.value); // Call updateChart with the selected value
-});
-
-
-
-document.getElementById('select-age').addEventListener('change', function(event) {
-  updateChart('all');
-
-    updateChart(event.target.value); // Call updateChart with the selected value
-});
-document.getElementById('select-size').addEventListener('change', function(event) {
-    updateChart(event.target.value); // Call updateChart with the selected value
-});
-
-
-
-
-
-
-function circleClick(d, i) {
-  var circle = d3.select(this);
-  var identifier = d[0]; // Unique identifier of the data point
-
-  var index = clickedCircles.indexOf(identifier);
-
-  if (index > -1) {
-    circle
-      .classed("clicked", false)
-      .style("fill", "#4682B4B4");
-
-    clickedCircles.splice(index, 1);
-
-    // Remove the player name text element
-    svg.select(".player-name-" + identifier).remove();
   } else {
-    circle
-      .classed("clicked", true)
-      .style("fill", "red");
-
-    clickedCircles.push(identifier);
-
-    // Append the player name text element
-    svg.append("text")
-      .attr("class", "player-name player-name-" + identifier)
-      .attr("x", xScale(d[header.indexOf(xMetric)]) - 20)
-      .attr("y", yScale(d[header.indexOf(yMetric)]) + 20)
-      .style("font-family", "Arial")
-      .style("font-size", "12px")
-      .style("user-select", "none")      
-      .style("pointer-events", "none")
-.style("touch-action", "none")       
-      .text(filteredNames[filteredData.indexOf(d)]);
-  }
-
-  updateClickedPlayerName(xMetric, yMetric);
-
-  circles.on("click", function(d, i) {
-    var clickedCircle = d3.select(this);
-    var circleName = filteredNames[i];
-
-    // Check if the circle is already clicked
-    var isClicked = clickedCircles.includes(circleName);
-
-    if (isClicked) {
-      // Remove the circle from clickedCircles and reset its style
-      clickedCircles = clickedCircles.filter(function(name) {
-        return name !== circleName;
-      });
-      clickedCircle
-        .style("fill", "#4682B4B4")
-        .classed("clicked", false);
-    } else {
-      // Add the circle to clickedCircles and update its style
-      clickedCircles.push(circleName);
-      clickedCircle
-        .style("fill", "red")
-        .classed("clicked", true);
+    const playerLeague = data[12]; // Assuming the league is in the 12th column (index 11)
+    if (playerLeague !== selectedLeague) {
+      return false;
     }
-
-    // Update the chart based on the clicked circles
-    updateChart();
-  });
-
-  // Restore the style for previously clicked circles
-  circles.each(function(d, i) {
-    var circleName = filteredNames[i];
-    var clicked = clickedCircles.includes(circleName);
-    d3.select(this).classed("clicked", clicked);
-  });
-
-
-}
-
-
-function updateClickedPlayerName() {
-  svg.selectAll(".player-name")
-    .attr("x", function(d) {
-      return xScale(d[header.indexOf(xMetric)]) - 20;
-    })
-    .attr("y", function(d) {
-      return yScale(d[header.indexOf(yMetric)]) + 20;
-    })
-    .text(function(d) {
-      return clickedCircles.includes(d[0]) ? filteredNames[filteredData.indexOf(d)] : "";
-    });
-}
-
-
-
-function resetSearch() {
-  searchBar.value = '';
-  circles.classed("highlighted", false);
-}
-
-
-
-function resetMedianLines() {
-  svg.selectAll(".median-line").remove();
-}
-
-
-var toggleButton = document.getElementById("toggle-median-lines");
-toggleButton.addEventListener("click", function() {
-  medianLinesVisible = !medianLinesVisible; // toggle the visibility state
-
-  if (medianLinesVisible) {
-    updateChart();
-  } else {
-    svg.selectAll(".median-line").remove(); // Remove existing median lines
-  }
-});
-
-})
-.catch(error => {
-    console.error('Error fetching or processing data:', error);
-});
-
-function refreshChart() {
-  const button = document.getElementById('toggle-median-lines');
-  
-  if (button) {
-    // Simulate two clicks on the button
-    button.click();
-    button.click();
   }
 }
 
-
-let isBulkSelection = false; // Global flag to track bulk selection
-
-function selectAllCircles() {
-  isBulkSelection = true;  // Disable chart update during bulk selection
-  const circles = d3.selectAll('#scatter-plot circle');
-
-  // Loop through each circle and trigger a click event
-  circles.each(function() {
-    // Trigger the existing click event on each circle
-    const clickEvent = new MouseEvent('click', {
-      view: window,
-      bubbles: true,
-      cancelable: true
-    });
-    this.dispatchEvent(clickEvent);  // 'this' refers to the current circle element
-  });
-
-  isBulkSelection = false;  // Re-enable chart update after bulk selection
-  refreshChart()
+return true;
+});
 }
 
+  // Initialize with preferred or default language
+  document.addEventListener('DOMContentLoaded', () => {
+    const preferredLanguage = getPreferredLanguage();
+    loadTranslations(preferredLanguage);
+  });
 
-
-</script>
-
-
-
-
-<a href="https://datamb.football/proplotgk24/" target="_self" rel="noopener noreferrer">
-  <button class="button-1" role="button">GK</button></a>
-
-<a href="https://datamb.football/proplotcb24/" target="_self" rel="noopener noreferrer">
-  <button class="button-2" role="button">CB</button></a>
-
-<a href="https://datamb.football/proplotfb24/" target="_self" rel="noopener noreferrer">
-  <button class="button-3" role="button">FB</button></a>
-
-<a href="https://datamb.football/proplotcm24/" target="_self" rel="noopener noreferrer">
-  <button class="button-4" role="button">CM</button></a>
-
-<a href="https://datamb.football/proplotfw24/" target="_self" rel="noopener noreferrer">
-  <button class="button-5" role="button">FW</button></a>
-
-<a href="https://datamb.football/proplotst24/" target="_self" rel="noopener noreferrer">
-  <button class="button-6" role="button">ST</button></a>
-
-  <a href="https://datamb.football/proplotst/" target="_self" rel="noopener noreferrer">
-    <button class="button-7" role="button">&#8594; 23/24</button></a>
-  
-    <div class="dark-mode-toggle" onclick="toggleDarkMode()">
-      <div class="toggle-icon"></div>
-    </div>
-
+})}) })}) })}) })}) })}) })}) 
+</script></div>
 
 <script>
 
@@ -2080,55 +2614,72 @@ function selectAllCircles() {
     }
 
   </script>
-		<script>// Function to capture and download the chart area
-      function captureChart() {
-          // Get the SVG element
-          const svg = document.getElementById('scatter-plot');
-          const tooltip = d3.select("#tooltip");
-      
-          // Create a canvas element
-          const canvas = document.createElement('canvas');
-          const ctx = canvas.getContext('2d');
-          
-          // Set canvas size to match SVG
-          const svgRect = svg.getBoundingClientRect();
-          canvas.width = svgRect.width;
-          canvas.height = svgRect.height;
-          
-          // Fill canvas with a white background
-          ctx.fillStyle = '#FFFFFF';  // Set background to white
-          ctx.fillRect(0, 0, canvas.width, canvas.height);  // Fill the entire canvas
-          
-          // Create an image from the SVG
-          const img = new Image();
-          const svgData = new XMLSerializer().serializeToString(svg);
-          
-          // Properly encode the SVG data
-          const encodedData = 'data:image/svg+xml;base64,' + btoa(unescape(encodeURIComponent(svgData)));
-          img.src = encodedData;
-      
-          img.onload = function() {
-              // Draw the image on the canvas (on top of the white background)
-              ctx.drawImage(img, 0, 0);
-              
-              // Convert canvas to image and trigger download
-              const dataURL = canvas.toDataURL('image/png');
-              const link = document.createElement('a');
-              link.download = 'chart-screenshot.png';
-              link.href = dataURL;
-              link.click();
-          };
+
+<script>
+  // Translation functionality
+  let currentLanguage = 'en';
+  let translations = {};
+
+  // Load translations
+  async function loadTranslations(lang) {
+    try {
+      const response = await fetch(`./locales/${lang}.json`);
+      translations = await response.json();
+      applyTranslations();
+    } catch (error) {
+      console.error('Error loading translations:', error);
+    }
+  }
+
+  // Apply translations to all elements with data-i18n attribute
+  function applyTranslations() {
+    document.querySelectorAll('[data-i18n]').forEach(element => {
+      const key = element.getAttribute('data-i18n');
+      const translation = getNestedTranslation(translations, key);
+      if (translation) {
+        element.textContent = translation;
       }
-      
-  
-      // Add click event listener to the screenshot icon
-      document.querySelector('.button-screenshot').addEventListener('click', captureChart);
-  </script>
-  
-  <script>
-		function setLanguage(language) {
+    });
+
+    // Apply translations to placeholders
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(element => {
+      const key = element.getAttribute('data-i18n-placeholder');
+      const translation = getNestedTranslation(translations, key);
+      if (translation) {
+        element.placeholder = translation;
+      }
+    });
+
+    // Update dataset selector options
+    const datasetSelector = document.getElementById('datasetSelector');
+    if (datasetSelector) {
+      const positions = translations.position;
+      if (positions) {
+        datasetSelector.options[0].textContent = positions.goalkeepers;
+        datasetSelector.options[1].textContent = positions['centre-backs'];
+        datasetSelector.options[2].textContent = positions['full-backs'];
+        datasetSelector.options[3].textContent = positions.midfielders;
+        datasetSelector.options[4].textContent = positions.wingers;
+        datasetSelector.options[5].textContent = positions.strikers;
+      }
+    }
+  }
+
+  // Helper function to get nested translations
+  function getNestedTranslation(obj, path) {
+    return path.split('.').reduce((acc, part) => acc && acc[part], obj);
+  }
+
+  // Language switcher
+  function switchLanguage(lang) {
+    currentLanguage = lang;
+    loadTranslations(lang);
+    // Store language preference
+    localStorage.setItem('preferredLanguage', lang);
+  }
+
+function setLanguage(language) {
   localStorage.setItem('preferredLanguage', language);
-  // Update URL with language parameter
   const url = new URL(window.location.href);
   if (language === 'en') {
     url.searchParams.delete('lang');
@@ -2140,7 +2691,6 @@ function selectAllCircles() {
 }
 
 function getPreferredLanguage() {
-  // Check URL parameter first
   const urlParams = new URLSearchParams(window.location.search);
   const langParam = urlParams.get('lang');
   if (langParam) {
@@ -2153,48 +2703,20 @@ function getBrowserLanguage() {
   return navigator.language.slice(0, 2);
 }
 
-function applyLanguage(language) {
-  fetch(`locales/${language}.json`)
-    .then(response => response.json())
-    .then(translations => {
-      // Update text content for elements with data-i18n attribute
-      document.querySelectorAll('[data-i18n]').forEach(element => {
-        const keys = element.getAttribute('data-i18n').split('.');
-        let value = translations;
-        for (const key of keys) {
-          value = value[key];
-        }
-        if (value) {
-          element.textContent = value;
-        }
-      });
-
-      // Update placeholders for elements with data-i18n-placeholder attribute
-      document.querySelectorAll('[data-i18n-placeholder]').forEach(element => {
-        const key = element.getAttribute('data-i18n-placeholder');
-        const value = translations[key];
-        if (value) {
-          element.placeholder = value;
-        }
-      });
-
-  });
-}
-
-// Initialize translations after DOM is fully loaded
-document.addEventListener('DOMContentLoaded', function() {
+  // Initialize with preferred or default language
+  document.addEventListener('DOMContentLoaded', () => {
   const preferredLanguage = getPreferredLanguage();
-  applyLanguage(preferredLanguage);
-});
+    loadTranslations(preferredLanguage);
+  });
+</script>
+
+<a href="https://datamb.football/prosearch/" target="_self" rel="noopener noreferrer">
+  <button class="button-6" role="button" data-i18n="switch.button">Switch to 2023/24</button></a>
+  
+<div class="dark-mode-toggle" onclick="toggleDarkMode()">
+    <span class="toggle-icon"></span>
+  </div>
 
 
-</script> 
-  <br>		
-  <br>		
-  <br>		
-  <br>
-    
-  </body>
-  </html>
-  
-  
+</body>
+</html>
