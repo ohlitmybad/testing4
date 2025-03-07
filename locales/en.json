@@ -1,4 +1,8 @@
 {
+  "meta": {
+    "title": "DataMB | Plot Teams",
+    "description": "Plot Top 7 League team statistics. Visualize team performance and analyze multiple metrics such as Goals, Goals conceded, xG, Shots on target, Pressing, Defensive duels, Pass completion and more for teams in Premier League, La Liga, Bundesliga, Serie A, Ligue 1, Eredivisie, Primeira Liga."
+  },
   "header": {
     "home": "Home",
     "pro": "Pro",
