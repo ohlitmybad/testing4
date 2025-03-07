@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -1470,7 +1471,8 @@ function _0x5707(_0xd20fa7,_0x4d36b5){const _0x4dcd69=_0x4dcd();return _0x5707=f
                     option.classList.add('selected');
                     // Update trigger text
                     xTrigger.querySelector('span').textContent = value;
-                    xTrigger.querySelector('span').setAttribute('data-i18n', 'metrics.' + value);
+                    const metricKey = value.toLowerCase().replace(/ /g, '-').replace(/%/g, 'pct');
+                    xTrigger.querySelector('span').setAttribute('data-i18n', 'metrics.' + metricKey);
                 }
             });
             
@@ -1490,7 +1492,8 @@ function _0x5707(_0xd20fa7,_0x4d36b5){const _0x4dcd69=_0x4dcd();return _0x5707=f
                     option.classList.add('selected');
                     // Update trigger text
                     yTrigger.querySelector('span').textContent = value;
-                    yTrigger.querySelector('span').setAttribute('data-i18n', 'metrics.' + value);
+                    const metricKey = value.toLowerCase().replace(/ /g, '-').replace(/%/g, 'pct');
+                    yTrigger.querySelector('span').setAttribute('data-i18n', 'metrics.' + metricKey);
                 }
             });
             
@@ -1512,7 +1515,8 @@ function _0x5707(_0xd20fa7,_0x4d36b5){const _0x4dcd69=_0x4dcd();return _0x5707=f
                 span.textContent = metric;
                 
                 // Add data-i18n attribute for translation
-                span.setAttribute('data-i18n', 'metrics.' + metric);
+                const metricKey = metric.toLowerCase().replace(/ /g, '-').replace(/%/g, 'pct');
+                span.setAttribute('data-i18n', 'metrics.' + metricKey);
                 
                 customOption.appendChild(span);
                 
@@ -3059,4 +3063,3 @@ function _0x5707(_0xd20fa7,_0x4d36b5){const _0x4dcd69=_0x4dcd();return _0x5707=f
     
 </body>
 </html>
-
