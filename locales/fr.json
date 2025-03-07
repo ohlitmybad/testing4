@@ -12,6 +12,9 @@
     "top7": "Top 7 Championnats",
     "top5": "Top 5 Championnats"
   },
+    "search": {
+    "placeholder": "Rechercher une équipe...",
+  },
   "metrics": {
     "goals-per-90": "Buts par 90",
     "xg-per-90": "xG par 90",
