@@ -8,6 +8,9 @@
     "pro": "Pro",
     "guide": "Guide"
   },
+    "search": {
+    "placeholder": "Search team...",
+  },
   "leagues": {
     "top7": "Top 7 Leagues",
     "top5": "Top 5 Leagues"
