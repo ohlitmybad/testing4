@@ -1,7 +1,7 @@
 {
   "meta": {
-    "title": "DataMB | Plot Teams",
-    "description": "Plot Top 7 League team statistics. Visualize team performance and analyze multiple metrics such as Goals, Goals conceded, xG, Shots on target, Pressing, Defensive duels, Pass completion and more for teams in Premier League, La Liga, Bundesliga, Serie A, Ligue 1, Eredivisie, Primeira Liga."
+    "title": "DataMB | Graphiques d'Équipes",
+    "description": "Visualisez les statistiques des équipes des 7 meilleurs championnats. Analysez les performances avec des métriques comme les buts, les buts concédés, xG, tirs cadrés, pressing, duels défensifs, précision des passes et plus pour les équipes de Premier League, La Liga, Bundesliga, Serie A, Ligue 1, Eredivisie, Liga Portugal."
   },
   "header": {
     "home": "Accueil",
@@ -34,9 +34,13 @@
   },
   "tooltip": {
     "median-lines": "Afficher les lignes médianes",
+    "showMedianLines": "Afficher les lignes médianes",
+    "hideMedianLines": "Masquer les lignes médianes",
     "select-all": "Sélectionner toutes les équipes",
+    "selectAll": "Sélectionner toutes les équipes",
+    "unselectAll": "Désélectionner toutes les équipes",
     "screenshot": "Télécharger le graphique",
-    "xg-line-title": "G = xG Ligne",
+    "xg-line-title": "Ligne G = xG",
     "xg-line-above": "Les équipes au-dessus de cette ligne marquent plus de buts qu'attendu.",
     "xg-line-below": "Les équipes en dessous de cette ligne marquent moins de buts qu'attendu.",
     "xg-line-right": "Les équipes à droite de cette ligne marquent plus de buts qu'attendu.",
