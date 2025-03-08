@@ -1361,7 +1361,7 @@ function _0x5707(_0xd20fa7,_0x4d36b5){const _0x4dcd69=_0x4dcd();return _0x5707=f
                     </div>
                 </div>
                 
-                <input type="text" id="search-bar" data-i18n="search.placeholder2" placeholder="Search team...">
+                <input type="text" id="search-bar" data-i18n-placeholder="search.placeholder2" placeholder="Search team...">
                 <div class="btn-tooltip">
                     <button id="toggle-median-lines" class="btn btn-outline btn-icon">
                         <div class="icon">
@@ -2456,12 +2456,22 @@ function _0x5707(_0xd20fa7,_0x4d36b5){const _0x4dcd69=_0x4dcd();return _0x5707=f
             if (allSelected) {
                 selectIcon.className = "ion-ios-circle-outline"; // Icon for "Unclick All"
                 if (selectTooltip) {
-                    selectTooltip.textContent = "Unselect all teams";
+                    // Use translations for unselect all teams
+                    if (window.currentTranslations && window.currentTranslations.tooltip) {
+                        selectTooltip.textContent = window.currentTranslations.tooltip.unselectAll || "Unselect all teams";
+                    } else {
+                        selectTooltip.textContent = "Unselect all teams";
+                    }
                 }
             } else {
                 selectIcon.className = "ion-ios-circle-filled"; // Icon for "Click All"
                 if (selectTooltip) {
-                    selectTooltip.textContent = "Select all teams";
+                    // Use translations for select all teams
+                    if (window.currentTranslations && window.currentTranslations.tooltip) {
+                        selectTooltip.textContent = window.currentTranslations.tooltip.selectAll || "Select all teams";
+                    } else {
+                        selectTooltip.textContent = "Select all teams";
+                    }
                 }
             }
         }
@@ -2650,7 +2660,14 @@ function _0x5707(_0xd20fa7,_0x4d36b5){const _0x4dcd69=_0x4dcd();return _0x5707=f
             updateChart();
 
             const medianTooltip = document.getElementById('median-lines-tooltip');
-            medianTooltip.textContent = medianLinesVisible ? "Hide median lines" : "Show median lines";
+            // Use translations for the median lines tooltip
+            if (window.currentTranslations && window.currentTranslations.tooltip) {
+                medianTooltip.textContent = medianLinesVisible ? 
+                    (window.currentTranslations.tooltip.hideMedianLines || "Hide median lines") : 
+                    (window.currentTranslations.tooltip.showMedianLines || "Show median lines");
+            } else {
+                medianTooltip.textContent = medianLinesVisible ? "Hide median lines" : "Show median lines";
+            }
         });
         
         // Select all circles
