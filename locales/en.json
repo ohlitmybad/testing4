@@ -34,7 +34,11 @@
   },
   "tooltip": {
     "median-lines": "Show median lines",
+    "showMedianLines": "Show median lines",
+    "hideMedianLines": "Hide median lines",
     "select-all": "Select all teams",
+    "selectAll": "Select all teams",
+    "unselectAll": "Unselect all teams",
     "screenshot": "Download chart as image",
     "xg-line-title": "G = xG Line",
     "xg-line-above": "Teams above this line are scoring more goals than expected.",
