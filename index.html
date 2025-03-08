@@ -1808,6 +1808,27 @@ function _0x5707(_0xd20fa7,_0x4d36b5){const _0x4dcd69=_0x4dcd();return _0x5707=f
     </script>
     
     <script>
+        // Global translation helper function
+        function getTranslation(key, defaultText) {
+            // Split the key into parts (e.g., "tooltip.xg-line-title" -> ["tooltip", "xg-line-title"])
+            const keys = key.split('.');
+            
+            // Try to find the translation in the current language
+            try {
+                let currentTranslations = window.currentTranslations || {};
+                for (const k of keys) {
+                    if (currentTranslations && currentTranslations[k]) {
+                        currentTranslations = currentTranslations[k];
+                    } else {
+                        return defaultText;
+                    }
+                }
+                return currentTranslations;
+            } catch (e) {
+                return defaultText;
+            }
+        }
+        
         // Load the data
         const xhr = new XMLHttpRequest();
         xhr.open('GET', 'https://datamb.football/database/TEAM/teamplots.csv', false);
@@ -2129,10 +2150,28 @@ function _0x5707(_0xd20fa7,_0x4d36b5){const _0x4dcd69=_0x4dcd();return _0x5707=f
             gXAxis.call(d3.axisBottom(xScale).tickSize(0));
             gYAxis.call(d3.axisLeft(yScale).tickSize(0));
             
-            xLabel.text(xMetric)
-                  .attr("data-i18n", "metrics." + xMetric.toLowerCase().replace(/ /g, '-').replace(/%/g, 'pct'));
-            yLabel.text(yMetric)
-                  .attr("data-i18n", "metrics." + yMetric.toLowerCase().replace(/ /g, '-').replace(/%/g, 'pct'));
+            // Create metric key for translation
+            const xMetricKey = "metrics." + xMetric.toLowerCase().replace(/ /g, '-').replace(/%/g, 'pct');
+            const yMetricKey = "metrics." + yMetric.toLowerCase().replace(/ /g, '-').replace(/%/g, 'pct');
+            
+            // Set data-i18n attribute
+            xLabel.attr("data-i18n", xMetricKey);
+            yLabel.attr("data-i18n", yMetricKey);
+            
+            // Apply translations directly if available
+            if (window.currentTranslations && window.currentTranslations.metrics) {
+                const xTranslationKey = xMetric.toLowerCase().replace(/ /g, '-').replace(/%/g, 'pct');
+                const yTranslationKey = yMetric.toLowerCase().replace(/ /g, '-').replace(/%/g, 'pct');
+                
+                const xTranslation = window.currentTranslations.metrics[xTranslationKey];
+                const yTranslation = window.currentTranslations.metrics[yTranslationKey];
+                
+                xLabel.text(xTranslation || xMetric);
+                yLabel.text(yTranslation || yMetric);
+            } else {
+                xLabel.text(xMetric);
+                yLabel.text(yMetric);
+            }
 
             // Remove existing circles and labels
             svg.selectAll("circle").remove();
@@ -2203,27 +2242,7 @@ function _0x5707(_0xd20fa7,_0x4d36b5){const _0x4dcd69=_0x4dcd();return _0x5707=f
                                 .duration(200)
                                 .style("opacity", 0.9);
                             
-                            // Create a function to get translations
-                            function getTranslation(key, defaultText) {
-                                // Split the key into parts (e.g., "tooltip.xg-line-title" -> ["tooltip", "xg-line-title"])
-                                const keys = key.split('.');
-                                
-                                // Try to find the translation in the current language
-                                try {
-                                    let currentTranslations = window.currentTranslations || {};
-                                    for (const k of keys) {
-                                        if (currentTranslations && currentTranslations[k]) {
-                                            currentTranslations = currentTranslations[k];
-                                        } else {
-                                            return defaultText;
-                                        }
-                                    }
-                                    return currentTranslations;
-                                } catch (e) {
-                                    return defaultText;
-                                }
-                            }
-                            
+                            // Use the global getTranslation function
                             var tooltipContent = "<strong>" + getTranslation("tooltip.xg-line-title", "G = xG Line") + "</strong><br/>";
                             
                             // Check which axis is which and provide the correct explanation
@@ -2318,11 +2337,17 @@ function _0x5707(_0xd20fa7,_0x4d36b5){const _0x4dcd69=_0x4dcd();return _0x5707=f
                         .duration(200)
                         .style("opacity", 0.9);
                     
-                        tooltip.html("<strong>" + d[1] + "</strong><br/>" +
-
-"<span data-i18n='metrics." + xMetric + "'>" + xMetric + "</span>: " + d[header.indexOf(xMetric)].toFixed(2) + "<br/>" +
-
-"<span data-i18n='metrics." + yMetric + "'>" + yMetric + "</span>: " + d[header.indexOf(yMetric)].toFixed(2));
+                    // Create metric keys for translation
+                    const xMetricKey = "metrics." + xMetric.toLowerCase().replace(/ /g, '-').replace(/%/g, 'pct');
+                    const yMetricKey = "metrics." + yMetric.toLowerCase().replace(/ /g, '-').replace(/%/g, 'pct');
+                    
+                    // Get translated metric names using the global getTranslation function
+                    const xMetricTranslated = getTranslation(xMetricKey, xMetric);
+                    const yMetricTranslated = getTranslation(yMetricKey, yMetric);
+                    
+                    tooltip.html("<strong>" + d[1] + "</strong><br/>" +
+                        xMetricTranslated + ": " + d[header.indexOf(xMetric)].toFixed(2) + "<br/>" +
+                        yMetricTranslated + ": " + d[header.indexOf(yMetric)].toFixed(2));
 
                     // Position tooltip to prevent overflow
                     const tooltipNode = tooltip.node();
