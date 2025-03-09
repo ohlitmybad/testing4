@@ -1,21 +1,34 @@
-
 <!DOCTYPE html>
 <html>
 <head>	
   <meta name="language" content="en">
-<link rel="canonical" href="https://datamb.football/Éderson_Midfielder_stats/" />
-<link rel="alternate" hreflang="x-default" href="https://datamb.football/Éderson_Midfielder_stats/" />
-<link rel="alternate" hreflang="en" href="https://datamb.football/Éderson_Midfielder_stats/?lang=en" /> 
-
+<link rel="canonical" href="https://datamb.football/İ. Gündoğan_Midfielder_stats/" />
+<link rel="alternate" hreflang="x-default" href="https://datamb.football/İ. Gündoğan_Midfielder_stats/" />
+<link rel="alternate" hreflang="en" href="https://datamb.football/İ. Gündoğan_Midfielder_stats/?lang=en" /> 
   <meta name="viewport" content="width=device-width, user-scalable=no">
-  <title>Éderson<span data-i18n="meta.title"> Football Stats and Visuals | DataMB</span></title>
+  <title data-i18n="meta.title" data-template="prefix-name">İ. Gündoğan Football Stats and Visuals | DataMB</title>
   <link rel="shortcut icon" type="image/x-icon" href="https://datamb.football/favicon.ico">
-  <meta name="description" content="Éderson" data-i18n="meta.description" data-i18n-content=" 2024/25 data profile compared to midfielders in Europe's Top 7 Leagues. Check out his statistics with our radar chart and plots, or compare Éderson to other players using our data comparison tool.">
+  <meta name="description" data-i18n="meta.description" data-template="prefix-name" content="İ. Gündoğan 2024/25 data profile compared to midfielders in Europe's Top 7 Leagues. Check out his statistics with our radar chart and plots, or compare İ. Gündoğan to other players using our data comparison tool.">
   <meta property="og:image" content="https://datamb.football/vignettes/profile.png">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@DataMB_">
-  <meta name="twitter:title" content="Éderson | DataMB">
+  <meta name="twitter:title" content="İ. Gündoğan | DataMB">
   <meta name="twitter:image" content="https://datamb.football/vignettes/profile.png">
+  <script>
+    // Store template information before player names are replaced
+    document.addEventListener('DOMContentLoaded', function() {
+      // Store template information for elements with data-template attribute
+      document.querySelectorAll('[data-template]').forEach(element => {
+        const templateType = element.getAttribute('data-template');
+        
+        // Store the template pattern
+        if (templateType === 'prefix-name') {
+          // For elements where player name is at the beginning
+          element.setAttribute('data-name-position', 'prefix');
+        }
+      });
+    });
+  </script>
   <script>
     (function() {
         var width = window.innerWidth;
@@ -645,7 +658,7 @@ left: 10px
 <header class="header">
   <div class="logo">
     <a href="https://datamb.football">
-        <img src="https://datamb.football/logo.png" alt="Éderson football statistics and data visuals. 2024/25 Éderson player data profile compared to top 7 league players. Radar comparison and plot charts"/></a>
+        <img src="https://datamb.football/logo.png" alt="İ. Gündoğan football statistics and data visuals. 2024/25 İ. Gündoğan player data profile compared to top 7 league players. Radar comparison and plot charts"/></a>
     <div class="logo-text"><a href="https://datamb.football">&nbsp;Radars</a></div>
   </div>
   <nav class="navigation">
@@ -812,7 +825,7 @@ const _0x5a5c2d=_0x5142;(function(_0x4ae5e2,_0x171055){const _0x1f5ab4=_0x5142,_
     <script>
   
   
-      const csvData = `1,Éderson,Atalanta,Serie A,25,Midfielder,2024/25,0.62,0.35,0.62,0.92,0.77,0.61,0.85,2315`;    
+      const csvData = `1,İ. Gündoğan,Manchester City,Premier League,34,Midfielder,2024/25,0.24,0.11,0.67,0.57,0.98,0.71,0.38,1581`;    
 
 
       const dataArray = csvData.split('\n').map(line => line.split(','));
@@ -921,12 +934,14 @@ const _0x5a5c2d=_0x5142;(function(_0x4ae5e2,_0x171055){const _0x1f5ab4=_0x5142,_
           if (i === 5) {
             const link = document.createElement('a');
             link.textContent = value;
+            const positionKey = value.toLowerCase().replace(/[^a-z]/g, '');
+            link.setAttribute('data-i18n', `positions.${positionKey}`);
             link.href = 'https://datamb.football/midfielders'; // Replace with the URL you want to link to for cell 5
             td2.appendChild(link);
           } else if (i === 2) {
             const link = document.createElement('a');
             link.textContent = value;
-            link.href = 'https://datamb.football/Atalanta_Team_stats'; // Replace with the URL you want to link to for cell 2
+            link.href = 'https://datamb.football/Manchester_City_Team_stats'; // Replace with the URL you want to link to for cell 2
             td2.appendChild(link);
           } else {
             if (i >= 7 && i <= 13) {
@@ -1697,7 +1712,7 @@ function getTeamLeague(team) {
         }
         
         // Set the default search value
-        var defaultSearchValue = "Éderson";
+        var defaultSearchValue = "İ. Gündoğan";
         
         // Find the index of the default search value in the filteredNames array
         var defaultSearchIndex = filteredNames.indexOf(defaultSearchValue);
@@ -2275,7 +2290,7 @@ circles.each(function(d, i) {
 }
 
 // Set the default search value
-var defaultSearchValue = "Éderson";
+var defaultSearchValue = "İ. Gündoğan";
 
 // Find the index of the default search value in the filteredNames array
 var defaultSearchIndex = filteredNames.indexOf(defaultSearchValue);
@@ -2353,13 +2368,67 @@ defaultSearchDot.each(circleClick);
               value = value[key];
             }
             if (value) {
+              // Check if this element has template information
+              const namePosition = element.getAttribute('data-name-position');
+              
+              // Get current content which now has the actual player name
+              let currentContent = '';
               if (element.tagName === 'META') {
-              element.setAttribute('content', value);
-          } else if (value.includes('<')) {
-              element.innerHTML = value;
-          } else {
-              element.textContent = value;
-          }          }
+                currentContent = element.getAttribute('content');
+              } else {
+                currentContent = element.textContent || element.innerHTML;
+              }
+              
+              // Apply translation with player name handling
+              if (namePosition) {
+                let translatedContent = '';
+                
+                // Extract the actual player name from the current content
+                let playerName = '';
+                
+                if (namePosition === 'prefix') {
+                  const footballIndex = currentContent.indexOf('Football');
+                  const seasonIndex = currentContent.indexOf('2024/25');
+                  
+                  // Find the earliest occurrence of either delimiter
+                  let delimiterIndex = -1;
+                  if (footballIndex > 0 && seasonIndex > 0) {
+                    delimiterIndex = Math.min(footballIndex, seasonIndex);
+                  } else if (footballIndex > 0) {
+                    delimiterIndex = footballIndex;
+                  } else if (seasonIndex > 0) {
+                    delimiterIndex = seasonIndex;
+                  }
+                  
+                  if (delimiterIndex > 0) {
+                    // Extract everything before the delimiter
+                    playerName = currentContent.substring(0, delimiterIndex).trim();
+                  }
+                  
+                  // Apply translation with player name at beginning
+                  translatedContent = playerName + ' ' + value;
+                } 
+                
+                // Apply the modified translation
+                if (element.tagName === 'META') {
+                  element.setAttribute('content', translatedContent);
+                } else if (value.includes('<')) {
+                  element.innerHTML = translatedContent;
+                } else {
+                  element.textContent = translatedContent;
+                }
+              } 
+              // Normal translation without player name
+              else {
+                if (element.tagName === 'META') {
+                  element.setAttribute('content', value);
+                } else if (value.includes('<')) {
+                  element.innerHTML = value;
+                } else {
+                  element.textContent = value;
+                }
+              }
+            }
           });
           // REMOVE FOR PAGES WITH NO METADATA
           document.querySelector('meta[name="language"]').setAttribute('content', language);
@@ -2412,7 +2481,7 @@ defaultSearchDot.each(circleClick);
   <a href='https://play.google.com/store/apps/details?id=com.datamb.datamb.webviewflutter&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png'></a>
 <a href='https://apps.apple.com/app/datamb/id6456224067?l=en-GB'><img alt='Download on the App Store' src='https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg'></a></div>
 <div class="logo">
-    <img src="https://i.imgur.com/UurMbGS.png" alt="Éderson football stats and data visuals. 2024/25 Éderson player data profile compared to top 7 league players. Radar comparison and plot charts" />
+    <img src="https://i.imgur.com/UurMbGS.png" alt="İ. Gündoğan football stats and data visuals. 2024/25 İ. Gündoğan player data profile compared to top 7 league players. Radar comparison and plot charts" />
   </div>
 
   <p class="description">DataMB</p>
