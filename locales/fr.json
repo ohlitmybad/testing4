@@ -2,14 +2,6 @@
   "search": {
     "placeholder": "Rechercher un joueur..."
   },
-  "samePositionAndLeague": "vs Championnat et Poste, par 90",
-  "samePositionAndLeagueWithMinutes": "vs Championnat et Poste",
-  "position": "vs Tous Championnats et Poste, par 90",
-  "positionWithMinutes": "vs Tous Championnats et Poste",
-  "league": "vs Championnat, par 90",
-  "leagueWithMinutes": "vs Championnat",
-  "allCsv": "vs Tous Championnats, par 90",
-  "allCsvWithMinutes": "vs Tous Championnats, par 90",
     "options": {
   "samePositionAndLeague": "vs Championnat et Poste, par 90",
   "samePositionAndLeagueWithMinutes": "vs Championnat et Poste",
