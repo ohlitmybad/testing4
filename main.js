@@ -902,8 +902,7 @@ function getRankSuffix(rank) {
     const playerSelect = document.getElementById('playerSelect');
     const selectedIndex = playerSelect.selectedIndex;
     const selectedPlayerName = playerSelect.options[selectedIndex].value;
-    const selectedPlayerPosition = playerSelect.options[selectedIndex].textContent.split(', ')[1]; // Extract position
-    const selectedPlayerTeam = playerSelect.options[selectedIndex].textContent.split(', ')[2]; // Extract position
+    const selectedPlayerPosition = playerSelect.options[selectedIndex].getAttribute('data-position');    const selectedPlayerTeam = playerSelect.options[selectedIndex].textContent.split(', ')[2]; // Extract position
     const selectedPlayer = {
     player: selectedPlayerName,
     team: selectedPlayerTeam,
@@ -12027,13 +12026,17 @@ function populatePlayerOptions() {
                 playerNameWithoutSpecialChars.includes(searchText.toLowerCase());
         });
 
-        // Append filtered player options
-        filteredPlayers.forEach(player => {
-            const option = document.createElement('option');
-            option.value = player.player;
-            option.textContent = `${player.player}, ${translatePosition(player.position)}, ${player.team}`;
-            playerSelect.appendChild(option);
-        });
+// Append filtered player options
+filteredPlayers.forEach(player => {
+    const option = document.createElement('option');
+    option.value = player.player;
+    // Store the original position as a data attribute
+    option.setAttribute('data-position', player.position);
+    option.setAttribute('data-team', player.team);
+    // Display the translated position to the user
+    option.textContent = `${player.player}, ${window.translatePosition ? window.translatePosition(player.position) : player.position}, ${player.team}`;
+    playerSelect.appendChild(option);
+});
 
         // Sort the options alphabetically
         const optionsArray = Array.from(playerSelect.options);
