@@ -11993,6 +11993,10 @@ updateChart();
 populatePlayerOptions();
 
 function populatePlayerOptions() {
+    if (typeof window.translatePosition !== 'function') {
+        setTimeout(populatePlayerOptions, 100); // Try again in 100ms
+        return;
+      }
     const playerSelect = document.getElementById('playerSelect');
     const spinner = document.querySelector('.spinner');
     filterPlayerOptions();
@@ -12027,7 +12031,7 @@ function populatePlayerOptions() {
         filteredPlayers.forEach(player => {
             const option = document.createElement('option');
             option.value = player.player;
-            option.textContent = `${player.player}, ${player.position}, ${player.team}`;
+            option.textContent = `${player.player}, ${translatePosition(player.position)}, ${player.team}`;
             playerSelect.appendChild(option);
         });
 
