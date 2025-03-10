@@ -9,7 +9,7 @@
   "league": "vs Championnat, par 90",
   "leagueWithMinutes": "vs Championnat",
   "allCsv": "vs Tous Championnats, par 90",
-  "allCsvWithMinutes": "vs Tous Championnats, par 90",
+  "allCsvWithMinutes": "vs Tous Championnats",
     "options": {
   "samePositionAndLeague": "vs Championnat et Poste, par 90",
   "samePositionAndLeagueWithMinutes": "vs Championnat et Poste",
@@ -18,7 +18,7 @@
   "league": "vs Championnat, par 90",
   "leagueWithMinutes": "vs Championnat",
   "allCsv": "vs Tous Championnats, par 90",
-  "allCsvWithMinutes": "vs Tous Championnats, par 90"
+  "allCsvWithMinutes": "vs Tous Championnats"
     },
   "metrics": {
     "Goals": "Buts",
