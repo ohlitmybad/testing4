@@ -31,22 +31,19 @@
         selectElement.add(option);
     }
 
+    // Populate the select element with options based on your criteria
     function populateOptions(usePer90) {
         selectElement.innerHTML = ""; // Clear existing options
-        
+
         if (usePer90) {
             addOption("samePositionAndLeague", options["samePositionAndLeague"]);
-            addOption("position5", options["position5"]);
             addOption("position", options["position"]);
             addOption("league", options["league"]);
-            addOption("top5", options["top5"]);
             addOption("allCsv", options["allCsv"]);
         } else {
             addOption("samePositionAndLeagueWithMinutes", options["samePositionAndLeagueWithMinutes"]);
-            addOption("position5WithMinutes", options["position5WithMinutes"]);
             addOption("positionWithMinutes", options["positionWithMinutes"]);
             addOption("leagueWithMinutes", options["leagueWithMinutes"]);
-            addOption("top5WithMinutes", options["top5WithMinutes"]);
             addOption("allCsvWithMinutes", options["allCsvWithMinutes"]);
         }
         
