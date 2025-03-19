@@ -4165,50 +4165,92 @@ function toggleDarkMode() {
         
 
     });
-
-    function takeScreenshot() {
-            const chartContainer = document.querySelector('.chart-container');
-            const isDarkMode = document.body.classList.contains('dark-mode');
+function takeScreenshot() {
+    const chartContainer = document.querySelector('.chart-container');
+    const isDarkMode = document.body.classList.contains('dark-mode');
+    
+    // For Safari-specific fix
+    const svgElements = chartContainer.querySelectorAll('svg');
+    const svgClones = [];
+    
+    // Clone SVGs and convert to canvas or image before capturing
+    if (/^((?!chrome|android).)*safari/i.test(navigator.userAgent)) {
+        // Safari-specific handling
+        svgElements.forEach(svg => {
+            // Create a clone to avoid modifying the original
+            const clone = svg.cloneNode(true);
+            const svgData = new XMLSerializer().serializeToString(clone);
+            const img = new Image();
+            img.src = 'data:image/svg+xml;base64,' + btoa(unescape(encodeURIComponent(svgData)));
             
-            html2canvas(chartContainer, {
-                scale: 1, // Higher quality
-                backgroundColor: isDarkMode ? '#2c2c2c' : '#FFFFFF',
-                allowTaint: true,
-                useCORS: true,
-                logging: false
-            }).then(function(renderedCanvas) {
-                const finalCanvas = document.createElement('canvas');
-                finalCanvas.width = renderedCanvas.width;
-                finalCanvas.height = renderedCanvas.height;
-                const finalCtx = finalCanvas.getContext('2d');
-                finalCtx.drawImage(renderedCanvas, 0, 0);
-                
-                // Load the watermark
-                const watermarkImg = new Image();
-                watermarkImg.crossOrigin = "Anonymous";
-                
-                watermarkImg.onload = function() {
-                    const watermarkWidth = finalCanvas.width * 0.3;
-                    const watermarkHeight = (watermarkWidth / watermarkImg.width) * watermarkImg.height;
-                    
-                    const x = (finalCanvas.width - watermarkWidth) / 2;
-                    const y = (finalCanvas.height - watermarkHeight) / 2;
-                    
-                    finalCtx.save();
-                    finalCtx.globalAlpha = 0.04;
-                    finalCtx.drawImage(watermarkImg, x, y, watermarkWidth, watermarkHeight);
-                    finalCtx.restore();
-                    
-                    const dataURL = finalCanvas.toDataURL('image/png', 1.0);
-                    const link = document.createElement('a');
-                    link.download = 'DataMB Screenshot.png';
-                    link.href = dataURL;
-                    link.click();
-                };
-                watermarkImg.src = 'https://datamb.football/logo.png';
-            }).catch(function(error) {
+            // Hide original SVG temporarily
+            const originalDisplay = svg.style.display;
+            svg.style.display = 'none';
+            
+            // Insert image where SVG was
+            svg.parentNode.insertBefore(img, svg);
+            
+            // Store for cleanup
+            svgClones.push({
+                original: svg,
+                clone: img,
+                originalDisplay: originalDisplay
             });
-        }
+        });
+    }
+    
+    // Delay html2canvas to ensure all elements are properly rendered
+    setTimeout(() => {
+        html2canvas(chartContainer, {
+            scale: 1, // Try with scale 1 for Safari
+            backgroundColor: isDarkMode ? '#2c2c2c' : '#FFFFFF',
+            allowTaint: true,
+            useCORS: true,
+            logging: false
+        }).then(function(renderedCanvas) {
+            // Clean up SVG replacements if any
+            svgClones.forEach(item => {
+                item.original.style.display = item.originalDisplay;
+                if (item.clone.parentNode) {
+                    item.clone.parentNode.removeChild(item.clone);
+                }
+            });
+            
+            // Rest of your watermark code...
+            const finalCanvas = document.createElement('canvas');
+            finalCanvas.width = renderedCanvas.width;
+            finalCanvas.height = renderedCanvas.height;
+            const finalCtx = finalCanvas.getContext('2d');
+            finalCtx.drawImage(renderedCanvas, 0, 0);
+            
+            // Load the watermark
+            const watermarkImg = new Image();
+            watermarkImg.crossOrigin = "Anonymous";
+            
+            watermarkImg.onload = function() {
+                const watermarkWidth = finalCanvas.width * 0.3;
+                const watermarkHeight = (watermarkWidth / watermarkImg.width) * watermarkImg.height;
+                
+                const x = (finalCanvas.width - watermarkWidth) / 2;
+                const y = (finalCanvas.height - watermarkHeight) / 2;
+                
+                finalCtx.save();
+                finalCtx.globalAlpha = 0.04;
+                finalCtx.drawImage(watermarkImg, x, y, watermarkWidth, watermarkHeight);
+                finalCtx.restore();
+                
+                const dataURL = finalCanvas.toDataURL('image/png', 1.0);
+                const link = document.createElement('a');
+                link.download = 'DataMB Screenshot.png';
+                link.href = dataURL;
+                link.click();
+            };
+            watermarkImg.src = 'https://datamb.football/logo.png';
+        }).catch(function(error) {
+            console.error("Screenshot failed:", error);
+        });
+    }, 100); // Small delay to ensure rendering
+}
 
 // Function to equalize season selector button widths
 function equalizeSeasonButtonWidths() {
